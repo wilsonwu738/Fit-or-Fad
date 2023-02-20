@@ -1,6 +1,6 @@
 import jwtFetch from './jwt';
 
-// Session Actions
+// Action Creator
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
@@ -28,7 +28,7 @@ export const clearSessionErrors = () => ({
     type: CLEAR_SESSION_ERRORS
 });
 
-// Actions
+// Thunk Actions
 export const signup = user => startSession(user, 'api/users/register');
 export const login = user => startSession(user, 'api/users/login');
 
@@ -54,6 +54,13 @@ export const logout = () => dispatch => {
     dispatch(logoutUser());
 };
 
+export const getCurrentUser = () => async dispatch => {
+    const res = await jwtFetch('/api/users/current');
+    const user = await res.json();
+    return dispatch(receiveCurrentUser(user));
+};
+
+// Reducer
 const initialState = {
     user: undefined
 };
@@ -72,15 +79,15 @@ const sessionReducer = (state = initialState, action) => {
 const nullErrors = null;
 
 export const sessionErrorsReducer = (state = nullErrors, action) => {
-  switch(action.type) {
-    case RECEIVE_SESSION_ERRORS:
-      return action.errors;
-    case RECEIVE_CURRENT_USER:
-    case CLEAR_SESSION_ERRORS:
-      return nullErrors;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case RECEIVE_SESSION_ERRORS:
+            return action.errors;
+        case RECEIVE_CURRENT_USER:
+        case CLEAR_SESSION_ERRORS:
+            return nullErrors;
+        default:
+            return state;
+    }
 };
 
 export default sessionReducer;

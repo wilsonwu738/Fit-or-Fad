@@ -24,13 +24,6 @@ const singleFileUpload = async ({ file, public = false }) => {
   };
 
 
-  const multipleFilesUpload = async ({files, public = false}) => {
-    return await Promise.all(
-      files.map((file) => {
-        return singleFileUpload({file, public});
-      })
-    );
-  };
   
   const retrievePrivateFile = (key) => {
     let fileUrl;
@@ -51,14 +44,11 @@ const singleFileUpload = async ({ file, public = false }) => {
   
   const singleMulterUpload = (nameOfKey) =>
     multer({ storage: storage }).single(nameOfKey);
-  const multipleMulterUpload = (nameOfKey) =>
-    multer({ storage: storage }).array(nameOfKey);
+ 
   
   module.exports = {
     s3,
     singleFileUpload,
-    multipleFilesUpload,
     retrievePrivateFile,
     singleMulterUpload,
-    multipleMulterUpload
   };

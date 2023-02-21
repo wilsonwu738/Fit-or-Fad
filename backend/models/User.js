@@ -13,7 +13,7 @@ const userSchema = new Schema({
     bio: {
       type: String
     },
-    profImg: {
+    profileImageUrl: {
       type: String 
     },
     hashedPassword: {

@@ -2,14 +2,14 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; // <-- Use your bucket name here
-// const Key = new Date().getTime().toString() + path.extname(originalname);
+
 
 const singleFileUpload = async ({ file, public = false }) => {
     const { originalname, buffer } = file;
     const path = require("path");
+    const Key = new Date().getTime().toString() + path.extname(originalname);
   
-    // Set the name of the file in your S3 bucket to the date in ms plus the
-    // extension name.
+
 
     const uploadParams = {
       Bucket: NAME_OF_BUCKET,

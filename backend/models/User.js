@@ -10,6 +10,12 @@ const userSchema = new Schema({
       type: String,
       required: true
     },
+    bio: {
+      type: String
+    },
+    profImg: {
+      type: String 
+    },
     hashedPassword: {
       type: String,
       required: true

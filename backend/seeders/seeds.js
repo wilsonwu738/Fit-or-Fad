@@ -85,9 +85,9 @@ const insertSeeds = () => {
   console.log("Resetting db and seeding users and tweets...");
 
   User.collection.drop()
-                 .then(() => Tweet.collection.drop())
+                 .then(() => Page.collection.drop())
                  .then(() => User.insertMany(users))
-                 .then(() => Tweet.insertMany(tweets))
+                 .then(() => Page.insertMany(pages))
                  .then(() => {
                    console.log("Done!");
                    mongoose.disconnect();

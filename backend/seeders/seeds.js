@@ -82,7 +82,7 @@ mongoose
 
 // Reset and seed db
 const insertSeeds = () => {
-  console.log("Resetting db and seeding users and tweets...");
+  console.log("Resetting db and seeding users...");
 
   User.collection.drop()
                  .then(() => Page.collection.drop())

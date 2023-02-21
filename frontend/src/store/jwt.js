@@ -1,12 +1,3 @@
-function getCookie(cookieName) {
-    const cookies = document.cookie.split(';');
-    for (let cookie of cookies) {
-        const [name, value] = cookie.split('=');
-        if (name.trim() === cookieName) return value;
-    }
-    return null;
-  }
-
 async function jwtFetch(url, options = {}) {
     // Set options.method to 'GET' if there is no method.
     options.method = options.method || "GET";
@@ -37,6 +28,15 @@ async function jwtFetch(url, options = {}) {
     // If the response status code is under 400, then return the response to the
     // next promise chain.
     return res;
-  }
-  
-  export default jwtFetch;
+}
+
+function getCookie(cookieName) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name.trim() === cookieName) return value;
+    }
+    return null;
+}
+
+export default jwtFetch;

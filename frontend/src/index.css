@@ -1,9 +1,13 @@
 /* TODO Add site wide styles */
 
 form > .errors {
-    color: red;
-    font-size: 0.875em;
-    height: 15px;
-    display: flex;
-    align-items: center;
-  }
+  color: red;
+  font-size: 0.875em;
+  height: 15px;
+  display: flex;
+  align-items: center;
+}
+
+* {
+  font-family: sans-serif;
+}

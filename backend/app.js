@@ -9,7 +9,8 @@ const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
 require('./models/User');
-// require('./config/passport');
+require('./models/Page');
+require('./config/passport');
 const passport = require('passport'); 
 
 const usersRouter = require('./routes/api/users'); // update the import file path

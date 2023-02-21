@@ -3,7 +3,7 @@ const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
-
+const Page = require('../models/Page');
 const NUM_SEED_USERS = 10;
 
 // Create users
@@ -57,6 +57,16 @@ users.push(
     })
 )
 
+const pages = [];
+
+pages.push(
+    new Page ({
+      author: '63f3dd21d4713ea20bbd4f9f',
+      title: 'yonderwilly',
+      description: 'willyshwilly'
+    })
+)
+
 for (let i = 1; i < NUM_SEED_USERS; i++) {
     const firstName = faker.name.firstName();
     const lastName = faker.name.lastName();
@@ -80,9 +90,11 @@ mongoose
     process.exit(1);
   });
 
+
+
 // Reset and seed db
 const insertSeeds = () => {
-  console.log("Resetting db and seeding users and tweets...");
+  console.log("Resetting db and seeding users and pages...");
 
   User.collection.drop()
                  .then(() => Page.collection.drop())

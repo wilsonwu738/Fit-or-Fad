@@ -1,16 +1,16 @@
 const AWS = require("aws-sdk");
 const multer = require("multer");
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
-const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; // <-- Use your bucket name here
-const Key = new Date().getTime().toString() + path.extname(originalname);
+const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; 
+
 
 const singleFileUpload = async ({ file, public = false }) => {
     const { originalname, buffer } = file;
     const path = require("path");
-  
-    // Set the name of the file in your S3 bucket to the date in ms plus the
-    // extension name.
     const Key = new Date().getTime().toString() + path.extname(originalname);
+  
+
+
     const uploadParams = {
       Bucket: NAME_OF_BUCKET,
       Key: public ? `public/${Key}` : Key,
@@ -24,13 +24,6 @@ const singleFileUpload = async ({ file, public = false }) => {
   };
 
 
-  const multipleFilesUpload = async ({files, public = false}) => {
-    return await Promise.all(
-      files.map((file) => {
-        return singleFileUpload({file, public});
-      })
-    );
-  };
   
   const retrievePrivateFile = (key) => {
     let fileUrl;
@@ -51,14 +44,11 @@ const singleFileUpload = async ({ file, public = false }) => {
   
   const singleMulterUpload = (nameOfKey) =>
     multer({ storage: storage }).single(nameOfKey);
-  const multipleMulterUpload = (nameOfKey) =>
-    multer({ storage: storage }).array(nameOfKey);
+ 
   
   module.exports = {
     s3,
     singleFileUpload,
-    multipleFilesUpload,
     retrievePrivateFile,
-    singleMulterUpload,
-    multipleMulterUpload
+    singleMulterUpload
   };

@@ -6,9 +6,11 @@ const User = mongoose.model('User');
 const passport = require('passport');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
-
+const DEFAULT_PROFILE_IMAGE_URL = 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/default+profile+pic.png';
 const { loginUser, restoreUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
+// const singleFileUpload = require('../../awsS3.js')
+const { singleMulterUpload, singleFileUpload } = require('../../awsS3.js')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json({
@@ -16,7 +18,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/register', validateRegisterInput, async (req, res, next) => {
+router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
   // Check to make sure no one has already registered with the proposed email or
   // username.
   const user = await User.findOne({
@@ -39,8 +41,12 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   }
 
   // Otherwise create a new user
+  const profileImageUrl = req.file ?
+      await singleFileUpload({ file: req.file, public: true }) :
+      DEFAULT_PROFILE_IMAGE_URL;
   const newUser = new User({
     username: req.body.username,
+    profileImageUrl: profileImageUrl,
     email: req.body.email
   });
 
@@ -61,7 +67,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   });
 });
 
-router.post('/login', validateLoginInput, async (req, res, next) => {
+router.post('/login', singleMulterUpload(""), validateLoginInput, async (req, res, next) => {
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
     if (!user) {
@@ -87,6 +93,7 @@ router.get('/current', restoreUser, (req, res) => {
   res.json({
     _id: req.user._id,
     username: req.user.username,
+    profileImageUrl: req.user.profileImageUrl, 
     email: req.user.email
   });
 });

@@ -1,0 +1,8 @@
+.session-form-page {
+    display: flex;
+    justify-content: center;
+
+    /* temporary viewing */
+    background-color: gray;
+}
+

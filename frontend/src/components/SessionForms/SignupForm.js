@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 
-function SignupForm () {
+function SignupForm() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -50,62 +50,66 @@ function SignupForm () {
       image
     };
 
-    dispatch(signup(user)); 
+    dispatch(signup(user));
   }
 
   const updateFile = e => setImage(e.target.files[0]);
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Sign Up Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
-        />
-      </label>
-      <div className="errors">{errors?.username}</div>
-      <label>
-        <span>Username</span>
-        <input type="text"
-          value={username}
-          onChange={update('username')}
-          placeholder="Username"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <div className="errors">
-        {password !== password2 && 'Confirm Password field must match'}
+    <div className="session-form-page">
+      <div className="session-form-container">
+        <form className="session-form" onSubmit={handleSubmit}>
+          <h2>Sign Up Form</h2>
+          <div className="errors">{errors?.email}</div>
+          <label>
+            <span>Email</span>
+            <input type="text"
+              value={email}
+              onChange={update('email')}
+              placeholder="Email"
+            />
+          </label>
+          <div className="errors">{errors?.username}</div>
+          <label>
+            <span>Username</span>
+            <input type="text"
+              value={username}
+              onChange={update('username')}
+              placeholder="Username"
+            />
+          </label>
+          <div className="errors">{errors?.password}</div>
+          <label>
+            <span>Password</span>
+            <input type="password"
+              value={password}
+              onChange={update('password')}
+              placeholder="Password"
+            />
+          </label>
+          <div className="errors">
+            {password !== password2 && 'Confirm Password field must match'}
+          </div>
+          <label>
+            <span>Confirm Password</span>
+            <input type="password"
+              value={password2}
+              onChange={update('password2')}
+              placeholder="Confirm Password"
+            />
+          </label>
+          <label>
+            <span>Upload your profile image</span>
+            <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
+          </label>
+          <input
+            type="submit"
+            value="Sign Up"
+            disabled={!email || !username || !password || password !== password2}
+          />
+        </form>
       </div>
-      <label>
-        <span>Confirm Password</span>
-        <input type="password"
-          value={password2}
-          onChange={update('password2')}
-          placeholder="Confirm Password"
-        />
-      </label>
-      <label>
-      <span>Upload your profile image</span>
-        <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
-      </label>
-      <input
-        type="submit"
-        value="Sign Up"
-        disabled={!email || !username || !password || password !== password2}
-      />
-    </form>
+    </div>
   );
 }
 

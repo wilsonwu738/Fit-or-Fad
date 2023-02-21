@@ -2,7 +2,7 @@ import "./ShowPage.css"
 
 //change into modal
 
-function ShowPage({ page: { author } }) {
+function ShowPage({ page: { author, text } }) {
     const { username } = author;
     return (
         <div className="page">

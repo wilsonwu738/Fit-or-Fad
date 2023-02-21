@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserPages, clearPageErrors } from '../../store/pages';
-import PageBox from '../Pages/PageBox';
+import ShowPage from '../Pages/ShowPage';
 
 function Profile() {
     const dispatch = useDispatch();
@@ -18,9 +18,14 @@ function Profile() {
     } else {
         return (
             <>
+            <div id="profile">
+                <label id="profilepic">Profilepic</label>
+                <label id="bio">BIO</label>
+            </div>
+            <hr></hr>
                 <h2>All of {currentUser.username}'s Pages</h2>
                 {userPages.map(page => (
-                    <PageBox
+                    <ShowPage
                         key={page._id}
                         page={page}
                     />

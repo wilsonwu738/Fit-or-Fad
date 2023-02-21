@@ -23,7 +23,7 @@ function NavBar() {
                     <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
                     <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
 
-                    <ProfileButton user={sessionUser} src={profile} alt="" />
+                    <ProfileButton className="profile-button" user={sessionUser}><img src={profile} alt=""></img></ProfileButton>
                 </div>
             </div>
         );

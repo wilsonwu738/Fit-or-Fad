@@ -1,8 +1,16 @@
 .navbar-background {
+    /* positioning */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    /* styling */
     height: 48px;
-    width: max-content;
+    width: 100%;
     border-bottom: 1px solid;
     border-width: thick;
+    border-image: linear-gradient(to bottom right,#650782, #71CDE1);
+    border-image-slice: 1;
     padding-bottom: 12px;
 }
 
@@ -42,4 +50,3 @@
     /* styling */
     height: 41.6%;
 }
-

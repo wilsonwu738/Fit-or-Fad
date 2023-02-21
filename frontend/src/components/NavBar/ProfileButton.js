@@ -28,22 +28,20 @@ function ProfileButton({ user }) {
         dispatch(sessionActions.logout());
     };
 
+    const menu = (
+        <div className="profile-button-dropdown">
+            <span className="dropdown-element">{user.username}</span>
+            <span className="dropdown-element">{user.email}</span>
+            <span className="dropdown-element" onClick={logout}>Log Out</span>
+        </div>
+    )
+
     return (
-        <>
-            <button onClick={openMenu}>
-                <i className="fa-solid fa-user-circle" />
-            </button>
-            {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
-            )}
-        </>
-    );
+        <div className="profile-button-wrapper">
+            <button onClick={openMenu} className="profile-button">{user.username} ▼</button>
+            {showMenu ? menu : <></>}
+        </div>
+    )
 }
 
 export default ProfileButton;

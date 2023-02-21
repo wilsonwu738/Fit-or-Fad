@@ -17,21 +17,26 @@ function NavBar() {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <div className="navbar">
-                <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
-                <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
+            <div className="navbar-background">
 
-                <ProfileButton user={sessionUser} src={profile} alt="" />
+                <div className="navbar">
+                    <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
+                    <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
+
+                    <ProfileButton user={sessionUser} src={profile} alt="" />
+                </div>
             </div>
         );
     } else {
         sessionLinks = (
-            <div className="navbar">
-                <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
-                <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
-                <div className="session-buttons">
-                    <NavLink to="/login"><img className="nav-elements login-button" src={logins} alt="" /></NavLink>
-                    <NavLink to="/signup"><img className="nav-elements signup-button" src={signup} alt="" /></NavLink>
+            <div className="navbar-background">
+                <div className="navbar">
+                    <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
+                    <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
+                    <div className="session-buttons">
+                        <NavLink to="/login"><img className="nav-elements login-button" src={logins} alt="" /></NavLink>
+                        <NavLink to="/signup"><img className="nav-elements signup-button" src={signup} alt="" /></NavLink>
+                    </div>
                 </div>
             </div>
         );

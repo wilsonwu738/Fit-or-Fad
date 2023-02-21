@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; // <-- Use your bucket name here
-const Key = new Date().getTime().toString() + path.extname(originalname);
+// const Key = new Date().getTime().toString() + path.extname(originalname);
 
 const singleFileUpload = async ({ file, public = false }) => {
     const { originalname, buffer } = file;
@@ -10,7 +10,7 @@ const singleFileUpload = async ({ file, public = false }) => {
   
     // Set the name of the file in your S3 bucket to the date in ms plus the
     // extension name.
-    const Key = new Date().getTime().toString() + path.extname(originalname);
+
     const uploadParams = {
       Bucket: NAME_OF_BUCKET,
       Key: public ? `public/${Key}` : Key,
@@ -50,5 +50,5 @@ const singleFileUpload = async ({ file, public = false }) => {
     s3,
     singleFileUpload,
     retrievePrivateFile,
-    singleMulterUpload,
+    singleMulterUpload
   };

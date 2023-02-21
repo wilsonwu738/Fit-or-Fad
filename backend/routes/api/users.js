@@ -9,6 +9,8 @@ const validateLoginInput = require('../../validations/login');
 const DEFAULT_PROFILE_IMAGE_URL = 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/default+profile+pic.png';
 const { loginUser, restoreUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
+const singleFileUpload = require('../../awsS3.js')
+const singleMulterUpload = require('../../awsS3.js')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json({
@@ -16,7 +18,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
+router.post('/register', validateRegisterInput, async (req, res, next) => {
   // Check to make sure no one has already registered with the proposed email or
   // username.
   const user = await User.findOne({

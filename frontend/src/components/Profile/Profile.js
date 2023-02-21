@@ -19,7 +19,7 @@ function Profile() {
         return (
             <>
             <div id="profile">
-                <img src={author.profileImageUrl}></img>
+                <img src={userPages.author.profileImageUrl}></img>
                 <label id="bio">BIO</label>
             </div>
             <hr></hr>

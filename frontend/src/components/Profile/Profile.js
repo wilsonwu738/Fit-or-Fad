@@ -19,7 +19,7 @@ function Profile() {
         return (
             <>
             <div id="profile">
-                <label id="profilepic">Profilepic</label>
+                <img src={author.profileImageUrl}></img>
                 <label id="bio">BIO</label>
             </div>
             <hr></hr>
@@ -30,6 +30,7 @@ function Profile() {
                         page={page}
                     />
                 ))}
+                <div>plus sign to make pages/book</div>
             </>
         );
     }

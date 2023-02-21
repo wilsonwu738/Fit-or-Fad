@@ -7,7 +7,7 @@ function ShowPage({ page: { author, text } }) {
     return (
         <div className="page">
             <h3>{username}</h3>
-            <p>img</p>
+            <img src="page.imageUrl"></img>
             <p>{text}</p>
         </div>
     );

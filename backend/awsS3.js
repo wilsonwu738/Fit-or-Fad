@@ -1,7 +1,7 @@
 const AWS = require("aws-sdk");
 const multer = require("multer");
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
-const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; // <-- Use your bucket name here
+const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; 
 
 
 const singleFileUpload = async ({ file, public = false }) => {

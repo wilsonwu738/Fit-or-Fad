@@ -1,0 +1,10 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid;
+    height: 64px;
+}
+
+.nav-elements {
+    height: 100%;
+}

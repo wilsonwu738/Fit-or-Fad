@@ -3,12 +3,15 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const Page = mongoose.model('Page');
+
 const passport = require('passport');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 const DEFAULT_PROFILE_IMAGE_URL = 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/default+profile+pic.png';
 const { loginUser, restoreUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
+
 
 // const singleFileUpload = require('../../awsS3.js')
 const { singleMulterUpload, singleFileUpload } = require('../../awsS3.js')
@@ -108,6 +111,11 @@ router.post('/like/:pageId', restoreUser, async (req, res, next) => {
   // console.log(req.user)
   try {
     const user = req.user;
+    if (!user) {
+      const err = new Error('User not found');
+      err.statusCode = 404;
+      return next(err);
+    }
     const pageId = req.params.pageId;
     // Check if the user has already liked this page
     if (user.likedPage.includes(pageId)) {
@@ -120,11 +128,47 @@ router.post('/like/:pageId', restoreUser, async (req, res, next) => {
     user.likedPage.push(pageId);
     await user.save();
 
-    res.json(user);
+    // Add the user to the page's liker array
+    const page = await Page.findByIdAndUpdate(pageId, { $addToSet: { liker: user._id } }, { new: true });
+
+    res.json({ user, page });;
   } catch (err) {
     next(err);
   }
 });
+
+
+router.delete('/like/:pageId', restoreUser, async (req, res, next) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      const err = new Error('User not found');
+      err.statusCode = 404;
+      return next(err);
+    }
+    const pageId = req.params.pageId;
+
+    // Check if the user has already liked this page
+    if (!user.likedPage.includes(pageId)) {
+      const err = new Error('Page has not been liked');
+      err.statusCode = 400;
+      return next(err);
+    }
+
+    // Remove the page from the user's likedPage array
+    user.likedPage = user.likedPage.filter((page) => page.toString() !== pageId);
+    await user.save();
+
+    // Remove the user from the page's liker array
+    const page = await Page.findByIdAndUpdate(pageId, { $pull: { liker: user._id } }, { new: true });
+
+    res.json({ user, page });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 
 router.post('/follow/:userId', restoreUser, async function(req, res, next) {

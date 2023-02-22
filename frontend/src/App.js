@@ -10,6 +10,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import Profile from './components/Profile/Profile';
 import { getCurrentUser } from './store/session';
+import Video from './components/Video/Video';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,7 +21,9 @@ function App() {
 
   return loaded && (
     <>
+     
       <NavBar />
+      <Video />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
         <AuthRoute exact path="/login" component={LoginForm} />

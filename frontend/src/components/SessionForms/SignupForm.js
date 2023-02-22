@@ -106,7 +106,7 @@ function SignupForm() {
             <div>Upload your profile image</div>
               <label className="custom-file-input">
                 Choose File
-                <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
+                <input id="signupImage" type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
               </label>
           <div id="signup">
           <input

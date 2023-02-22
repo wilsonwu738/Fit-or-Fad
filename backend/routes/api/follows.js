@@ -28,3 +28,23 @@ router.post('/users/:id/follow', async (req, res, next) => {
     next(error);
   }
 })
+
+router.delete('/users/:id/unfollow',async (req, res, next) => {
+    try {
+      const follow = await Follow.findOneAndDelete({
+        follower: req.user._id,
+        following: req.params.id,
+      });
+
+      if (!follow) {
+        return res.status(404).json({ error: 'Follow not found' });
+      }
+
+      res.json(follow);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+module.exports = router;

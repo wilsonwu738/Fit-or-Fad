@@ -12,10 +12,14 @@ const { isProduction } = require('../../config/keys');
 // const singleFileUpload = require('../../awsS3.js')
 const { singleMulterUpload, singleFileUpload } = require('../../awsS3.js')
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /users"
-  });
+
+router.get('/', async function(req, res, next) {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
@@ -97,6 +101,17 @@ router.get('/current', restoreUser, (req, res) => {
     email: req.user.email
   });
 });
+
+
+router.post('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
+  req.logout();
+  res.send({ message: 'Logged out successfully.' });
+});
+
+
+//getting information for a specific user, say we want to check out other users' profiles - wilson
+
+
 
 
 

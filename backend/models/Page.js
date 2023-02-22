@@ -22,7 +22,10 @@ const pageSchema = new Schema({
     imageUrl: {
         type: String,
         // required: true
-    }
+    },
+
+    likes: [{type: Schema.Types.ObjectId, ref: 'Like'}]
+
     }, { 
     timestamps: true 
     });

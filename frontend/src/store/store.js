@@ -3,11 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session';
 import errors from './errors';
 import pages from './pages';
+import users from './users';
 
 const rootReducer = combineReducers({
   session,
   errors,
-  pages
+  pages,
+  users
+
 });
 
 let enhancer;

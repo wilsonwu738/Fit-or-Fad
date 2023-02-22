@@ -3,19 +3,27 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const Page = mongoose.model('Page');
+
 const passport = require('passport');
 const validateRegisterInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 const DEFAULT_PROFILE_IMAGE_URL = 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/default+profile+pic.png';
 const { loginUser, restoreUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
+
+
 // const singleFileUpload = require('../../awsS3.js')
 const { singleMulterUpload, singleFileUpload } = require('../../awsS3.js')
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /users"
-  });
+
+router.get('/', async function(req, res, next) {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post('/', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
@@ -82,6 +90,7 @@ router.post('/login', singleMulterUpload(""), validateLoginInput, async (req, re
 });
 
 router.get('/current', restoreUser, (req, res) => {
+
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
     // whenever the current user information is first loaded into the
@@ -98,15 +107,107 @@ router.get('/current', restoreUser, (req, res) => {
   });
 });
 
+router.post('/like/:pageId', restoreUser, async (req, res, next) => {
+  // console.log(req.user)
+  try {
+    const user = req.user;
+    if (!user) {
+      const err = new Error('User not found');
+      err.statusCode = 404;
+      return next(err);
+    }
+    const pageId = req.params.pageId;
+    // Check if the user has already liked this page
+    if (user.likedPage.includes(pageId)) {
+      const err = new Error('Page has already been liked');
+      err.statusCode = 400;
+      return next(err);
+    }
 
-router.post('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
-  req.logout();
-  res.send({ message: 'Logged out successfully.' });
+    // Add the page to the user's likedPage array
+    user.likedPage.push(pageId);
+    await user.save();
+
+    // Add the user to the page's liker array
+    const page = await Page.findByIdAndUpdate(pageId, { $addToSet: { liker: user._id } }, { new: true });
+
+    res.json({ user, page });;
+  } catch (err) {
+    next(err);
+  }
 });
 
 
-//getting information for a specific user, say we want to check out other users' profiles - wilson
+router.delete('/like/:pageId', restoreUser, async (req, res, next) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      const err = new Error('User not found');
+      err.statusCode = 404;
+      return next(err);
+    }
+    const pageId = req.params.pageId;
 
+    // Check if the user has already liked this page
+    if (!user.likedPage.includes(pageId)) {
+      const err = new Error('Page has not been liked');
+      err.statusCode = 400;
+      return next(err);
+    }
+
+    // Remove the page from the user's likedPage array
+    user.likedPage = user.likedPage.filter((page) => page.toString() !== pageId);
+    await user.save();
+
+    // Remove the user from the page's liker array
+    const page = await Page.findByIdAndUpdate(pageId, { $pull: { liker: user._id } }, { new: true });
+
+    res.json({ user, page });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
+
+router.post('/follow/:userId', restoreUser, async function(req, res, next) {
+  try {
+    const userToFollow = await User.findById(req.params.userId);
+    const currentUser = req.user;
+    if (!currentUser.following.includes(userToFollow._id)) {
+      // Add the user to the current user's following list
+      currentUser.following.push(userToFollow._id);
+      await currentUser.save();
+
+      // Add the current user to the userToFollow's followers list
+      userToFollow.followers.push(currentUser._id);
+      await userToFollow.save();
+    }
+    res.json(currentUser);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/unfollow/:userId', restoreUser, async function(req, res, next) {
+  try {
+    const userToUnfollow = await User.findById(req.params.userId);
+    const currentUser = req.user;
+    if (currentUser.following.includes(userToUnfollow._id)) {
+      // Remove the user from the current user's following list
+      currentUser.following.pull(userToUnfollow._id);
+      await currentUser.save();
+
+      // Remove the current user from the userToUnfollow's followers list
+      userToUnfollow.followers.pull(currentUser._id);
+      await userToUnfollow.save();
+    }
+    res.json(currentUser);
+  } catch (err) {
+    next(err);
+  }
+});
 
 
 

@@ -5,7 +5,7 @@
     justify-content: center;
 
     /* styling */
-    height: 48px;
+    height: 65px;
     width: 100%;
     border-bottom: 1px solid;
     border-width: thick;
@@ -20,7 +20,7 @@
     justify-content: space-between;
 
     /* styling */
-    height: 48px;
+    height: 65px;
     width: 1024px;
     margin: auto;
 }

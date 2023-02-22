@@ -39,7 +39,7 @@ const pageSchema = new Schema({
     type: String,
     // required: true
   },
-  likes: [{type: Schema.Types.ObjectId, ref: 'Like'}],
+  liker: [{type: Schema.Types.ObjectId, ref: 'User'}],
   itemGroups: [itemGroupSchema]
 }, { 
   timestamps: true 

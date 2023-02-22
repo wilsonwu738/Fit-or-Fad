@@ -1,15 +1,27 @@
-import "./ShowPage.css"
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-//change into modal
+function ShowPage({ page }) {
+    // Check if pages prop is defined
+    const {pageId} = useParams()
 
-function ShowPage({ page: { author, text } }) {
-    const { username } = author;
+    // useEffect(()=> dispatchEvent(fetchPage(pageId)),
+    // [])
+
+    if (!page) {
+        return <div>Loading...</div>;
+    }
+
+    // Destructure the pages object and set default values for the properties
+    const { author = '', title = '', description = '', imageUrl = '' } = page;
+
     return (
         <div className="page">
-            <h3>{username}</h3>
-            
-            <img src="page.imageUrl"></img>
-            <p>{text}</p>
+            <h1>dan</h1>
+            <h3>{author}</h3>
+            <h2>{title}</h2>
+            <img src={imageUrl} alt={title} />
+            <p>{description}</p>
         </div>
     );
 }

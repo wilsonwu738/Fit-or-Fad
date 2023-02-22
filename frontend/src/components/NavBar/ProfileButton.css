@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 .profile-wrapper {
     /* positioning */
     position: relative;
@@ -10,6 +12,11 @@
     /* positioning */
     display: flex;
     flex-direction: row;
+
+    /* styling */
+        font-family: 'Orbitron', sans-serif;
+        font-size: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .profile-username {
@@ -24,7 +31,7 @@
 .profile-button {
     /* positioning */
     position: relative;
-    
+
     /* styling */
     height: 25px;
     color: gray;
@@ -74,4 +81,31 @@
     /* styling */
     background-color: lightgray;
     cursor: pointer;
+}
+
+.profile-button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 10px;
+}
+
+.profile-button img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile-button:hover {
+    transform: scale(1.1);
+}
+
+.profile-button:hover img {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
 }

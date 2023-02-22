@@ -11,6 +11,9 @@ import SignupForm from './components/SessionForms/SignupForm';
 import CurrentUserProfile from './components/Profile/CurrentUserProfile';
 import UserProfile from './components/Profile/UserProfile';
 import { getCurrentUser } from './store/session';
+import Video from './components/Video/Video';
+import ShowPage from './components/Pages/ShowPage';
+import IndexPage from './components/Pages/IndexPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -22,14 +25,16 @@ function App() {
 
   return loaded && (
     <>
+     
       <NavBar />
+      <Video />
       <Switch>
-        <AuthRoute exact path="/" component={MainPageIndex} />
+        <AuthRoute exact path="/" component={MainPage} />
+        <ProtectedRoute exact path="/show/:pageId" component={ShowPage} />
+        <ProtectedRoute exact path="/index" component={IndexPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
-
-        <ProtectedRoute exact path="/profile" component={CurrentUserProfile} />
-        <Route exact path="/profile/:userId" component={UserProfile} />
+        <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </>
   );

@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
   errors,
   pages,
   users
+
 });
 
 let enhancer;

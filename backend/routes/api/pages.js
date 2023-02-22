@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
 const validatePageInput = require('../../validations/pages');
 const User = mongoose.model('User');
+const Book = mongoose.model('Book');
 const Page = mongoose.model('Page');
-/* GET pages listing. */
 
+/* GET pages listing. */
 router.get('/', async (req, res) => {
   try {
     const pages = await Page.find()
@@ -38,12 +39,13 @@ router.get('/user/:userId', async (req, res, next) => {
   catch(err) {
     return res.json([]);
   }
-})
+});
 
 router.get('/:id', async (req, res, next) => {
   try {
     const page = await Page.findById(req.params.id)
-                             .populate("author", "_id username");
+                             .populate("author", "_id username")
+                             .populate('book');
     return res.json(page);
   }
   catch(err) {
@@ -56,17 +58,19 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', requireUser, validatePageInput, async (req, res, next) => {
   
-  // console.log(req.user);
   try {
     const newPage = new Page({
       author: req.user._id,
+      book: req.body.book,
       title: req.body.title,
       description: req.body.description,
-      imageUrl: req.body.imageUrl
+      imageUrl: req.body.imageUrl,
+      itemGroups: req.body.itemGroups
     });
 
     let page = await newPage.save();
-    page = await page.populate('author', '_id username');
+    page = await page.populate('author', '_id username')
+                     .populate('book');
     return res.json(page);
   }
   catch(err) {
@@ -89,7 +93,7 @@ router.delete('/:id', requireUser, async (req, res, next) => {
   } catch(err) {
       return next(err);
   }
-})
+});
 
 router.patch('/:id', requireUser, async (req, res, next) => {
   try {
@@ -107,6 +111,5 @@ router.patch('/:id', requireUser, async (req, res, next) => {
       return next(err);
   }
 });
-
 
 module.exports = router;

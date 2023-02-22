@@ -20,6 +20,7 @@ function NavBar() {
             <div className="navbar-background">
 
                 <div className="navbar">
+                    {/* <NavLink exact to="/newpage" id="createPage"></NavLink> */}
                     <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
                     <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
 

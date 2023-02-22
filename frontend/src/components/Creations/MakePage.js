@@ -1,52 +1,134 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearPageErrors, composePage } from '../../store/pages';
-import PageBox from './PageBox';
-import './PageCompose.css';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { composePage } from '../../store/pages';
+import { useSelector } from 'react-redux';
+import './MakePage.css'
 
-// change into modal
-function MakePage() {
-    const [text, setText] = useState('');
-    const dispatch = useDispatch();
-    const author = useSelector(state => state.session.user);
-    const newPage = useSelector(state => state.pages.new);
-    const errors = useSelector(state => state.errors.pages);
+const MakePage = () => {
+   
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user);
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    imageUrl: '',
+    items: [{ name: '', url: '' }],
+});
 
-    useEffect(() => {
-        return () => dispatch(clearPageErrors());
-    }, [dispatch]);
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(composePage(formData));
+    setFormData({
+      author: currentUser._id,
+      title: '',
+      description: '',
+      imageUrl: '',
+      items: [{ name: '', url: '' }],
+      likes: ''
+    });
+  };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        dispatch(composePage({ text }));
-        setText('');
-    };
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
-    const update = e => setText(e.currentTarget.value);
+  const handleItemChange = (e, groupIdx, itemIdx) => {
+    const { name, value } = e.target;
+    setFormData(prevFormData => {
+      const itemGroups = [...prevFormData.itemGroups];
+      const items = [...itemGroups[groupIdx].items];
+      items[itemIdx] = {
+        ...items[itemIdx],
+        [name]: value,
+      };
+      itemGroups[groupIdx] = {
+        ...itemGroups[groupIdx],
+        items,
+      };
+      return {
+        ...prevFormData,
+        itemGroups,
+      };
+    });
+  };
 
-    return (
-        <>
-            <form className="compose-page" onSubmit={handleSubmit}>
-                <input
-                    type="textarea"
-                    value={text}
-                    onChange={update}
-                    placeholder="Write your page..."
-                    required
-                />
-                <div className="errors">{errors?.text}</div>
-                <input type="submit" value="Submit" />
-            </form>
-            <div className="page-preview">
-                <h3>Page Preview</h3>
-                {text ? <PageBox page={{ text, author }} /> : undefined}
-            </div>
-            <div className="previous-page">
-                <h3>Previous Page</h3>
-                {newPage ? <PageBox page={newPage} /> : undefined}
-            </div>
-        </>
-    )
+  const handleAddItem = () => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      items: [
+        ...prevFormData.items,
+        { name: '', url: '' },
+      ],
+    }));
+  };
+
+  const handleRemoveItem = idx => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      items: prevFormData.items.filter((item, i) => i !== idx),
+    }));
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="description">Description</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="imageUrl">Image URL</label>
+      <input type="file" accept=".jpg, .jpeg, .png" value={formData.imageUrl} onChange={handleChange} />
+
+      {formData.items.map((item, idx) => (
+        <div key={idx}>
+          <label htmlFor={`itemName${idx}`}>Item Name</label>
+          <input
+            type="text"
+            id={`itemName${idx}`}
+            name={`items.${idx}.name`}
+            value={item.name}
+            onChange={e => handleItemChange(e, idx)}
+          />
+
+          <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+          <input
+            type="text"
+            id={`itemUrl${idx}`}
+            name={`items.${idx}.url`}
+            value={item.url}
+            onChange={e => handleItemChange(e, idx)}
+          />
+
+          <button type="button" onClick={() => handleRemoveItem(idx)}>
+            Remove Item
+          </button>
+        </div>
+      ))}
+
+      <button type="button" onClick={handleAddItem}>
+        Add Item
+      </button> <br/>
+
+      <button type="submit">Create Page</button>
+    </form>
+  );
 }
 
 export default MakePage;

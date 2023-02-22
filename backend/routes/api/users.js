@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
+router.post('/', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
   // Check to make sure no one has already registered with the proposed email or
   // username.
   const user = await User.findOne({

@@ -70,7 +70,7 @@ router.post('/', requireUser, validatePageInput, async (req, res, next) => {
 
     let page = await newPage.save();
     page = await page.populate('author', '_id username')
-                     .populate('book');
+                    //  .populate('book');
     return res.json(page);
   }
   catch(err) {

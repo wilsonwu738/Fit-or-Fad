@@ -8,10 +8,10 @@ const validatePageInput = [
     check('description')
       .exists({ checkFalsy: true })
       .withMessage('description must be between 5 and 300 characters'),
-    check('imageUrl')
-      .exists({ checkFalsy: true })
-      .withMessage('You must link an imageUrl'),
-    handleValidationErrors
+    // check('imageUrl')
+    //   .exists({ checkFalsy: true })
+    //   .withMessage('You must link an imageUrl'),
+    // handleValidationErrors
   ];
   
   module.exports = validatePageInput;

@@ -23,10 +23,10 @@ const pageSchema = new Schema({
     ref: 'User',
     required: true
   },
-  book: {
-    type: Schema.Types.ObjectId,
-    ref: 'Book'
-  },
+//   book: {
+//     type: Schema.Types.ObjectId,
+//     ref: 'Book'
+//   },
   title: {
     type: String,
     required: true

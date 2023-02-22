@@ -56,14 +56,16 @@ function SignupForm() {
   const updateFile = e => setImage(e.target.files[0]);
 
   return (
+    <>
+      <br></br>
     <div className="session-form-page">
       <div className="session-form-container">
         <form className="session-form" onSubmit={handleSubmit}>
-          <h2>Sign Up Form</h2>
+          <h2>Sign Up</h2>
           <div className="errors">{errors?.email}</div>
           <label>
-            <span>Email</span>
-            <input type="text"
+            <div >Email</div>
+            <input id="input" type="text"
               value={email}
               onChange={update('email')}
               placeholder="Email"
@@ -71,7 +73,7 @@ function SignupForm() {
           </label>
           <div className="errors">{errors?.username}</div>
           <label>
-            <span>Username</span>
+            <div>Username</div>
             <input type="text"
               value={username}
               onChange={update('username')}
@@ -80,7 +82,7 @@ function SignupForm() {
           </label>
           <div className="errors">{errors?.password}</div>
           <label>
-            <span>Password</span>
+            <div>Password</div>
             <input type="password"
               value={password}
               onChange={update('password')}
@@ -91,25 +93,32 @@ function SignupForm() {
             {password !== password2 && 'Confirm Password field must match'}
           </div>
           <label>
-            <span>Confirm Password</span>
+            <div>Confirm Password</div>
+
             <input type="password"
               value={password2}
               onChange={update('password2')}
               placeholder="Confirm Password"
             />
           </label>
-          <label>
-            <span>Upload your profile image</span>
-            <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
-          </label>
+            <div></div>
+            <br></br>
+            <div>Upload your profile image</div>
+              <label className="custom-file-input">
+                Choose File
+                <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
+              </label>
+          <div id="signup">
           <input
             type="submit"
             value="Sign Up"
             disabled={!email || !username || !password || password !== password2}
           />
+          </div>
         </form>
       </div>
     </div>
+    </>
   );
 }
 

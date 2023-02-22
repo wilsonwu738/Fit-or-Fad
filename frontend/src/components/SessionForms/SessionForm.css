@@ -2,7 +2,84 @@
     display: flex;
     justify-content: center;
 
-    /* temporary viewing */
-    background-color: gray;
 }
 
+.session-form-container {
+        height: fit-content;
+            border-radius: 5%;
+
+
+            margin-top: 10px;
+            height: 500px;
+            width: 450px;
+            border: 5px solid purple;
+            background-color: white;
+                    padding: 55px;
+                    box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet;
+                    margin: 20px;
+}
+
+#signup input[type="submit"] {
+    float: right;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+input[type="file"] {
+    display: none;
+    /* Hide the default file input */
+}
+
+#signup input[type="submit"]:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.custom-file-input {
+    display: inline-block;
+    background-color: #1E90FF;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.custom-file-input:hover {
+    background-color: #2F4F4F;
+}
+
+.custom-file-input:active {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    transform: translateY(1px);
+}
+
+.custom-file-input {
+    /* ... */
+    transition: background-color 0.2s ease-in-out;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    transform: scale(1.05);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 5px #ff69b4;
+}
+
+.session-form input[type="text"],
+.session-form input[type="password"] {
+    font-family: sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #f5f5f5;
+}

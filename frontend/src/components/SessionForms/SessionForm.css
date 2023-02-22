@@ -25,10 +25,13 @@
     padding: 10px 20px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
-
+/* 
 input[type="file"] {
     display: none;
     /* Hide the default file input */
+
+#signupImage {
+    display: none;
 }
 
 #signup input[type="submit"]:active {

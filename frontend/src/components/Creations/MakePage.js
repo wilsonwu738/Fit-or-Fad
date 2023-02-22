@@ -130,46 +130,50 @@ const MakePage = () => {
 
   return (
     <div>
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
-            <input
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-            />
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                />
+                <br/>
         
             <label htmlFor="description">Description</label>
-            <input
-                type="text"
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-            />
+                <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                />
+                <br/>
         
             <label htmlFor="imageUrl">Image URL</label>
-            <input type="file" accept=".jpg, .jpeg, .png" onChange={updateFile}  />
+                <input id="postImage" type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />    
+                <br/>
+
             {formData.items.map((item, idx) => (
                 <div key={idx}>
                 <label htmlFor={`itemName${idx}`}>Item Name</label>
-        <input
-        type="text"
-        id={`itemName${idx}`}
-        name={`items[${idx}][name]`}
-        value={item.name}
-        onChange={(e) => handleItemChange(e, idx, "name")}
-        />
+                    <input
+                    type="text"
+                    id={`itemName${idx}`}
+                    name={`items[${idx}][name]`}
+                    value={item.name}
+                    onChange={(e) => handleItemChange(e, idx, "name")}
+                    />
 
-        <label htmlFor={`itemUrl${idx}`}>Item URL</label>
-        <input
-        type="text"
-        id={`itemUrl${idx}`}
-        name={`items[${idx}][url]`}
-        value={item.url}
-        onChange={(e) => handleItemChange(e, idx, "url")}
-        />
+                <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+                    <input
+                    type="text"
+                    id={`itemUrl${idx}`}
+                    name={`items[${idx}][url]`}
+                    value={item.url}
+                    onChange={(e) => handleItemChange(e, idx, "url")}
+                    />
         
                 <button type="button" onClick={() => handleRemoveItem(idx)}>
                     Remove Item

@@ -33,6 +33,7 @@ export const clearPageErrors = errors => ({
 });
 
 export const fetchPages = () => async dispatch => {
+    debugger
     try {
         const res = await jwtFetch('/api/pages');
         const pages = await res.json();

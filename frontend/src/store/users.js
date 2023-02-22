@@ -1,11 +1,18 @@
 import jwtFetch from './jwt';
 
+// Actions
 const RECEIVE_USER = "RECEIVE_USER";
+const RECEIVE_USERS = "RECEIVE-USERS";
 const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 
 const receiveUser = user => ({
     type: RECEIVE_USER,
     user
+});
+
+const receiveUsers = users => ({
+    type: RECEIVE_USERS,
+    users
 });
 
 const receiveErrors = errors => ({
@@ -26,12 +33,13 @@ export const fetchUser = (userId) => async dispatch => {
     }
 }
 
-const initalState = null;
+const initalState = { user: null };
 
+// Reducer
 const userReducer = (state = initalState, action) => {
     switch (action.type) {
         case RECEIVE_USER:
-            return action.user;
+            return { ...state, user: action.user};
         default:
             return state;
     }

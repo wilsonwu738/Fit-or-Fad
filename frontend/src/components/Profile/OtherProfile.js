@@ -7,19 +7,13 @@ import ShowPage from '../Pages/ShowPage';
 
 function OtherProfile() {
     const dispatch = useDispatch();
-    // const userId = props.params.userId;
-    // const user = useParams();
-    // console.log(user);
     const userPages = useSelector(state => state.pages ? Object.values(state.pages.user) : []);
-
-    // const userId = userPages.author;
-
     const user = useSelector(state => state)
 
     useEffect(() => {
-        dispatch(fetchUserPages(user._id));
+        dispatch(fetchUser(user._id));
         return () => dispatch(clearPageErrors());
-    }, [user._id, dispatch]);
+    }, [user, dispatch]);
 
     if (userPages.length === 0) {
         return (

@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { composePage } from '../../store/pages';
 import { useSelector } from 'react-redux';
+// import AWS from 'aws-sdk';
 import './MakePage.css'
+// const s3 = new AWS.S3({
+//   region: 'us-east-1',
+//   accessKeyId: 'AKIA5QZLK6EALKF4OYUT',
+//   secretAccessKey: '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',
+// });
+
 
 const MakePage = () => {
     const dispatch = useDispatch();
@@ -12,13 +19,14 @@ const MakePage = () => {
     const [formData, setFormData] = useState({
       title: '',
       description: '',
-      postImage: postImage,
+      imageUrl: postImage,
       items: [{ name: '', url: '' }],
     });
   
     const handleSubmit = async e => {
       e.preventDefault();
-  
+        
+      debugger
       const items = formData.items.map(item => ({
         name: item.name,
         url: item.url
@@ -31,15 +39,17 @@ const MakePage = () => {
         }
       ];
   
+      debugger
       const pageData = {
         author: currentUser._id,
         // book: '',
         title: formData.title,
         description: formData.description,
-        imageUrl: formData.postImage,
+        imageUrl: formData.imageUrl,
         itemGroups: itemGroups,
         likes: ""
       };
+      debugger
   
       try {
         await dispatch(composePage(pageData));
@@ -94,8 +104,29 @@ const MakePage = () => {
       items: prevFormData.items.filter((item, i) => i !== idx),
     }));
   };
-
+  
   const updateFile = e => setPostImage(e.target.files[0]);
+//   const updateFile = async (e) => {
+//     const file = e.target.files[0];
+//     const fileName = file.name;
+  
+//     const params = {
+//       Bucket: 'aa-aws-mern-fitorfad',
+//       Key: fileName,
+//       Body: file,
+//       ContentType: file.type,
+//       ACL: 'public-read',
+//     };
+  
+//     try {
+//       const { Location } = await s3.upload(params).promise();
+//       console.log('File uploaded successfully:', Location);
+//     } catch (error) {
+//       console.error('Error uploading file:', error);
+//     }
+
+//     setPostImage(e.target.files[0])
+//   };
 
   return (
     <div>

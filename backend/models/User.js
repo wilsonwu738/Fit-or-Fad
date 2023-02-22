@@ -20,8 +20,9 @@ const userSchema = new Schema({
       type: String,
       required: true
     },
+    likedPage: [{ type: Schema.Types.ObjectId, ref: 'Page'}],
     followers: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-    following: [{type: Schema.Types.ObjectId, ref: "User "}]
+    following: [{ type: Schema.Types.ObjectId, ref: 'User'}]
   }, {
     timestamps: true
   });

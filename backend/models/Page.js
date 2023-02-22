@@ -24,7 +24,7 @@ const pageSchema = new Schema({
         // required: true
     },
 
-    likes: [{type: Schema.Types.ObjectId, ref: 'Like'}]
+    liker: [{type: Schema.Types.ObjectId, ref: 'User'}]
 
     }, { 
     timestamps: true 

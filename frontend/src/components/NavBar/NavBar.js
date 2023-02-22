@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './NavBar.css';
-import { login } from '../../store/session';
+// import { login } from '../../store/session';
 import logins from '../../images/log.png';
 import signup from '../../images/signup.png';
 import logo from '../../images/logo.png';
@@ -17,32 +17,35 @@ function NavBar() {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-        <>
-        <NavLink exact to="/"><img id="home" src={logo} alt="" /></NavLink>
-        <NavLink exact to="/"><img id="home" src={longlogo} alt="" /></NavLink>
+            <div className="navbar-background">
 
-        <ProfileButton user={sessionUser} src={profile} alt=""/>
-        </>
+                <div className="navbar">
+                    <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
+                    <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
+
+                    <ProfileButton className="profile-button" user={sessionUser}><img src={profile} alt=""></img></ProfileButton>
+                </div>
+            </div>
         );
     } else {
         sessionLinks = (
-            <>
-                <NavLink exact to="/"><img id="home" src={logo} alt="" /></NavLink>
-                <NavLink exact to="/"><img id="home2" src={longlogo} alt="" /></NavLink>
-                <NavLink to="/login"><img id="login" src={logins} alt="" /></NavLink>
-                <NavLink to="/signup"><img id="signup" src={signup} alt="" /></NavLink>
-            </>
+            <div className="navbar-background">
+                <div className="navbar">
+                    <NavLink exact to="/"><img className="nav-elements small-logo" src={logo} alt="" /></NavLink>
+                    <NavLink exact to="/"><img className="nav-elements big-logo" src={longlogo} alt="" /></NavLink>
+                    <div className="session-buttons">
+                        <NavLink to="/login"><img className="nav-elements login-button" src={logins} alt="" /></NavLink>
+                        <NavLink to="/signup"><img className="nav-elements signup-button" src={signup} alt="" /></NavLink>
+                    </div>
+                </div>
+            </div>
         );
     }
 
     return (
-        <ul>
-            <li>
-                {/* <NavLink exact to="/"><img id="home" src={logo} alt="home" /></NavLink>
-                <NavLink exact to="/"><img id="home2" src={longlogo} alt="home" /></NavLink> */}
-                {sessionLinks}
-            </li>
-        </ul>
+        <>
+            {sessionLinks}
+        </>
     );
 }
 

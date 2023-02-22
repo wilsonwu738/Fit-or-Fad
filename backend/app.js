@@ -10,11 +10,13 @@ const { isProduction } = require('./config/keys');
 
 require('./models/User');
 require('./models/Page');
+require('./models/Book');
 require('./config/passport');
 const passport = require('passport'); 
 
 const usersRouter = require('./routes/api/users'); // update the import file path
 const pagesRouter = require('./routes/api/pages');
+const booksRouter = require('./routes/api/books');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
@@ -48,11 +50,34 @@ app.use(
 );
 
 
+if (isProduction) {
+  const path = require('path');
+  // Serve the frontend's index.html file at the root route
+  app.get('/', (req, res) => {
+    res.cookie('CSRF-TOKEN', req.csrfToken());
+    res.sendFile(
+      path.resolve(__dirname, '../frontend', 'build', 'index.html')
+    );
+  });
+
+  // Serve the static assets in the frontend's build folder
+  app.use(express.static(path.resolve("../frontend/build")));
+
+  // Serve the frontend's index.html file at all other routes NOT starting with /api
+  app.get(/^(?!\/?api).*/, (req, res) => {
+    res.cookie('CSRF-TOKEN', req.csrfToken());
+    res.sendFile(
+      path.resolve(__dirname, '../frontend', 'build', 'index.html')
+    );
+  });
+}
+
 
 // Attach Express routers
 
 app.use('/api/users', usersRouter); // update the path
 app.use('/api/pages', pagesRouter);
+app.use('/api/books', booksRouter);
 app.use('/api/csrf', csrfRouter);
 
 app.use((req, res, next) => {

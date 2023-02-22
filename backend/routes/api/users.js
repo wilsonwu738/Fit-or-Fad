@@ -105,4 +105,11 @@ router.post('/logout', passport.authenticate('jwt', { session: false }), (req, r
 });
 
 
+//getting information for a specific user, say we want to check out other users' profiles - wilson
+
+
+
+
+
+
 module.exports = router;

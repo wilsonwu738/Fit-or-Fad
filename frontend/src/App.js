@@ -8,13 +8,14 @@ import NavBar from './components/NavBar/NavBar';
 import MainPage from './components/MainPage/MainPage';
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
-import Profile from './components/Profile/Profile';
-import OtherProfile from './components/Profile/OtherProfile';
+import CurrentUserProfile from './components/Profile/CurrentUserProfile';
+import UserProfile from './components/Profile/UserProfile';
 import { getCurrentUser } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
@@ -27,8 +28,8 @@ function App() {
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
 
-        <ProtectedRoute exact path="/profile" component={Profile} />
-        <Route exact path="/users/:userId" component={OtherProfile} />
+        <ProtectedRoute exact path="/profile" component={CurrentUserProfile} />
+        <Route exact path="/profile/:userId" component={UserProfile} />
       </Switch>
     </>
   );

@@ -33,6 +33,19 @@ export const fetchUser = (userId) => async dispatch => {
     }
 }
 
+export const fetchUsers = () => async dispatch => {
+    try {
+        const res = await jwtFetch(`/api/users`);
+        const users = await res.json();
+        dispatch(receiveUsers(users));
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            dispatch(receiveErrors(resBody.errors));
+        }
+    }
+}
+
 const initalState = { user: null };
 
 // Reducer
@@ -40,6 +53,8 @@ const userReducer = (state = initalState, action) => {
     switch (action.type) {
         case RECEIVE_USER:
             return { ...state, user: action.user};
+        case RECEIVE_USERS:
+            return { ...state, users: action.users}
         default:
             return state;
     }

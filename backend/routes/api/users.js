@@ -12,10 +12,14 @@ const { isProduction } = require('../../config/keys');
 // const singleFileUpload = require('../../awsS3.js')
 const { singleMulterUpload, singleFileUpload } = require('../../awsS3.js')
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /users"
-  });
+
+router.get('/', async function(req, res, next) {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {

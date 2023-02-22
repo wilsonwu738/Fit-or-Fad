@@ -22,7 +22,7 @@ const pageSchema = new Schema({
     imageUrl: {
         type: String,
         // required: true
-    }
+    },
     }, { 
     timestamps: true 
     });

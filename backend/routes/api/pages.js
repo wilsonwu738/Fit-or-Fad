@@ -81,9 +81,9 @@ router.delete('/:id', requireUser, async (req, res, next) => {
           page = await Page.deleteOne({_id: page._id});
           return res.json(page);  
       } else {
-          const error = new Error('User does not own that spot');
+          const error = new Error('Page not found');
           error.statusCode = 404;
-          error.errors = {message: 'User doesn’t own spot'};
+          error.errors = {message: 'No user found for that page'};
           throw error;
       }
   } catch(err) {
@@ -98,9 +98,9 @@ router.patch('/:id', requireUser, async (req, res, next) => {
           page = await Page.updateOne({_id: page._id}, req.body)
           return res.json(page);
       } else {
-          const error = new Error('User does not own that page');
+          const error = new Error('Page not found');
           error.statusCode = 404;
-          error.errors = {message: 'User doesn’t own page'};
+          error.errors = {message: 'No user found for that page'};
           throw error;
       }
   } catch(err){

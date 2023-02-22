@@ -99,6 +99,10 @@ router.get('/current', restoreUser, (req, res) => {
 });
 
 
+router.post('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
+  req.logout();
+  res.send({ message: 'Logged out successfully.' });
+});
 
 
 module.exports = router;

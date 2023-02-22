@@ -33,6 +33,7 @@ export const clearPageErrors = errors => ({
 });
 
 export const fetchPages = () => async dispatch => {
+    // debugger
     try {
         const res = await jwtFetch('/api/pages');
         const pages = await res.json();
@@ -88,14 +89,15 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
     }
 };
 
-const pagesReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
+const pagesReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PAGES:
-            return { ...state, all: action.pages, new: undefined };
+            return { ...state, ...action.pages};
         case RECEIVE_USER_PAGES:
-            return { ...state, user: action.pages, new: undefined };
+            return { ...state, ...action.page };
         case RECEIVE_NEW_PAGE:
-            return { ...state, new: action.page };
+            // return { ...state, new: action.page };
+            return { ...state,  ...action.page };
         case RECEIVE_USER_LOGOUT:
             return { ...state, user: {}, new: undefined }
         default:

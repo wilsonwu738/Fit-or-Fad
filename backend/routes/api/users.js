@@ -101,4 +101,11 @@ router.get('/current', restoreUser, (req, res) => {
 
 
 
+//getting information for a specific user, say we want to check out other users' profiles - wilson
+
+
+
+
+
+
 module.exports = router;

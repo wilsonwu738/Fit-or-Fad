@@ -20,13 +20,15 @@ const MainPageIndex = () => {
   
     return (
       <>
-        {pageItems}
+        <div className='main-page-grid'>
+          {pageItems}
+        </div>
       
-      <div id="plus">
-        <Link to="/newpage">
-          <img id="git" src={plus} alt="git" />
-        </Link>
-      </div>
+        <div id="plus">
+         <Link to="/newpage">
+           <img id="git" src={plus} alt="git" />
+         </Link>
+        </div>
       </>
     );
   }

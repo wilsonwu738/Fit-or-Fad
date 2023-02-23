@@ -150,7 +150,6 @@ return (
               onChange={(e) => handleItemChange(e, idx, "url")}
             />
             <br></br>
-            <br></br>
             <div>
               <button id="makebutton" type="button" onClick={() => handleRemoveItem(idx)}>
                 Remove Item

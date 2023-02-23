@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPages } from "../../store/pages";
+import { fetchPage } from "../../store/pages";
 
 function ShowPage() {
   const dispatch = useDispatch();
-  const { userId } = useParams();
+  // const { userId } = useParams();
   const { pageId } = useParams();
   const page = useSelector((state) => state.pages[pageId]);
 //   let page;
   
   useEffect(() => {
     debugger
-    dispatch(fetchPages(pageId))
+    dispatch(fetchPage(pageId))
   },[pageId, dispatch])
 
 //   if (!pages || pages.length === 0) {

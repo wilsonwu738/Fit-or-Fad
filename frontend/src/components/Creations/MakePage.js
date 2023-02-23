@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { composePage } from '../../store/pages';
 import { useSelector } from 'react-redux';
+
 import './MakePage.css'
 
 
@@ -100,27 +101,7 @@ const MakePage = () => {
   };
   
   const updateFile = e => setPostImage(e.target.files[0]);
-//   const updateFile = async (e) => {
-//     const file = e.target.files[0];
-//     const fileName = file.name;
-  
-//     const params = {
-//       Bucket: 'aa-aws-mern-fitorfad',
-//       Key: fileName,
-//       Body: file,
-//       ContentType: file.type,
-//       ACL: 'public-read',
-//     };
-  
-//     try {
-//       const { Location } = await s3.upload(params).promise();
-//       console.log('File uploaded successfully:', Location);
-//     } catch (error) {
-//       console.error('Error uploading file:', error);
-//     }
 
-//     setPostImage(e.target.files[0])
-//   };
 
   return (
     <div>

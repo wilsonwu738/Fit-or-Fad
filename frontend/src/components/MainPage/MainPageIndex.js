@@ -8,6 +8,7 @@ import plus from '../../images/create.png'
 
 const MainPageIndex = () => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(fetchPages())
   }, [dispatch]);

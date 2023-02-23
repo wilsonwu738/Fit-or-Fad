@@ -10,17 +10,17 @@ function UserProfile() {
     const dispatch = useDispatch();
     // const userPages = useSelector(state => state.pages ? Object.values(state.pages.user) : []);
     const {userId} = useParams();
-    // const users = useSelector(state => state.users);
 
+    const user = useSelector(state => state.users.user)
     useEffect(() => {
         dispatch(fetchUser(userId))
     }, [dispatch])
     
     return (
         <>
-            <p>{userId}</p>
+            <p>{user.username}</p>
             <div id="profile">
-                {/* <img src={userPages.author.profileImageUrl}></img> */}
+                <img src={user.profileImageUrl} />
                 <label id="bio">BIO</label>
             </div>
             <hr></hr>

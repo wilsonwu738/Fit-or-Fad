@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-// const { faker } = require('@faker-js/faker');
+const { faker } = require('@faker-js/faker');
 const Page = require('../models/Page');
 const DEFAULT_PROFILE_IMAGE_URL = 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/default+profile+pic.png'; 
 
+
+const NUM_SEED_PAGES = 5;
 // Create users
 const users = [];
 
@@ -64,14 +66,30 @@ users.push(
 )
 
 const pages = [];
+const images = ['https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg',
+'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/image1.jpeg',
+'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/default+profile+pic.png',
+'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/IMG_0006.jpg'
+]
 
-pages.push(
+for (let i = 0; i < NUM_SEED_PAGES; i++) {
+  pages.push(
     new Page ({
-      author: '63f3dd21d4713ea20bbd4f9f',
-      title: 'yonderwilly',
-      description: 'willyshwilly'
+      title: faker.hacker.phrase(),
+      description: faker.hacker.phrase(),
+      author: users[Math.floor(Math.random() * 6)]._id,
+      imageUrl: images[Math.floor(Math.random() * 4)]
     })
-)
+  )
+}
+
+// pages.push(
+//     new Page ({
+//       author: '63f3dd21d4713ea20bbd4f9f',
+//       title: 'yonderwilly',
+//       description: 'willyshwilly'
+//     })
+// )
 
 // for (let i = 1; i < NUM_SEED_USERS; i++) {
 //     const firstName = faker.name.firstName();

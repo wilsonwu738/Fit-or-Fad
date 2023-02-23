@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserPages, clearPageErrors } from '../../store/pages';
+import { Link } from 'react-router-dom';
+
 import ShowPage from '../Pages/ShowPage';
+import plus from '../../images/create.png'
 
 function CurrentUserProfile() {
     const dispatch = useDispatch();
@@ -27,7 +30,12 @@ function CurrentUserProfile() {
                     page={page}
                 />
             ))} */}
-            <div>plus sign to make pages/book</div>
+            <div id="plus">
+                <Link to="/newpage">
+
+                    <img id="git" src={plus} alt="git" />
+                </Link>
+            </div>
         </>
     );
 }

@@ -103,70 +103,74 @@ const MakePage = () => {
   const updateFile = e => setPostImage(e.target.files[0]);
 
 
-  return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Title</label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                />
-                <br/>
-        
-            <label htmlFor="description">Description</label>
-                <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                />
-                <br/>
-        
-            <label htmlFor="imageUrl">Image URL</label>
-                <input id="postImage" type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />    
-                <br/>
+return (
+    <div id="makepageform">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+        <br />
 
-            {formData.items.map((item, idx) => (
-                <div key={idx}>
-                <label htmlFor={`itemName${idx}`}>Item Name</label>
-                    <input
-                    type="text"
-                    id={`itemName${idx}`}
-                    name={`items[${idx}][name]`}
-                    value={item.name}
-                    onChange={(e) => handleItemChange(e, idx, "name")}
-                    />
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+        />
+        <br />
 
-                <label htmlFor={`itemUrl${idx}`}>Item URL</label>
-                    <input
-                    type="text"
-                    id={`itemUrl${idx}`}
-                    name={`items[${idx}][url]`}
-                    value={item.url}
-                    onChange={(e) => handleItemChange(e, idx, "url")}
-                    />
-        
-                <button type="button" onClick={() => handleRemoveItem(idx)}>
-                    Remove Item
-                </button>
-                </div>
-            ))}
-        
-            <button type="button" onClick={handleAddItem}>
+        <label htmlFor="imageUrl">Image URL</label>
+        <input id="postImage" type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />
+        <br />
+
+        {formData.items.map((item, idx) => (
+          <div key={idx}>
+            <label htmlFor={`itemName${idx}`}>Item Name</label>
+            <input
+              type="text"
+              id={`itemName${idx}`}
+              name={`items[${idx}][name]`}
+              value={item.name}
+              onChange={(e) => handleItemChange(e, idx, "name")}
+            />
+
+            <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+            <input
+              type="text"
+              id={`itemUrl${idx}`}
+              name={`items[${idx}][url]`}
+              value={item.url}
+              onChange={(e) => handleItemChange(e, idx, "url")}
+            />
+            <br></br>
+            <br></br>
+            <div>
+              <button id="makebutton" type="button" onClick={() => handleRemoveItem(idx)}>
+                Remove Item
+              </button>
+              <br></br>
+              <button id="makebutton" type="button" onClick={handleAddItem}>
                 Add Item
-            </button> <br/>
-        
-            <button type="submit">Create Page</button>
-            </form>
-            
-        <div className="error-message">
+              </button>
+            </div>
+          </div>
+        ))}
+        <br></br>
+
+        <button type="submit">Create Page</button>
+      </form>
+
+      <div className="error-message">
         {errors.title && <span>{errors.title}</span>}
         {errors.description && <span>{errors.description}</span>}
-        </div>
+      </div>
     </div>
   );
 }

@@ -47,7 +47,6 @@ router.get("/:id", async (req, res, next) => {
   try {
     const page = await Page.findById(req.params.id)
       .populate("author", "_id username")
-      .populate("book");
     return res.json(page);
   } catch (err) {
     const error = new Error("Page not found");
@@ -80,6 +79,7 @@ router.post("/", requireUser, validatePageInput, async (req, res, next) => {
 router.delete("/:id", requireUser, async (req, res, next) => {
   try {
     let page = await Page.findById(req.params.id);
+    debugger
     if (page.author.toString() === req.user._id.toString()) {
       page = await Page.deleteOne({ _id: page._id });
       return res.json(page);
@@ -97,15 +97,9 @@ router.delete("/:id", requireUser, async (req, res, next) => {
 router.patch("/:id", requireUser, async (req, res, next) => {
   try {
     let page = await Page.findById(req.params.id);
-    if (page.author.toString() === req.user._id.toString()) {
       page = await Page.updateOne({ _id: page._id }, req.body);
       return res.json(page);
-    } else {
-      const error = new Error("Page not found");
-      error.statusCode = 404;
-      error.errors = { message: "No user found for that page" };
-      throw error;
-    }
+    
   } catch (err) {
     return next(err);
   }

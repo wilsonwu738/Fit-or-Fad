@@ -4,6 +4,7 @@ import MainPageItem from './MainPageItem';
 import { fetchPages } from '../../store/pages';
 import { Link } from 'react-router-dom';
 import './MainPageIndex.css';
+import plus from '../../images/create.png'
 
 const MainPageIndex = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,12 @@ const MainPageIndex = () => {
     return (
       <>
         {pageItems}
+      <div id="plus">
         <Link to="/newpage">
-            <button id="createPageButton">Create a New Page</button>
+
+          <img id="git" src={plus} alt="git" />
         </Link>
+      </div>
       </>
     );
   }

@@ -44,6 +44,7 @@ export const fetchPage = (id) => async (dispatch) => {
     }
   }
 };
+
 export const fetchPages = () => async dispatch => {
     try {
         const res = await jwtFetch('/api/pages');

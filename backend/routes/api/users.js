@@ -29,18 +29,18 @@ router.get("/", async function (req, res, next) {
 
 
 
-router.get("/:id", async (req, res, next) => {
-  try {
-    const user = await User.findById(req.params.id)
+// router.get("/:id", async (req, res, next) => {
+//   try {
+//     const user = await User.findById(req.params.id)
   
-    res.json(user);
-  } catch (err) {
-    const error = new Error("User not found");
-    error.statusCode = 404;
-    error.errors = { message: "No user found with that id" };
-    next(error);
-  }
-});
+//     res.json(user);
+//   } catch (err) {
+//     const error = new Error("User not found");
+//     error.statusCode = 404;
+//     error.errors = { message: "No user found with that id" };
+//     next(error);
+//   }
+// });
 
 
 

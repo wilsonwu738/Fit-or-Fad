@@ -41,7 +41,9 @@ export const fetchPage = (id) => async (dispatch) => {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
-
+    }
+  }
+};
 export const fetchPages = () => async dispatch => {
     try {
         const res = await jwtFetch('/api/pages');
@@ -55,7 +57,8 @@ export const fetchPages = () => async dispatch => {
         }
     }
   }
-};
+
+
 
 export const fetchUserPages = (id) => async (dispatch) => {
   try {

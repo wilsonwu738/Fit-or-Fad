@@ -10,13 +10,13 @@ function UserProfile() {
     const dispatch = useDispatch();
     // const userPages = useSelector(state => state.pages ? Object.values(state.pages.user) : []);
     const {userId} = useParams();
-
-    const user = useSelector(state => state.users.user)
+    const user = useSelector(state => state && state.users ? state.users.user : null)
     useEffect(() => {
         dispatch(fetchUser(userId))
-    }, [dispatch])
+    }, [userId, dispatch])
     
-    return (
+
+    return user && (
         <>
             <p>{user.username}</p>
             <div id="profile">

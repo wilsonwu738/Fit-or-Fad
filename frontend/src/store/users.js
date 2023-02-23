@@ -2,7 +2,7 @@ import jwtFetch from './jwt';
 
 // Actions
 const RECEIVE_USER = "RECEIVE_USER";
-const RECEIVE_USERS = "RECEIVE-USERS";
+const RECEIVE_USERS = "RECEIVE_USERS";
 const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 
 const receiveUser = user => ({

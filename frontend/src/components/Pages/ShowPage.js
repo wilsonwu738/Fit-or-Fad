@@ -7,29 +7,17 @@ function ShowPage() {
   const dispatch = useDispatch();
   // const { userId } = useParams();
   const { pageId } = useParams();
-  const page = useSelector((state) => state.pages[pageId]);
-//   let page;
+  let page = useSelector((state) => state && state.pages ? state.pages : null);
   
   useEffect(() => {
-    debugger
     dispatch(fetchPage(pageId))
   },[pageId, dispatch])
 
-//   if (!pages || pages.length === 0) {
-//     return <div className="no-pages">This user has no pages</div>;
-//   }
-
-  if (!page) {
-    return <div className="no-pages">This user does not have a page</div>;
-  }
-
-//   const { author = "", title = "", description = "", imageUrl = "" } = page;
-
-  return (
+  return page.author && (   
     <div className="page">
-      <h3>{page.author}</h3>
-      <h2>{page.title}</h2>
+      <h3>{page.author.username}</h3>
       <img src={page.imageUrl} alt={page.title} />
+      <h2>{page.title}</h2>
       <p>{page.description}</p>
     </div>
   );

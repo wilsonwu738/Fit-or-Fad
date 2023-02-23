@@ -6,26 +6,26 @@ import { fetchUser, fetchUsers } from '../../store/users';
 import ShowPage from '../Pages/ShowPage';
 
 // <UserProfile id={userId} > this is what the link will look like
-function UserProfile({authorId}) {
+function UserProfile() {
     const dispatch = useDispatch();
     // const userPages = useSelector(state => state.pages ? Object.values(state.pages.user) : []);
-
-    const users = useSelector(state => state.users);
-    // const user = users.find(obj => obj.id === userId)
+    const {userId} = useParams();
+    const user = useSelector(state => state && state.users ? state.users.user : null)
     useEffect(() => {
-        dispatch(fetchUser(authorId))
-    }, [dispatch])
+        dispatch(fetchUser(userId))
+    }, [userId, dispatch])
     
-    console.log(users);
 
-    return (
+    return user && (
         <>
+            <p>{user.username}</p>
             <div id="profile">
-                {/* <img src={userPages.author.profileImageUrl}></img> */}
+                <img src={user.profileImageUrl} />
                 <label id="bio">BIO</label>
             </div>
             <hr></hr>
             <h2>All of this user's Pages</h2>
+
             {/* {userPages.map(page => (
                 <ShowPage
                     key={page._id}

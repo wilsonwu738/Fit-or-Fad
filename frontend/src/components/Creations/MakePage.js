@@ -21,7 +21,7 @@ const MakePage = () => {
     const handleSubmit = async e => {
       e.preventDefault();
         
-      debugger
+      // debugger
       const items = formData.items.map(item => ({
         name: item.name,
         url: item.url
@@ -34,7 +34,7 @@ const MakePage = () => {
         }
       ];
   
-      debugger
+      // debugger
       const pageData = {
         author: currentUser._id,
         // book: '',
@@ -44,7 +44,7 @@ const MakePage = () => {
         itemGroups: itemGroups,
         likes: ""
       };
-      debugger
+      // debugger
   
       try {
         await dispatch(composePage(pageData));

@@ -27,8 +27,6 @@ router.get("/", async function (req, res, next) {
 });
 
 
-
-
 // router.get("/:id", async (req, res, next) => {
 //   try {
 //     const user = await User.findById(req.params.id)

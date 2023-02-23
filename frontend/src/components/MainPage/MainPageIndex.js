@@ -8,7 +8,7 @@ import plus from '../../images/create.png'
 
 const MainPageIndex = () => {
   const dispatch = useDispatch();
-  // debugger
+  
   useEffect(() => {
     dispatch(fetchPages())
   }, [dispatch]);
@@ -17,7 +17,6 @@ const MainPageIndex = () => {
   console.log(pages)
 
   const pageItems = pages.map((page, i) => <MainPageItem key={i} page={page} />)
-
   
     return (
       <>

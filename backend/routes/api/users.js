@@ -27,18 +27,7 @@ router.get("/", async function (req, res, next) {
 });
 
 
-// router.get("/:id", async (req, res, next) => {
-//   try {
-//     const user = await User.findById(req.params.id)
-  
-//     res.json(user);
-//   } catch (err) {
-//     const error = new Error("User not found");
-//     error.statusCode = 404;
-//     error.errors = { message: "No user found with that id" };
-//     next(error);
-//   }
-// });
+
 
 
 
@@ -127,6 +116,20 @@ router.get("/current", restoreUser, (req, res) => {
     profileImageUrl: req.user.profileImageUrl,
     email: req.user.email,
   });
+});
+
+
+router.get("/:userId", async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId)
+  
+    res.json(user);
+  } catch (err) {
+    const error = new Error("User not found");
+    error.statusCode = 404;
+    error.errors = { message: "hi dan" };
+    next(error);
+  }
 });
 
 router.post("/like/:pageId", restoreUser, async (req, res, next) => {

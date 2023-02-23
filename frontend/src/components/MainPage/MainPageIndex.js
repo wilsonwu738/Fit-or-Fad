@@ -18,6 +18,9 @@ const MainPageIndex = () => {
     return (
       <>
         {pageItems}
+        <Link to="/newpage">
+            <button id="createPageButton">Create a New Page</button>
+        </Link>
       </>
     );
   }

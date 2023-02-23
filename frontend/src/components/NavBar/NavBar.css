@@ -1,17 +1,19 @@
 .navbar-background {
     /* positioning */
+
     margin: auto;
     display: flex;
     justify-content: center;
 
     /* styling */
-    height: 65px;
+    padding-top: 10px;
+    height: 70px;
     width: 100%;
-    border-bottom: 1px solid;
+    /* border-bottom: 1px solid; */
     border-width: thick;
     border-image: linear-gradient(to bottom right,#650782, #71CDE1);
     border-image-slice: 1;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
 }
 
 .navbar {
@@ -20,7 +22,7 @@
     justify-content: space-between;
 
     /* styling */
-    height: 65px;
+    height: 85px;
     width: 1024px;
     margin: auto;
 }

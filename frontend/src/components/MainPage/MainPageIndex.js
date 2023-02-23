@@ -17,22 +17,18 @@ const MainPageIndex = () => {
   console.log(pages)
 
   const pageItems = pages.map((page, i) => <MainPageItem key={i} page={page} />)
-
-
-
-  return (
-    <>
-      <div className="main-page-grid">
-
+  
+    return (
+      <>
         {pageItems}
-      </div>
+      
       <div id="plus">
         <Link to="/newpage">
           <img id="git" src={plus} alt="git" />
         </Link>
       </div>
-    </>
-  );
-}
-
-export default MainPageIndex;
+      </>
+    );
+  }
+  
+  export default MainPageIndex;

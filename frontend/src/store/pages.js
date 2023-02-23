@@ -48,7 +48,7 @@ export const fetchPages = () => async dispatch => {
     try {
         const res = await jwtFetch('/api/pages');
         const pages = await res.json();
-        debugger
+        // debugger
         dispatch(receivePages(pages));
     } catch (err) {
         const resBody = await err.json();

@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { composePage } from '../../store/pages';
 import { useSelector } from 'react-redux';
-// import AWS from 'aws-sdk';
 import './MakePage.css'
-// const s3 = new AWS.S3({
-//   region: 'us-east-1',
-//   accessKeyId: 'AKIA5QZLK6EALKF4OYUT',
-//   secretAccessKey: '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',
-// });
 
 
 const MakePage = () => {

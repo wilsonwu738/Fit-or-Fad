@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
@@ -9,53 +9,55 @@ const Book = mongoose.model('Book');
 const Page = mongoose.model('Page');
 
 /* GET pages listing. */
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const pages = await Page.find()
-                              .populate("author", "_id username")
-                              .sort({ createdAt: -1 });
-    return res.json(pages);
-  }
-  catch(err) {
+      .populate("author", "_id username")
+      .sort({ createdAt: -1 });
+    const Obj = {};
+    pages.forEach((page) => {
+      Obj[page._id] = page.toObject();
+    });
+    return res.json(Obj);
+  } catch (err) {
     return res.json([]);
   }
 });
 
-router.get('/user/:userId', async (req, res, next) => {
+router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
     user = await User.findById(req.params.userId);
-  } catch(err) {
-    const error = new Error('User not found');
+  } catch (err) {
+    const error = new Error("User not found");
     error.statusCode = 404;
     error.errors = { message: "No user found with that id" };
     return next(error);
   }
   try {
     const pages = await Page.find({ author: user._id })
-                              .sort({ createdAt: -1 })
-                              .populate("author", "_id username");
-    return res.json(pages);
-  }
-  catch(err) {
-    return res.json([]);
+      .sort({ createdAt: -1 })
+      .populate("author", "_id username");
+    res.status(200).json(pages);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
-router.get('/:id', async (req, res, next) => {
-  try {
-    const page = await Page.findById(req.params.id)
-                             .populate("author", "_id username")
-                             .populate('book');
-    return res.json(page);
-  }
-  catch(err) {
-    const error = new Error('Page not found');
-    error.statusCode = 404;
-    error.errors = { message: "No page found with that id" };
-    return next(error);
-  }
-});
+  router.get("/:id", async (req, res, next) => {
+    try {
+      const page = await Page.findById(req.params.id).populate(
+        "author",
+        "_id username"
+      );
+      return res.json(page);
+    } catch (err) {
+      const error = new Error("Page not found");
+      error.statusCode = 404;
+      error.errors = { message: "No page found with that id" };
+      return next(error);
+    }
+  });
 
 router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
   try {
@@ -70,38 +72,36 @@ router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, a
     });
 
     let page = await newPage.save();
-    page = await page.populate('author', '_id username')
-                    //  .populate('book');
+    page = await page.populate("author", "_id username");
+    //  .populate('book');
     return res.json(page);
-  }
-  catch(err) {
+  } catch (err) {
     next(err);
   }
 });
 
-router.delete('/:id', requireUser, async (req, res, next) => {
+router.delete("/:id", requireUser, async (req, res, next) => {
   try {
-      let page = await Page.findById(req.params.id);
-      if (page.author.toString() === req.user._id.toString()) {
-          page = await Page.deleteOne({_id: page._id});
-          return res.json(page);  
-      } else {
-          const error = new Error('Page not found');
-          error.statusCode = 404;
-          error.errors = {message: 'No user found for that page'};
-          throw error;
-      }
-  } catch(err) {
-      return next(err);
+    let page = await Page.findById(req.params.id);
+    if (page.author.toString() === req.user._id.toString()) {
+      page = await Page.deleteOne({ _id: page._id });
+      return res.json(page);
+    } else {
+      const error = new Error("Page not found");
+      error.statusCode = 404;
+      error.errors = { message: "No user found for that page" };
+      throw error;
+    }
+  } catch (err) {
+    return next(err);
   }
 });
 
 router.patch("/:id", requireUser, async (req, res, next) => {
   try {
     let page = await Page.findById(req.params.id);
-      page = await Page.updateOne({ _id: page._id }, req.body);
-      return res.json(page);
-    
+    page = await Page.updateOne({ _id: page._id }, req.body);
+    return res.json(page);
   } catch (err) {
     return next(err);
   }

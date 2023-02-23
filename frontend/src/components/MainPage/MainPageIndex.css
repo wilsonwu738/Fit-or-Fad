@@ -1,6 +1,19 @@
-#createPageButton {
+#plus {
     position: fixed;
     z-index: 10;
     bottom: 30px;
     right: 30px;
+}
+
+#git {
+    width: 80px;
+    height: 80px;
+}
+
+.main-page-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    padding: 35px;
+    font-size: 16px;
 }

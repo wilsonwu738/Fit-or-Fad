@@ -1,3 +1,77 @@
 #postImage {
     color: black;
 }
+
+#makepageform {
+    border: 3px dotted #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+#makebutton {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#makebutton[type="submit"] {
+    background-color: #28A745;
+}
+
+#makebutton[type="button"] {
+    background-color: #DC3545;
+        border: outset;
+        border-color: #DC3545;
+    margin-left: 0px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+button[type="submit"],
+button[type="button"] {
+    background-color: rgba(238, 130, 238, 0.776);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: outset;
+    border-color: rgba(238, 130, 238, 0.776);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: rgba(238, 130, 141, 0.498);
+}
+

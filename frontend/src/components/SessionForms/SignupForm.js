@@ -61,7 +61,8 @@ function SignupForm() {
     <div className="session-form-page">
       <div className="session-form-container">
         <form className="session-form" onSubmit={handleSubmit}>
-          <h2>Sign Up</h2>
+            <h2>Sign Up Here 👇</h2>
+          <hr></hr>
           <div className="errors">{errors?.email}</div>
           <label>
             <div >Email</div>

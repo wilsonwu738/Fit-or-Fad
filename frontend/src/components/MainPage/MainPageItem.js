@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './MainPageItem.css';
 import { useHistory } from 'react-router-dom';
 import EditPage from '../Edit/EditPage';
@@ -15,14 +16,25 @@ const MainPageItem = (props) => {
     return <EditPage page={props.page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
 
-  return (
-    <>
-      <div>{props.page.title}</div>
-      <img src={props.page.imageUrl} alt={""}></img>
-      <div>Likes: {props.page.likes}</div>
-      <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
-    </>
-  );
-};
+  
+    const profileLink = () => {
+        return "/profile/" + props.page.author._id
+    }
+
+    return (
+
+        <div className="main-page-item">
+            <div className="main-page-image-container">
+                <img src={props.page.imageUrl} alt="" className="main-page-image" />
+            </div>
+            <br></br>
+
+            <div>{props.page.title}</div>
+            <br></br>
+            <div>Likes: {props.page.liker}</div>
+            <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
+        </div>
+    )
+}
 
 export default MainPageItem;

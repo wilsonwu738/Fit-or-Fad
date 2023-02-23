@@ -16,30 +16,46 @@ const receivePages = pages => ({
     pages
 });
 
-const receiveUserPages = pages => ({
-    type: RECEIVE_USER_PAGES,
-    pages
+const receiveUserPages = (pages) => ({
+  type: RECEIVE_USER_PAGES,
+  pages,
 });
 
-const receiveNewPage = page => ({
-    type: RECEIVE_NEW_PAGE,
-    page
+const receiveNewPage = (page) => ({
+  type: RECEIVE_NEW_PAGE,
+  page,
 });
 
-const receiveErrors = errors => ({
-    type: RECEIVE_PAGE_ERRORS,
-    errors
+const receiveErrors = (errors) => ({
+  type: RECEIVE_PAGE_ERRORS,
+  errors,
 });
 
-export const clearPageErrors = errors => ({
-    type: CLEAR_PAGE_ERRORS,
-    errors
+export const clearPageErrors = (errors) => ({
+  type: CLEAR_PAGE_ERRORS,
+  errors,
 });
+
+export const fetchPage = (id) => async (dispatch) => {
+    // debugger
+  try {
+    const res = await jwtFetch(`/api/pages/${id}`);
+    // debugger
+    const page = await res.json();
+    dispatch(receiveNewPage(page));
+  } catch (err) {
+    // const resBody = await err.json();
+    // if (resBody.statusCode === 400) {
+    //   return dispatch(receiveErrors(resBody.errors));
+    // }
+  }
+};
 
 export const fetchPages = () => async dispatch => {
     try {
         const res = await jwtFetch('/api/pages');
         const pages = await res.json();
+        // debugger
         dispatch(receivePages(pages));
     } catch (err) {
         const resBody = await err.json();
@@ -47,20 +63,35 @@ export const fetchPages = () => async dispatch => {
             dispatch(receiveErrors(resBody.errors));
         }
     }
+  }
+
+
+
+export const fetchUserPages = (id) => async (dispatch) => {
+  try {
+    const res = await jwtFetch(`/api/pages/user/${id}`);
+    const pages = await res.json();
+    dispatch(receiveUserPages(pages));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
+    }
+  }
 };
 
-export const fetchUserPages = id => async dispatch => {
-    try {
-        const res = await jwtFetch(`/api/pages/user/${id}`);
-        const pages = await res.json();
-        dispatch(receiveUserPages(pages));
-    } catch (err) {
-        const resBody = await err.json();
-        if (resBody.statusCode === 400) {
-            return dispatch(receiveErrors(resBody.errors));
-        }
-    }
-};
+// export const fetchUserPages = id => async dispatch => {
+//     try {
+//         const res = await jwtFetch(`/api/pages/user/${id}`);
+//         const pages = await res.json();
+//         dispatch(receiveUserPages(pages));
+//     } catch (err) {
+//         const resBody = await err.json();
+//         if (resBody.statusCode === 400) {
+//             return dispatch(receiveErrors(resBody.errors));
+//         }
+//     }
+// };
 
 export const editPage = (data) => async (dispatch) => {
     try {
@@ -105,18 +136,19 @@ export const editPage = (data) => async (dispatch) => {
 const nullErrors = null;
 
 export const pageErrorsReducer = (state = nullErrors, action) => {
-    switch (action.type) {
-        case RECEIVE_PAGE_ERRORS:
-            return action.errors;
-        case RECEIVE_NEW_PAGE:
-        case CLEAR_PAGE_ERRORS:
-            return nullErrors;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case RECEIVE_PAGE_ERRORS:
+      return action.errors;
+    case RECEIVE_NEW_PAGE:
+    case CLEAR_PAGE_ERRORS:
+      return nullErrors;
+    default:
+      return state;
+  }
 };
 
 const pagesReducer = (state = {}, action) => {
+
     switch (action.type) {
         case RECEIVE_PAGES:
             return { ...state, ...action.pages};

@@ -8,7 +8,7 @@ const MainPageItem = (props) => {
     }
 
     return (
-
+        <Link className="index-link" to={`/show/${props.page._id}`}>
         <div className="main-page-item">
             <div className="main-page-image-container">
                 <img src={props.page.imageUrl} alt="" className="main-page-image" />
@@ -19,6 +19,7 @@ const MainPageItem = (props) => {
             <br></br>
             <div>Likes: {props.page.liker}</div>
         </div>
+        </Link>
     )
 }
 

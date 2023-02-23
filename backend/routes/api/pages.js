@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
 const validatePageInput = require('../../validations/pages');
+const { singleFileUpload, singleMulterUpload } = require('../../awsS3')
 const User = mongoose.model('User');
 const Book = mongoose.model('Book');
 const Page = mongoose.model('Page');
@@ -56,16 +57,16 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/', requireUser, validatePageInput, async (req, res, next) => {
-  
+router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
   try {
+    const imageUrl = await singleFileUpload({ file: req.file, public: true });
     const newPage = new Page({
       author: req.user._id,
       book: req.body.book,
       title: req.body.title,
       description: req.body.description,
-      imageUrl: req.body.imageUrl,
-      itemGroups: req.body.itemGroups
+      itemGroups: req.body.itemGroups,
+      imageUrl: imageUrl
     });
 
     let page = await newPage.save();
@@ -95,20 +96,14 @@ router.delete('/:id', requireUser, async (req, res, next) => {
   }
 });
 
-router.patch('/:id', requireUser, async (req, res, next) => {
+router.patch("/:id", requireUser, async (req, res, next) => {
   try {
-      let page = await Page.findById(req.params.id);
-      if (page.author.toString() === req.user._id.toString()){
-          page = await Page.updateOne({_id: page._id}, req.body)
-          return res.json(page);
-      } else {
-          const error = new Error('Page not found');
-          error.statusCode = 404;
-          error.errors = {message: 'No user found for that page'};
-          throw error;
-      }
-  } catch(err){
-      return next(err);
+    let page = await Page.findById(req.params.id);
+      page = await Page.updateOne({ _id: page._id }, req.body);
+      return res.json(page);
+    
+  } catch (err) {
+    return next(err);
   }
 });
 

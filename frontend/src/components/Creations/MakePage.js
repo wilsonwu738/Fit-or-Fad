@@ -1,66 +1,83 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { composePage } from '../../store/pages';
-import { useSelector } from 'react-redux';
-import './MakePage.css'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearPageErrors, composePage } from '../../store/pages';
+import { useRef } from 'react';
 
 
-const MakePage = () => {
-    const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.user);
-    const [postImage, setPostImage] = useState(null);
-    const [errors, setErrors] = useState({});
-    const [formData, setFormData] = useState({
-      title: '',
-      description: '',
-      imageUrl: postImage,
-      items: [{ name: '', url: '' }],
-    });
-  
-    const handleSubmit = async e => {
-      e.preventDefault();
-        
-      debugger
-      const items = formData.items.map(item => ({
-        name: item.name,
-        url: item.url
-      }));
-  
-      const itemGroups = [
-        {
-          groupName: '',
-          items: items
-        }
-      ];
-  
-      debugger
-      const pageData = {
-        author: currentUser._id,
-        // book: '',
-        title: formData.title,
-        description: formData.description,
-        imageUrl: formData.imageUrl,
-        itemGroups: itemGroups,
-        likes: ""
-      };
-      debugger
-  
-      try {
-        await dispatch(composePage(pageData));
-        setFormData({
-          title: '',
-          description: '',
-          postImage: '',
-          items: [{ name: '', url: '' }],
-        });
-      } catch (err) {
-        setErrors(err.response.data.errors);
+function MakePage () {
+  const [data, setData] = useState({
+    author: '',
+    title: '',
+    description: '',
+    items: [{ name: '', url: '' }],
+  });
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user);
+  // const errors = useSelector(state => state.errors.pages);
+  const [images, setImages] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]);
+  const fileRef = useRef(null);
+
+  useEffect(() => {
+    return () => dispatch(clearPageErrors());
+  }, [dispatch]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const items = data.items.map(item => ({
+      name: item.name,
+      url: item.url
+    }));
+
+    const itemGroups = [
+      {
+        groupName: '',
+        items: items
       }
+    ];
+
+    const finalData = {
+      author: currentUser._id,
+      // book: '',
+      title: data.title,
+      description: data.description,
+      itemGroups: itemGroups,
+      likes: ""
     };
+    
+    console.log(finalData)
+    debugger
+
+    dispatch(composePage(finalData, images)); // <-- MODIFY THIS LINE
+    setImages([]);                        // <-- ADD THIS LINE
+    setImageUrls([]);  
+    setData('');                   // <-- ADD THIS LINE
+    fileRef.current.value = null;
+  };
+
+  const updateFiles = async e => {
+    const files = e.target.files;
+    setImages(files);
+    if (files.length !== 0) {
+      let filesLoaded = 0;
+      const urls = [];
+      Array.from(files).forEach((file, index) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          urls[index] = fileReader.result;
+          if (++filesLoaded === files.length) 
+            setImageUrls(urls);
+        }
+      });
+    }
+    else setImageUrls([]);
+  }
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setFormData(prevFormData => ({
+    setData(prevFormData => ({
       ...prevFormData,
       [name]: value,
     }));
@@ -68,7 +85,7 @@ const MakePage = () => {
 
   const handleItemChange = (e, groupIdx, itemKey) => {
     const { value } = e.target;
-    setFormData((prevFormData) => {
+    setData((prevFormData) => {
       const items = [...prevFormData.items];
       const itemIdx = groupIdx;
       items[itemIdx] = {
@@ -83,7 +100,7 @@ const MakePage = () => {
   };
 
   const handleAddItem = () => {
-    setFormData(prevFormData => ({
+    setData(prevFormData => ({
       ...prevFormData,
       items: [
         ...prevFormData.items,
@@ -93,100 +110,91 @@ const MakePage = () => {
   };
 
   const handleRemoveItem = idx => {
-    setFormData(prevFormData => ({
+    setData(prevFormData => ({
       ...prevFormData,
       items: prevFormData.items.filter((item, i) => i !== idx),
     }));
   };
-  
-  const updateFile = e => setPostImage(e.target.files[0]);
-//   const updateFile = async (e) => {
-//     const file = e.target.files[0];
-//     const fileName = file.name;
-  
-//     const params = {
-//       Bucket: 'aa-aws-mern-fitorfad',
-//       Key: fileName,
-//       Body: file,
-//       ContentType: file.type,
-//       ACL: 'public-read',
-//     };
-  
-//     try {
-//       const { Location } = await s3.upload(params).promise();
-//       console.log('File uploaded successfully:', Location);
-//     } catch (error) {
-//       console.error('Error uploading file:', error);
-//     }
 
-//     setPostImage(e.target.files[0])
-//   };
+  const update = e => setData(e.currentTarget.value);
 
   return (
-    <div>
+    <>
+      <div id="makepageform">
         <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Title</label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                />
-                <br/>
-        
-            <label htmlFor="description">Description</label>
-                <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                />
-                <br/>
-        
-            <label htmlFor="imageUrl">Image URL</label>
-                <input id="postImage" type="file" accept=".jpg, .jpeg, .png" onChange={updateFile} />    
-                <br/>
-
-            {formData.items.map((item, idx) => (
-                <div key={idx}>
-                <label htmlFor={`itemName${idx}`}>Item Name</label>
-                    <input
-                    type="text"
-                    id={`itemName${idx}`}
-                    name={`items[${idx}][name]`}
-                    value={item.name}
-                    onChange={(e) => handleItemChange(e, idx, "name")}
-                    />
-
-                <label htmlFor={`itemUrl${idx}`}>Item URL</label>
-                    <input
-                    type="text"
-                    id={`itemUrl${idx}`}
-                    name={`items[${idx}][url]`}
-                    value={item.url}
-                    onChange={(e) => handleItemChange(e, idx, "url")}
-                    />
-        
-                <button type="button" onClick={() => handleRemoveItem(idx)}>
-                    Remove Item
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={data.title}
+            onChange={handleChange}
+          />
+          <br />
+  
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            value={data.description}
+            onChange={handleChange}
+          />
+          <br />
+  
+          <label>
+            Images to Upload
+            <input
+              type="file"
+              ref={fileRef}
+              accept=".jpg, .jpeg, .png"
+              multiple
+              onChange={updateFiles}
+            />
+          </label>
+          {data.items.map((item, idx) => (
+            <div key={idx}>
+              <label htmlFor={`itemName${idx}`}>Item Name</label>
+              <input
+                type="text"
+                id={`itemName${idx}`}
+                name={`items[${idx}][name]`}
+                value={item.name}
+                onChange={(e) => handleItemChange(e, idx, "name")}
+              />
+  
+              <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+              <input
+                type="text"
+                id={`itemUrl${idx}`}
+                name={`items[${idx}][url]`}
+                value={item.url}
+                onChange={(e) => handleItemChange(e, idx, "url")}
+              />
+              <br />
+              <br />
+              <div>
+                <button id="makebutton" type="button" onClick={() => handleRemoveItem(idx)}>
+                  Remove Item
                 </button>
-                </div>
-            ))}
-        
-            <button type="button" onClick={handleAddItem}>
-                Add Item
-            </button> <br/>
-        
-            <button type="submit">Create Page</button>
-            </form>
-            
-        <div className="error-message">
-        {errors.title && <span>{errors.title}</span>}
-        {errors.description && <span>{errors.description}</span>}
-        </div>
-    </div>
+                <br />
+                <button id="makebutton" type="button" onClick={handleAddItem}>
+                  Add Item
+                </button>
+              </div>
+            </div>
+          ))}
+          <br />
+  
+          <button type="submit">Create Page</button>
+        </form>
+  
+        {/* <div className="error-message">
+          {errors.title && <span>{errors.title}</span>}
+          {errors.description && <span>{errors.description}</span>}
+        </div> */}
+      </div>
+    </>
   );
 }
 

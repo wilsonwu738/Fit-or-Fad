@@ -1,29 +1,48 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { editPage } from "../../store/pages";
 
 const EditPage = (props) => {
-  const [page, setPage] = useState(props.location.state.page); // get the page prop from props passed from the MainPageItem component using location state and initialize a state variable for the page
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState(props.page.title);
+  const [imageUrl, setImageUrl] = useState(props.page.imageUrl);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setPage({ ...page, [name]: value }); // update the state variable for the page when an input field is changed
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleImageUrlChange = (event) => {
+    setImageUrl(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // you can use the page object in the state to submit the updated page data to your backend or update the page data in your app's state
+    try {
+      const updatedPage = { ...props.page, title, imageUrl };
+      await dispatch(editPage(updatedPage));
+      props.setIsEditing(false);
+      history.push("/");
+    } catch (error) {
+      console.log("Error updating page", error);
+    }
   };
-console.log(page)
+
   return (
     <>
-      <h2>Edit Post: {page.title}</h2>
+      <h2>Edit Page</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Title:
-          <input type="text" name="title" value={page.title} onChange={handleInputChange} />
+          <input type="text" name="title" value={title} onChange={handleTitleChange} />
         </label>
-       
-        
-        <button type="submit">Save</button>
+        <label>
+          Image URL:
+          <input type="text" name="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
+        </label>
+        <button type="submit">Edit</button>
+        <button type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>
       </form>
     </>
   );

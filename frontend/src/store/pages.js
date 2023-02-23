@@ -36,6 +36,7 @@ export const fetchPages = () => async dispatch => {
     try {
         const res = await jwtFetch('/api/pages');
         const pages = await res.json();
+        debugger
         dispatch(receivePages(pages));
     } catch (err) {
         const resBody = await err.json();
@@ -97,8 +98,8 @@ const pagesReducer = (state = {}, action) => {
         case RECEIVE_NEW_PAGE:
             // return { ...state, new: action.page };
             return { ...state,  ...action.page };
-        case RECEIVE_USER_LOGOUT:
-            return { ...state, user: {}, new: undefined }
+        // case RECEIVE_USER_LOGOUT:
+        //     return { ...state}
         default:
             return state;
     }

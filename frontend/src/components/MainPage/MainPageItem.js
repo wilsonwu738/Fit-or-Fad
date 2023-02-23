@@ -2,7 +2,7 @@ import React from 'react';
 import './MainPageItem.css';
 
 const MainPageItem = (props) => {
-
+    
 
     return (
         <>

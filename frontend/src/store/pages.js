@@ -32,16 +32,6 @@ export const clearPageErrors = (errors) => ({
   errors,
 });
 
-export const fetchPages = () => async (dispatch) => {
-  {
-    const res = await jwtFetch("/api/pages");
-    const pages = await res.json();
-    // debugger
-    dispatch(receivePages(pages));
-    debugger;
-  }
-};
-
 export const fetchPage = (id) => async (dispatch) => {
   try {
     const res = await jwtFetch(`/api/pages/user/${id}`);
@@ -51,6 +41,18 @@ export const fetchPage = (id) => async (dispatch) => {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
+
+export const fetchPages = () => async dispatch => {
+    try {
+        const res = await jwtFetch('/api/pages');
+        const pages = await res.json();
+        debugger
+        dispatch(receivePages(pages));
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            dispatch(receiveErrors(resBody.errors));
+        }
     }
   }
 };
@@ -99,20 +101,18 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
 };
 
 const pagesReducer = (state = {}, action) => {
-  switch (action.type) {
-    case RECEIVE_PAGES:
-      debugger;
-      return { ...state, ...action.pages };
-    case RECEIVE_USER_PAGES:
-      return { ...state, ...action.page };
-    case RECEIVE_NEW_PAGE:
-      // return { ...state, new: action.page };
-      return { ...state, ...action.page };
-    case RECEIVE_USER_LOGOUT:
-      return { ...state, user: {}, new: undefined };
-    default:
-      return state;
-  }
+
+    switch (action.type) {
+        case RECEIVE_PAGES:
+            return { ...state, ...action.pages};
+        case RECEIVE_USER_PAGES:
+            return { ...state, ...action.page };
+        case RECEIVE_NEW_PAGE:
+            // return { ...state, new: action.page };
+            return { ...state,  ...action.page };
+        default:
+            return state;
+    }
 };
 
 export default pagesReducer;

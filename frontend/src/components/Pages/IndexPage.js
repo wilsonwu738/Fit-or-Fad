@@ -6,7 +6,7 @@ import ShowPage from './ShowPage';
 function IndexPage () {
     const dispatch = useDispatch();
     const pages = useSelector(state => state.pages && Object.values(state.pages.all));
-    debugger
+    // debugger
     useEffect(() => {
         dispatch(fetchPages());
         return () => dispatch(clearPageErrors());

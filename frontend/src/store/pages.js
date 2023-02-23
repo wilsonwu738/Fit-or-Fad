@@ -33,15 +33,17 @@ export const clearPageErrors = (errors) => ({
 });
 
 export const fetchPage = (id) => async (dispatch) => {
+    // debugger
   try {
-    const res = await jwtFetch(`/api/pages/user/${id}`);
+    const res = await jwtFetch(`/api/pages/${id}`);
+    // debugger
     const page = await res.json();
     dispatch(receiveNewPage(page));
   } catch (err) {
-    const resBody = await err.json();
-    if (resBody.statusCode === 400) {
-      return dispatch(receiveErrors(resBody.errors));
-    }
+    // const resBody = await err.json();
+    // if (resBody.statusCode === 400) {
+    //   return dispatch(receiveErrors(resBody.errors));
+    // }
   }
 };
 
@@ -49,7 +51,7 @@ export const fetchPages = () => async dispatch => {
     try {
         const res = await jwtFetch('/api/pages');
         const pages = await res.json();
-        debugger
+        // debugger
         dispatch(receivePages(pages));
     } catch (err) {
         const resBody = await err.json();

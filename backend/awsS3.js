@@ -5,45 +5,41 @@ const NAME_OF_BUCKET = "aa-aws-mern-fitorfad";
 
 
 const singleFileUpload = async ({ file, public = false }) => {
-    const { originalname, buffer } = file;
-    const path = require("path");
-    const Key = new Date().getTime().toString() + path.extname(originalname);
-  
+  const { originalname, buffer } = file;
+  const path = require("path");
+  const Key = new Date().getTime().toString() + path.extname(originalname);
 
+  const uploadParams = {
+    Bucket: NAME_OF_BUCKET,
+    Key: public ? `public/${Key}` : Key,
+    Body: buffer
+  };
+  const result = await s3.upload(uploadParams).promise();
 
-    const uploadParams = {
+  // Return the link if public. If private, return the name of the file in your
+  // S3 bucket as the key in your database for subsequent retrieval.
+  return public ? result.Location : result.Key;
+};
+
+const retrievePrivateFile = (key) => {
+  let fileUrl;
+  if (key) {
+    fileUrl = s3.getSignedUrl("getObject", {
       Bucket: NAME_OF_BUCKET,
-      Key: public ? `public/${Key}` : Key,
-      Body: buffer
-    };
-    const result = await s3.upload(uploadParams).promise();
-  
-    // Return the link if public. If private, return the name of the file in your
-    // S3 bucket as the key in your database for subsequent retrieval.
-    return public ? result.Location : result.Key;
-  };
+      Key: key
+    });
+  }
+  return fileUrl || key;
+};
 
+const storage = multer.memoryStorage({
+  destination: function (req, file, callback) {
+    callback(null, "");
+  },
+});
 
-  
-  const retrievePrivateFile = (key) => {
-    let fileUrl;
-    if (key) {
-      fileUrl = s3.getSignedUrl("getObject", {
-        Bucket: NAME_OF_BUCKET,
-        Key: key
-      });
-    }
-    return fileUrl || key;
-  };
-  
-  const storage = multer.memoryStorage({
-    destination: function (req, file, callback) {
-      callback(null, "");
-    },
-  });
-  
-  const singleMulterUpload = (nameOfKey) =>
-    multer({ storage: storage }).single(nameOfKey);
+const singleMulterUpload = (nameOfKey) =>
+  multer({ storage: storage }).single(nameOfKey);
  
   
   module.exports = {

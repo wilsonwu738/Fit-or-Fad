@@ -32,7 +32,8 @@ function LoginForm() {
       <div className="session-form-container">
 
         <form className="session-form" onSubmit={handleSubmit}>
-          <h2>Log In</h2>
+            <h2>Log In Here 👇 </h2>
+          <hr></hr>
           <div className="errors">{errors?.email}</div>
           <label>
             <div>Email</div>

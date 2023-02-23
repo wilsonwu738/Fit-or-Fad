@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
-const { requireUser } = require("../../config/passport");
-const validatePageInput = require("../../validations/pages");
-const User = mongoose.model("User");
-const Book = mongoose.model("Book");
-const Page = mongoose.model("Page");
+const mongoose = require('mongoose');
+const { requireUser } = require('../../config/passport');
+const validatePageInput = require('../../validations/pages');
+const { singleFileUpload, singleMulterUpload } = require('../../awsS3')
+const User = mongoose.model('User');
+const Book = mongoose.model('Book');
+const Page = mongoose.model('Page');
 
 /* GET pages listing. */
 router.get("/", async (req, res) => {
@@ -58,15 +59,16 @@ router.get("/user/:userId", async (req, res, next) => {
     }
   });
 
-router.post("/", requireUser, validatePageInput, async (req, res, next) => {
+router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
   try {
+    const imageUrl = await singleFileUpload({ file: req.file, public: true });
     const newPage = new Page({
       author: req.user._id,
       book: req.body.book,
       title: req.body.title,
       description: req.body.description,
-      imageUrl: req.body.imageUrl,
       itemGroups: req.body.itemGroups,
+      imageUrl: imageUrl
     });
 
     let page = await newPage.save();

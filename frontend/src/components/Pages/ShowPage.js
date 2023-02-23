@@ -7,6 +7,7 @@ function ShowPage() {
   const dispatch = useDispatch();
   const { pageId } = useParams();
   const page = useSelector((state) => state && state.pages ? state.pages : null);
+
   
   useEffect(() => {
     dispatch(fetchPage(pageId))

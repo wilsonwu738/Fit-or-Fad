@@ -12,7 +12,7 @@ const MainPageIndex = () => {
   useEffect(() => {
     dispatch(fetchPages())
   }, [dispatch]);
-  
+
   const pages = useSelector(state => Object.values(state.pages));
   console.log(pages)
 
@@ -20,13 +20,15 @@ const MainPageIndex = () => {
   
     return (
       <>
-        {pageItems}
-      <div id="plus">
-        <Link to="/newpage">
-
-          <img id="git" src={plus} alt="git" />
-        </Link>
-      </div>
+        <div className='main-page-grid'>
+          {pageItems}
+        </div>
+      
+        <div id="plus">
+         <Link to="/newpage">
+           <img id="git" src={plus} alt="git" />
+         </Link>
+        </div>
       </>
     );
   }

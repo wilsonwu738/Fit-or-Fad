@@ -15,6 +15,7 @@ import Video from './components/Video/Video';
 import ShowPage from './components/Pages/ShowPage';
 import IndexPage from './components/Pages/IndexPage';
 import MakePage from './components/Creations/MakePage';
+import EditPage from './components/Edit/EditPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +39,7 @@ function App() {
         <ProtectedRoute exact path="/currentprofile" component={CurrentUserProfile} />
         <ProtectedRoute exact path="/profile/:userId" component={UserProfile} />
         <ProtectedRoute exact path="/newpage" component={MakePage} />
+        <ProtectedRoute exact path="/editpage" component={EditPage}/>
       </Switch>
     </>
   );

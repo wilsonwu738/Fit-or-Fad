@@ -42,24 +42,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post(
-  "/register",
-  singleMulterUpload("image"),
-  validateRegisterInput,
-  async (req, res, next) => {
-    // Check to make sure no one has already registered with the proposed email or
-    // username.
-    const user = await User.findOne({
-      $or: [{ email: req.body.email }, { username: req.body.username }],
-    });
 
-    if (user) {
-      // Throw a 400 error if the email address and/or email already exists
-      const err = new Error("Validation Error");
-      err.statusCode = 400;
-      const errors = {};
-      if (user.email === req.body.email) {
-        errors.email = "A user has already registered with this email";
 
 
 router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
@@ -95,33 +78,6 @@ router.post('/register', singleMulterUpload("image"), validateRegisterInput, asy
     email: req.body.email
   });
 
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) throw err;
-    bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
-      if (err) throw err;
-      try {
-        newUser.hashedPassword = hashedPassword;
-        const user = await newUser.save();
-        // return res.json({ user });
-        return res.json(await loginUser(user));
-
-      }
-      if (user.username === req.body.username) {
-        errors.username = "A user has already registered with this username";
-      }
-      err.errors = errors;
-      return next(err);
-    }
-
-    // Otherwise create a new user
-    const profileImageUrl = req.file
-      ? await singleFileUpload({ file: req.file, public: true })
-      : DEFAULT_PROFILE_IMAGE_URL;
-    const newUser = new User({
-      username: req.body.username,
-      profileImageUrl: profileImageUrl,
-      email: req.body.email,
-    });
 
     bcrypt.genSalt(10, (err, salt) => {
       if (err) throw err;
@@ -137,8 +93,7 @@ router.post('/register', singleMulterUpload("image"), validateRegisterInput, asy
         }
       });
     });
-  }
-);
+  });
 
 router.post(
   "/login",

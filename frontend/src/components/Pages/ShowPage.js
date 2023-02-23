@@ -5,9 +5,8 @@ import { fetchPage } from "../../store/pages";
 
 function ShowPage() {
   const dispatch = useDispatch();
-  // const { userId } = useParams();
   const { pageId } = useParams();
-  let page = useSelector((state) => state && state.pages ? state.pages : null);
+  const page = useSelector((state) => state && state.pages ? state.pages : null);
   
   useEffect(() => {
     dispatch(fetchPage(pageId))

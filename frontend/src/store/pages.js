@@ -33,17 +33,15 @@ export const clearPageErrors = (errors) => ({
 });
 
 export const fetchPage = (id) => async (dispatch) => {
-    // debugger
   try {
-    const res = await jwtFetch(`/api/pages/${id}`);
-    // debugger
+    const res = await jwtFetch(`/api/pages/user/${id}`);
     const page = await res.json();
     dispatch(receiveNewPage(page));
   } catch (err) {
-    // const resBody = await err.json();
-    // if (resBody.statusCode === 400) {
-    //   return dispatch(receiveErrors(resBody.errors));
-    // }
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
+    }
   }
 };
 
@@ -106,13 +104,14 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
   }
 };
 
+
 const pagesReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PAGES:
-            return { ...state, ...action.pages};
+            return { ...state, ...action.pages };
         case RECEIVE_USER_PAGES:
-            return { ...state, ...action.page };
+            return { ...state, ...action.pages };
         case RECEIVE_NEW_PAGE:
             // return { ...state, new: action.page };
             return { ...state,  ...action.page };

@@ -30,7 +30,7 @@ function App() {
       <NavBar />
       <Video />
       <Switch>
-        <AuthRoute exact path="/" component={MainPageIndex} />
+        <ProtectedRoute exact path="/" component={MainPageIndex} />
         <ProtectedRoute exact path="/show/:pageId" component={ShowPage} />
         <ProtectedRoute exact path="/index" component={IndexPage} />
         <AuthRoute exact path="/login" component={LoginForm} />

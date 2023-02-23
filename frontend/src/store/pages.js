@@ -97,8 +97,6 @@ const pagesReducer = (state = {}, action) => {
         case RECEIVE_NEW_PAGE:
             // return { ...state, new: action.page };
             return { ...state,  ...action.page };
-        case RECEIVE_USER_LOGOUT:
-            return { ...state, user: {}, new: undefined }
         default:
             return state;
     }

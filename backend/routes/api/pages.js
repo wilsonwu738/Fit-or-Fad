@@ -24,9 +24,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+//this is not being used at the moment 
 router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
+    debugger
     user = await User.findById(req.params.userId);
   } catch (err) {
     const error = new Error("User not found");
@@ -44,12 +46,14 @@ router.get("/user/:userId", async (req, res, next) => {
   }
 });
 
+//we used this to fetch a particular page
   router.get("/:id", async (req, res, next) => {
     try {
       const page = await Page.findById(req.params.id).populate(
         "author",
         "_id username"
       );
+      // debugger
       return res.json(page);
     } catch (err) {
       const error = new Error("Page not found");
@@ -59,39 +63,55 @@ router.get("/user/:userId", async (req, res, next) => {
     }
   });
 
-router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
-  try {
-    const imageUrl = await singleFileUpload({ file: req.file, public: true });
-    const newPage = new Page({
-      author: req.user._id,
-      book: req.body.book,
-      title: req.body.title,
-      description: req.body.description,
-      itemGroups: req.body.itemGroups,
-      imageUrl: imageUrl
-    });
-
-    let page = await newPage.save();
-    page = await page.populate("author", "_id username");
-    //  .populate('book');
-    return res.json(page);
-  } catch (err) {
-    next(err);
-  }
-});
+  router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
+    try {
+      const imageUrl = await singleFileUpload({ file: req.file, public: true });
+      console.log('req.body.itemGroups:', req.body.itemGroups);
+      const itemGroups = JSON.parse(req.body.itemGroups);
+      const formattedItemGroups = itemGroups.map(itemGroup => {
+        const newGroup = {
+          groupName: '',
+          items: itemGroup.items.map(item => ({
+            name: item.name,
+            url: item.url
+          }))
+        }
+        if (itemGroup.hasOwnProperty('groupName')) {
+          newGroup.groupName = itemGroup.groupName;
+        }
+        return newGroup;
+      });
+  
+      const newPage = new Page({
+        author: req.user._id,
+        title: req.body.title,
+        description: req.body.description,
+        itemGroups: formattedItemGroups,
+        imageUrl: imageUrl
+      });
+  
+      let page = await newPage.save();
+      page = await page.populate("author", "_id username");
+      return res.json(page);
+    } catch (err) {
+      next(err);
+    }
+  });
 
 router.delete("/:id", requireUser, async (req, res, next) => {
   try {
     let page = await Page.findById(req.params.id);
-    if (page.author.toString() === req.user._id.toString()) {
+    // if (page.author.toString() === req.user._id.toString()) 
+    {
       page = await Page.deleteOne({ _id: page._id });
       return res.json(page);
-    } else {
-      const error = new Error("Page not found");
-      error.statusCode = 404;
-      error.errors = { message: "No user found for that page" };
-      throw error;
-    }
+    } 
+    // else {
+    //   const error = new Error("Page not found");
+    //   error.statusCode = 404;
+    //   error.errors = { message: "No user found for that page" };
+    //   throw error;
+    // }
   } catch (err) {
     return next(err);
   }

@@ -11,6 +11,7 @@ function MakePage () {
     title: '',
     description: '',
     items: [{ name: '', url: '' }],
+    likes: ''
   });
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
@@ -27,33 +28,38 @@ function MakePage () {
     e.preventDefault();
 
     const items = data.items.map(item => ({
-      name: item.name,
-      url: item.url
+      itemName: item.name,
+      itemUrl: item.url
     }));
-
+    
     const itemGroups = [
       {
         groupName: '',
-        items: items
+        items: data.items
       }
     ];
-
+    
     const finalData = {
       author: currentUser._id,
-      // book: '',
       title: data.title,
       description: data.description,
       itemGroups: itemGroups,
       likes: ""
     };
     
-    console.log(finalData)
-    debugger
+    console.log(finalData);
+    debugger;
 
-    dispatch(composePage(finalData, images)); // <-- MODIFY THIS LINE
-    setImages([]);                        // <-- ADD THIS LINE
+    dispatch(composePage(finalData, images));
+    setImages([]);                       
     setImageUrls([]);  
-    setData('');                   // <-- ADD THIS LINE
+    setData({
+      author: '',
+      title: '',
+      description: '',
+      items: [{ name: '', url: '' }],
+      likes: ''
+    });                  
     fileRef.current.value = null;
   };
 
@@ -80,15 +86,14 @@ function MakePage () {
     const { name, value } = e.target;
     setData(prevFormData => ({
       ...prevFormData,
-      [name]: value,
+      [name]: name === "itemGroups" ? JSON.parse(value) : value || '',
     }));
   };
 
-  const handleItemChange = (e, groupIdx, itemKey) => {
+  const handleItemChange = (e, itemIdx, itemKey) => {
     const { value } = e.target;
     setData((prevFormData) => {
       const items = [...prevFormData.items];
-      const itemIdx = groupIdx;
       items[itemIdx] = {
         ...items[itemIdx],
         [itemKey]: value,
@@ -118,6 +123,7 @@ function MakePage () {
   };
 
   const update = e => setData(e.currentTarget.value);
+
 
   return (
     <>
@@ -153,47 +159,60 @@ function MakePage () {
               onChange={updateFiles}
             />
           </label>
-          {data.items.map((item, idx) => (
-            <div key={idx}>
-              <label htmlFor={`itemName${idx}`}>Item Name</label>
-              <input
-                type="text"
-                id={`itemName${idx}`}
-                name={`items[${idx}][name]`}
-                value={item.name}
-                onChange={(e) => handleItemChange(e, idx, "name")}
-              />
   
-              <label htmlFor={`itemUrl${idx}`}>Item URL</label>
-              <input
-                type="text"
-                id={`itemUrl${idx}`}
-                name={`items[${idx}][url]`}
-                value={item.url}
-                onChange={(e) => handleItemChange(e, idx, "url")}
-              />
-              <br />
-              <br />
-              <div>
-                <button id="makebutton" type="button" onClick={() => handleRemoveItem(idx)}>
-                  Remove Item
-                </button>
-                <br />
-                <button id="makebutton" type="button" onClick={handleAddItem}>
-                  Add Item
-                </button>
-              </div>
+          {imageUrls.length > 0 && (
+            <div>
+              {imageUrls.map((url, index) => (
+                <img
+                  key={index}
+                  src={url}
+                  alt={`Uploaded image ${index + 1}`}
+                  style={{ width: "200px", height: "auto" }}
+                />
+              ))}
             </div>
-          ))}
-          <br />
+          )}
   
-          <button type="submit">Create Page</button>
+          {data.items &&
+            data.items.map((item, idx) => (
+              <div key={idx}>
+                <label htmlFor={`itemName${idx}`}>Item Name</label>
+                <input
+                  type="text"
+                  id={`itemName${idx}`}
+                  name={`items[${idx}][name]`}
+                  value={item.name}
+                  onChange={(e) => handleItemChange(e, idx, "name")}
+                />
+  
+                <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+                <input
+                  type="text"
+                  id={`itemUrl${idx}`}
+                  name={`items[${idx}][url]`}
+                  value={item.url}
+                  onChange={(e) => handleItemChange(e, idx, "url")}
+                />
+                <br />
+                <br />
+                <div>
+                  <button
+                    id="makebutton"
+                    type="button"
+                    onClick={() => handleRemoveItem(idx)}
+                  >
+                    Remove Item
+                  </button>
+                  <br />
+                  <button id="makebutton" type="button" onClick={handleAddItem}>
+                    Add Item
+                  </button>
+                </div>
+              </div>
+            ))}
+  
+          <button type="submit">Submit</button>
         </form>
-  
-        {/* <div className="error-message">
-          {errors.title && <span>{errors.title}</span>}
-          {errors.description && <span>{errors.description}</span>}
-        </div> */}
       </div>
     </>
   );

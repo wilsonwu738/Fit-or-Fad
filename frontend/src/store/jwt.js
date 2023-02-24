@@ -7,7 +7,7 @@ async function jwtFetch(url, options = {}) {
     // Remember to add 'Bearer ' to the front of the token.
     const jwtToken = localStorage.getItem("jwtToken");
     if (jwtToken) options.headers["Authorization"] = 'Bearer ' + jwtToken;
-    
+    // debugger
     // If the options.method is not 'GET', then set the "Content-Type" header to
     // "application/json".
     if (options.method.toUpperCase() !== "GET") {
@@ -16,18 +16,20 @@ async function jwtFetch(url, options = {}) {
           }
         options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
       }
+    // debugger
     
   
     // Call fetch with the url and the updated options hash.
     const res = await fetch(url, options);
-  
+     
     // If the response status code is 400 or above, then throw an error with the
     // error being the response.
     if (res.status >= 400) throw res;
-  
+    // debugger
     // If the response status code is under 400, then return the response to the
     // next promise chain.
     return res;
+    // debugger
 }
 
 function getCookie(cookieName) {
@@ -38,5 +40,6 @@ function getCookie(cookieName) {
     }
     return null;
 }
+
 
 export default jwtFetch;

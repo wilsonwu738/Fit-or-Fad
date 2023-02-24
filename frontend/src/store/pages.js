@@ -150,21 +150,27 @@ export const deletePage = (pageId) => async dispatch => {
 
   export const composePage = (data, images) => async dispatch => {
     const formData = new FormData();
+    Object.keys(data).forEach(key => {
+      if (key === "itemGroups") {
+        formData.append(key, JSON.stringify(data[key])); // stringify the array before appending to form data
+      } else {
+        formData.append(key, data[key]);
+      }
+    });
     Array.from(images).forEach(image => formData.append("images", image));
     debugger
     try {
       const res = await jwtFetch('/api/pages/', {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        body: formData,
       });
-      // handle success response here
+  
+      const page = await res.json();
+      dispatch(receiveNewPage(page));
     } catch (err) {
       const resBody = await err.json();
       if (resBody.statusCode === 400) {
-        return dispatch(receiveErrors(resBody.errors));
+        dispatch(receiveErrors(resBody.errors));
       }
     }
   };

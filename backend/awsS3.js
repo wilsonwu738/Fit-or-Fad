@@ -5,7 +5,10 @@ const NAME_OF_BUCKET = "aa-aws-mern-fitorfad";
 
 
 const singleFileUpload = async ({ file, public = false }) => {
-  const { originalname, buffer } = file;
+    if (!file) {
+      throw new Error("No file provided");
+    }
+    const { originalname, buffer } = file;
   const path = require("path");
   const Key = new Date().getTime().toString() + path.extname(originalname);
 

@@ -1,20 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const itemSchema = new Schema({
-  name: {
-    type: String
-  },
-  url: {
-    type: String
-  }
-});
-
 const itemGroupSchema = new Schema({
   groupName: {
     type: String
   },
-  items: [itemSchema]
+  items: [{
+    name: String,
+    url: String
+  }]
 });
 
 const pageSchema = new Schema({
@@ -23,10 +17,6 @@ const pageSchema = new Schema({
     ref: 'User',
     required: true
   },
-//   book: {
-//     type: Schema.Types.ObjectId,
-//     ref: 'Book'
-//   },
   title: {
     type: String,
     required: true
@@ -37,9 +27,11 @@ const pageSchema = new Schema({
   },
   imageUrl: {
     type: String,
-    // required: true
   },
-  liker: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  liker: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   itemGroups: [itemGroupSchema]
 }, { 
   timestamps: true 

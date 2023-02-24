@@ -42,21 +42,20 @@ return page.author && (
     <div id="pics">
     <>
     <DeleteButton pageId={page.id}/>
-    <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
-    <div className="page">
-      <h3>{page.author.username}</h3>
-      <img src={page.imageUrl} alt={page.title} />
-    </div>
-    <div id="textz">
-      <h1>{page.title}</h1>
-      <hr></hr>
-      <h2>👤 {page.author.username}</h2>
-      <p>{page.description}</p>
-    </div>
-
-  </div>
-);
+      <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
+      <div className="page">
+        <h3>{page.author.username}</h3>
+        <img src={page.imageUrl} alt={page.title} />
+      </div>
+      <div id="textz">
+        <h1>{page.title}</h1>
+        <hr></hr>
+        <h2>👤 {page.author.username}</h2>
+        <p>{page.description}</p>
+      </div>
     </>
+    </div>
+  </div>
   );
 }
 

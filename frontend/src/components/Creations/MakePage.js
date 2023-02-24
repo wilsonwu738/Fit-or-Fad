@@ -152,6 +152,7 @@ function MakePage () {
           <label>
             Images to Upload
             <input
+              id ="upload"
               type="file"
               ref={fileRef}
               accept=".jpg, .jpeg, .png"
@@ -173,43 +174,41 @@ function MakePage () {
             </div>
           )}
   
-          {data.items &&
-            data.items.map((item, idx) => (
-              <div key={idx}>
-                <label htmlFor={`itemName${idx}`}>Item Name</label>
-                <input
-                  type="text"
-                  id={`itemName${idx}`}
-                  name={`items[${idx}][name]`}
-                  value={item.name}
-                  onChange={(e) => handleItemChange(e, idx, "name")}
-                />
-  
-                <label htmlFor={`itemUrl${idx}`}>Item URL</label>
-                <input
-                  type="text"
-                  id={`itemUrl${idx}`}
-                  name={`items[${idx}][url]`}
-                  value={item.url}
-                  onChange={(e) => handleItemChange(e, idx, "url")}
-                />
-                <br />
-                <br />
-                <div>
-                  <button
-                    id="makebutton"
-                    type="button"
-                    onClick={() => handleRemoveItem(idx)}
-                  >
-                    Remove Item
-                  </button>
-                  <br />
-                  <button id="makebutton" type="button" onClick={handleAddItem}>
-                    Add Item
-                  </button>
-                </div>
-              </div>
-            ))}
+        {data.items.map((item, idx) => (
+        <div key={idx}>
+          <label htmlFor={`itemName${idx}`}>Item Name</label>
+          <input
+            type="text"
+            id={`itemName${idx}`}
+            name={`items[${idx}][name]`}
+            value={item.name}
+            onChange={(e) => handleItemChange(e, idx, "name")}
+          />
+
+          <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+          <input
+            type="text"
+            id={`itemUrl${idx}`}
+            name={`items[${idx}][url]`}
+            value={item.url}
+            onChange={(e) => handleItemChange(e, idx, "url")}
+          />
+          <br />
+          <br />
+          <div>
+            <button
+              id="makebutton"
+              type="button"
+              onClick={() => handleRemoveItem(idx)}
+            >
+              Remove Item
+            </button>
+          </div>
+        </div>
+      ))}
+      <button id="makebutton" type="button" onClick={handleAddItem}>
+        Add Item
+      </button>
   
           <button type="submit">Submit</button>
         </form>

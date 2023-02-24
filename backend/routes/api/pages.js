@@ -50,6 +50,7 @@ router.get("/user/:userId", async (req, res, next) => {
         "author",
         "_id username"
       );
+      // debugger
       return res.json(page);
     } catch (err) {
       const error = new Error("Page not found");
@@ -83,15 +84,17 @@ router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, a
 router.delete("/:id", requireUser, async (req, res, next) => {
   try {
     let page = await Page.findById(req.params.id);
-    if (page.author.toString() === req.user._id.toString()) {
+    // if (page.author.toString() === req.user._id.toString()) 
+    {
       page = await Page.deleteOne({ _id: page._id });
       return res.json(page);
-    } else {
-      const error = new Error("Page not found");
-      error.statusCode = 404;
-      error.errors = { message: "No user found for that page" };
-      throw error;
-    }
+    } 
+    // else {
+    //   const error = new Error("Page not found");
+    //   error.statusCode = 404;
+    //   error.errors = { message: "No user found for that page" };
+    //   throw error;
+    // }
   } catch (err) {
     return next(err);
   }

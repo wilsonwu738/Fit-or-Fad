@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css';
+import { Link } from 'react-router-dom';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -32,7 +33,9 @@ function ProfileButton({ user }) {
     const menu = (
         <div className="profile-dropdown">
             <div className="profile-dropdown-content">
-                <span className="dropdown-element">{user.username}</span>
+               <Link to={'currentprofile'}>
+               <span className="dropdown-element">Profile</span>
+               </Link>
                 <span className="dropdown-element" onClick={logout}>Log out</span>
             </div>
         </div>

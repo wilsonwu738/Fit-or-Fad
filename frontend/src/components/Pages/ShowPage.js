@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "../../store/pages";
-import './ShowPage.css'
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
 
@@ -20,7 +19,6 @@ function ShowPage() {
     setIsEditing(true);
   };
 
-
   useEffect(() => {
     dispatch(fetchPage(pageId))
   },[isEditing, pageId, dispatch])
@@ -36,26 +34,17 @@ function ShowPage() {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
 
-
-return page.author && (
-  <div className="page"> {/* add the .page class here */}
-    <div id="pics">
+  return page.author && ( 
     <>
     <DeleteButton pageId={page.id}/>
-      <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
-      <div className="page">
-        <h3>{page.author.username}</h3>
-        <img src={page.imageUrl} alt={page.title} />
-      </div>
-      <div id="textz">
-        <h1>{page.title}</h1>
-        <hr></hr>
-        <h2>👤 {page.author.username}</h2>
-        <p>{page.description}</p>
-      </div>
-    </>
+    <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
+    <div className="page">
+      <h3>{page.author.username}</h3>
+      <img src={page.imageUrl} alt={page.title} />
+      <h2>{page.title}</h2>
+      <p>{page.description}</p>
     </div>
-  </div>
+    </>
   );
 }
 

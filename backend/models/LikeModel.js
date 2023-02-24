@@ -16,4 +16,4 @@ const likeSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Like', likeSchema);
+module.exports = mongoose.model('Lie', likeSchema);

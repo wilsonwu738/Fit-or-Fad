@@ -53,10 +53,10 @@ router.get("/user/:userId", async (req, res, next) => {
       // debugger
       return res.json(page);
     } catch (err) {
-      const error = new Error("Page not found");
-      error.statusCode = 404;
-      error.errors = { message: "No page found with that id" };
-      return next(error);
+      // // const error = new Error("Page not found");
+      // // error.statusCode = 404;
+      // // error.errors = { message: "No page found with that id" };
+      // return next(error);
     }
   });
 

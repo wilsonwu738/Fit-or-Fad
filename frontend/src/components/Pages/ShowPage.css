@@ -6,15 +6,15 @@
     flex: 1;
     max-width: 40%;
     padding: 60px;
+    position: relative;
 }
 
 #pics img {
     max-width: 95%;
     height: auto;
     display: block;
-        border: 2px solid #02f726;
-        /* border-style: dashed; */
-        border-radius: 2px;
+    border: 3px solid #02f726;
+    border-radius: 2px;
 }
 
 #textz {
@@ -22,4 +22,45 @@
     max-width: 40%;
     margin-left: 20px;
     padding: 50px;
+}
+
+#author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+#buttons button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#buttons button:hover {
+    background-color: #3e8e41;
+}
+
+
+#buttons img:hover {
+    transform: scale(1.2);
+}
+
+#like {
+    margin-top: 80px;
+    margin-left: 480px;
+    height: 150px;
+    width: 140px;
+}
+
+#like:hover {
+    transform: scale(1.2);
 }

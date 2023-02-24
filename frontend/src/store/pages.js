@@ -6,11 +6,19 @@ const RECEIVE_NEW_PAGE = "pages/RECEIVE_NEW_PAGE";
 const RECEIVE_PAGE_ERRORS = "pages/RECEIVE_PAGE_ERRORS";
 const CLEAR_PAGE_ERRORS = "pages/CLEAR_PAGE_ERRORS";
 const RECEIVE_UPDATED_PAGE = "pages/RECEIVE_UPDATED_PAGE";
+const RECEIVE_DELETED_PAGE = "pages/DELETE_PAGE";
 
 const receiveUpdatedPage = page => ({
   type: RECEIVE_UPDATED_PAGE,
   page
 });
+
+const receiveDeletedPage = (pageId) => ({
+    type: RECEIVE_DELETED_PAGE,
+    pageId,
+  });
+  
+
 const receivePages = pages => ({
     type: RECEIVE_PAGES,
     pages
@@ -111,6 +119,37 @@ export const editPage = (data) => async (dispatch) => {
     }
   };
 
+
+// export const deletePage = (id) => async (dispatch) => {
+//     debugger
+//   try {
+//     const res = await jwtFetch(`/api/pages/${id}`, { 
+//         method: "DELETE" 
+//     });
+//     debugger
+//     const page = await res.json();
+//     console.log("Page deleted successfully");
+//     dispatch(receiveDeletedPage(page));
+//     debugger
+//   } catch (err) {
+//     console.log("Error deleting page:", err);
+//   }
+// };
+
+export const deletePage = (pageId) => async dispatch => {
+    // debugger
+    const res = await jwtFetch(`/api/pages/${pageId}`, {
+        method: 'DELETE'
+    })
+    // debugger
+    if (res.ok) {
+        dispatch(receiveDeletedPage(pageId))
+    }
+    return res
+}
+
+
+
   export const composePage = (data, images) => async dispatch => {
     const formData = new FormData();
     Array.from(images).forEach(image => formData.append("images", image));
@@ -148,7 +187,7 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
 };
 
 const pagesReducer = (state = {}, action) => {
-
+    const newState = { ...state };
     switch (action.type) {
         case RECEIVE_PAGES:
             return { ...state, ...action.pages};
@@ -165,6 +204,11 @@ const pagesReducer = (state = {}, action) => {
                     ...action.page
                 }
             };
+        case RECEIVE_DELETED_PAGE:
+                // debugger
+            delete newState[action.pageId];
+                // debugger
+            return newState;
         default:
             return state;
     }

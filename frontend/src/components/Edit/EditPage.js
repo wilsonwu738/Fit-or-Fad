@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { editPage } from "../../store/pages";
 
 const EditPage = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(props.page.title);
-  const [imageUrl, setImageUrl] = useState(props.page.imageUrl);
+  // const [title, setTitle] = useState(props.page.title);
+  // const [imageUrl, setImageUrl] = useState(props.page.imageUrl);
+  const page = useSelector((state) => state.pages);
+  const [title, setTitle] = useState(page.title);
+  const [imageUrl, setImageUrl] = useState(page.imageUrl);
+
+  
+
+  useEffect(() => {
+    setTitle(page.title);
+    setImageUrl(page.imageUrl);
+  }, [page]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -23,11 +33,13 @@ const EditPage = (props) => {
       const updatedPage = { ...props.page, title, imageUrl };
       await dispatch(editPage(updatedPage));
       props.setIsEditing(false);
-      history.push("/");
-    } catch (error) {
+      history.push(`/show/${props.page._id}`);
+    } catch (error) { 
       console.log("Error updating page", error);
     }
   };
+
+  
 
   return (
     <>

@@ -6,26 +6,27 @@
 }
 
 .session-form-container {
-        height: fit-content;
-            border-radius: 5%;
+    height: fit-content;
+    border-radius: 5%;
 
 
-            margin-top: 10px;
-            height: 500px;
-            width: 400px;
-            border: 5px solid purple;
-            background-color: whitesmoke;
-                    padding: 55px;
-                    box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet;
-                    margin: 20px, 5px 5px rgb(0, 15, 128);
+    margin-top: 10px;
+    height: 500px;
+    width: 400px;
+    border: 5px solid purple;
+    background-color: whitesmoke;
+    padding: 55px;
+    box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet;
+    margin: 20px, 5px 5px rgb(0, 15, 128);
 }
 
 #signup input[type="submit"] {
     float: right;
     font-size: 1.2em;
-    padding: 10px 20px;
+    padding: 8px 15px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
+
 /* 
 input[type="file"] {
     display: none;

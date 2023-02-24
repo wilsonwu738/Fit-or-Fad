@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import Video from "../Video/Video"
 
 function SignupForm() {
   const [email, setEmail] = useState('');
@@ -57,10 +58,12 @@ function SignupForm() {
 
   return (
     <>
+      <Video />
       <br></br>
     <div className="session-form-page">
       <div className="session-form-container">
         <form className="session-form" onSubmit={handleSubmit}>
+          
             <h2>Sign Up Here 👇</h2>
           <hr></hr>
           <div className="errors">{errors?.email}</div>
@@ -102,8 +105,6 @@ function SignupForm() {
               placeholder="Confirm Password"
             />
           </label>
-            <div></div>
-            <br></br>
             <div>Upload your profile image</div>
               <label className="custom-file-input">
                 Choose File

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { login, clearSessionErrors } from '../../store/session';
+import Video from '../Video/Video';
+
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -27,10 +29,11 @@ function LoginForm() {
 
   return (
     <>
+      <Video />
         <br></br>
     <div className="session-form-page">
       <div className="session-form-container">
-
+      
         <form className="session-form" onSubmit={handleSubmit}>
             <h2>Log In Here 👇 </h2>
           <hr></hr>

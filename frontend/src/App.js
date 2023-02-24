@@ -11,7 +11,7 @@ import SignupForm from './components/SessionForms/SignupForm';
 import CurrentUserProfile from './components/Profile/CurrentUserProfile';
 import UserProfile from './components/Profile/UserProfile';
 import { getCurrentUser } from './store/session';
-import Video from './components/Video/Video';
+import Video from './components/Video/Video2';
 import ShowPage from './components/Pages/ShowPage';
 import IndexPage from './components/Pages/IndexPage';
 import MakePage from './components/Creations/MakePage';

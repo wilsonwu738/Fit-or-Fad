@@ -1,6 +1,7 @@
 .session-form-page {
     display: flex;
     justify-content: center;
+    color: black;
 
 }
 
@@ -10,10 +11,10 @@
 
 
             margin-top: 10px;
-            height: 520px;
-            width: 600px;
+            height: 500px;
+            width: 400px;
             border: 5px solid purple;
-            background-color: white;
+            background-color: whitesmoke;
                     padding: 55px;
                     box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet;
                     margin: 20px, 5px 5px rgb(0, 15, 128);

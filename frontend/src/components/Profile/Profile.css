@@ -1,0 +1,56 @@
+#container {
+    display: flex;
+    padding: 30px;
+}
+
+#profile {
+    flex: 1;
+    height: 100%;
+            max-width: 40%;
+}
+
+#name {
+    margin-top: -5px;
+}
+
+#profile img {
+    max-width: 90%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        border: 3px dashed white;
+}
+
+#bio {
+    flex: 1;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height: 505px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, grey
+     7%, transparent 10%);
+    position: relative;
+}
+
+#bio::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+}
+
+#bio::after {
+    background-color: red;
+    right: 5px;
+}
+
+#pages {
+    margin-top: 20px;
+    /* or any other value to add some space between the two divs */
+}

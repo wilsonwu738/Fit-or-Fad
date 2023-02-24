@@ -1,11 +1,25 @@
-p,
-h3 {
-    margin-left: 5px;
+.page {
+    display: flex;
 }
 
-.page {
-    border: 2px ridge black;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    min-height: 60px;
+#pics {
+    flex: 1;
+    max-width: 40%;
+    padding: 60px;
+}
+
+#pics img {
+    max-width: 95%;
+    height: auto;
+    display: block;
+        border: 2px solid #02f726;
+        /* border-style: dashed; */
+        border-radius: 2px;
+}
+
+#textz {
+    flex: 1;
+    max-width: 40%;
+    margin-left: 20px;
+    padding: 50px;
 }

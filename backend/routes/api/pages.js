@@ -24,9 +24,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+//this is not being used at the moment 
 router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
+    debugger
     user = await User.findById(req.params.userId);
   } catch (err) {
     const error = new Error("User not found");
@@ -44,6 +46,7 @@ router.get("/user/:userId", async (req, res, next) => {
   }
 });
 
+//we used this to fetch a particular page
   router.get("/:id", async (req, res, next) => {
     try {
       const page = await Page.findById(req.params.id).populate(

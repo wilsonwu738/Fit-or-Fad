@@ -44,9 +44,11 @@ export const clearPageErrors = (errors) => ({
   errors,
 });
 
+
 export const fetchPage = (id) => async (dispatch) => {
   try {
-    const res = await jwtFetch(`/api/pages/user/${id}`);
+   
+    const res = await jwtFetch(`/api/pages/${id}`);
     const page = await res.json();
     dispatch(receiveNewPage(page));
   } catch (err) {
@@ -55,6 +57,7 @@ export const fetchPage = (id) => async (dispatch) => {
       return dispatch(receiveErrors(resBody.errors));
     }
   }
+  
 };
 
 export const fetchPages = () => async dispatch => {

@@ -10,8 +10,8 @@ function ShowPage() {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
   const { pageId } = useParams();
-
-  // debugger
+  
+  
   let page = useSelector((state) => state && state.pages ? state.pages : null);
 
 
@@ -19,12 +19,16 @@ function ShowPage() {
     setIsEditing(true);
   };
 
-  
 
   useEffect(() => {
-    // debugger
     dispatch(fetchPage(pageId))
-  },[pageId, dispatch])
+  },[isEditing, pageId, dispatch])
+
+  // useEffect(() => {
+  //   if (page) {
+  //     setIsEditing(false);
+  //   }
+  // }, [page]);
 
 
   if (isEditing) {

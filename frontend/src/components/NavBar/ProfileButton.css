@@ -12,9 +12,8 @@
     /* positioning */
     display: flex;
     flex-direction: row;
-
+    font-size: large;
     /* styling */
-        font-family: 'Orbitron', sans-serif;
         font-size: 20px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -23,7 +22,7 @@
     /* positioning */
     display: flex;
     align-items: center;
-
+    font-size: 22px;
     /* styling */
     margin-right: 5px;
 }
@@ -34,9 +33,9 @@
 
     /* styling */
     height: 25px;
-    color: gray;
+    color: white;
     font-size: 12px;
-    background-color: white;
+    background-color: transparent;
     border: none;
     border-radius: 10px;
 }
@@ -50,9 +49,9 @@
 .profile-dropdown {
     /* positioning */
     position: absolute;
-    top: 40px;
+    top: 65px;
+    height: 70px;
     width: 150px;
-    left: -65.5px;
     padding: 6px 0px;
 
     /* styling */
@@ -60,6 +59,8 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     font-weight: bold;
+    z-index: 1000;
+    /* add a higher z-index value */
 }
 
 .profile-dropdown-content {
@@ -75,6 +76,7 @@
     margin: 0px 5px;
     font-size: 12px;
     border-radius: 10px;
+            font-size: 15px;
 }
 
 .dropdown-element:hover {

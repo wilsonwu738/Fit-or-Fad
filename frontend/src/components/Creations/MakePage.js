@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearPageErrors, composePage } from '../../store/pages';
 import { useRef } from 'react';
+import './MakePage.css'
 
 
 function MakePage () {

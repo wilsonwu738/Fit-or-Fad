@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserPages, clearPageErrors } from '../../store/pages';
 import { Link } from 'react-router-dom';
-
-import ShowPage from '../Pages/ShowPage';
 import plus from '../../images/create.png'
+import './Profile.css'
+
 
 function CurrentUserProfile() {
     const dispatch = useDispatch();
@@ -18,11 +18,17 @@ function CurrentUserProfile() {
 
     return (
         <>
+        <div id="container">
             <div id="profile">
+                <h2 id="name">[{currentUser.username}]</h2>
                 <img src={currentUser.profileImageUrl}></img>
-                <label id="bio">BIO</label>
+            </div>
+            <div id="bio">
+                <label id="bioo">BIO</label>
+            </div>
             </div>
             <hr></hr>
+            <div id="pages">
             <h2>All of {currentUser.username}'s Pages</h2>
             {/* {userPages.map(page => (
                 <ShowPage
@@ -30,6 +36,7 @@ function CurrentUserProfile() {
                     page={page}
                 />
             ))} */}
+            </div>
             <div id="plus">
                 <Link to="/newpage">
 

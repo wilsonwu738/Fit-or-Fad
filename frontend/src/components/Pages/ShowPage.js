@@ -10,6 +10,7 @@ function ShowPage() {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
   const { pageId } = useParams();
+
   // debugger
   let page = useSelector((state) => state && state.pages ? state.pages : null);
 
@@ -17,6 +18,7 @@ function ShowPage() {
   const handleUpdateClick = () => {
     setIsEditing(true);
   };
+
   
 
   useEffect(() => {

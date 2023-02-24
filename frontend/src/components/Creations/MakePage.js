@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { clearPageErrors, composePage } from '../../store/pages';
 import { useRef } from 'react';
 import './MakePage.css'
+
 
 
 function MakePage () {
@@ -13,6 +15,7 @@ function MakePage () {
     items: [{ name: '', url: '' }],
     likes: ''
   });
+  const history = useHistory();
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user);
   // const errors = useSelector(state => state.errors.pages);
@@ -50,7 +53,10 @@ function MakePage () {
     console.log(finalData);
     debugger;
 
-    dispatch(composePage(finalData, images));
+    dispatch(composePage(finalData, images))
+    .then(() => {
+      history.push('/');
+    })
     setImages([]);                       
     setImageUrls([]);  
     setData({

@@ -20,7 +20,9 @@ function UserProfile() {
             <h1>{user.username}</h1>
             <div id="profile">
                 <img src={user.profileImageUrl} />
-                <label id="bio">BIO</label>
+                <label id="bio">BIO
+                    <div>{user.bio}</div>
+                </label>
             </div>
             <hr></hr>
             

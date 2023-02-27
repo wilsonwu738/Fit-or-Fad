@@ -36,9 +36,6 @@ function ShowPage() {
     return "/profile/" + page.author._id;
   }
 
-  console.log(page.author._id);
-  console.log(profileLink);
-
   return page.author && (
     <div className="page">
       <div id="pics">

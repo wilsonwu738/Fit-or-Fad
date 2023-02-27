@@ -12,14 +12,14 @@ function CurrentUserProfile() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
     // const userPages = useSelector(state => state.pages ? Object.values(state.pages.user) : []);
-    const userPages = useSelector(state => Object.values(state.pages));
+    // const userPages = useSelector(state => Object.values(state.pages));
     
-    userPages.forEach(ele => console.log(ele));
+    // userPages.forEach(ele => console.log(ele));
 
-    useEffect(() => {
-        dispatch(fetchUserPages(currentUser._id));
-        return () => dispatch(clearPageErrors());
-    }, [currentUser, dispatch]);
+    // useEffect(() => {
+    //     dispatch(fetchUserPages(currentUser._id));
+    //     return () => dispatch(clearPageErrors());
+    // }, [currentUser, dispatch]);
 
     return (
         <>

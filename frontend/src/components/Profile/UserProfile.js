@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserPages, clearPageErrors } from '../../store/pages';
 import { fetchUser, fetchUsers } from '../../store/users';
-import UserIndexPage from '../Pages/UserIndexPage';
+import ProfileIndexPage from '../Pages/ProfileIndexPage';
 import ShowPage from '../Pages/ShowPage';
 
 function UserProfile() {
@@ -31,7 +31,7 @@ function UserProfile() {
             
             <h2>All of {user.username}'s Pages</h2>
 
-            <UserIndexPage userId={userId}/>
+            <ProfileIndexPage userId={userId}/>
 
         </>
     );

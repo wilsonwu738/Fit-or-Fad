@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearPageErrors, fetchUserPages } from '../../store/pages';
 // import ShowPage from './ShowPage';
-import UserIndexItem from './UserIndexItem';
+import ProfileIndexItem from './ProfileIndexItem';
 
-function UserIndexPage ({userId}) {
+function ProfileIndexPage ({userId}) {
     const dispatch = useDispatch();
     const pages = useSelector(state => state.pages && Object.values(state.pages));
     // debugger
@@ -17,16 +17,14 @@ function UserIndexPage ({userId}) {
 
     return (
         <>
-            <h2>All Pages</h2>
-
             {pages.map(page => (
-                <UserIndexItem key={page._id} page={page} />
+                <ProfileIndexItem key={page._id} page={page} />
             ))}
         </>
     );
 }
 
-export default UserIndexPage;
+export default ProfileIndexPage;
 
 
 // import { useEffect } from 'react';

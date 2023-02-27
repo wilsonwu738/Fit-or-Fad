@@ -13,7 +13,7 @@ import UserProfile from './components/Profile/UserProfile';
 import { getCurrentUser } from './store/session';
 import Video from './components/Video/Video2';
 import ShowPage from './components/Pages/ShowPage';
-import UserIndexPage from './components/Pages/UserIndexPage';
+import UserIndexPage from './components/Pages/ProfileIndexPage';
 import MakePage from './components/Creations/MakePage';
 import EditPage from './components/Edit/EditPage';
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearPageErrors, fetchPages } from '../../store/pages';
 
 
-const UserIndexItem = ({ page, userId }) => {
+const ProfileIndexItem = ({ page, userId }) => {
     const { title, description, imageUrl } = page;
 
     return (
@@ -18,4 +18,4 @@ const UserIndexItem = ({ page, userId }) => {
     )
 }
 
-export default UserIndexItem;
+export default ProfileIndexItem;

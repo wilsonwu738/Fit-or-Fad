@@ -29,8 +29,6 @@ function ShowPage() {
 
 
 
-
-
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
@@ -48,7 +46,7 @@ function ShowPage() {
           <div id="buttons">
             <DeleteButton pageId={page.id} />
             <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
-
+            <LikePage pageId={pageId} src={like} className="likeButton"/>
           </div>
         </div>
 
@@ -58,12 +56,9 @@ function ShowPage() {
         <hr />
         <h2> 👤 {page.author.username}</h2>
         <p>{page.description}</p>
-        <NavLink exact to="/">
-          <img id="like" src={like} alt="" />
-        </NavLink>
+        
       </div>
-      <LikePage pageId={pageId} />
-    </>
+      
     </div>
   );
 }

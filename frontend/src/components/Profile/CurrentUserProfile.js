@@ -12,6 +12,7 @@ function CurrentUserProfile() {
     const currentUser = useSelector(state => state.session.user);
 
     const userInfo = useSelector(state => state && state.users ? state.users.user : null);
+    console.log(userInfo);
 
     useEffect(() => {
         dispatch(fetchUser(currentUser._id))
@@ -26,7 +27,7 @@ function CurrentUserProfile() {
                 </div>
                 <div id="bio">
                     <label id="bioo">BIO
-                        <div>{userInfo.bio}</div>
+                        {userInfo && <div>{userInfo.bio}</div>}
                     </label>
                 </div>
             </div>

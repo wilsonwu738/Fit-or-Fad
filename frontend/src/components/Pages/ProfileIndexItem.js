@@ -1,10 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { clearPageErrors, fetchPages } from '../../store/pages';
-
-
-const ProfileIndexItem = ({ page, userId }) => {
+const ProfileIndexItem = ({ page }) => {
     const { title, description, imageUrl } = page;
 
     return (

@@ -1,13 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import UserIndexPage from '../Pages/ProfileIndexPage';
+import { fetchUser } from '../../store/users';
 import { Link } from 'react-router-dom';
 import plus from '../../images/create.png'
 import './Profile.css'
+import { useEffect } from 'react';
 
 
 function CurrentUserProfile() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
+
+    const userInfo = useSelector(state => state && state.users ? state.users.user : null);
+
+    useEffect(() => {
+        dispatch(fetchUser(currentUser._id))
+    }, [currentUser._id, dispatch])
 
     return (
         <>
@@ -17,7 +25,9 @@ function CurrentUserProfile() {
                     <img src={currentUser.profileImageUrl}></img>
                 </div>
                 <div id="bio">
-                    <label id="bioo">BIO</label>
+                    <label id="bioo">BIO
+                        <div>{userInfo.bio}</div>
+                    </label>
                 </div>
             </div>
             <hr></hr>

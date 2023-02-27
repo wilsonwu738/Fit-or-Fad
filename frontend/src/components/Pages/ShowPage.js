@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "../../store/pages";
 import { NavLink } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import './ShowPage.css'
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
@@ -16,7 +17,6 @@ function ShowPage() {
 
 
   let page = useSelector((state) => state && state.pages ? state.pages : null);
-
 
   const handleUpdateClick = () => {
     setIsEditing(true);
@@ -32,13 +32,19 @@ function ShowPage() {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
 
+  const profileLink = () => {
+    return "/profile/" + page.author._id;
+  }
+
+  console.log(page.author._id);
+  console.log(profileLink);
 
   return page.author && (
     <div className="page">
       <div id="pics">
         <img src={page.imageUrl} alt={page.title} />
         <div id="author">
-          <h3>[ {page.author.username} ]</h3>
+          <Link to={profileLink}>[ {page.author.username} ]</Link>
           <div id="buttons">
             <DeleteButton pageId={page.id} />
             <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>

@@ -1,30 +1,30 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearPageErrors, fetchPages } from '../../store/pages';
-import ShowPage from './ShowPage';
+import { clearPageErrors, fetchUserPages } from '../../store/pages';
+// import ShowPage from './ShowPage';
+import ProfileIndexItem from './ProfileIndexItem';
 
-function IndexPage () {
+function ProfileIndexPage ({userId}) {
     const dispatch = useDispatch();
-    const pages = useSelector(state => state.pages && Object.values(state.pages.all));
+    const pages = useSelector(state => state.pages && Object.values(state.pages));
     // debugger
     useEffect(() => {
-        dispatch(fetchPages());
+        dispatch(fetchUserPages(userId));
         return () => dispatch(clearPageErrors());
     }, [dispatch])
 
-    if (!pages || pages.length === 0) return <div>There are no Pages</div>;
+    if (!pages || pages.length === 0) return (<div>There are no Pages</div>);
 
     return (
         <>
-            <h2>All Pages</h2>
             {pages.map(page => (
-                <ShowPage key={page._id} page={page} />
+                <ProfileIndexItem key={page._id} page={page} />
             ))}
         </>
     );
 }
 
-export default IndexPage;
+export default ProfileIndexPage;
 
 
 // import { useEffect } from 'react';

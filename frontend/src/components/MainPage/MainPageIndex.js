@@ -15,11 +15,11 @@ const MainPageIndex = () => {
 
   const pages = useSelector(state => Object.values(state.pages));
   console.log(pages)
-
+  
   const pageItems = pages.map((page, i) => <MainPageItem key={i} page={page} />)
   
-    return (
-      <>
+  return (
+    <>
         <div className='main-page-grid'>
           {pageItems}
         </div>

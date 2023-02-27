@@ -13,7 +13,7 @@ import UserProfile from './components/Profile/UserProfile';
 import { getCurrentUser } from './store/session';
 import Video from './components/Video/Video2';
 import ShowPage from './components/Pages/ShowPage';
-import IndexPage from './components/Pages/IndexPage';
+import UserIndexPage from './components/Pages/ProfileIndexPage';
 import MakePage from './components/Creations/MakePage';
 import EditPage from './components/Edit/EditPage';
 
@@ -33,7 +33,7 @@ function App() {
       <Switch>
         <ProtectedRoute exact path="/" component={MainPageIndex} />
         <ProtectedRoute exact path="/show/:pageId" component={ShowPage} />
-        <ProtectedRoute exact path="/index" component={IndexPage} />
+        <ProtectedRoute exact path="/index" component={UserIndexPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
         <ProtectedRoute exact path="/currentprofile" component={CurrentUserProfile} />

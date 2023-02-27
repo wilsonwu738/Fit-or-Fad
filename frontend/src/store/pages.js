@@ -116,7 +116,7 @@ export const editPage = (data) => async (dispatch) => {
       if (resBody.statusCode === 400) {
         return dispatch(receiveErrors(resBody.errors));
       }
-      console.log("Error updating page:", err);
+      console.log("Error  updating page:", err);
     }
   };
 

@@ -127,4 +127,54 @@ router.patch("/:id", requireUser, async (req, res, next) => {
   }
 });
 
+// router.post('/:id/like', async (req, res) => {
+//   try {
+//     const page = await Page.findById(req.params.id);
+
+//     if (!page) {
+//       return res.status(404).json({ message: 'Page not found' });
+//     }
+
+//     const user = req.user;
+//     // console.log(page)
+//     // console.log(req.user)
+//     if (page.liker.includes(user._id)) {
+//       return res.status(400).json({ message: 'You have already liked this page' });
+//     }
+
+//     page.liker.push(user._id);
+//     await page.save();
+
+//     res.json({ message: 'Page liked successfully' });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
+// router.delete('/:id/like', async (req, res) => {
+//   try {
+//     const page = await Page.findById(req.params.id);
+
+//     if (!page) {
+//       return res.status(404).json({ message: 'Page not found' });
+//     }
+
+//     const user = req.user; // assume user is authenticated and their document is stored in req.user
+//     const index = page.liker.indexOf(user._id);
+//     if (index === -1) {
+//       return res.status(400).json({ message: 'You have not liked this page yet' });
+//     }
+
+//     page.liker.splice(index, 1);
+//     await page.save();
+
+//     res.json({ message: 'Page like removed successfully' });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
+
 module.exports = router;

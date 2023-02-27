@@ -5,6 +5,7 @@ import { fetchPage } from "../../store/pages";
 import './ShowPage.css'
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
+import LikePage from "../Likes/Like";
 
 
 function ShowPage() {
@@ -14,7 +15,7 @@ function ShowPage() {
   
   
   let page = useSelector((state) => state && state.pages ? state.pages : null);
-
+  
 
   const handleUpdateClick = () => {
     setIsEditing(true);
@@ -25,18 +26,14 @@ function ShowPage() {
     dispatch(fetchPage(pageId))
   },[isEditing, pageId, dispatch])
 
-  // useEffect(() => {
-  //   if (page) {
-  //     setIsEditing(false);
-  //   }
-  // }, [page]);
+
 
 
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
 
-
+  console.log(page)
 return page.author && (
   <div className="page"> {/* add the .page class here */}
     <div id="pics">
@@ -53,6 +50,7 @@ return page.author && (
         <h2>👤 {page.author.username}</h2>
         <p>{page.description}</p>
       </div>
+      <LikePage pageId={pageId} />
     </>
     </div>
   </div>

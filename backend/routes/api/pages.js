@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
-    debugger
+    // debugger
     user = await User.findById(req.params.userId);
   } catch (err) {
     const error = new Error("User not found");

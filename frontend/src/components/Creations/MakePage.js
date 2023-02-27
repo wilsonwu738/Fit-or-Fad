@@ -215,8 +215,9 @@ function MakePage () {
       <button id="makebutton" type="button" onClick={handleAddItem}>
         Add Item
       </button>
+      <br></br>
   
-          <button type="submit">Submit</button>
+          <button id="subz" type="submit">Submit</button>
         </form>
       </div>
     </>

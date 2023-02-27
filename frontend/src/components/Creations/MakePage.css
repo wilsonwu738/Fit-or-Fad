@@ -75,3 +75,7 @@ button[type="button"]:hover {
     background-color: rgba(238, 130, 141, 0.498);
 }
 
+#subz {
+    float: right;
+}
+

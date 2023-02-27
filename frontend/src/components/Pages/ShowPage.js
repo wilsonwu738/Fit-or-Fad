@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import './ShowPage.css'
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
+import LikePage from "../Likes/Like";
 import like from "../../images/like.png"
 
 
@@ -14,7 +15,6 @@ function ShowPage() {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
   const { pageId } = useParams();
-
 
   let page = useSelector((state) => state && state.pages ? state.pages : null);
 
@@ -25,7 +25,10 @@ function ShowPage() {
 
   useEffect(() => {
     dispatch(fetchPage(pageId))
-  }, [isEditing, pageId, dispatch])
+  },[isEditing, pageId, dispatch])
+
+
+
 
 
   if (isEditing) {
@@ -59,6 +62,8 @@ function ShowPage() {
           <img id="like" src={like} alt="" />
         </NavLink>
       </div>
+      <LikePage pageId={pageId} />
+    </>
     </div>
   );
 }

@@ -3,27 +3,22 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserPages, clearPageErrors } from '../../store/pages';
 import { fetchUser, fetchUsers } from '../../store/users';
+import UserIndexPage from '../Pages/UserIndexPage';
 import ShowPage from '../Pages/ShowPage';
 
-// <UserProfile id={userId} > this is what the link will look like
 function UserProfile() {
     const dispatch = useDispatch();
-    // const userPages = useSelector(state => state.pages ? Object.values(state.pages.user) : []);
     const { userId } = useParams();
     const user = useSelector(state => state && state.users ? state.users.user : null);
-    const userPages = useSelector(state => state && state.pages ? Object.values(state.pages) : []);
+    // const userPages = useSelector(state => state && state.pages ? Object.values(state.pages) : []);
 
     useEffect(() => {
         dispatch(fetchUser(userId))
     }, [userId, dispatch])
 
-    useEffect(() => {
-        dispatch(fetchUserPages(userId))
-    }, [userId, dispatch])
-
-
-
-    console.log(userPages);
+    // useEffect(() => {
+    //     dispatch(fetchUserPages(userId))
+    // }, [userId, dispatch])
 
     return user && (
         <>
@@ -36,14 +31,8 @@ function UserProfile() {
             
             <h2>All of {user.username}'s Pages</h2>
 
-            {userPages.map(page => (
-                <div>
-                    <h3>{page.author.username}</h3>
-                    <img src={page.imageUrl}></img>
-                    <h3>{page.title}</h3>
-                    <h3>{page.description}</h3>
-                </div>
-            ))}
+            <UserIndexPage userId={userId}/>
+
         </>
     );
 }

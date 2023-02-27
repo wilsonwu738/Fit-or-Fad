@@ -17,7 +17,6 @@ function ShowPage() {
 
   let page = useSelector((state) => state && state.pages ? state.pages : null);
 
-
   const handleUpdateClick = () => {
     setIsEditing(true);
   };

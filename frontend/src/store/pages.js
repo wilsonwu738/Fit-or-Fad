@@ -166,7 +166,8 @@ export const deletePage = (pageId) => async dispatch => {
       const res = await jwtFetch('/api/pages/', {
         method: 'POST',
         body: formData,
-      });
+      }); 
+      //hi
   
       const page = await res.json();
       dispatch(receiveNewPage(page));

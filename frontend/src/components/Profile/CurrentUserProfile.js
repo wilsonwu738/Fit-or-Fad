@@ -12,7 +12,6 @@ function CurrentUserProfile() {
     const currentUser = useSelector(state => state.session.user);
 
     const userInfo = useSelector(state => state && state.users ? state.users.user : null);
-    console.log(userInfo);
 
     useEffect(() => {
         dispatch(fetchUser(currentUser._id))

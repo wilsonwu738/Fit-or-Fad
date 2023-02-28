@@ -35,7 +35,7 @@ const EditPage = (props) => {
       props.setIsEditing(false);
       history.push(`/show/${props.page._id}`);
     } catch (error) { 
-      console.log("Error updating page", error);
+      
     }
   };
 

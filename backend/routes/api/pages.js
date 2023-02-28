@@ -28,7 +28,6 @@ router.get("/", async (req, res) => {
 router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
-    // debugger
     user = await User.findById(req.params.userId);
   } catch (err) {
     const error = new Error("User not found");
@@ -53,7 +52,6 @@ router.get("/user/:userId", async (req, res, next) => {
         "author",
         "_id username"
       );
-      // debugger
       return res.json(page);
     } catch (err) {
       const error = new Error("Page not found");
@@ -66,7 +64,6 @@ router.get("/user/:userId", async (req, res, next) => {
   router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
     try {
       const imageUrl = await singleFileUpload({ file: req.file, public: true });
-      console.log('req.body.itemGroups:', req.body.itemGroups);
       const itemGroups = JSON.parse(req.body.itemGroups);
       const formattedItemGroups = itemGroups.map(itemGroup => {
         const newGroup = {
@@ -136,8 +133,6 @@ router.patch("/:id", requireUser, async (req, res, next) => {
 //     }
 
 //     const user = req.user;
-//     // console.log(page)
-//     // console.log(req.user)
 //     if (page.liker.includes(user._id)) {
 //       return res.status(400).json({ message: 'You have already liked this page' });
 //     }

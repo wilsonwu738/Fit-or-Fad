@@ -1,0 +1,16 @@
+#item {
+    border: 2px ridge whitesmoke;
+    /* display: flex; */
+    /* justify-content: center; */
+        align-items: center;
+            padding: 10px;
+            font-family: sans-serif;
+
+}
+
+#item img {
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 0px;
+}

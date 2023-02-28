@@ -4,6 +4,7 @@ import jwtFetch from './jwt';
 const RECEIVE_FOLLOWS = "follows/RECEIVE_FOLLOWS";
 const RECEIVE_FOLLOW = "follows/RECEIVE_FOLLOW";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
+const RECEIVE_ERRORS = "follows/RECEIVE_ERRORS";
 
 
 const receiveFollow = user => ({
@@ -20,6 +21,12 @@ const removeFollow = userId => ({
     type: REMOVE_FOLLOW,
     userId
 });
+
+const receiveErrors = errors => ({
+    type: RECEIVE_ERRORS,
+    errors
+});
+
 
 // export const fetchFollow = (userId) => async dispatch => {
 //     try {
@@ -38,7 +45,7 @@ export const fetchFollows = () => async dispatch => {
     try {
         const res = await jwtFetch(`/api/users`);
         const users = await res.json();
-        dispatch(receiveUsers(users));
+        dispatch(receiveFollows(users));
     } catch (err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400) {
@@ -47,18 +54,22 @@ export const fetchFollows = () => async dispatch => {
     }
 }
 
-const initalState = { user: null };
+const initialState = { users: [], errors: [] };
 
 // Reducer
-const userReducer = (state = initalState, action) => {
+const followsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RECEIVE_USER:
+        case RECEIVE_FOLLOW:
             return { ...state, user: action.user};
-        case RECEIVE_USERS:
-            return { ...state, users: action.users}
+        case RECEIVE_FOLLOWS:
+            return { ...state, ...action.payload, errors: [] };
+        case REMOVE_FOLLOW:
+            return { ...state, users: state.users.filter(user => user.id !== action.userId) };
+        case RECEIVE_ERRORS:
+            return { ...state, errors: action.errors };
         default:
             return state;
     }
 };
 
-export default userReducer;
+export default followsReducer;

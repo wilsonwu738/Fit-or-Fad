@@ -17,19 +17,22 @@ function UserProfile() {
 
     return user && (
         <>
-            <h1>{user.username}</h1>
-            <div id="profile">
-                <img src={user.profileImageUrl} />
-                <label id="bio">BIO
-                    <div>{user.bio}</div>
-                </label>
+            <div id="container">
+                <div id="profile">
+                    <h2 id="name">[ {user.username} ]</h2>
+                    <img src={user.profileImageUrl}></img>
+                </div>
+                <div id="bio">
+                    <label id="bioo">{user.bio}</label>
+                </div>
+
             </div>
             <hr></hr>
             
             <h2>All of {user.username}'s Pages</h2>
-
+            <div id="pages">
             <ProfileIndexPage userId={userId}/>
-
+            </div>
         </>
     );
 }

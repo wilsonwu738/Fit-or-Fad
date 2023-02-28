@@ -20,9 +20,9 @@ const LikePage = ({ pageId }) => {
 
   const handleLikeClick = () => {
     if (liked) {
-      dispatch(unlikePage(pageId, userId));
+      dispatch(unlikePage(pageId));
     } else {
-      dispatch(likePage(pageId, userId));
+      dispatch(likePage(pageId));
     }
     setLiked(!liked);
   };

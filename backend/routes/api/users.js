@@ -133,7 +133,6 @@ router.get("/:userId", async (req, res, next) => {
 });
 
 router.post("/like/:pageId", restoreUser, async (req, res, next) => {
-  // console.log(req.user)
   try {
     const user = req.user;
     if (!user) {

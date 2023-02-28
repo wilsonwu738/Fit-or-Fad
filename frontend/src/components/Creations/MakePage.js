@@ -50,9 +50,6 @@ function MakePage () {
       likes: ""
     };
     
-    console.log(finalData);
-    debugger;
-
     dispatch(composePage(finalData, images))
     .then(() => {
       history.push('/');

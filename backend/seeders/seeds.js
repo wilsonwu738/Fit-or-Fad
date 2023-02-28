@@ -383,7 +383,6 @@ pages.push(
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
-    console.log('Connected to MongoDB successfully');
     insertSeeds();
   })
   .catch(err => {
@@ -395,14 +394,12 @@ mongoose
 
 // Reset and seed db
 const insertSeeds = () => {
-  console.log("Resetting db and seeding users and pages...");
 
   User.collection.drop()
                  .then(() => Page.collection.drop())
                  .then(() => User.insertMany(users))
                  .then(() => Page.insertMany(pages))
                  .then(() => {
-                   console.log("Done!");
                    mongoose.disconnect();
                  })
                  .catch(err => {

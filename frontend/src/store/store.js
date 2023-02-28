@@ -4,12 +4,14 @@ import session from './session';
 import errors from './errors';
 import pages from './pages';
 import users from './users';
+import likes from './likes';
 
 const rootReducer = combineReducers({
   session,
   errors,
   pages,
-  users
+  users,
+  likes
 
 });
 

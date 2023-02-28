@@ -15,7 +15,7 @@ function ShowPage() {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
   const { pageId } = useParams();
-
+  const currentUser = useSelector(state => state.session.user);
   let page = useSelector((state) => state && state.pages ? state.pages : null);
 
   const handleUpdateClick = () => {
@@ -37,30 +37,61 @@ function ShowPage() {
     return "/profile/" + page.author._id;
   }
 
-  return page.author && (
-    <div className="page">
-      <div id="pics">
-        <img src={page.imageUrl} alt={page.title} />
-        <div id="author">
-          <Link to={profileLink}>[ {page.author.username} ]</Link>
-          <div id="buttons">
-            <DeleteButton pageId={page.id} />
-            <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
-            <LikePage pageId={pageId} src={like} className="likeButton"/>
+  if (page.author && page.author._id === currentUser._id) {
+    console.log(page.author._id)
+    console.log(currentUser._id)
+    return page.author && (
+      <div className="page">
+        <div id="pics">
+          <img src={page.imageUrl} alt={page.title} />
+          <div id="author">
+            <Link to={profileLink}>[ {page.author.username} ]</Link>
+            <div id="buttons">
+              <DeleteButton pageId={page.id} />
+              <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
+              <LikePage pageId={pageId} src={like} className="likeButton"/>
+            </div>
           </div>
+  
         </div>
-
-      </div>
-      <div id="textz">
-        <h1>{page.title}</h1>
-        <hr />
-        <h2> 👤 {page.author.username}</h2>
-        <p>{page.description}</p>
+        <div id="textz">
+          <h1>{page.title}</h1>
+          <hr />
+          <h2> 👤 {page.author.username}</h2>
+          <p>{page.description}</p>
+          
+        </div>
         
       </div>
-      
-    </div>
-  );
-}
+    );
+  }  else {
+    return page.author && (
+      <div className="page">
+        <div id="pics">
+          <img src={page.imageUrl} alt={page.title} />
+          <div id="author">
+            <Link to={profileLink}>[ {page.author.username} ]</Link>
+            <div id="buttons">
+              <LikePage pageId={pageId} src={like} className="likeButton"/>
+            </div>
+          </div>
+  
+        </div>
+        <div id="textz">
+          <h1>{page.title}</h1>
+          <hr />
+          <h2> 👤 {page.author.username}</h2>
+          <p>{page.description}</p>
+          
+        </div>
+        
+      </div>
+
+  )}
+
+
+  }
+
+  
 
 export default ShowPage;

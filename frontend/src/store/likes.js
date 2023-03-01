@@ -9,6 +9,7 @@ const RECEIVE_LIKE_ERRORS = "users/RECEIVE_LIKE_ERRORS";
 const likePageRequest = () => ({ 
     type: LIKE_PAGE_REQUEST 
 });
+//maybe action creators need changes
 
 const likePageSuccess = (data) => ({ 
     type: LIKE_PAGE_SUCCESS, 

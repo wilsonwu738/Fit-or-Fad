@@ -1,25 +1,62 @@
 import React from "react";
 import './About.css';
+import githubLogo from '../../images/github-logo.png';
+import linkedInLogo from '../../images/linkedin.png';
 
 function About() {
+
+    const bio = {
+        tim: {
+            name: "Timothy Chang",
+            title: "Team Lead",
+            image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/TIMOTHYCHANGGGG.jpeg",
+            github: "https://github.com/tchang135",
+            linkedIn: "https://www.linkedin.com/in/timothy-s-chang/"
+        },
+        jiongqi: {
+            name: "Jiong Qi Pan",
+            title: "Frontend Lead",
+            image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img26.jpeg",
+            github: "https://github.com/JQ-pan",
+            linkedIn: "https://www.linkedin.com/in/jiongqi/"
+        },
+        chak: {
+            name: "Chak Hoi Chan",
+            title: "Design Lead",
+            image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
+            github: "",
+            linkedIn: ""
+        },
+        wilson: {
+            name: "Wilson Wu",
+            title: "Backend Lead",
+            image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilsonimg.png",
+            github: "https://www.linkedin.com/in/wilsonwu738/",
+            linkedIn: "https://github.com/wilsonwu738"
+        },
+        daniel: {
+            name: "Daniel Lee",
+            title: "Flex",
+            image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
+            github: "",
+            linkedIn: ""
+        }
+    }
+
     return (
-        <>
-            Timothy Chang
-            <img src="https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/TIMOTHYCHANGGGG.jpeg"></img>
-
-            Jiong Qi Pan
-            <img src="https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img26.jpeg"></img>
-
-            Chak Hoi Chan
-            <img src="https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg"></img>
-
-            Wilson Wu
-            <img src="https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilsonimg.png"></img>
-
-            Daniel Lee
-            <img src="https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg"></img>
-
-        </>
+        <div className="dev-box-container">
+            {Object.entries(bio).map(([key, value]) => (
+                <div key={key} className="dev-individual">
+                    <h2 className="dev-name">{value.name}</h2>
+                    <h3 className="dev-title">{value.title}</h3>
+                    <img className="dev-image" src={value.image} alt={""} />
+                    <div className="links-container">
+                        <a href={value.github}><img className="link-logo" src={githubLogo} /></a>
+                        <a href={value.linkedIn}><img className="link-logo" src={linkedInLogo} /></a>
+                    </div>
+                </div>
+            ))}
+        </div>
     )
 }
 

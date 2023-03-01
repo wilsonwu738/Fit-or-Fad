@@ -17,7 +17,6 @@ function ShowPage() {
   const { pageId } = useParams();
   const currentUser = useSelector(state => state.session.user);
   let page = useSelector((state) => state && state.pages ? state.pages : null);
-  // debugger
   const handleUpdateClick = () => {
     setIsEditing(true);
   };
@@ -44,8 +43,6 @@ function ShowPage() {
   }
 
   if (page.author && page.author._id === currentUser._id) {
-    console.log(page.author._id)
-    console.log(currentUser._id)
     return page.author && (
       <div className="page">
         <div id="pics">
@@ -53,10 +50,7 @@ function ShowPage() {
           <div id="author">
             <div id="profile-link" onClick={toProfilePage}>
               [ {page.author.username} ]
-              {/* <Link to={profileLink}>[ {page.author.username} ]</Link> */}
             </div>
-
-
             <div id="buttons">
               <DeleteButton pageId={page.id} />
               <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>

@@ -25,9 +25,10 @@ function CurrentUserProfile() {
                     <img src={currentUser.profileImageUrl}></img>
                 </div>
                 <div id="bio">
-                    <label id="bioo">BIO
-                        {userInfo && <div>{userInfo.bio}</div>}
-                    </label>
+                    <label id="bioo">BIO</label>
+                    <br></br>
+                    <br></br>
+                    {userInfo && <div>{userInfo.bio}</div>}
                 </div>
             </div>
             <hr></hr>

@@ -41,18 +41,43 @@ const receiveErrors = errors => ({
 //     }
 // }
 
-export const fetchFollows = () => async dispatch => {
-    try {
-        const res = await jwtFetch(`/api/users`);
-        const users = await res.json();
-        dispatch(receiveFollows(users));
-    } catch (err) {
-        const resBody = await err.json();
-        if (resBody.statusCode === 400) {
-            dispatch(receiveErrors(resBody.errors));
+// export const fetchFollows = () => async dispatch => {
+//     try {
+//         const res = await jwtFetch(`/api/users`);
+//         const users = await res.json();
+//         dispatch(receiveFollows(users));
+//     } catch (err) {
+//         const resBody = await err.json();
+//         if (resBody.statusCode === 400) {
+//             dispatch(receiveErrors(resBody.errors));
+//         }
+//     }
+// }
+export const followUser = (userId) => async dispatch => {
+        debugger
+        const res = await jwtFetch(`/api/users/follow/${userId}`, {        
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
         }
-    }
-}
+    });
+        debugger
+        const user = await res.json();
+        dispatch(receiveFollow(user));
+  };
+
+  export const deleteFollow = (userId) => async dispatch => {
+    debugger
+    const res = await jwtFetch(`/api/users/follow/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        }
+    });
+    debugger
+    const user = await res.json();
+    dispatch(removeFollow(user));
+};
 
 const initialState = { users: [], errors: [] };
 

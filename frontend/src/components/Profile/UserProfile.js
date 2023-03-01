@@ -5,6 +5,7 @@ import { fetchUserPages, clearPageErrors } from '../../store/pages';
 import { fetchUser, fetchUsers } from '../../store/users';
 import ProfileIndexPage from '../Pages/ProfileIndexPage';
 import ShowPage from '../Pages/ShowPage';
+import FollowButton from '../Follows/follow';
 
 function UserProfile() {
     const dispatch = useDispatch();
@@ -17,12 +18,17 @@ function UserProfile() {
 
     return user && (
         <>
+
             <div id="container">
                 <div id="profile">
                     <h2 id="name">[ {user.username} ]</h2>
                     <img src={user.profileImageUrl}></img>
+                    <div><FollowButton userId={userId}/></div>
                 </div>
                 <div id="bio">
+                    <label id="bioo">BIO</label>
+                    <br></br>
+                    <br></br>
                     <label id="bioo">{user.bio}</label>
                 </div>
 

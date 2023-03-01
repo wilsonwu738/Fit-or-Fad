@@ -1,0 +1,30 @@
+.dev-box-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 50px;
+    height: 500px;
+}
+
+.dev-individual {
+    border: 1px solid;
+    height: 200px;
+    width: 200px;
+}
+
+.dev-image {
+    height: 200px;
+    width: 200px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 25px;
+}
+
+.link-logo {
+    height: 50px;
+    width: 50px;
+}

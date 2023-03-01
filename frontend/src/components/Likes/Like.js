@@ -20,12 +20,6 @@ const LikePage = ({ pageId }) => {
   }, [page, user]);
 
   const handleLikeClick = () => {
-    console.log('handleLikeClick called');
-    console.log('liked:', liked);
-    console.log('pageId:', pageId);
-    console.log('user:', user);
-    console.log('page:', page);
-  
     if (liked) {
       dispatch(unlikePage(pageId, user._id));
     } else {

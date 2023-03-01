@@ -27,36 +27,48 @@ const unlikePageSuccess = (data) => ({
 
 const receiveErrors = (errors) => ({
     type: RECEIVE_LIKE_ERRORS,
-    errors,
+    payload: errors,
   });
 
 export const likePage = (pageId, userId) => async (dispatch) => {
+  debugger
   dispatch(likePageRequest());
-
-  try {
-    const res = await jwtFetch(`/api/pages/like/${pageId}`, "POST");
-    dispatch(likePageSuccess(res));
-  } catch (err) {
-    const resBody = await err.json();
-    if (resBody.statusCode === 400) {
-        dispatch(receiveErrors(resBody.errors));
-    }
+  debugger
+  const res = await jwtFetch(`/api/like/${pageId}`, "POST");
+  debugger
+  dispatch(likePageSuccess(res));
+  debugger
 }
-};
+
+//   try {
+//     const res = await jwtFetch(`/api/like/${pageId}`, "POST");
+//     dispatch(likePageSuccess(res));
+//   } catch (err) {
+//     console.log("error status:", err.status);
+//     const resBody = await err.json();
+//     if (resBody.statusCode === 400) {
+//         dispatch(receiveErrors(resBody.errors));
+//     }
+// }
+// };
 
 export const unlikePage = (pageId, userId) => async (dispatch) => {
+    debugger
   dispatch(unlikePageRequest());
-
-  try {
-    const res = await jwtFetch(`/api/pages/like/${pageId}`, "DELETE");
-    dispatch(unlikePageSuccess(res));
-  } catch (err) {
-    const resBody = await err.json();
-    if (resBody.statusCode === 400) {
-        dispatch(receiveErrors(resBody.errors));
-    }
+  const res = await jwtFetch(`/api/like/${pageId}`, "DELETE");
+  dispatch(unlikePageSuccess(res));
 }
-};
+//   try {
+//     const res = await jwtFetch(`/api/like/${pageId}`, "DELETE");
+//     dispatch(unlikePageSuccess(res));
+//   } catch (err) {
+//     const resBody = await err.json();
+//     console.log("error status:", err.status);
+//     if (resBody.statusCode === 400) {
+//         dispatch(receiveErrors(resBody.errors));
+//     }
+// }
+// };
 
 const initialState = {
     loading: false,

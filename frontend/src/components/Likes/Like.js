@@ -11,7 +11,7 @@ const LikePage = ({ pageId }) => {
   const page = useSelector((state) => state.pages)
 
   useEffect(() => {
-    debugger
+    // debugger
     if (page && page.liker && page.liker.includes(user._id)) {
       setLiked(true);
     } else {
@@ -20,12 +20,18 @@ const LikePage = ({ pageId }) => {
   }, [page, user]);
 
   const handleLikeClick = () => {
-    debugger
+    console.log('handleLikeClick called');
+    console.log('liked:', liked);
+    console.log('pageId:', pageId);
+    console.log('user:', user);
+    console.log('page:', page);
+  
     if (liked) {
       dispatch(unlikePage(pageId, user._id));
     } else {
       dispatch(likePage(pageId, user._id));
     }
+  
     setLiked(!liked);
   };
 

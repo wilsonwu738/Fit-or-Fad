@@ -9,7 +9,6 @@ const RECEIVE_LIKE_ERRORS = "users/RECEIVE_LIKE_ERRORS";
 const likePageRequest = () => ({ 
     type: LIKE_PAGE_REQUEST 
 });
-//maybe action creators need changes
 
 const likePageSuccess = (data) => ({ 
     type: LIKE_PAGE_SUCCESS, 
@@ -35,7 +34,7 @@ export const likePage = (pageId, userId) => async (dispatch) => {
   debugger
   dispatch(likePageRequest());
   debugger
-  const res = await jwtFetch(`/api/like/${pageId}`, "POST");
+  const res = await jwtFetch(`/api/like/${pageId}`, { method: "POST" });
   debugger
   dispatch(likePageSuccess(res));
   debugger

@@ -1,31 +1,31 @@
-import jwtFetch from './jwt';
+// import jwtFetch from './jwt';
 
-// Actions
-const RECEIVE_FOLLOWS = "follows/RECEIVE_FOLLOWS";
-const RECEIVE_FOLLOW = "follows/RECEIVE_FOLLOW";
-const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
-const RECEIVE_ERRORS = "follows/RECEIVE_ERRORS";
+// // Actions
+// const RECEIVE_FOLLOWS = "follows/RECEIVE_FOLLOWS";
+// const RECEIVE_FOLLOW = "follows/RECEIVE_FOLLOW";
+// const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
+// const RECEIVE_ERRORS = "follows/RECEIVE_ERRORS";
 
 
-const receiveFollow = user => ({
-    type: RECEIVE_FOLLOW,
-    user
-});
+// const receiveFollow = user => ({
+//     type: RECEIVE_FOLLOW,
+//     user
+// });
 
-const receiveFollows = users => ({
-    type: RECEIVE_FOLLOWS,
-    users
-});
+// const receiveFollows = users => ({
+//     type: RECEIVE_FOLLOWS,
+//     users
+// });
 
-const removeFollow = userId => ({
-    type: REMOVE_FOLLOW,
-    userId
-});
+// const removeFollow = userId => ({
+//     type: REMOVE_FOLLOW,
+//     userId
+// });
 
-const receiveErrors = errors => ({
-    type: RECEIVE_ERRORS,
-    errors
-});
+// const receiveErrors = errors => ({
+//     type: RECEIVE_ERRORS,
+//     errors
+// });
 
 
 // export const fetchFollow = (userId) => async dispatch => {
@@ -53,48 +53,48 @@ const receiveErrors = errors => ({
 //         }
 //     }
 // }
-export const followUser = (userId) => async dispatch => {
-        debugger
-        const res = await jwtFetch(`/api/users/follow/${userId}`, {        
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        }
-    });
-        debugger
-        const user = await res.json();
-        dispatch(receiveFollow(user));
-  };
+// export const followUser = (userId) => async dispatch => {
+//         debugger
+//         const res = await jwtFetch(`/api/users/follow/${userId}`, {        
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": "application/json",
+//         }
+//     });
+//         debugger
+//         const user = await res.json();
+//         dispatch(receiveFollow(user));
+//   };
 
-  export const deleteFollow = (userId) => async dispatch => {
-    debugger
-    const res = await jwtFetch(`/api/users/follow/${userId}`, {
-        method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-        }
-    });
-    debugger
-    const user = await res.json();
-    dispatch(removeFollow(user));
-};
+//   export const deleteFollow = (userId) => async dispatch => {
+//     debugger
+//     const res = await jwtFetch(`/api/users/follow/${userId}`, {
+//         method: 'DELETE',
+//         headers: {
+//             "Content-Type": "application/json",
+//         }
+//     });
+//     debugger
+//     const user = await res.json();
+//     dispatch(removeFollow(user));
+// };
 
-const initialState = { users: [], errors: [] };
+// const initialState = { users: [], errors: [] };
 
-// Reducer
-const followsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case RECEIVE_FOLLOW:
-            return { ...state, user: action.user};
-        case RECEIVE_FOLLOWS:
-            return { ...state, ...action.payload, errors: [] };
-        case REMOVE_FOLLOW:
-            return { ...state, users: state.users.filter(user => user.id !== action.userId) };
-        case RECEIVE_ERRORS:
-            return { ...state, errors: action.errors };
-        default:
-            return state;
-    }
-};
+// // Reducer
+// const followsReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case RECEIVE_FOLLOW:
+//             return { ...state, user: action.user};
+//         case RECEIVE_FOLLOWS:
+//             return { ...state, ...action.payload, errors: [] };
+//         case REMOVE_FOLLOW:
+//             return { ...state, users: state.users.filter(user => user.id !== action.userId) };
+//         case RECEIVE_ERRORS:
+//             return { ...state, errors: action.errors };
+//         default:
+//             return state;
+//     }
+// };
 
-export default followsReducer;
+// export default followsReducer;

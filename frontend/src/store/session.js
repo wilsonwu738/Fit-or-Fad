@@ -67,6 +67,7 @@ export const logout = () => dispatch => {
   const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
       case RECEIVE_CURRENT_USER:
+        debugger
         return { user: action.currentUser };
       case RECEIVE_USER_LOGOUT:
         return initialState;
@@ -87,7 +88,6 @@ export const logout = () => dispatch => {
     switch(action.type) {
       case RECEIVE_SESSION_ERRORS:
         return action.errors;
-      case RECEIVE_CURRENT_USER:
       case CLEAR_SESSION_ERRORS:
         return nullErrors;
       default:

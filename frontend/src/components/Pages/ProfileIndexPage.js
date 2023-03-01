@@ -15,8 +15,8 @@ function ProfileIndexPage ({userId}) {
 
     return (
         <>
-            {pages.map(page => (
-                <ProfileIndexItem key={page._id} page={page} />
+            {pages.map((page, i) => (
+                <ProfileIndexItem key={i} page={page} />
             ))}
         </>
     );

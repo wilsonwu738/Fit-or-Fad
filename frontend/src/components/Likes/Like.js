@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePage, unlikePage } from "../../store/likes";
-import { fetchPage } from "../../store/pages";
+// import { fetchPage } from "../../store/pages";
 
 const LikePage = ({ pageId }) => {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const [liked, setLiked] = useState(false);
 
-  const page = useSelector((state) => state.pages[pageId]);
+  const page = useSelector((state) => state.pages)
 
   useEffect(() => {
-    if (page && page.likers && page.likers.includes(userId)) {
+    debugger
+    if (page && page.liker && page.liker.includes(user._id)) {
       setLiked(true);
     } else {
       setLiked(false);
     }
-  }, [page, userId]);
+  }, [page, user]);
 
   const handleLikeClick = () => {
+    debugger
     if (liked) {
-      dispatch(unlikePage(pageId));
+      dispatch(unlikePage(pageId, user._id));
     } else {
-      dispatch(likePage(pageId));
+      dispatch(likePage(pageId, user._id));
     }
     setLiked(!liked);
   };

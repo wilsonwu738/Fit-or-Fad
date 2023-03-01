@@ -26,6 +26,9 @@ function UserProfile() {
                     <div><FollowButton userId={userId}/></div>
                 </div>
                 <div id="bio">
+                    <label id="bioo">BIO</label>
+                    <br></br>
+                    <br></br>
                     <label id="bioo">{user.bio}</label>
                 </div>
 

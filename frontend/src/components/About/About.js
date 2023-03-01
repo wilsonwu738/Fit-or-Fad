@@ -24,8 +24,8 @@ function About() {
             name: "Chak Hoi Chan",
             title: "Design Lead",
             image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
-            github: "",
-            linkedIn: ""
+            github: "https://github.com/chakhoic",
+            linkedIn: "https://www.linkedin.com/in/chak-hoi-chan-19672046/"
         },
         wilson: {
             name: "Wilson Wu",
@@ -38,7 +38,7 @@ function About() {
             name: "Daniel Lee",
             title: "Flex",
             image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
-            github: "",
+            github: "https://github.com/dlee131",
             linkedIn: ""
         }
     }

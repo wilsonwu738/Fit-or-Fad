@@ -23,6 +23,9 @@ function UserProfile() {
                     <img src={user.profileImageUrl}></img>
                 </div>
                 <div id="bio">
+                    <label id="bioo">BIO</label>
+                    <br></br>
+                    <br></br>
                     <label id="bioo">{user.bio}</label>
                 </div>
 

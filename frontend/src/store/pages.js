@@ -14,14 +14,14 @@ const receiveUpdatedPage = page => ({
 });
 
 const receiveDeletedPage = (pageId) => ({
-    type: RECEIVE_DELETED_PAGE,
-    pageId,
-  });
-  
+  type: RECEIVE_DELETED_PAGE,
+  pageId,
+});
+
 
 const receivePages = pages => ({
-    type: RECEIVE_PAGES,
-    pages
+  type: RECEIVE_PAGES,
+  pages
 });
 
 const receiveUserPages = (pages) => ({
@@ -29,10 +29,13 @@ const receiveUserPages = (pages) => ({
   pages,
 });
 
-const receiveNewPage = (page) => ({
-  type: RECEIVE_NEW_PAGE,
-  page,
-});
+const receiveNewPage = (page) => {
+  debugger
+  return {
+    type: RECEIVE_NEW_PAGE,
+    page,
+  }
+};
 
 const receiveErrors = (errors) => ({
   type: RECEIVE_PAGE_ERRORS,
@@ -47,9 +50,10 @@ export const clearPageErrors = (errors) => ({
 
 export const fetchPage = (id) => async (dispatch) => {
   try {
-   
+    debugger
     const res = await jwtFetch(`/api/pages/${id}`);
     const page = await res.json();
+    debugger
     dispatch(receiveNewPage(page));
   } catch (err) {
     const resBody = await err.json();
@@ -57,22 +61,22 @@ export const fetchPage = (id) => async (dispatch) => {
       return dispatch(receiveErrors(resBody.errors));
     }
   }
-  
+
 };
 
 export const fetchPages = () => async dispatch => {
-    try {
-        const res = await jwtFetch('/api/pages');
-        const pages = await res.json();
-        
-        dispatch(receivePages(pages));
-    } catch (err) {
-        const resBody = await err.json();
-        if (resBody.statusCode === 400) {
-            dispatch(receiveErrors(resBody.errors));
-        }
+  try {
+    const res = await jwtFetch('/api/pages');
+    const pages = await res.json();
+
+    dispatch(receivePages(pages));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      dispatch(receiveErrors(resBody.errors));
     }
   }
+}
 
 
 
@@ -103,20 +107,20 @@ export const fetchUserPages = (id) => async (dispatch) => {
 // };
 
 export const editPage = (data) => async (dispatch) => {
-    try {
-      const res = await jwtFetch(`/api/pages/${data._id}`, {
-        method: "PATCH",
-        body: JSON.stringify(data),
-      });
-      const page = await res.json();
-      dispatch(receiveUpdatedPage(page));
-    } catch (err) {
-      const resBody = await err.json();
-      if (resBody.statusCode === 400) {
-        return dispatch(receiveErrors(resBody.errors));
-      }
+  try {
+    const res = await jwtFetch(`/api/pages/${data._id}`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    });
+    const page = await res.json();
+    dispatch(receiveUpdatedPage(page));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      return dispatch(receiveErrors(resBody.errors));
     }
-  };
+  }
+};
 
 
 // export const deletePage = (id) => async (dispatch) => {
@@ -131,43 +135,43 @@ export const editPage = (data) => async (dispatch) => {
 // };
 
 export const deletePage = (pageId) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/${pageId}`, {
-        method: 'DELETE'
-    })
-    if (res.ok) {
-        dispatch(receiveDeletedPage(pageId))
-    }
-    return res
+  const res = await jwtFetch(`/api/pages/${pageId}`, {
+    method: 'DELETE'
+  })
+  if (res.ok) {
+    dispatch(receiveDeletedPage(pageId))
+  }
+  return res
 }
 
 
 
-  export const composePage = (data, images) => async dispatch => {
-    const formData = new FormData();
-    Object.keys(data).forEach(key => {
-      if (key === "itemGroups") {
-        formData.append(key, JSON.stringify(data[key])); // stringify the array before appending to form data
-      } else {
-        formData.append(key, data[key]);
-      }
-    });
-    Array.from(images).forEach(image => formData.append("images", image));
-    try {
-      const res = await jwtFetch('/api/pages/', {
-        method: 'POST',
-        body: formData,
-      }); 
-      //hi
-  
-      const page = await res.json();
-      dispatch(receiveNewPage(page));
-    } catch (err) {
-      const resBody = await err.json();
-      if (resBody.statusCode === 400) {
-        dispatch(receiveErrors(resBody.errors));
-      }
+export const composePage = (data, images) => async dispatch => {
+  const formData = new FormData();
+  Object.keys(data).forEach(key => {
+    if (key === "itemGroups") {
+      formData.append(key, JSON.stringify(data[key])); // stringify the array before appending to form data
+    } else {
+      formData.append(key, data[key]);
     }
-  };
+  });
+  Array.from(images).forEach(image => formData.append("images", image));
+  try {
+    const res = await jwtFetch('/api/pages/', {
+      method: 'POST',
+      body: formData,
+    });
+    //hi
+
+    const page = await res.json();
+    dispatch(receiveNewPage(page));
+  } catch (err) {
+    const resBody = await err.json();
+    if (resBody.statusCode === 400) {
+      dispatch(receiveErrors(resBody.errors));
+    }
+  }
+};
 
 
 const nullErrors = null;
@@ -186,31 +190,36 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
 
 
 const pagesReducer = (state = {}, action) => {
-    const newState = { ...state };
-    switch (action.type) {
-        case RECEIVE_PAGES:
-            return { ...state, ...action.pages };
-        case RECEIVE_USER_PAGES:
-            return { ...state, ...action.pages };
-        case RECEIVE_NEW_PAGE:
-            // return { ...state, new: action.page };
-            return { ...state,  ...action.page };
-        case RECEIVE_UPDATED_PAGE:
-            return {
-                ...state,
-                [action.page.id]: {
-                    ...state[action.page.id],
-                    ...action.page
-                }
-            };
-        case RECEIVE_DELETED_PAGE:
-                
-            delete newState[action.pageId];
-                
-            return newState;
-        default:
-            return state;
-    }
+  const newState = { ...state };
+  switch (action.type) {
+    case RECEIVE_PAGES:
+
+      return { ...state, ...action.pages };
+    case RECEIVE_USER_PAGES:
+
+      return { ...state, ...action.pages };
+    case RECEIVE_NEW_PAGE:
+      debugger
+      state[action.page._id] = action.page;
+      // return { ...state, new: action.page };
+      // return { ...state,  ...action.page };
+      return state;
+    case RECEIVE_UPDATED_PAGE:
+      return {
+        ...state,
+        [action.page.id]: {
+          ...state[action.page.id],
+          ...action.page
+        }
+      };
+    case RECEIVE_DELETED_PAGE:
+
+      delete newState[action.pageId];
+
+      return newState;
+    default:
+      return state;
+  }
 };
 
 export default pagesReducer;

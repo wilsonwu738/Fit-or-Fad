@@ -9,7 +9,7 @@ function DeleteButton() {
     const { pageId } = useParams();
     const history = useHistory();
     // const id = useSelector(state => state.page.id);
-    let page = useSelector((state) => state && state.pages ? state.pages : null);
+    // let page = useSelector((state) => state && state.pages ? state.pages : null);
    const handleClick = () => {
     dispatch(deletePage(pageId))
     history.push('/');

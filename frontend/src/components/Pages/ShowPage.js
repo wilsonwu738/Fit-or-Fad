@@ -110,10 +110,10 @@ function ShowPage() {
 
   const hasNoEditButton = (
     <div className="buttons">
-      <DeleteButton pageId={page.id} className="pic-buttons"/>
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
+
 
   return page.author && (
     <div className="page-container">
@@ -122,6 +122,7 @@ function ShowPage() {
           <img src={page.imageUrl} alt={page.title} />
           <div className="buttons-container">
             {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
+            
           </div>
 
         </div>

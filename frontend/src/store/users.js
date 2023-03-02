@@ -9,7 +9,6 @@ const RECEIVE_FOLLOW = "follows/RECEIVE_FOLLOW";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
 
 
-
 const receiveUser = user => ({
     type: RECEIVE_USER,
     user
@@ -34,6 +33,8 @@ const removeFollow = userId => ({
     type: REMOVE_FOLLOW,
     userId
 });
+
+
 
 
 export const fetchUser = (userId) => async dispatch => {
@@ -89,6 +90,9 @@ const user = await res.json();
 
 dispatch(receiveUser(user));
 };
+
+
+
 
 
 

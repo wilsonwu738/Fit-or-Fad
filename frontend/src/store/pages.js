@@ -8,6 +8,9 @@ const CLEAR_PAGE_ERRORS = "pages/CLEAR_PAGE_ERRORS";
 const RECEIVE_UPDATED_PAGE = "pages/RECEIVE_UPDATED_PAGE";
 const RECEIVE_DELETED_PAGE = "pages/DELETE_PAGE";
 
+const RECEIVE_LIKE = "likes/RECEIVE_LIKE"
+const REMOVE_LIKE = "likes/REMOVE_LIKE"
+
 const receiveUpdatedPage = page => ({
   type: RECEIVE_UPDATED_PAGE,
   page
@@ -46,6 +49,16 @@ export const clearPageErrors = (errors) => ({
   type: CLEAR_PAGE_ERRORS,
   errors,
 });
+
+const receiveLike = user => ({
+  type: RECEIVE_LIKE,
+  user
+})
+
+const removeLike = userId => ({
+  type: REMOVE_LIKE,
+  userId
+})
 
 
 export const fetchPage = (id) => async (dispatch) => {
@@ -173,6 +186,24 @@ export const composePage = (data, images) => async dispatch => {
   }
 };
 
+  export const likePage = (pageId) => async dispatch => {
+    const res = await jwtFetch(`/api/users/like/${pageId}`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json",
+      }
+    })
+    const page = await res.json();
+    dispatch(receivePages(page));
+  }
+
+  export const deleteLike = (pageId) => async dispatch => {
+    const res = await jwtFetch(`/api/users/like/${pageId}`, {
+      method: 'DELETE'
+    });
+    const page = await res.json();
+    dispatch(receivePages(page))
+  }
 
 const nullErrors = null;
 
@@ -190,36 +221,36 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
 
 
 const pagesReducer = (state = {}, action) => {
-  const newState = { ...state };
-  switch (action.type) {
-    case RECEIVE_PAGES:
 
-      return { ...state, ...action.pages };
-    case RECEIVE_USER_PAGES:
-
-      return { ...state, ...action.pages };
-    case RECEIVE_NEW_PAGE:
-      debugger
-      state[action.page._id] = action.page;
-      // return { ...state, new: action.page };
-      // return { ...state,  ...action.page };
-      return state;
-    case RECEIVE_UPDATED_PAGE:
-      return {
-        ...state,
-        [action.page.id]: {
-          ...state[action.page.id],
-          ...action.page
-        }
-      };
-    case RECEIVE_DELETED_PAGE:
-
-      delete newState[action.pageId];
-
-      return newState;
-    default:
-      return state;
-  }
+    const newState = { ...state };
+    switch (action.type) {
+        case RECEIVE_PAGES:
+            return { ...state, ...action.pages };
+        case RECEIVE_USER_PAGES:
+            return { ...state, ...action.pages };
+        case RECEIVE_NEW_PAGE:
+            // return { ...state, new: action.page };
+            return { ...state,  ...action.page };
+        case RECEIVE_UPDATED_PAGE:
+            return {
+                ...state,
+                [action.page.id]: {
+                    ...state[action.page.id],
+                    ...action.page
+                }
+            };
+        case RECEIVE_DELETED_PAGE:
+            delete newState[action.pageId];
+            return newState;
+        case RECEIVE_LIKE:
+            return { ...state, ...action.pages}
+        case REMOVE_LIKE:
+            return {
+              ...state, pages: state.pages.filter((page) => page._id !== action.pageId)
+            }
+        default:
+            return state;
+    }
 };
 
 export default pagesReducer;

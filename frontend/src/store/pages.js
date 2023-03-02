@@ -227,7 +227,7 @@ const pagesReducer = (state = {}, action) => {
         case RECEIVE_PAGES:
             return { ...state, ...action.pages };
         case RECEIVE_USER_PAGES:
-            return { ...state, ...action.pages };
+            return { ...action.pages };
         case RECEIVE_NEW_PAGE:
             // return { ...state, new: action.page };
             return { ...state,  ...action.page };

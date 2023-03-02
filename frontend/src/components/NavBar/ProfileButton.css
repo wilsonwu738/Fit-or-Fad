@@ -22,9 +22,10 @@
     /* positioning */
     display: flex;
     align-items: center;
-    font-size: 22px;
-    /* styling */
     margin-right: 5px;
+    /* styling */
+    font-size: 22px;
+    user-select: none;
 }
 
 .profile-button {

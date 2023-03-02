@@ -36,7 +36,7 @@ function About() {
         },
         daniel: {
             name: "Daniel Lee",
-            title: "Flex",
+            title: "Backend/Frontend Flex",
             image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
             github: "https://github.com/dlee131",
             linkedIn: "https://www.linkedin.com/in/daniel-lee-231a57262/"

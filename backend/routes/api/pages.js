@@ -28,7 +28,6 @@ router.get("/", async (req, res) => {
 router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
-    debugger
     user = await User.findById(req.params.userId);
   } catch (err) {
     const error = new Error("User not found");
@@ -53,7 +52,6 @@ router.get("/user/:userId", async (req, res, next) => {
         "author",
         "_id username"
       );
-      // debugger
       return res.json(page);
     } catch (err) {
       const error = new Error("Page not found");
@@ -66,7 +64,6 @@ router.get("/user/:userId", async (req, res, next) => {
   router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
     try {
       const imageUrl = await singleFileUpload({ file: req.file, public: true });
-      console.log('req.body.itemGroups:', req.body.itemGroups);
       const itemGroups = JSON.parse(req.body.itemGroups);
       const formattedItemGroups = itemGroups.map(itemGroup => {
         const newGroup = {
@@ -126,5 +123,53 @@ router.patch("/:id", requireUser, async (req, res, next) => {
     return next(err);
   }
 });
+
+// router.post('/:id/like', async (req, res) => {
+//   try {
+//     const page = await Page.findById(req.params.id);
+
+//     if (!page) {
+//       return res.status(404).json({ message: 'Page not found' });
+//     }
+
+//     const user = req.user;
+//     if (page.liker.includes(user._id)) {
+//       return res.status(400).json({ message: 'You have already liked this page' });
+//     }
+
+//     page.liker.push(user._id);
+//     await page.save();
+
+//     res.json({ message: 'Page liked successfully' });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
+// router.delete('/:id/like', async (req, res) => {
+//   try {
+//     const page = await Page.findById(req.params.id);
+
+//     if (!page) {
+//       return res.status(404).json({ message: 'Page not found' });
+//     }
+
+//     const user = req.user; // assume user is authenticated and their document is stored in req.user
+//     const index = page.liker.indexOf(user._id);
+//     if (index === -1) {
+//       return res.status(400).json({ message: 'You have not liked this page yet' });
+//     }
+
+//     page.liker.splice(index, 1);
+//     await page.save();
+
+//     res.json({ message: 'Page like removed successfully' });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// });
+
 
 module.exports = router;

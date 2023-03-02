@@ -115,6 +115,8 @@ router.get("/current", restoreUser, (req, res) => {
     username: req.user.username,
     profileImageUrl: req.user.profileImageUrl,
     email: req.user.email,
+    followers: req.user.followers,
+    following: req.user.following
   });
 });
 
@@ -133,7 +135,6 @@ router.get("/:userId", async (req, res, next) => {
 });
 
 router.post("/like/:pageId", restoreUser, async (req, res, next) => {
-  // console.log(req.user)
   try {
     const user = req.user;
     if (!user) {
@@ -204,8 +205,10 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
 
 router.post("/follow/:userId", restoreUser, async function (req, res, next) {
   try {
+    debugger
     const userToFollow = await User.findById(req.params.userId);
     const currentUser = req.user;
+    debugger
     if (!currentUser.following.includes(userToFollow._id)) {
       // Add the user to the current user's following list
       currentUser.following.push(userToFollow._id);
@@ -215,7 +218,7 @@ router.post("/follow/:userId", restoreUser, async function (req, res, next) {
       userToFollow.followers.push(currentUser._id);
       await userToFollow.save();
     }
-    res.json(currentUser);
+    res.json(userToFollow);
   } catch (err) {
     next(err);
   }
@@ -237,7 +240,7 @@ router.delete(
         userToUnfollow.followers.pull(currentUser._id);
         await userToUnfollow.save();
       }
-      res.json(currentUser);
+      res.json(userToUnfollow);
     } catch (err) {
       next(err);
     }

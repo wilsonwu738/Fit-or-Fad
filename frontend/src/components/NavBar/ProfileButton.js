@@ -33,9 +33,9 @@ function ProfileButton({ user }) {
     const menu = (
         <div className="profile-dropdown">
             <div className="profile-dropdown-content">
-               <Link to={'/currentprofile'}>
-               <span className="dropdown-element">Profile</span>
-               </Link>
+                <Link to={'/currentprofile'}>
+                    <span className="dropdown-element">Profile</span>
+                </Link>
                 <span className="dropdown-element" onClick={logout}>Log out</span>
             </div>
         </div>

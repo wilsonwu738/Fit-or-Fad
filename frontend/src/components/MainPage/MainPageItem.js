@@ -23,15 +23,16 @@ const MainPageItem = (props) => {
 
     // this does not let the link persist the state
     // LINK PERSISTS STATE
-    const toShowPage = (e) => {
-        if (typeof window !== 'undefined') {
-            window.location.href = `/show/${props.page._id}`;
-        }
-    }
+
+    // const toShowPage = (e) => {
+    //     if (typeof window !== 'undefined') {
+    //         window.location.href = `/show/${props.page._id}`;
+    //     }
+    // }
 
     return (
-        // <Link className="index-link" to={`/show/${props.page._id}`}>
-        <div className="main-page-item" onClick={toShowPage}>
+        <Link className="main-page-item" to={`/show/${props.page._id}`}>
+        {/* <div className="main-page-item" onClick={toShowPage}> */}
             <div className="main-page-image-container">
                 <img src={props.page.imageUrl} alt="" className="main-page-image" />
             </div>
@@ -41,8 +42,8 @@ const MainPageItem = (props) => {
             <br></br>
             <div>Likes: {props.page.liker}</div>
             {/* <button id="editPageButton" onClick={handleUpdateClick}>Edit</button> */}
-        </div>
-        // </Link>
+        {/* </div> */}
+        </Link>
     )
 }
 

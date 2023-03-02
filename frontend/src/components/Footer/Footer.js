@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
     return (
         <div className="footer-background">
-            <Link to="/about">About</Link>
+            <Link to="/about" className="link">Meet The Developers</Link>
         </div>
     )
 }

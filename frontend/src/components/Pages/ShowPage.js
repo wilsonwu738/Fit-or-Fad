@@ -27,8 +27,6 @@ function ShowPage() {
     setIsEditing(true);
   };
 
-  console.log(page);
-
   useEffect(() => {
     dispatch(fetchPage(pageId))
   }, [pageId, dispatch])
@@ -64,62 +62,44 @@ function ShowPage() {
 
   if (page === undefined) return <div>No Page</div>
 
-  if (page.author && page.author._id === currentUser._id) {
-    return (
+  const hasEditButton = (
+    <div className="buttons">
+      <DeleteButton pageId={page.id}  className="pic-buttons"/>
+      <button id="editPageButton" onClick={handleUpdateClick} className="pic-buttons">Edit</button>
+      <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
+    </div>
+  )
+
+  const hasNoEditButton = (
+    <div className="buttons">
+      <DeleteButton pageId={page.id} className="pic-buttons"/>
+      <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
+    </div>
+  )
+
+  return page.author && (
+    <div className="page-container">
       <div className="page">
         <div id="pics">
           <img src={page.imageUrl} alt={page.title} />
-          <div id="author">
-            <div id="profile-link" onClick={toProfilePage}>
-              [ {page.author.username} ]
-            </div>
-            <div id="buttons">
-              {/* <DeleteButton pageId={page.id} /> */}
-              <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
-              {/* <LikePage pageId={pageId} src={like} className="likeButton" /> */}
-            </div>
+          <div className="buttons-container">
+            {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
           </div>
 
         </div>
+
         <div id="textz">
-          <h1>{page.title}</h1>
-          <hr />
-          <h2> 👤 {page.author.username}</h2>
-          <p>{page.description}</p>
+          <div className="title">{page.title}</div>
+          <div className="profile-link" onClick={toProfilePage}>
+            👤 <span className="profile-link-text"> {page.author.username}</span>
+          </div>
+          <div className="text-description">{page.description}</div>
 
         </div>
 
       </div>
-    );
-  } else {
-    return (
-      <div className="page">
-        <div id="pics">
-          <img src={page.imageUrl} alt={page.title} />
-          <div id="author">
-            <div id="profile-link" onClick={toProfilePage}>
-              [ {page.author.username} ]
-              <Link to={profileLink}>[ {page.author.username} ]</Link>
-            </div>
-            <div id="buttons">
-              <LikePage pageId={pageId} src={like} className="likeButton" />
-            </div>
-          </div>
-
-        </div>
-        <div id="textz">
-          <h1>{page.title}</h1>
-          <hr />
-          <h2> 👤 {page.author.username}</h2>
-          <p>{page.description}</p>
-
-        </div>
-
-      </div>
-
-    )
-  }
-
+    </div>
+  );
 
 }
 

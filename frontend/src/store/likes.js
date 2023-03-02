@@ -1,102 +1,93 @@
-import jwtFetch from './jwt';
+import jwtFetch from "./jwt";
 
-export const LIKE_PAGE_REQUEST = 'LIKE_PAGE_REQUEST';
-export const LIKE_PAGE_SUCCESS = 'LIKE_PAGE_SUCCESS';
-export const LIKE_PAGE_FAILURE = 'LIKE_PAGE_FAILURE';
-export const UNLIKE_PAGE_REQUEST = 'UNLIKE_PAGE_REQUEST';
-export const UNLIKE_PAGE_SUCCESS = 'UNLIKE_PAGE_SUCCESS';
-export const UNLIKE_PAGE_FAILURE = 'UNLIKE_PAGE_FAILURE';
+const LIKE_PAGE_REQUEST = "LIKE_PAGE_REQUEST";
+const LIKE_PAGE_SUCCESS = "LIKE_PAGE_SUCCESS";
+const UNLIKE_PAGE_REQUEST = "UNLIKE_PAGE_REQUEST";
+const UNLIKE_PAGE_SUCCESS = "UNLIKE_PAGE_SUCCESS";
+const RECEIVE_LIKE_ERRORS = "users/RECEIVE_LIKE_ERRORS";
 
-export const likePageRequest = () => ({
-    type: LIKE_PAGE_REQUEST,
-    payload: null,
-  });
-  
-  export const likePageSuccess = () => ({
-    type: LIKE_PAGE_SUCCESS,
-    payload: null,
-  });
-  
-  export const likePageFailure = (errors) => ({
-    type: LIKE_PAGE_FAILURE,
-    payload: errors,
-  });
-  
-  export const unlikePageRequest = () => ({
-    type: UNLIKE_PAGE_REQUEST,
-    payload: null,
-  });
-  
-  export const unlikePageSuccess = () => ({
-    type: UNLIKE_PAGE_SUCCESS,
-    payload: null,
-  });
-  
-  export const unlikePageFailure = (errors) => ({
-    type: UNLIKE_PAGE_FAILURE,
+const likePageRequest = () => ({ 
+    type: LIKE_PAGE_REQUEST 
+});
+
+const likePageSuccess = (data) => ({ 
+    type: LIKE_PAGE_SUCCESS, 
+    payload: data 
+});
+
+const unlikePageRequest = () => ({ 
+    type: UNLIKE_PAGE_REQUEST 
+});
+
+const unlikePageSuccess = (data) => ({
+    type: UNLIKE_PAGE_SUCCESS, 
+    payload: data 
+});
+
+
+const receiveErrors = (errors) => ({
+    type: RECEIVE_LIKE_ERRORS,
     payload: errors,
   });
 
-export const likePage = (pageId) => async (dispatch) => {
-    try {
-      dispatch({ type: LIKE_PAGE_REQUEST });
-  
-      const response = await jwtFetch.post(`/api/like/${pageId}`);
-  
-      dispatch({
-        type: LIKE_PAGE_SUCCESS,
-        payload: response.data,
-      });
-    } catch (error) {
-      dispatch({
-        type: LIKE_PAGE_FAILURE,
-        payload: error.response.data.message || error.message,
-      });
-    }
+export const likePage = (pageId, userId) => async (dispatch) => {
+  debugger
+  dispatch(likePageRequest());
+  debugger
+  const res = await jwtFetch(`/api/like/${pageId}`, { method: "POST" });
+  debugger
+  dispatch(likePageSuccess(res));
+  debugger
+}
+
+//   try {
+//     const res = await jwtFetch(`/api/like/${pageId}`, "POST");
+//     dispatch(likePageSuccess(res));
+//   } catch (err) {
+//     console.log("error status:", err.status);
+//     const resBody = await err.json();
+//     if (resBody.statusCode === 400) {
+//         dispatch(receiveErrors(resBody.errors));
+//     }
+// }
+// };
+
+export const unlikePage = (pageId, userId) => async (dispatch) => {
+    debugger
+  dispatch(unlikePageRequest());
+  const res = await jwtFetch(`/api/like/${pageId}`, { method: "DELETE" });
+  dispatch(unlikePageSuccess(res));
+}
+//   try {
+//     const res = await jwtFetch(`/api/like/${pageId}`, "DELETE");
+//     dispatch(unlikePageSuccess(res));
+//   } catch (err) {
+//     const resBody = await err.json();
+//     console.log("error status:", err.status);
+//     if (resBody.statusCode === 400) {
+//         dispatch(receiveErrors(resBody.errors));
+//     }
+// }
+// };
+
+const initialState = {
+    loading: false,
+    error: null,
   };
   
-  export const unlikePage = (pageId) => async (dispatch) => {
-    try {
-      dispatch({ type: UNLIKE_PAGE_REQUEST });
-  
-      const response = await jwtFetch.delete(`/api/like/${pageId}`);
-  
-      dispatch({
-        type: UNLIKE_PAGE_SUCCESS,
-        payload: response.data,
-      });
-    } catch (error) {
-      dispatch({
-        type: UNLIKE_PAGE_FAILURE,
-        payload: error.response.data.message || error.message,
-      });
+  export const likeReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case LIKE_PAGE_REQUEST:
+      case UNLIKE_PAGE_REQUEST:
+        return { ...state, loading: true, error: null };
+      case LIKE_PAGE_SUCCESS:
+      case UNLIKE_PAGE_SUCCESS:
+        return { ...state, loading: false };
+      case RECEIVE_LIKE_ERRORS:
+        return { ...state, loading: false, error: action.payload };
+      default:
+        return state;
     }
   };
 
-  const initialState = {
-  likingPage: false,
-  unlikingPage: false,
-  error: null,
-};
-
-const likePageReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case LIKE_PAGE_REQUEST:
-      return { ...state, likingPage: true };
-    case LIKE_PAGE_SUCCESS:
-      return { ...state, likingPage: false, error: null };
-    case LIKE_PAGE_FAILURE:
-      return { ...state, likingPage: false, error: action.payload };
-    case UNLIKE_PAGE_REQUEST:
-      return { ...state, unlikingPage: true };
-    case UNLIKE_PAGE_SUCCESS:
-      return { ...state, unlikingPage: false, error: null };
-    case UNLIKE_PAGE_FAILURE:
-      return { ...state, unlikingPage: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
-
-export default likePageReducer;
+export default likeReducer;

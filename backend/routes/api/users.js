@@ -115,6 +115,8 @@ router.get("/current", restoreUser, (req, res) => {
     username: req.user.username,
     profileImageUrl: req.user.profileImageUrl,
     email: req.user.email,
+    followers: req.user.followers,
+    following: req.user.following
   });
 });
 
@@ -216,7 +218,7 @@ router.post("/follow/:userId", restoreUser, async function (req, res, next) {
       userToFollow.followers.push(currentUser._id);
       await userToFollow.save();
     }
-    res.json(currentUser);
+    res.json(userToFollow);
   } catch (err) {
     next(err);
   }
@@ -238,7 +240,7 @@ router.delete(
         userToUnfollow.followers.pull(currentUser._id);
         await userToUnfollow.save();
       }
-      res.json(currentUser);
+      res.json(userToUnfollow);
     } catch (err) {
       next(err);
     }

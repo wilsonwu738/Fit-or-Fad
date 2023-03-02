@@ -12,21 +12,24 @@ import like from "../../images/like.png"
 
 
 function ShowPage() {
-  const [isEditing, setIsEditing] = useState(false);
-  const dispatch = useDispatch();
-  const { pageId } = useParams();
-  const currentUser = useSelector(state => state.session.user);
   let page = useSelector((state) => state && state.pages ? state.pages : null);
   const handleUpdateClick = () => {
     setIsEditing(true);
   };
-
+  const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useDispatch();
+  const { pageId } = useParams();
+  const currentUser = useSelector(state => state.session.user);
+  // const items = useSelector(state => state && state.pages ? state.pages.itemGroups[0] : null);
+  const items = page?.itemGroups ? page.itemGroups[0].items : null;
+  // debugger
 
   useEffect(() => {
     dispatch(fetchPage(pageId))
   }, [isEditing, pageId, dispatch])
 
 
+  
 
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
@@ -41,6 +44,18 @@ function ShowPage() {
       window.location.href = `/profile/${page.author._id}`;
     }
   }
+
+  const itemInfo = 
+    items ?
+      items.map((item, i) => (
+        <div> 
+        <p key={i}>{item.name}</p> <p key={i}>{item.url}</p>
+        </div> 
+      )) : null;
+  
+  
+
+  // debugger
 
   if (page.author && page.author._id === currentUser._id) {
     return page.author && (
@@ -64,7 +79,9 @@ function ShowPage() {
           <hr />
           <h2> 👤 {page.author.username}</h2>
           <p>{page.description}</p>
-
+          {itemInfo}
+          
+          
         </div>
 
       </div>

@@ -59,17 +59,20 @@ const removeLike = userId => ({
 
 
 export const fetchPage = (id) => async (dispatch) => {
-  try {
-   
-    const res = await jwtFetch(`/api/pages/${id}`);
+  const res = await jwtFetch(`/api/pages/${id}`);
     const page = await res.json();
     dispatch(receiveNewPage(page));
-  } catch (err) {
-    const resBody = await err.json();
-    if (resBody.statusCode === 400) {
-      return dispatch(receiveErrors(resBody.errors));
-    }
-  }
+  // try {
+   
+  //   const res = await jwtFetch(`/api/pages/${id}`);
+  //   const page = await res.json();
+  //   dispatch(receiveNewPage(page));
+  // } catch (err) {
+  //   const resBody = await err.json();
+  //   if (resBody.statusCode === 400) {
+  //     return dispatch(receiveErrors(resBody.errors));
+  //   }
+  // }
   
 };
 

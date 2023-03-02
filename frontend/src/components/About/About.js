@@ -22,7 +22,7 @@ function About() {
         },
         chak: {
             name: "Chak Hoi Chan",
-            title: "Design Lead",
+            title: "Design Lead / Frontend",
             image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
             github: "https://github.com/chakhoic",
             linkedIn: "https://www.linkedin.com/in/chak-hoi-chan-19672046/"
@@ -36,7 +36,7 @@ function About() {
         },
         daniel: {
             name: "Daniel Lee",
-            title: "Backend/Frontend Flex",
+            title: "Backend / Frontend Flex",
             image: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
             github: "https://github.com/dlee131",
             linkedIn: "https://www.linkedin.com/in/daniel-lee-231a57262/"

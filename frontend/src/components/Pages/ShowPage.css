@@ -62,16 +62,35 @@
     cursor: pointer;
     border-radius: 12px;
     margin: 0px 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6)
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
 }
 
 .buttons button:hover {
     background-color: #303530;
+    color: gray;
 }
 
 
 #buttons img:hover {
     transform: scale(1.2);
+}
+
+.profile-link {
+    color: white;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.profile-link:hover {
+    background-color: #303530;
+    color: gray;
+}
+
+.profile-link-text {
+    font-size: 17px;
 }
 
 /* #like {

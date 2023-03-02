@@ -70,9 +70,9 @@ function ShowPage() {
         <div id="textz">
           <h1>{page.title}</h1>
           <hr />
-          <h2 id="profile-link" onClick={toProfilePage}>
-            👤 {page.author.username}
-          </h2>
+          <div className="profile-link" onClick={toProfilePage}>
+            👤 <span className="profile-link-text"> {page.author.username}</span>
+          </div>
           <p>{page.description}</p>
 
         </div>

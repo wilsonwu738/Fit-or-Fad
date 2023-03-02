@@ -194,9 +194,9 @@ export const deletePage = (pageId) => async dispatch => {
   }
 
   export const deleteLike = (pageId) => async dispatch => {
-    const res = await jwtFetch(`/api/users/unlike/${pageId}`, {
+    const res = await jwtFetch(`/api/users/like/${pageId}`, {
       method: 'DELETE'
-    })
+    });
     const page = await res.json();
     dispatch(receivePages(page))
   }

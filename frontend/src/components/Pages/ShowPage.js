@@ -45,11 +45,16 @@ function ShowPage() {
     }
   }
 
+  const handleClick = (url) => {
+    window.open(url, '_blank');
+  };
+  
   const itemInfo = 
     items ?
       items.map((item, i) => (
         <div> 
-        <p key={i}>{item.name}</p> <p key={i}>{item.url}</p>
+          <p key={i}>{item.name}</p> 
+          <p key={i} onClick={() => handleClick(item.url)}>{item.url}</p>
         </div> 
       )) : null;
   

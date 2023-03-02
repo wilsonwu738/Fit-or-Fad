@@ -1,20 +1,30 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+}
+
 .page {
     display: flex;
+    width: 1024px;
+    border-radius: 45px;
+    background-color: gray;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin: 24px;
 }
 
 #pics {
     flex: 1;
-    max-width: 40%;
-    padding: 60px;
+    width: 100%;
+    padding: 30px;
     position: relative;
 }
 
 #pics img {
-    max-width: 95%;
+    width: 100%;
     height: auto;
     display: block;
-    border: 3px solid #02f726;
-    border-radius: 2px;
+    border-radius: 24px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6)
 }
 
 #textz {
@@ -24,29 +34,39 @@
     padding: 50px;
 }
 
-#author {
+.buttons-container {
+    margin-top: 20px;
+    padding: 2px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-right: 20px;
+    flex-grow: 1;
+    width: 100%;
 }
 
-#buttons button {
-    background-color: #4CAF50;
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.buttons button {
+    background-color: rgb(65, 59, 59);
+    width: 124px;
+    flex-grow: 1;
     border: none;
     color: white;
-    padding: 10px 24px;
+    padding: 10px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-right: 20px;
     cursor: pointer;
+    border-radius: 12px;
+    margin: 0px 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6)
 }
 
-#buttons button:hover {
-    background-color: #3e8e41;
+.buttons button:hover {
+    background-color: #303530;
 }
 
 
@@ -54,7 +74,7 @@
     transform: scale(1.2);
 }
 
-#like {
+/* #like {
     margin-top: 80px;
     margin-left: 480px;
     height: 150px;
@@ -63,5 +83,5 @@
 
 #like:hover {
     transform: scale(1.2);
-}
+} */
 

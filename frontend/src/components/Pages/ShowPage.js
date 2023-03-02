@@ -86,17 +86,11 @@ function ShowPage() {
           <h2> 👤 {page.author.username}</h2>
           <p>{page.description}</p>
           {itemInfo}
-          
-          
         </div>
-
-  //   );
-  // } else {
-  //   return (
-  //     <div>Hello World</div>
-  //   )
-  // }
-  debugger
+      </div>
+    );
+  } else {
+  
 
   if (page === undefined) return <div>No Page</div>
 
@@ -141,6 +135,6 @@ function ShowPage() {
 
 }
 
-
+}
 
 export default ShowPage;

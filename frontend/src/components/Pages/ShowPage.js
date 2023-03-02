@@ -68,12 +68,11 @@ function ShowPage() {
         </div>
 
         <div id="textz">
-          <h1>{page.title}</h1>
-          <hr />
+          <div className="title">{page.title}</div>
           <div className="profile-link" onClick={toProfilePage}>
             👤 <span className="profile-link-text"> {page.author.username}</span>
           </div>
-          <p>{page.description}</p>
+          <div className="text-description">{page.description}</div>
 
         </div>
 

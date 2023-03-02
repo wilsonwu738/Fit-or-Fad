@@ -47,7 +47,8 @@ function ShowPage() {
   }
 
   const handleClick = (url) => {
-    window.open(url, '_blank');
+    const protocol = /^https?:\/\//i.test(url) ? "" : "http://";
+    window.open(protocol + url, "_blank");
   };
   
   const itemInfo = 

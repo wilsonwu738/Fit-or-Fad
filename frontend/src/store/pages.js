@@ -201,7 +201,7 @@ export const composePage = (data, images) => async dispatch => {
       }
     })
     const page = await res.json();
-    dispatch(receivePages(page));
+    dispatch(receiveNewPage(page));
   }
 
   export const deleteLike = (pageId) => async dispatch => {
@@ -209,7 +209,7 @@ export const composePage = (data, images) => async dispatch => {
       method: 'DELETE'
     });
     const page = await res.json();
-    dispatch(receivePages(page))
+    dispatch(receiveNewPage(page))
   }
 
 const nullErrors = null;

@@ -34,7 +34,7 @@ function ShowPage() {
 
   useEffect(() => {
     dispatch(fetchPage(pageId))
-  }, [pageId, dispatch])
+  }, [pageId, dispatch, isEditing])
 
 
   

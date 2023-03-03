@@ -58,7 +58,6 @@ function SignupForm() {
 
   return (
     <>
-      <Video />
       <br></br>
     <div className="session-form-page">
       <div className="session-form-container">

@@ -8,6 +8,8 @@ const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 const RECEIVE_FOLLOW = "follows/RECEIVE_FOLLOW";
 const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
 
+const RECEIVE_NEW_PAGE = "pages/RECEIVE_NEW_PAGE";
+
 
 const receiveUser = user => ({
     type: RECEIVE_USER,
@@ -33,6 +35,14 @@ const removeFollow = userId => ({
     type: REMOVE_FOLLOW,
     userId
 });
+
+const receiveNewPage = (user) => {
+  
+    return {
+      type: RECEIVE_NEW_PAGE,
+      user,
+    }
+  };
 
 
 
@@ -103,9 +113,14 @@ const initalState = {};
 const userReducer = (state = initalState, action) => {
     switch (action.type) {
         case RECEIVE_USER:
+            // debugger
             return { ...state, user: action.user};
         case RECEIVE_USERS:
             return { ...state, users: action.users}
+        // case RECEIVE_NEW_PAGE:
+        //     debugger
+        //     // return { ...state, new: action.page };
+        // return { ...action.user };
         case RECEIVE_FOLLOW:
             return { ...state, ...action.user}
         case REMOVE_FOLLOW:

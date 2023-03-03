@@ -68,6 +68,11 @@
     /* positioning */
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+}
+
+.profile-dropdown-content a {
+    text-decoration: none;
 }
 
 .dropdown-element {
@@ -77,13 +82,15 @@
     margin: 0px 5px;
     font-size: 12px;
     border-radius: 10px;
-            font-size: 15px;
+    font-size: 15px;
+    text-decoration: none;
 }
 
 .dropdown-element:hover {
     /* styling */
     background-color: lightgray;
     cursor: pointer;
+    width:100px;
 }
 
 .profile-button {

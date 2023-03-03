@@ -44,7 +44,16 @@ function About() {
     }
 
     return (
+        <>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         <div className="dev-box-container">
+    
             {Object.entries(bio).map(([key, value]) => (
                 <div key={key} className="dev-individual">
                     <h2 className="dev-name">{value.name}</h2>
@@ -57,6 +66,7 @@ function About() {
                 </div>
             ))}
         </div>
+        </>
     )
 }
 

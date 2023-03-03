@@ -71,7 +71,7 @@ function ShowPage() {
 
   // debugger
 
-  if (page.author && page.author._id === currentUser._id) {
+  if (page?.author && page?.author?._id === currentUser._id) {
     return page.author && (
       <div className="page">
         <div id="pics">
@@ -104,7 +104,7 @@ function ShowPage() {
 
   const hasEditButton = (
     <div className="buttons">
-      <DeleteButton pageId={page.id}  className="pic-buttons"/>
+      <DeleteButton pageId={pageId}  className="pic-buttons"/>
       <button id="editPageButton" onClick={handleUpdateClick} className="pic-buttons">Edit</button>
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
@@ -117,7 +117,7 @@ function ShowPage() {
   )
 
 
-  return page.author && (
+  return page?.author && (
     <div className="page-container">
       <div className="page">
         <div id="pics">

@@ -105,7 +105,7 @@ function ShowPage() {
   const hasEditButton = (
     <div className="buttons">
 
-      <DeleteButton pageId={page.id}  className="pic-buttons"/>
+      <DeleteButton pageId={page?.id}  className="pic-buttons"/>
       <button onClick={handleUpdateClick}>Edit</button>
 
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />

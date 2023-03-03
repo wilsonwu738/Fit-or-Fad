@@ -33,7 +33,7 @@ const receiveUserPages = (pages) => ({
 });
 
 const receiveNewPage = (page) => {
-  debugger
+  
   return {
     type: RECEIVE_NEW_PAGE,
     page,
@@ -66,7 +66,7 @@ export const fetchPage = (id) => async (dispatch) => {
   const res = await jwtFetch(`/api/pages/${id}`);
  
     const page = await res.json();
-    debugger
+    
     dispatch(receiveNewPage(page));
 
   // try {

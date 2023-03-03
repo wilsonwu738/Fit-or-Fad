@@ -12,7 +12,6 @@ import like from "../../images/like.png"
 
 
 function ShowPage() {
-  let page = useSelector((state) => state && state.pages ? state.pages : null);
   const handleUpdateClick = () => {
     setIsEditing(true);
   };
@@ -20,8 +19,16 @@ function ShowPage() {
   const dispatch = useDispatch();
   const { pageId } = useParams();
   const currentUser = useSelector(state => state.session.user);
+  let page = useSelector((state) => {
+    const pages = state.pages;
+    if (pages && pages._id === pageId) {
+      return pages;
+    }
+    return null;
+  });
   // const items = useSelector(state => state && state.pages ? state.pages.itemGroups[0] : null);
   const items = page?.itemGroups ? page.itemGroups[0].items : null;
+  
   // debugger
 
 
@@ -64,7 +71,7 @@ function ShowPage() {
 
   // debugger
 
-  if (page.author && page.author._id === currentUser._id) {
+  if (page?.author && page?.author?._id === currentUser._id) {
     return page.author && (
       <div className="page">
         <div id="pics">
@@ -97,8 +104,10 @@ function ShowPage() {
 
   const hasEditButton = (
     <div className="buttons">
+
       <DeleteButton pageId={page.id}  className="pic-buttons"/>
       <button onClick={handleUpdateClick}>Edit</button>
+
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
@@ -110,7 +119,7 @@ function ShowPage() {
   )
 
 
-  return page.author && (
+  return page?.author && (
     <div className="page-container">
       <div className="page">
         <div id="pics">
@@ -127,7 +136,9 @@ function ShowPage() {
           <div className="profile-link" onClick={toProfilePage}>
             👤 <span className="profile-link-text"> {page.author.username}</span>
           </div>
-          <div className="text-description">{page.description}</div>
+          <div className="text-description">{page.description}
+          {itemInfo}</div>
+         
 
         </div>
 

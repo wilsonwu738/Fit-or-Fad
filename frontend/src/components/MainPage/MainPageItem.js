@@ -40,7 +40,7 @@ const MainPageItem = (props) => {
 
             <div>{props.page.title}</div>
             <br></br>
-            <div>Likes: {props.page.liker.length}</div>
+            <div>Likes: {props.page?.liker?.length}</div>
             {/* <button id="editPageButton" onClick={handleUpdateClick}>Edit</button> */}
         {/* </div> */}
         </Link>

@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { followUser, deleteFollow } from '../../store/users';
 
 function FollowButton({ userId }) {
-    // debugger
+    
   const dispatch = useDispatch();
   
   const currentUser = useSelector(state => state.session.user);
-  debugger
+  
   const currentStatus = currentUser ? currentUser.following.includes(userId) : false
   const [isFollowing, setIsFollowing] = useState(currentStatus);
-    // debugger
+    
   const handleFollow = async () => {
-    debugger
+  
     dispatch(followUser(userId));
     setIsFollowing(true);
   };

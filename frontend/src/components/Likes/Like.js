@@ -8,7 +8,9 @@ const LikePage = ({ pageId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
   const user = useSelector((state) => state.users.user)
-  const currentStatus = user ? user?.likedPage.includes(pageId) : false
+  const currentStatus = user?.likePage?.includes(pageId)
+   
+  
 
   const [liked, setLiked] = useState(currentStatus);
   const page = useSelector((state) => state.pages)
@@ -16,15 +18,17 @@ const LikePage = ({ pageId }) => {
 
   useEffect(() => {
     dispatch(fetchUser(currentUser._id))
-  }, [])
+  }, [liked])
 
 
-  const handleLike = async () => {
+  const handleLike = (e) => {
+    e.preventDefault()
     dispatch(likePage(pageId))
     setLiked(true)
   }
 
-  const handleUnlike = async () => {
+  const handleUnlike = (e) => {
+    e.preventDefault()
     dispatch(deleteLike( pageId ))
     setLiked(false)
   }

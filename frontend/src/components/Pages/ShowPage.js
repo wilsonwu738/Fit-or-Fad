@@ -12,7 +12,6 @@ import like from "../../images/like.png"
 
 
 function ShowPage() {
-  let page = useSelector((state) => state && state.pages ? state.pages : null);
   const handleUpdateClick = () => {
     setIsEditing(true);
   };
@@ -20,8 +19,16 @@ function ShowPage() {
   const dispatch = useDispatch();
   const { pageId } = useParams();
   const currentUser = useSelector(state => state.session.user);
+  let page = useSelector((state) => {
+    const pages = state.pages;
+    if (pages && pages._id === pageId) {
+      return pages;
+    }
+    return null;
+  });
   // const items = useSelector(state => state && state.pages ? state.pages.itemGroups[0] : null);
   const items = page?.itemGroups ? page.itemGroups[0].items : null;
+  
   // debugger
 
 

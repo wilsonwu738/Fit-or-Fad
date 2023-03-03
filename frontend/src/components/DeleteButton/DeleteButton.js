@@ -17,7 +17,7 @@ function DeleteButton() {
 
     return (
         <>
-            <button className="delete-button" onClick={handleClick}>Delete</button>
+            <button className="showpagebuttons" onClick={handleClick}>Delete</button>
             
         </>
     )

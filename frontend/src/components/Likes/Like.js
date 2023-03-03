@@ -6,11 +6,11 @@ import { likePage, deleteLike } from "../../store/pages";
 const LikePage = ({ pageId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const currentStatus = currentUser ? currentUser.likedPage.includes(pageId) : false
+  const currentStatus = currentUser ? currentUser?.likedPage.includes(pageId) : false
 
   const [liked, setLiked] = useState(currentStatus);
   const page = useSelector((state) => state.pages)
-
+debugger
   const handleLike = async () => {
     dispatch(likePage(pageId))
     setLiked(true)

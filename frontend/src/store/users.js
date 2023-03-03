@@ -48,15 +48,11 @@ const receiveNewPage = (user) => {
 
 
 export const fetchUser = (userId) => async dispatch => {
-    try {
-        const res = await jwtFetch(`/api/users/${userId}`);
+    const res = await jwtFetch(`/api/users/${userId}`);
+       
+    if (res.ok) {
         const user = await res.json();
         dispatch(receiveUser(user));
-    } catch (err) {
-        const resBody = await err.json();
-        if (resBody.statusCode === 400) {
-            dispatch(receiveErrors(resBody.errors));
-        }
     }
 }
 

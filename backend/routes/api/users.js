@@ -186,9 +186,13 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
     }
 
     // Remove the page from the user's likedPage array
-    user.likedPage = user.likedPage.filter(
-      (page) => page.toString() !== pageId
-    );
+    // user.likedPage = user.likedPage.filter(
+    //   (page) => page.toString() !== pageId
+    // );
+    const index = user.likedPage.indexOf(pageId)
+    if (index > -1) {
+      user.likedPage.splice(index, 1)
+    }
     await user.save();
 
     // Remove the user from the page's liker array
@@ -200,6 +204,7 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
 
     res.json({ user, page });
   } catch (err) {
+    console.log(err)
     next(err);
   }
 });

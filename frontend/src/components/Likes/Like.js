@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePage, deleteLike } from "../../store/pages";
+import { fetchUser } from "../../store/users";
 // import { fetchPage } from "../../store/pages";
 
 const LikePage = ({ pageId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const currentStatus = currentUser ? currentUser?.likedPage.includes(pageId) : false
+  const user = useSelector((state) => state.users.user)
+  const currentStatus = user ? user?.likedPage.includes(pageId) : false
 
   const [liked, setLiked] = useState(currentStatus);
   const page = useSelector((state) => state.pages)
-debugger
+
+
+  useEffect(() => {
+    dispatch(fetchUser(currentUser._id))
+  }, [])
+
+
   const handleLike = async () => {
     dispatch(likePage(pageId))
     setLiked(true)

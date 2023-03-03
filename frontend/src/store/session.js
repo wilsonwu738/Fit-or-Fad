@@ -4,6 +4,7 @@ const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
+const RECEIVE_NEW_PAGE = "pages/RECEIVE_NEW_PAGE";
 
 // Dispatch receiveCurrentUser when a user logs in.
 const receiveCurrentUser = currentUser => ({
@@ -70,6 +71,8 @@ export const logout = () => dispatch => {
         return { user: action.currentUser };
       case RECEIVE_USER_LOGOUT:
         return initialState;
+      // case RECEIVE_NEW_PAGE:
+      //     return { ...action.page };
       default:
         return state;
     }

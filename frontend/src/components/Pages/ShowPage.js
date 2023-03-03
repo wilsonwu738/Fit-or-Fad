@@ -73,9 +73,9 @@ function ShowPage() {
             <div id="profile-link" onClick={toProfilePage}>
               [ {page.author.username} ]
             </div>
-            <div id="buttons">
+            <div className="buttons">
               <DeleteButton pageId={page.id} />
-              <button id="editPageButton" onClick={handleUpdateClick}>Edit</button>
+              <button className="showpagebuttons" onClick={handleUpdateClick}>Edit</button>
               <LikePage pageId={pageId} src={like} className="likeButton" />
             </div>
           </div>
@@ -98,7 +98,7 @@ function ShowPage() {
   const hasEditButton = (
     <div className="buttons">
       <DeleteButton pageId={page.id}  className="pic-buttons"/>
-      <button id="editPageButton" onClick={handleUpdateClick} className="pic-buttons">Edit</button>
+      <button onClick={handleUpdateClick}>Edit</button>
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )

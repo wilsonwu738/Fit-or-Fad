@@ -116,7 +116,8 @@ router.get("/current", restoreUser, (req, res) => {
     profileImageUrl: req.user.profileImageUrl,
     email: req.user.email,
     followers: req.user.followers,
-    following: req.user.following
+    following: req.user.following,
+    likedPage: req.user.likedPage
   });
 });
 

@@ -11,63 +11,65 @@ const NUM_SEED_PAGES = 5;
 // Create users
 const users = [];
 
-// users.push(
-//   new User ({
-//     username: 'demo-user',
-//     email: 'demo-user@appacademy.io',
-//     hashedPassword: bcrypt.hashSync('123456', 10),
-//     profileImageUrl: DEFAULT_PROFILE_IMAGE_URL
-//   })
-// )
+users.push(
+  new User ({
+    username: 'demo-user',
+    email: 'demo-user@appacademy.io',
+    hashedPassword: bcrypt.hashSync('123456', 10),
+    profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
+    bio: "Meet Demo User, a fictional user designed to showcase the features and capabilities of a software product. Demo User represents an ideal user of the product, with a range of interests and needs that the product is designed to meet."
+  })
+)
+
 
 users.push(
-    new User ({
-      username: 'zaddydan',
-      email: 'dan@gmail.com',
-      hashedPassword: bcrypt.hashSync('123456', 10),
-      profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
-      bio: "Feeble minded with infinite potential"
-    })
+  new User ({
+    username: 'zaddydan',
+    email: 'dan@gmail.com',
+    hashedPassword: bcrypt.hashSync('123456', 10),
+    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
+    bio: "Feeble minded with infinite potential. Not your average coder, always go above and beyond. Formerly a dedicated fitness enthusiast, this individual has traded in their protein shakes for coding snacks and their weightlifting routines for keyboard tapping marathons. With a lifelong commitment to learning and growth, he is poised to make a significant impact in the world of software development."
+  })
 )
 
 users.push(
-    new User ({
-      username: 'wilsonwonder',
-      email: 'willy@gmail.com',
-      hashedPassword: bcrypt.hashSync('123456', 10),
-      profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilsonimg.png",
-      bio: "My bench is 500"
-    })
+  new User ({
+    username: 'wilsonwonder',
+    email: 'willy@gmail.com',
+    hashedPassword: bcrypt.hashSync('123456', 10),
+    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilsonimg.png",
+    bio: "This guy always asks so many questions. Once immersed in the world of finance, this individual has shifted his focus to the exciting and dynamic field of software development. Outside of work, he enjoys exploring the world of fashion, keeping up with the latest trends and experimenting with their own personal style. They believe that fashion is a form of self-expression and use their love of fashion to inspire their work in software development."
+  })
 )
 
 users.push(
-    new User ({
-      username: 'JQmodel',
-      email: 'jiong@gmail.com',
-      hashedPassword: bcrypt.hashSync('123456', 10),
-      profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img26.jpeg",
-      bio: "Xiong Chi in the building"
-    })
+  new User ({
+    username: 'JQmodel',
+    email: 'jiong@gmail.com',
+    hashedPassword: bcrypt.hashSync('123456', 10),
+    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img26.jpeg",
+    bio: "Xiong Chi in the building, a medical assistant turned tech enthusiast with a passion for fashion. In his free time, he is an avid photographer. He loves exploring new places and capturing the beauty of the world through their lens. He believe that photography is a powerful medium for storytelling and self-expression, and he uses his love of photography to inspire his work in software development."
+  })
 )
 
 users.push(
-    new User ({
-      username: 'chakybara',
-      email: 'chak@gmail.com',
-      hashedPassword: bcrypt.hashSync('123456', 10),
-      profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
-      bio: "Yao cheel, it's all g!! "
-    })
+  new User ({
+    username: 'chakybara',
+    email: 'chak@gmail.com',
+    hashedPassword: bcrypt.hashSync('123456', 10),
+    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
+    bio: "Yao cheel, it's all g!! Always the favorite among the crowd. A former sales professional turned software developer with an amazing eye for CSS. He understands the importance of aesthetics and user experience, and he uses his skills in CSS to create visually stunning websites and applications that are both functional and beautiful. He enjoys exploring the outdoors and staying active. He believes that a healthy work-life balance is key to success in both his personal and professional life."
+  })
 )
 
 users.push(
-    new User ({
-      username: 'timmyturner',
-      email: 'tim@gmail.com',
-      hashedPassword: bcrypt.hashSync('123456', 10),
-      profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/TIMOTHYCHANGGGG.jpeg",
-      bio: "Revelations 21:3-4"
-    })
+  new User ({
+    username: 'timmyturner',
+    email: 'tim@gmail.com',
+    hashedPassword: bcrypt.hashSync('123456', 10),
+    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/TIMOTHYCHANGGGG.jpeg",
+    bio: "Revelations 21:3-4. Tim, a former health science professional turned software development team lead. As a team lead, he is a natural leader, always willing to mentor and inspire his colleagues. he understands the importance of collaboration and believes that the best solutions come from a diverse and inclusive team. With his ability to communicate effectively and foster a positive team dynamic, Tim has led his team to many successful projects."
+  })
 )
 
 const pages = [];

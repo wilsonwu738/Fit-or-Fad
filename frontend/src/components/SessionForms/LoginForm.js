@@ -27,6 +27,10 @@ function LoginForm() {
     dispatch(login({ email, password }));
   }
 
+  const demoLogin = () => {
+    dispatch(login({email: "demo-user@appacademy.io", password: "123456"}))
+  }
+
   return (
     <>
         <br></br>
@@ -65,6 +69,7 @@ function LoginForm() {
             disabled={!email || !password}
           />
           </div>
+          <button className='demo-button' onClick={demoLogin}>Demo User</button>
         </form>
       </div>
     </div>

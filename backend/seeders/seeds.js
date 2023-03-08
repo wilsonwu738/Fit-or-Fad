@@ -73,6 +73,33 @@ users.push(
   })
 )
 
+const ourImages = [
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p1.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p2.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p3.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p1.png',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p2.png',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p3.png',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p4.png',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p5.png',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p2.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p3.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p4.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p5.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p1.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p5.jpg',
+
+
+  
+]
 
 const pages = [];
 const images = [
@@ -493,6 +520,21 @@ pages.push(
 //       })
 //     )
 //   }
+
+pages.push(
+  new Page ({
+    author: users[2]._id,
+    title: 'Outfit for Hawaii',
+    description: "Hey, everyone! I wanted to share with you guys my new summer outfit that I'm really excited about. I'm wearing a short sleeve button-down and shorts set with a white and blue floral pattern that really pops! The colors are perfect for the season and the pattern is just the right amount of boldness. To keep my hands free, I'm carrying a white and black crossbody bag that's both stylish and functional. And last but not least, my feet are sporting the Nike Low Court Vision shoes that are so comfortable and versatile. Whether I'm running errands or meeting up with friends, this look is perfect for any occasion. I hope you like it as much as I do!",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg',
+    items: [{name: "Top", url: "https://us.shein.com/Men-Hawaiian-Print-Button-Up-Shirt-p-2211088-cat-1979.html?src_identifier=on%3DIMAGE_COMPONENT%60cn%3DCOMMON_IMAGE_COMPONENT_2_us_en%60hz%3DhotZone_1%60ps%3D6_1%60jc%3Dreal_1970&src_module=Men&src_tab_page_id=page_home1678229575630&mallCode=1"},
+      {name: "Bottom", url: 'https://us.shein.com/SHEIN-Men-Coconut-Tree-Print-Drawstring-Waist-Shorts-p-13057552-cat-1976.html?src_identifier=fc%3DMen%60sc%3DBOTTOMS%60tc%3D0%60oc%3D0%60ps%3Dtab05navbar06%60jc%3Dreal_2045&src_module=topcat&src_tab_page_id=page_real_class1678229848253&mallCode=1'},
+      {name: "Bag", url: 'https://www.etsy.com/listing/1255231825/black-white-checkered-saddle-bag-purse?gpla=1&gao=1&'},
+      {name: "Shoes", url: 'https://www.amazon.com/Nike-Vision-Sneaker-Blackwhite-Regular/dp/B07RKYBTC8?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ARCVLFICTD63C'}
+    ]
+  })
+)
+
 
 mongoose
   .connect(db, { useNewUrlParser: true })

@@ -16,75 +16,89 @@
     border: 5px solid purple;
     background-color: whitesmoke;
     padding: 55px;
-    box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet;
-    margin: 20px, 5px 5px rgb(0, 15, 128);
+    /* box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet; */
+    /* margin: 20px, 5px 5px rgb(0, 15, 128); */
 }
 
-#signup input[type="submit"] {
-    float: right;
+.session-form h2 {
+    text-align: center;
+}
+
+.input-field {
+    background-color: rgb(231, 189, 231);
+    border-radius: 12px;
+    width: 360px;
+    padding: 20px;
+    position: relative;
+}
+
+.input-content {
+    /* text-align: center; */
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.input-title {
+    top: 0;
+    text-align: center;
+}
+
+.input-credentials {
+    bottom: 0;
+    width: 340px;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    color: purple;
+}
+
+.input-credentials:focus {
+    outline: none;
+}
+
+/* .input-credentials {
+    width: 360px;
+    box-sizing: border-box;
+    padding: 12px 20px;
+} */
+
+/* Demo User and Log In Buttons */
+
+.submit-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.submit-buttons {
     font-size: 1.2em;
     padding: 8px 15px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* 
-input[type="file"] {
-    display: none;
-    /* Hide the default file input */
-
-#signupImage {
-    display: none;
-}
-
-#signup input[type="submit"]:active {
-    transform: translateY(1px);
-    box-shadow: none;
-}
-
-.custom-file-input {
-    display: inline-block;
-    background-color: #1E90FF;
-    color: #fff;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
+    background-color: violet;
+    color: rgb(124, 120, 120);
     border: none;
+    width: 182px;
+    /* text-align: center; */
+}
+
+.submit-buttons:hover {
+    background-color: rgb(233, 92, 233);
+    color: white;
     cursor: pointer;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.custom-file-input:hover {
-    background-color: #2F4F4F;
+.submit-buttons:disabled {
+    background-color: rgba(238, 130, 238, 0.452);
+    color: rgb(184, 169, 169);
 }
 
-.custom-file-input:active {
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-    transform: translateY(1px);
-}
-
-.custom-file-input {
-    /* ... */
-    transition: background-color 0.2s ease-in-out;
-}
-
-input[type="text"]:hover,
-input[type="password"]:hover {
-    transform: scale(1.05);
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #ff69b4;
-    box-shadow: 0 0 5px #ff69b4;
-}
-
-.session-form input[type="text"],
-.session-form input[type="password"] {
-    font-family: sans-serif;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: #f5f5f5;
+.errors-container {
+    width: 100%;
+    text-align: center;
+    font-size: 0.875em;
+    height: 15px;
+    color: red;
+    margin: 4px 0px;
 }

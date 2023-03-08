@@ -28,51 +28,69 @@ function LoginForm() {
   }
 
   const demoLogin = () => {
-    dispatch(login({email: "demo-user@appacademy.io", password: "123456"}))
+    dispatch(login({ email: "demo-user@appacademy.io", password: "123456" }))
   }
 
   return (
     <>
-        <br></br>
-    <div className="session-form-page">
-      <div className="session-form-container">
-      
-        <form className="session-form" onSubmit={handleSubmit}>
-            <h2>Log In Here 👇 </h2>
-          <hr></hr>
-          <div className="errors">{errors?.email}</div>
-          <label>
-            <div>Email</div>
-            <br></br>
-            <input type="text"
-              value={email}
-              onChange={update('email')}
-              placeholder="Email"
-            />
-          </label>
-          <div className="errors">{errors?.password}</div>
-          <label>
-            <div>Password</div>
+      <br></br>
+      <div className="session-form-page">
+        <div className="session-form-container">
+
+          <form className="session-form" onSubmit={handleSubmit}>
+            {/* <h2>Log In Here 👇 </h2> */}
+            <h2>Welcome to Fit or Fad</h2>
+            <hr></hr>
+
+            <div className="errors-container">
+              <div className="errors">{errors?.email}</div>
+            </div>
+            
+            <label className="input-field">
+              <div className="input-content input-title">Email</div>
               <br></br>
-            <input type="password"
-              value={password}
-              onChange={update('password')}
-              placeholder="Password"
-            />
-          </label>
-          <br></br>
-          <br></br>
-          <div id="signup">
-          <input
-            type="submit"
-            value="Log In"
-            disabled={!email || !password}
-          />
-          </div>
-          <button className='demo-button' onClick={demoLogin}>Demo User</button>
-        </form>
+
+              <input type="text"
+                className="input-content input-credentials"
+                value={email}
+                onChange={update('email')}
+                placeholder="Email"
+              />
+
+            </label>
+
+            <div className="errors-container">
+              <div className="errors">{errors?.password}</div>
+            </div>
+
+            <label className="input-field">
+              <div className="input-content input-title">Password</div>
+              <br></br>
+
+              <input type="password"
+                className="input-content input-credentials"
+                value={password}
+                onChange={update('password')}
+                placeholder="Password"
+              />
+
+            </label>
+            <br></br>
+            <br></br>
+            <div className="submit-buttons-container">
+              <button className='submit-buttons' onClick={demoLogin}>Demo User</button>
+
+              <input
+                className="submit-buttons"
+                type="submit"
+                value="Log In"
+                disabled={!email || !password}
+              />
+            </div>
+
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 }

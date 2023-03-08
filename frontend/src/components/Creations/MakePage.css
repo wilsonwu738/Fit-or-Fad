@@ -20,8 +20,7 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="file"] {
+.input-text-and-file {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;

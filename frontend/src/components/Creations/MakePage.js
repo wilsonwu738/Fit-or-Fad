@@ -134,6 +134,7 @@ function MakePage () {
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title</label>
           <input
+            className="input-text-and-file"
             type="text"
             id="title"
             name="title"
@@ -144,6 +145,7 @@ function MakePage () {
   
           <label htmlFor="description">Description</label>
           <input
+          className="input-text-and-file"
             type="text"
             id="description"
             name="description"
@@ -155,6 +157,7 @@ function MakePage () {
           <label>
             Images to Upload
             <input
+            className="input-text-and-file"
               id ="upload"
               type="file"
               ref={fileRef}
@@ -181,6 +184,7 @@ function MakePage () {
         <div key={idx}>
           <label htmlFor={`itemName${idx}`}>Item Name</label>
           <input
+          className="input-text-and-file"
             type="text"
             id={`itemName${idx}`}
             name={`items[${idx}][name]`}
@@ -190,6 +194,7 @@ function MakePage () {
 
           <label htmlFor={`itemUrl${idx}`}>Item URL</label>
           <input
+          className="input-text-and-file"
             type="text"
             id={`itemUrl${idx}`}
             name={`items[${idx}][url]`}

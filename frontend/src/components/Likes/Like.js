@@ -2,42 +2,42 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePage, deleteLike } from "../../store/pages";
 import { fetchUser } from "../../store/users";
-// import { fetchPage } from "../../store/pages";
 
 const LikePage = ({ pageId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const user = useSelector((state) => state.users.user)
-  const currentStatus = user?.likePage?.includes(pageId)
-   
-  
-
-  const [liked, setLiked] = useState(currentStatus);
-  const page = useSelector((state) => state.pages)
-
+  const user = useSelector((state) => state.users.user);
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchUser(currentUser._id))
-  }, [liked])
+    dispatch(fetchUser(currentUser._id));
+  }, [currentUser._id]);
 
+  useEffect(() => {
+    if (user?.likedPage?.includes(pageId)) {
+      setLiked(true);
+    } else {
+      setLiked(false);
+    }
+  }, [user, pageId]);
 
   const handleLike = (e) => {
-    e.preventDefault()
-    dispatch(likePage(pageId))
-    setLiked(true)
-  }
+    e.preventDefault();
+    dispatch(likePage(pageId));
+    setLiked(true);
+  };
 
   const handleUnlike = (e) => {
-    e.preventDefault()
-    dispatch(deleteLike( pageId ))
-    setLiked(false)
-  }
+    e.preventDefault();
+    dispatch(deleteLike(pageId));
+    setLiked(false);
+  };
 
   if (liked) {
-    return  <button onClick={handleUnlike}>Unlike</button>
-   } else {
-    return <button className="showpagebuttons" onClick={handleLike}>Like</button>
-   }
+    return <button onClick={handleUnlike}>Unlike</button>;
+  } else {
+    return <button className="showpagebuttons" onClick={handleLike}>Like</button>;
+  }
 };
 
 export default LikePage;

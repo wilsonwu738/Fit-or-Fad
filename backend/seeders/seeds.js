@@ -91,6 +91,12 @@ const ourImages = [
   'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg',
   'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg',
   'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg',
+  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p5.jpg',
+
 
   
 ]

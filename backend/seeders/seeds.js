@@ -431,7 +431,7 @@ pages.push(
         url: "https://us.shein.com/Drop-Shoulder-Letter-Graphic-Pullover-p-2807176-cat-1773.html?mallCode=1",
       },
       {
-        name: "White SKirt",
+        name: "White Skirt",
         url: "https://thehalara.com/products/everyday-2-in-1-tennis-skirt-airy?variant=40883668615334&utm_source=Google&utm_medium=cpcshopping&utm_campaign=17946966209&utm_content=&utm_term=40883668615334&gclid=CjwKCAiA3pugBhAwEiwAWFzwdbNi7D1uKJP8bflKjU5UuU9fF5HzNzr_gK_ZIQIUT9R4kKXWz_aHRBoCGRMQAvD_BwE",
       },
       {
@@ -466,13 +466,134 @@ pages.push(
   })
 );
 
+
 pages.push(
   new Page({
-    author: users[0]._id,
-    title: "Favorite fit to go out for clubbing",
+    author: users[3]._id,
+    title: "My favorite fit to wear on a vacation!",
     description:
-      "Starting with the jacket, the fitted design and sleek white material give off a refined and stylish vibe, while the textured details add an element of edge and intrigue. The dark wash jeans provide a comfortable and versatile base, allowing for easy movement and plenty of opportunities to show off some dance moves. The Jordans add a touch of class and elevate the overall look, making sure I'm the best-dressed guy on the dance floor. To complete the ensemble, I've opted for a drippy white shirt that catches the eye and adds a fun and playful element to the outfit. The colors pair well with the rest of the outfit, while the intricate pattern adds a touch of personality and sets you apart from the crowd.",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img24.jpeg",
+      "Looking sharp and feeling confident in my classic black t-shirt and khaki shorts at this amazing vacation spot! The simplicity of this outfit really allows the beauty of the surroundings to shine. Not only does this outfit look great, but it's also incredibly comfortable. The soft and breathable fabric of my black t-shirt keeps me cool even in the hot sun, while my khaki shorts allow for easy movement as I explore this gorgeous vacation spot. I love how versatile this outfit is, whether I'm lounging by the beach or hiking through the lush landscape. It's perfect for any adventure that comes my way. If you're in need of a comfortable yet stylish outfit for your next vacation, then be sure to add a classic black t-shirt and khaki shorts to your wardrobe. Trust me, it's a timeless look that never goes out of style.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p1.jpg",
+    items: [
+      {
+        name: "Black Top",
+        url: "https://www.fashionnova.com/products/essential-crew-tee-black?variant=714230530065&utm_source=google&utm_medium=cpc&utm_campaign=pvt_nb_performance_max_smart_mens_catch_all_clothing&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4hexzDIIAh0sPO9QCPrmCoO5ah51ZrMfX_RS9BV3pwlbA_9WARVDgaArc6EALw_wcB",
+      },
+      {
+        name: "White Khaki Shorts",
+        url: "https://bananarepublic.gap.com/browse/product.do?pid=445388002&vid=1&tid=brpl000062&kwid=1&ap=7&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc7z-HplIjHhXlPjtxjRMdbzGCU8zI7jeIK_ayb_8VxQUHldrmG5ZWAaApB4EALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "White Shoes",
+        url: "https://www.adidas.com/us/nmd_r1-primeblue-shoes/GZ9260.html?af_channel=Search&af_click_lookback=30d&af_reengagement_window=30d&c=PLA&cm_mmc=AdieSEM_Feeds-_-GoogleProductAds-_-NA-_-GZ9260&cm_mmca1=US&cm_mmca2=NA&dfw_tracker=24819-GZ9260-0021&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6ChA-pnjsJnBH3m_xy-hSxnp6rei_irmZ3FtSSNAeWNpwP4YG6hgkaAp8KEALw_wcB&gclsrc=aw.ds&is_retargeting=true&kpid=GZ9260&pid=googleadwords_temp&sourceid=543457011GZ9260",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[3]._id,
+    title: "Fashionable on a date night!",
+    description:
+      "Feeling sleek and stylish in my black jacket, slim fit grey pants, and Aldo shoes! This outfit is the perfect combination of sophistication and comfort. The black jacket adds an element of refinement to the look, while the slim fit grey pants provide a sleek and modern edge. And let's not forget about the Aldo shoes, which not only look great but also provide incredible comfort and support throughout the day. Whether I'm heading to a date or meeting up with friends for a night out, this outfit never fails to impress. It's versatile enough to dress up or down depending on the occasion, and the comfortable fit allows me to feel confident and relaxed. If you're looking to up your style game with a sophisticated yet comfortable outfit, then be sure to add a black jacket, slim fit grey pants, and Aldo shoes to your wardrobe. Trust me, you won't regret it!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p2.jpg",
+    items: [
+      {
+        name: "Black Jacket",
+        url: "https://realtakai.com/products/rt-no-3462-suit-collar-woolen-coat-jk?variant=39496447557719&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&utm_source=google&utm_medium=paid&utm_campaign=18196928342&utm_content=&utm_term=&gadid=&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc563eQdPB0enQ-9fwEuqetPFSbRyygbV0kL9snQ5p7PJ4xxRGDV64EaAlKxEALw_wcB",
+      },
+      {
+        name: "Grey Pants",
+        url: "https://shop.bluffworks.com/products/ascender-5-pocket-pants-slim-fit-voyager-grey?variant=34139369341067&utm_source=google&utm_content=cpc&utm_campaign=cpc&utm_medium=cpc&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc7ZgnK88NW1al5W-k8A-zuJnFtd-OoC-UZq2Diu-hsaVMtwzId5iYEaAl4zEALw_wcB",
+      },
+      {
+        name: "Aldo shoes",
+        url: "https://www.aldoshoes.com/us/en_US/men/noicien-w-brown/p/13188380?gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc7ffHWYDFupnMiD9HAfacj2-e6n5Y0X1N5Qj0npfRAmXQKfhcre454aAkxtEALw_wcB&gclsrc=aw.ds",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[3]._id,
+    title: "The best fit to take a walk in the park",
+    description:
+      "Enjoying a beautiful day at the park near the lake in my comfortable and stylish Uniqlo light grey shirt and blue shorts! This outfit is perfect for a casual day out in nature, providing both comfort and style. The light grey shirt is incredibly soft and lightweight, making it the perfect choice for a warm day. And the blue shorts not only add a pop of color but also provide a relaxed fit that allows for easy movement as I take a walk around the park. The surroundings are truly breathtaking, and I feel grateful to be able to enjoy it all in comfort and style. Whether I'm taking a stroll or sitting by the lake, this outfit provides the perfect balance of casual comfort and effortless style. If you're looking for a comfortable and stylish outfit for your next walk in the park, then be sure to add a Uniqlo light grey shirt and blue shorts to your wardrobe. Trust me, you won't regret it!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p3.jpg",
+    items: [
+      {
+        name: "Grey Uniqlo Shirt",
+        url: "https://www.uniqlo.com/us/en/products/E455360-000/00?colorDisplayCode=30&sizeDisplayCode=008&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5--1Uw32Uys9phEZoxeCyBXzZiQnv0qpcnHxjACuRa-Lm2eoCn2JkaApxuEALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "White Top",
+        url: "https://www.hoooyi.com/products/shirt-2?variant=42771799703791&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&&utm_source=google&utm_medium=vania&utm_campaign=vania-pmax-0301&utm_content=vania-pmax-0301&gclid=CjwKCAiA3pugBhAwEiwAWFzwdY3Ku-k-QLGfUsRJrjlCP1esZJ-HWKl6OfqTLxCgAHs9XuS3wtx6hBoCBSMQAvD_BwE",
+      },
+      {
+        name: "Ripped Blue Jeans",
+        url: "https://us.shein.com/Men-Ripped-Frayed-Cut-Out-Jeans-p-10484780-cat-1987.html?url_from=adplasm2203210515354022M_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=CjwKCAiA3pugBhAwEiwAWFzwdfv7P5cTjnAPNAKeUmOFfJ7Om0_8CW2z4mHv5w_ZKucMT-DF0SGwiBoCFqUQAvD_BwE",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[4]._id,
+    title: "The type of clothing to wear at a raccoon cafe!",
+    description:
+      "Feeling sophisticated and stylish in my black shirt, black pants, and my timeless Rolex watch as I enjoy a cup of coffee at the raccoon cafe! The black shirt provides a sleek and refined look, while the black pants add a touch of elegance and class. And of course, the Rolex watch is the perfect finishing touch, adding a sense of luxury and sophistication to the entire outfit. The atmosphere of the raccoon cafe is cozy and inviting, and I feel grateful to be able to enjoy it all while looking my best. Whether I'm admiring the adorable raccoons or simply sipping my coffee, this outfit allows me to feel confident and at ease. If you're looking for a stylish and sophisticated outfit for your next coffee date, then be sure to add a black shirt, black pants, and a classic Rolex watch to your wardrobe. Trust me, it's a timeless look that never goes out of style!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg",
+    items: [
+      {
+        name: "Black Shirt",
+        url: "https://www2.hm.com/en_us/productpage.0956343001.html?gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc71U4lABIFRGJX7zvmSnx4zpObzoYw4fBuXrXARJ1btIr6otGbY93oaAs4rEALw_wcB",
+      },
+      {
+        name: "Black Pants",
+        url: "https://www.everlane.com/products/mens-slim-fit-performance-jean-black?locale=US&utm_medium=cpc&utm_source=pla-google-pmax&utm_campaign=18019661708&utm_content=&utm_term=&adgroup=&pid=6578-47070&device=c&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6wUmek4mH6krcvtxTmulMLeb_6nPcvj7oFJAZqbhpZeQeL13-Co4IaArB2EALw_wcB",
+      },
+      {
+        name: "Rolex Watch",
+        url: "https://shop.hodinkee.com/products/rolex-datejust-126333-10-10-rol-gztf32?variant=39903324504139&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc525azkc0DBF3yal8phMs0a1Z4-HnZnGeHtrK8jryEX_RvxkC7ZOL4aAvKDEALw_wcB",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[4]._id,
+    title: "Lotto World FIT!",
+    description:
+      "Feeling cozy and comfortable in my black sweater and green sweatpants as I go out to Lotto World in Korea! This outfit is perfect both for a lazy day in and a day to go out and have fun, providing both warmth and style. The black sweater is soft and comfortable, providing the perfect amount of warmth on a chilly day. And the green sweatpants add a touch of color and personality to the outfit, making it fun and stylish. Whether I'm reading a book, watching TV, or simply lounging around, this outfit allows me to feel relaxed and at ease. It's the perfect choice for anyone who loves to prioritize comfort while still looking good. If you're in need of a comfortable and stylish outfit for your next lazy day at home, then be sure to add a black sweater and green sweatpants to your wardrobe.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg",
+    items: [
+      {
+        name: "Black Sweater",
+        url: "https://talentless.co/products/copy-of-unisex-oversized-hoodie-core?variant=39459565371480&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&tw_source=google&tw_adid=&tw_campaign=19492093643&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5J2XJhTVG_Zanxo4Mr1MF7CFRH5LpQjLsn_uuJhZlb7gsr3DWn_2oaAmoeEALw_wcB",
+      },
+      {
+        name: "Green Sweatpants",
+        url: "https://talentless.co/products/womens-heavyweight-sweatpants?variant=39831990927448&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&tw_source=google&tw_adid=&tw_campaign=19492093643&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6pVhXoNP5hU2zrX549-s8AWfgBp3alhkzRfo8RHputCB_XrnoTNkEaAl2LEALw_wcB",
+      },
+      {
+        name: "Ripped Blue Jeans",
+        url: "https://us.shein.com/Men-Ripped-Frayed-Cut-Out-Jeans-p-10484780-cat-1987.html?url_from=adplasm2203210515354022M_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=CjwKCAiA3pugBhAwEiwAWFzwdfv7P5cTjnAPNAKeUmOFfJ7Om0_8CW2z4mHv5w_ZKucMT-DF0SGwiBoCFqUQAvD_BwE",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[4]._id,
+    title: "Love my raccoon cafes!!",
+    description:
+      "Looking sharp and stylish in my black cap, white shirt, and black pants as I enjoy the company of some adorable raccoons at the cafe! The black cap adds a touch of coolness and edge to the outfit, while the white shirt keeps things clean and classic. And the black pants create a sleek and sophisticated look that is perfect for any occasion. The atmosphere around me is cozy and inviting, with the playful antics of the raccoons keeping me entertained. I feel grateful to be able to enjoy it all in style, while feeling comfortable and at ease in my outfit. If you're looking for a fashionable and practical outfit for your next visit to a raccoon cafe, then be sure to add a black cap, white shirt, and black pants to your wardrobe. It's a winning combination that will keep you looking great no matter what the raccoons throw your way!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg",
     items: [
       {
         name: "Black Cap",
@@ -482,9 +603,113 @@ pages.push(
         name: "White Top",
         url: "https://www.hoooyi.com/products/shirt-2?variant=42771799703791&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&&utm_source=google&utm_medium=vania&utm_campaign=vania-pmax-0301&utm_content=vania-pmax-0301&gclid=CjwKCAiA3pugBhAwEiwAWFzwdY3Ku-k-QLGfUsRJrjlCP1esZJ-HWKl6OfqTLxCgAHs9XuS3wtx6hBoCBSMQAvD_BwE",
       },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[4]._id,
+    title: "The outfit to wear to boost your confidence up",
+    description:
+      "Feeling cool and confident in my black Adidas top and blue ripped jeans as I sit on my sleek Model S Tesla! This outfit is the perfect combination of sporty and stylish, making me feel ready for anything. The black Adidas top is not only comfortable but also adds an athletic edge to the outfit. And the blue ripped jeans provide a touch of rebellion and individuality, making it stand out. Sitting on my Model S Tesla only adds to the cool factor of this outfit. The car is a symbol of luxury and innovation, and I feel lucky to be able to enjoy it all while looking my best. Whether I'm driving around town or simply admiring the car, this outfit allows me to feel confident and stylish. It's the perfect choice for anyone who wants to combine comfort with a sense of adventure and luxury. If you're looking for a sporty and stylish outfit for your next drive around town, then be sure to add a black Adidas top and blue ripped jeans to your wardrobe. Trust me, it's a winning combination!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg",
+    items: [
+      {
+        name: "Black Adidas Top",
+        url: "https://www.asos.com/us/adidas-originals/adidas-originals-adicolor-three-stripe-long-sleeve-t-shirt-in-black/prd/201620155?affid=25902&_cclid=Google_Cj0KCQiApKagBhC1ARIsAFc7Mc4VStkr31MMrvniwyd0jnUUcCOrSRFSSgEjkkyan2nuXDnOU5VR_-gaArBhEALw_wcB&channelref=product+search&mk=abc&ppcadref=11302983040%7c111197600375%7cpla-294682000766&cpn=11302983040&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4VStkr31MMrvniwyd0jnUUcCOrSRFSSgEjkkyan2nuXDnOU5VR_-gaArBhEALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "Blue Ripped Jeans",
+        url: "https://us.shein.com/Men-Ripped-Skinny-Jeans-p-10909810-cat-1987.html?url_from=adplasm2206243337373788M_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6Kor58roX4p33-TJRx9-ybJaCzc1uKCfnQCI1v2DZLTTYxaGNqu_oaAo_UEALw_wcB",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[5]._id,
+    title: "Great weather calls for a great walk on the rocks by the river",
+    description:
+      "Taking a peaceful stroll on the rocks by the river, feeling cozy and stylish in my brown sweater, black pants, and black top! The brown sweater is soft and comfortable, providing just the right amount of warmth for a breezy day outside. And the black pants and top add a touch of sophistication and class to the outfit, making me feel stylish and put together. The scenery around me is absolutely breathtaking, and I feel grateful to be able to enjoy it all in comfort and style. Whether I'm sitting by the river or taking a walk on the rocks, this outfit allows me to feel confident and at ease. If you're looking for a cozy and stylish outfit for your next outdoor adventure, then be sure to add a brown sweater, black pants, and black top to your wardrobe. It's a winning combination that never goes out of style!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p1.png",
+    items: [
+      {
+        name: "Brown Sweater",
+        url: "https://us.shein.com/Men-Flap-Detail-Jacket-p-12648096-cat-1981.html?url_from=adplasm2211029596594160M_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc50Vx67Y-zFiBbaVtKxXoNqZMqAPxyfF6C43dIv2UoNI6w5vg4VRHYaAlWYEALw_wcB",
+      },
+      {
+        name: "White Top",
+        url: "https://us.shein.com/Men-Solid-Round-Neck-Tee-p-10904499-cat-1978.html?url_from=adplasm2203308313346121M_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6V4fywLGoATLVpg2mSO5WC8Jg5Zs3LjEP8jzuAd_z7pprQUcf4Ok8aAj5KEALw_wcB",
+      },
       {
         name: "Ripped Blue Jeans",
-        url: "https://us.shein.com/Men-Ripped-Frayed-Cut-Out-Jeans-p-10484780-cat-1987.html?url_from=adplasm2203210515354022M_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=CjwKCAiA3pugBhAwEiwAWFzwdfv7P5cTjnAPNAKeUmOFfJ7Om0_8CW2z4mHv5w_ZKucMT-DF0SGwiBoCFqUQAvD_BwE",
+        url: "https://shopduer.com/products/mens-dress-sweatpant-slim-black?variant=24013501893&gc_id=17738075499&h_ad_id=%E2%80%A9&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4YjXs5zpq0xG6Fiaex6phS0N-RIJkZSUHiOiIif81VvCxShMnypHEaAkONEALw_wcB",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[5]._id,
+    title: "Sunny day out type of fit!",
+    description:
+      "Feeling cool and confident in my sunglasses and blue jacket as I brave the cold but sunny weather! The sunglasses not only protect my eyes from the bright sunlight but also add a touch of mystery and sophistication to my outfit. And the blue jacket provides the perfect pop of color to brighten up a chilly day, while keeping me warm and cozy. The atmosphere around me is invigorating and refreshing, and I feel grateful to be able to enjoy it all in style. Whether I'm taking a walk or simply enjoying the sunshine, this outfit allows me to feel confident and put together. If you're looking for a stylish and functional outfit for your next cold and sunny adventure, then be sure to add a blue jacket and sunglasses to your wardrobe. Trust me, it's a winning combination that will keep you looking and feeling great no matter what the weather brings!",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p4.png",
+    items: [
+      {
+        name: "Sunglasses",
+        url: "https://www.quayaustralia.com/products/wired-oversized?variant=39843853828182&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc7SLWObU0K2J2-164ynM0X7rUApscSKlm3GJrDNGV-5udoS5BerNyAaAhpkEALw_wcB",
+      },
+      {
+        name: "Blue Jacket",
+        url: "https://www.aelfriceden.com/products/aelfric-eden-letter-foaming-love-print-color-block-varsity-jacket?currency=USD&utm_medium=cpc&utm_source=google&utm_campaign=Google%20Shopping&tw_source=google&tw_adid=&utm_campaign=17887376524&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5e9_rgOL58UINwRiR6T55xk-LUw-mPKaZIIj5S0eUr9vun914XDZUaAhL6EALw_wcB",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[5]._id,
+    title: "The greatest fit for the fall season",
+    description:
+      "Looking sleek and stylish in my blue jacket, white top, and black pants as I enjoy the beauty of the fall season! The blue jacket provides just the right amount of warmth and style for a crisp autumn day, while the white top adds a touch of elegance and sophistication to the outfit. And the black pants tie everything together, creating a cohesive look that is both comfortable and fashionable. The atmosphere around me is enchanting and peaceful, with leaves of all colors falling gently to the ground. I feel grateful to be able to enjoy it all in style, while feeling comfortable and at ease in my outfit.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p3.png",
+    items: [
+      {
+        name: "Blue Jacket",
+        url: "https://www.boohooman.com/us/oversized-denim-jacket/AMM10359-564-34.html?istCompanyId=b521285e-d68e-4362-8a83-c282c7136895&istFeedId=82597367-75f0-43b8-8eff-72784f852411&istItemId=plipaqmti&istBid=t&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6myHFtqkqS1NnfL6ygOUKRQzaTSrATq1pBR3QjgAfZcO2ypQSfuRsaAlYDEALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "White Top",
+        url: "https://www2.hm.com/en_us/productpage.1029317002.html?gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4Ty-0NUTjlQ0KQQO5NHADs-ljtCjzpQQxr3SbDIKu6lEH-9DuGINYaAo72EALw_wcB",
+      },
+      {
+        name: "Black Jeans",
+        url: "https://www.kuhl.com/kuhl/mens/pants/kuhl-denim/?color=Vintage+Blue&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4717O92tiVxCRC4nciv7dXoPIW-hJ4m-Hzl5HZl_56KCFs020WECAaAu1yEALw_wcB",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[5]._id,
+    title: "Lost in a corn maze!",
+    description:
+      "Getting lost in a corn maze has never been more stylish, thanks to my plain sweater and black pants outfit! The plain sweater is simple yet elegant, providing a classic look that is perfect for a day spent in the corn maze. And the black pants add a touch of sophistication and class to the outfit, making me feel put together even when I'm lost in the maze. The atmosphere around me is exciting and full of wonder, and I feel grateful to be able to enjoy it all in style. Whether I'm trying to find my way out of the maze or simply taking in the sights and sounds, this outfit allows me to feel confident and comfortable. If you're looking for a comfortable and stylish outfit for your next corn maze adventure, then be sure to add a plain sweater and black pants to your wardrobe.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p2.png",
+    items: [
+      {
+        name: "Sweater",
+        url: "https://www2.hm.com/en_us/productpage.0970819041.html?gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc79LxjepG9AXjGmRHvn0mBly_wBJ7kSU93lE9sO1oqooLH4yuuv46UaAnyZEALw_wcB",
+      },
+      {
+        name: "Black Sweatpants",
+        url: "https://www.hoooyi.com/products/shirt-2?variant=42771799703791&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&&utm_source=google&utm_medium=vania&utm_campaign=vania-pmax-0301&utm_content=vania-pmax-0301&gclid=CjwKCAiA3pugBhAwEiwAWFzwdY3Ku-k-QLGfUsRJrjlCP1esZJ-HWKl6OfqTLxCgAHs9XuS3wtx6hBoCBSMQAvD_BwE",
       },
     ],
   })

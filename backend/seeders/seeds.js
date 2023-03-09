@@ -521,6 +521,8 @@ pages.push(
 //     )
 //   }
 
+//wilson 
+
 pages.push(
   new Page ({
     author: users[2]._id,
@@ -529,11 +531,179 @@ pages.push(
     imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg',
     items: [{name: "Top", url: "https://us.shein.com/Men-Hawaiian-Print-Button-Up-Shirt-p-2211088-cat-1979.html?src_identifier=on%3DIMAGE_COMPONENT%60cn%3DCOMMON_IMAGE_COMPONENT_2_us_en%60hz%3DhotZone_1%60ps%3D6_1%60jc%3Dreal_1970&src_module=Men&src_tab_page_id=page_home1678229575630&mallCode=1"},
       {name: "Bottom", url: 'https://us.shein.com/SHEIN-Men-Coconut-Tree-Print-Drawstring-Waist-Shorts-p-13057552-cat-1976.html?src_identifier=fc%3DMen%60sc%3DBOTTOMS%60tc%3D0%60oc%3D0%60ps%3Dtab05navbar06%60jc%3Dreal_2045&src_module=topcat&src_tab_page_id=page_real_class1678229848253&mallCode=1'},
-      {name: "Bag", url: 'https://www.etsy.com/listing/1255231825/black-white-checkered-saddle-bag-purse?gpla=1&gao=1&'},
-      {name: "Shoes", url: 'https://www.amazon.com/Nike-Vision-Sneaker-Blackwhite-Regular/dp/B07RKYBTC8?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ARCVLFICTD63C'}
+      {name: "Crossbody Bag", url: 'https://www.etsy.com/listing/1255231825/black-white-checkered-saddle-bag-purse?gpla=1&gao=1&'},
+      {name: "Nike Shoes", url: 'https://www.amazon.com/Nike-Vision-Sneaker-Blackwhite-Regular/dp/B07RKYBTC8?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ARCVLFICTD63C'}
     ]
   })
 )
+
+pages.push(
+  new Page({
+    author: users[2]._id,
+    title: "Urban Explorer: Mapping Out Style with a Black Sweatshirt and Cargo Pants",
+    description: "In this fashion post, we explore how to add an adventurous and urban edge to your style. Our model is wearing a black sweatshirt with a map design, paired with comfortable cargo pants and sleek Nike Air Force 1 sneakers. The map design on the sweatshirt adds a bold and unique touch to the outfit, while the black color keeps it understated and versatile. The cargo pants provide a functional and utilitarian vibe that's perfect for exploring the city or running errands. The Nike Air Force 1 sneakers add a modern and athletic touch to the outfit, while also providing comfort and support for all-day wear. This ensemble is perfect for the adventurous and stylish man who's always on the go, with a comfortable and practical style that's still fashion-forward. Whether you're exploring a new city or just going for a walk around town, this outfit is the perfect choice for a bold and stylish look.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p2.jpg',
+    items: [
+      {
+        name: "Black Sweatshirt with Map Pattern",
+        url: "https://www.amazon.com/Bermuda-Triangle-Longitude-Coordinates-Sweatshirt/dp/B09C1M1T9C",
+      },
+      {
+        name: "Cargo Pants",
+        url: "https://www.amazon.com/Amazon-Essentials-Straight-Fit-Cargo-Khaki/dp/B07FHBJFPF/ref=sr_1_1_sspa?keywords=khaki+cargo+pants&qid=1678395670&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFWUUU3UVlDRlNNTjEmZW5jcnlwdGVkSWQ9QTAyNjM2MDcxNEk0RE5XV1VJTTk5JmVuY3J5cHRlZEFkSWQ9QTA0NDkwNjM1M05CTlhVTUhENzMmd2lkZ2V0TmFtZT1zcF9hdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl",
+      },
+      {
+        name: "Nike Air Force 1",
+        url: "https://www.nike.com/t/air-force-1-07-mens-shoes-5QFp5Z/CW2288-111?nikemt=true&cp=38647199687_search_%7CPRODUCT_GROUP%7CGOOGLE%7C71700000101429394%7CGG_Evergreen_Shopping_Shoes_AllShoes%7C%7Cc&exp=2011&gclsrc=aw.ds&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5uLQl0FgR-1JL9eGVCfm3ck4zgvHv4Z4gL5y_LG5JINGjER3BA9HgaAh6xEALw_wcB&gclsrc=aw.ds",
+      }
+    ]
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[2]._id,
+    title: "Smart Casual: Elevating a Classic Look with Blue and Grey",
+    description: "In this fashion post, we showcase how to add a modern twist to a classic and timeless look. Our model is wearing a blue shirt, paired with grey pants and brown dress shoes. The blue shirt adds a pop of color to the outfit, while still keeping it professional and polished. The grey pants provide a neutral and versatile base, with a slim and tapered fit that's perfect for a modern and stylish look. The brown dress shoes add a touch of sophistication and elegance to the outfit, with a classic and timeless style that's perfect for any formal occasion. This ensemble is perfect for the stylish and modern man who wants to look his best without sacrificing comfort or practicality. The smart casual style strikes the perfect balance between formality and comfort, making it a great choice for both work and play. Whether you're heading to the office or going out for a night on the town, this outfit is the perfect choice for a stylish and classic look that's sure to impress.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p3.jpg',
+    items: [
+      {
+        name: "Blue Button Down",
+        url: "https://www.uniqlo.com/us/en/contents/feature/masterpiece/rayon_ls_blouse/",
+      },
+      {
+        name: "Grey Dress Pants",
+        url: "https://bananarepublicfactory.gapfactory.com/browse/product.do?pid=532457011&vid=1&tid=bfpl000030&kwid=1&ap=7&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4Bvw0vcvfOVYISrcqIdQJ4TfYWWDUNaDqt8dN6-MIx1GZjIVOSS6oaAoJMEALw_wcB&gclsrc=aw.ds#pdp-page-content",
+      },
+      {
+        name: "Brown Dress Shoes",
+        url: "https://www.toms.com/us/men/shoes/water-resistant-topaz-brown-navi-dress-shoe/10016920.html",
+      }
+    ]
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[2]._id,
+    title: "Nautical Vibes: Sailing into Style with Blue and Brown",
+    description: "In this fashion post, we showcase a fresh and modern take on the classic nautical look. Our model is wearing a blue t-shirt with an anchor design pattern, paired with brown shorts and Nike white shoes. The anchor design adds a playful and nautical touch to the outfit, while the blue and brown color combination creates a relaxed and summery vibe. The brown shorts are a great choice for warm weather, with a casual and comfortable fit that's perfect for a day at the beach or a picnic in the park. The Nike white shoes provide a crisp and clean touch to the outfit, while also providing comfort and support for all-day wear. This ensemble is perfect for the stylish and fun-loving man who wants to look his best while enjoying the summer sun. Whether you're sailing the high seas or just enjoying a day out with friends, this outfit is the perfect choice for a stylish and comfortable look that's sure to turn heads.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p5.jpg',
+    items: [
+      {
+        name: "Blue T-shirt",
+        url: "https://www.saksoff5th.com/product/threads-4-thought-anchor-marled-t-shirt-0400017114596.html?site_refer=CSE_GGLPLA:Mens_Shirts+%26+Tops:Threads+4+Thought&country=US&currency=USD&CSE_CID=G_Off+5th_PLA_SSC_Men%27s+Apparel:Men%27s+Apparel&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5f-L_nucMFZsfN1e-l_ynptPT-0DFvDZ4RcRymBOWcnmMtAmNgsbkaApFiEALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "Brown Shorts",
+        url: "https://www.kuhl.com/kuhl/mens/shorts/the-law-short/?color=Dark+Khaki&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4XunfwYvS0vCxGtonI91eMaTIeuzGsqHiZrscjbVu4rtpIKJ5KyB0aAu77EALw_wcB",
+      },
+      {
+        name: "Nike Air Force 1",
+        url: "https://www.nike.com/t/air-force-1-07-mens-shoes-5QFp5Z/CW2288-111?nikemt=true&cp=38647199687_search_%7CPRODUCT_GROUP%7CGOOGLE%7C71700000101429394%7CGG_Evergreen_Shopping_Shoes_AllShoes%7C%7Cc&exp=2011&gclsrc=aw.ds&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5uLQl0FgR-1JL9eGVCfm3ck4zgvHv4Z4gL5y_LG5JINGjER3BA9HgaAh6xEALw_wcB&gclsrc=aw.ds",
+      }
+    ]
+  })
+);
+
+
+//dan
+pages.push(
+  new Page({
+    author: users[1]._id,
+    title: "Casual Cool: Styling a Blue Hoodie and Sweatpants",
+    description: "In this fashion post, we explore how to elevate a comfortable and casual look with a few key styling choices. I am rocking a blue hoodie and sweatpants, paired with sleek black Nike running shoes and black headphones. The blue hue of the hoodie adds a pop of color to the otherwise muted outfit, while the sweatpants provide both comfort and a relaxed vibe. The black Nike shoes give the look a touch of athleticism and the headphones add an element of tech-savvy style. Overall, this outfit strikes the perfect balance between comfort and fashion-forwardness, making it a great choice for running errands, working from home, or just hanging out with friends.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p1.jpg',
+    items: [
+      {
+        name: "Blue Hoodie",
+        url: "https://www.uniqlo.com/us/en/products/E444967-000/00?colorDisplayCode=68&sizeDisplayCode=008&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5-sdOhnkUG66GHpJmlLcL9MRMtfTRNK1iZzOiJhIAmX8Boe3jydDgaAmK0EALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "Blue Sweatpants",
+        url: "https://www.uniqlo.com/us/en/products/E455640-000/00?colorDisplayCode=68&sizeDisplayCode=005&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc79C2-i6kROmX_gN412HgtRKHAWI5bKexP18fhT4lMENaSpxNKOkysaAkeiEALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "Nike Running Shoes",
+        url: "https://www.nike.com/t/pegasus-39-mens-road-running-shoes-jXTgc9/DH4071-001?nikemt=true&cp=34492719349_search_%7CPRODUCT_GROUP%7CGOOGLE%7C71700000088292143%7CAll_X_X_X_X-Device_X_Nike-Clearance_X_SSC%7C%7Cc&gclsrc=aw.ds&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4eHZjwqOjh7avBbM4yHFQ4eHQt3PoY_1aAFowkfSZII_KGxXikxj0aAn8ZEALw_wcB&gclsrc=aw.ds",
+      },
+      {
+        name: "Black Headphones",
+        url: "https://www.bestbuy.com/site/beats-by-dr-dre-solo-the-beats-icon-collection-wireless-on-ear-headphones-matte-black/6383124.p?skuId=6383124&ref=212&loc=1&extStoreId=1535&ref=212&loc=1&&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc51Ip2UquJe7VXK22vwHH_L5jVYpkitcMPHDR86-MLav3r5XC347tAaApDiEALw_wcB&gclsrc=aw.ds",
+      },
+    ]
+  })
+);
+
+
+pages.push(
+  new Page({
+    author: users[1]._id,
+    title: "Grey on Grey: Elevating a Casual Look",
+    description: "In this fashion post, we explore how to make a casual outfit look effortlessly stylish. Our model is wearing a greyish shirt with small white dots, paired with comfortable grey sweatpants and sleek black running shoes from Adidas. The grey-on-grey color palette creates a cohesive and sophisticated look, while the small white dots on the shirt add a playful touch. The black Adidas running shoes provide both comfort and a modern edge, while also grounding the outfit with a bold pop of black. This ensemble is perfect for a day of running errands or meeting up with friends, as it strikes a balance between style and comfort. Whether you're hitting the gym or simply going for a walk, this outfit will keep you looking and feeling your best.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg',
+    items: [
+      {
+        name: "Grey Button Down",
+        url: "https://bananarepublicfactory.gapfactory.com/browse/product.do?pid=801165641&vid=1&tid=bfpl000033&kwid=1&ap=7&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5QCQEpc3aoyZTeqtddoNJQvrfI_efSb7S4lYGETU86qGz9URRdYJMaAnxJEALw_wcB&gclsrc=aw.ds#pdp-page-content",
+      },
+      {
+        name: "Grey Sweatpants",
+        url: "https://us.shein.com/Men-Drawstring-Waist-Slant-Pocket-Joggers-p-10090689-cat-2707.html?url_from=adplasm2203046268755715L_GPM&cid=15534601883&setid=&adid=&pf=GOOGLE&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4GJEd27pk8pFtyK-54j8V6ad1sNUttmmgc0xFXofAdrMTlq-10yogaAjfBEALw_wcB",
+      },
+      {
+        name: "Adidas Running Shoes",
+        url: "https://www.adidas.com/us/ultraboost-5.0-dna-shoes/GV8746.html?af_channel=Search&af_click_lookback=30d&af_reengagement_window=30d&c=PLA&cm_mmc=AdieSEM_Feeds-_-GoogleProductAds-_-NA-_-GV8746&cm_mmca1=US&cm_mmca2=NA&dfw_tracker=24819-GV8746-0014&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4uPGzwoVYtcTUxHLgObDwJlvp4yYCnzStEEaOwmyCK_trOKyCn1LkaAhC9EALw_wcB&gclsrc=aw.ds&is_retargeting=true&kpid=GV8746&pid=googleadwords_temp&sourceid=543457011GV8746",
+      }
+    ]
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[1]._id,
+    title: "Cartoon Cool: Adding Playfulness to a Denim Look",
+    description: "In this fashion post, we showcase a playful and stylish look that's perfect for adding some fun to your wardrobe. Our model is wearing a grey cartoon cap, paired with a denim top that's perfect for the warmer months. The cap adds a playful touch to the outfit, while the denim top provides a classic and versatile base. The light wash of the denim creates a laid-back and relaxed vibe that's perfect for a casual day out. The outfit is completed with a pair of simple black jeans and white sneakers, which provide a clean and minimalistic feel that lets the cap and denim top stand out. This ensemble is perfect for a day out with friends or a weekend brunch, and it's sure to turn heads with its unique and playful style. Whether you're a fan of cartoons or just looking to add some fun to your wardrobe, this look is the perfect choice.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg',
+    items: [
+      {
+        name: "Grey Cartoon Cap",
+        url: "https://www.ebay.com/itm/371648715465",
+      },
+      {
+        name: "Denim Top",
+        url: "https://bananarepublic.gap.com/browse/product.do?pid=549522032&vid=1&tid=brpl000062&kwid=1&ap=7&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4FDKqRID2_opsFFPC4LKbd7WD1BF-Jkua2RwAtrMdP4Bj0W_hLgSAaAtgTEALw_wcB&gclsrc=aw.ds#pdp-page-content",
+      },
+      {
+        name: "Transparent Phone Case",
+        url: "https://www.walmart.com/ip/Airlite-Invisible-Ring-Case-With-Thick-Clear-Tpu-Shockproof-Protection-For-Iphone-14-Pro-Max-6-7-Clear/1890291177?wmlspartner=wlpa&selectedSellerId=101016925&adid=222222222271890291177_101016925_144893864830_18291203882&wl0=&wl1=g&wl2=c&wl3=620762789706&wl4=aud-1651068664506:pla-1743906452118&wl5=9004405&wl6=&wl7=&wl8=&wl9=pla&wl10=169776200&wl11=online&wl12=1890291177_101016925&veh=sem&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6ylYbjvLaMDN9rEtU1qOA6IYS0S2rly4tcvBS2Q_0Wo5-J6mcI8IgaAlwDEALw_wcB&gclsrc=aw.ds",
+      }
+    ]
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[1]._id,
+    title: "Circle of Style: Elevating a Simple Look with a Bold Design",
+    description: "In this fashion post, we showcase how to add a bold touch to a simple and comfortable outfit. Our model is wearing a black tank top with a large circle design pattern, paired with light grey shorts. The circle design adds an eye-catching and playful element to the outfit, while the black and grey color combination keeps it simple and understated. The tank top is perfect for showing off toned arms, making it a great choice for a day at the gym or a run in the park. The light grey shorts provide both comfort and style, with a relaxed fit that's perfect for any casual occasion. The outfit is completed with a pair of white sneakers, which add a crisp and clean touch to the look. Overall, this ensemble strikes the perfect balance between comfort and style, with a bold and playful design that's sure to turn heads. Whether you're running errands or meeting up with friends, this outfit is the perfect choice for a stylish and comfortable look.",
+    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg',
+    items: [
+      {
+        name: "Black Tank Top",
+        url: "https://www.kohls.com/product/prd-4148906/mens-disney-villains-hades-gradient-circle-portrait-tank-top.jsp?skuid=33873897&CID=seo_offers&utm_campaign=SAG&utm_medium=organic&utm_source=google&utm_product=33873897",
+      },
+      {
+        name: "Grey Sweatpants",
+        url: "https://www2.hm.com/en_us/productpage.0956308002.html?gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc72wxv4TzlLJBqzKuijTo2qeqKm7SmVQOxanAT_OJPemCo4wKaLl3QaAlTcEALw_wcB",
+      },
+      {
+        name: "Transparent Phone Case",
+        url: "https://www.walmart.com/ip/Airlite-Invisible-Ring-Case-With-Thick-Clear-Tpu-Shockproof-Protection-For-Iphone-14-Pro-Max-6-7-Clear/1890291177?wmlspartner=wlpa&selectedSellerId=101016925&adid=222222222271890291177_101016925_144893864830_18291203882&wl0=&wl1=g&wl2=c&wl3=620762789706&wl4=aud-1651068664506:pla-1743906452118&wl5=9004405&wl6=&wl7=&wl8=&wl9=pla&wl10=169776200&wl11=online&wl12=1890291177_101016925&veh=sem&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6ylYbjvLaMDN9rEtU1qOA6IYS0S2rly4tcvBS2Q_0Wo5-J6mcI8IgaAlwDEALw_wcB&gclsrc=aw.ds",
+      }
+    ]
+  })
+);
 
 
 mongoose

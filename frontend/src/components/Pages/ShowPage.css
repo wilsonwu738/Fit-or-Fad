@@ -70,11 +70,7 @@
 .buttons button:hover {
     background-color: #303530;
     color: gray;
-}
-
-
-#buttons img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .profile-link {
@@ -86,6 +82,7 @@
     cursor: pointer;
     user-select: none;
     margin: 16px 0px;
+    background-color: gray;
 }
 
 .profile-link:hover {
@@ -118,10 +115,9 @@
 }
 
 .text-description {
-    background-color: black;
+    background-color: gray;
     padding: 14px;
     border-radius: 12px;
-    min-height: 280px;
 }
 
 .showpagebuttons {
@@ -141,4 +137,14 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
     transition: 0.3s;
     user-select: none;
+}
+
+
+/* Items */
+
+.item-container {
+    border: 1px solid;
+    width: 100%;
+    margin: 10px 0;
+    /* padding: 16px; */
 }

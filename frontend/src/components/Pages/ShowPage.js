@@ -61,9 +61,9 @@ function ShowPage() {
   const itemInfo =
     items ?
       items.map((item, i) => (
-        <div className="item-container">
-          <p className="item-name" key={i}>{item.name}</p>
-          <p className="item-url" key={i} onClick={() => handleClick(item.url)}>{item.url}</p>
+        <div className="item-individual-container">
+          <div className="item-name" key={i} onClick={() => handleClick(item.url)} >{item.name}</div>
+          {/* <div className="item-url" key={i} onClick={() => handleClick(item.url)}>{item.url}</div> */}
         </div>
       )) : null;
 
@@ -84,29 +84,35 @@ function ShowPage() {
 
   if (page === undefined) return <div>No Page</div>
 
-    return page?.author && (
-      <div className="page-container">
-        <div className="page">
-          <div id="pics">
-            <img src={page.imageUrl} alt={page.title} />
-            <div className="buttons-container">
-              {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
-            </div>
+  return page?.author && (
+    <div className="page-container">
+      <div className="page">
+        <div id="pics">
+          <img src={page.imageUrl} alt={page.title} />
+          <div className="buttons-container">
+            {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
           </div>
+        </div>
 
-          <div id="textz">
+        <div id="textz">
+
+          <div className="text-content">
             <div className="title">{page.title}</div>
             <div className="profile-link" onClick={toProfilePage}>
               👤 <span className="profile-link-text"> {page.author.username}</span>
             </div>
             <div className="text-description">{page.description}</div>
+            <div className="item-container">
               {itemInfo}
+            </div>
           </div>
+
         </div>
       </div>
-    );
+    </div>
+  );
 
-  }
+}
 
 // }
 

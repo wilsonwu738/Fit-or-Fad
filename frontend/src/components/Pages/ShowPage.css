@@ -88,7 +88,7 @@
     transition: 0.3s;
     cursor: pointer;
     user-select: none;
-    margin: 16px 0px;
+    margin-bottom: 32px;
     background-color: gray;
 }
 

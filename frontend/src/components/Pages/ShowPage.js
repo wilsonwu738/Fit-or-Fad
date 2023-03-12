@@ -28,7 +28,7 @@ function ShowPage() {
   });
   // const items = useSelector(state => state && state.pages ? state.pages.itemGroups[0] : null);
   const items = page?.itemGroups ? page.itemGroups[0].items : null;
-  
+
   // debugger
 
 
@@ -37,7 +37,7 @@ function ShowPage() {
   }, [pageId, dispatch, isEditing])
 
 
-  
+
 
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
@@ -57,57 +57,21 @@ function ShowPage() {
     const protocol = /^https?:\/\//i.test(url) ? "" : "http://";
     window.open(protocol + url, "_blank");
   };
-  
-  const itemInfo = 
+
+  const itemInfo =
     items ?
       items.map((item, i) => (
-        <div> 
-          <p key={i}>{item.name}</p> 
-          <p key={i} onClick={() => handleClick(item.url)}>{item.url}</p>
-        </div> 
+        <div className="item-individual-container">
+          <div className="item-name" key={i} onClick={() => handleClick(item.url)} >{item.name}</div>
+          {/* <div className="item-url" key={i} onClick={() => handleClick(item.url)}>{item.url}</div> */}
+        </div>
       )) : null;
-  
-  
-
-  // debugger
-
-  if (page?.author && page?.author?._id === currentUser._id) {
-    return page.author && (
-      <div className="page">
-        <div id="pics">
-          <img src={page.imageUrl} alt={page.title} />
-          <div id="author">
-            <div id="profile-link" onClick={toProfilePage}>
-              [ {page.author.username} ]
-            </div>
-            <div className="buttons">
-              <DeleteButton pageId={page.id} />
-              <button className="showpagebuttons" onClick={handleUpdateClick}>Edit</button>
-              <LikePage pageId={pageId} src={like} className="likeButton" />
-            </div>
-          </div>
-
-        </div>
-        <div id="textz">
-          <h1>{page.title}</h1>
-          <hr />
-          <h2> 👤 {page.author.username}</h2>
-          <p>{page.description}</p>
-          {itemInfo}
-        </div>
-      </div>
-    );
-  } else {
-  
-
-  if (page === undefined) return <div>No Page</div>
 
   const hasEditButton = (
     <div className="buttons">
 
-      <DeleteButton pageId={page?.id}  className="pic-buttons"/>
+      <DeleteButton pageId={page?.id} className="pic-buttons" />
       <button onClick={handleUpdateClick}>Edit</button>
-
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
@@ -118,6 +82,7 @@ function ShowPage() {
     </div>
   )
 
+  if (page === undefined) return <div>No Page</div>
 
   return page?.author && (
     <div className="page-container">
@@ -126,28 +91,29 @@ function ShowPage() {
           <img src={page.imageUrl} alt={page.title} />
           <div className="buttons-container">
             {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
-            
           </div>
-
         </div>
 
         <div id="textz">
-          <div className="title">{page.title}</div>
-          <div className="profile-link" onClick={toProfilePage}>
-            👤 <span className="profile-link-text"> {page.author.username}</span>
+
+          <div className="text-content">
+            <div className="title">{page.title}</div>
+            <div className="profile-link" onClick={toProfilePage}>
+              👤 <span className="profile-link-text"> {page.author.username}</span>
+            </div>
+            <div className="text-description">{page.description}</div>
+            <div className="item-container">
+              {itemInfo}
+            </div>
           </div>
-          <div className="text-description">{page.description}
-          {itemInfo}</div>
-         
 
         </div>
-
       </div>
     </div>
   );
 
 }
 
-}
+// }
 
 export default ShowPage;

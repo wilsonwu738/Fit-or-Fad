@@ -34,6 +34,13 @@
     padding: 30px;
 }
 
+.text-content {
+    padding: 30px;
+    background-color: #111111;
+    border-radius: 12px;
+
+}
+
 .buttons-container {
     margin-top: 20px;
     padding: 2px;
@@ -70,11 +77,7 @@
 .buttons button:hover {
     background-color: #303530;
     color: gray;
-}
-
-
-#buttons img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .profile-link {
@@ -85,7 +88,8 @@
     transition: 0.3s;
     cursor: pointer;
     user-select: none;
-    margin: 16px 0px;
+    margin-bottom: 32px;
+    background-color: gray;
 }
 
 .profile-link:hover {
@@ -97,17 +101,6 @@
     font-size: 17px;
 }
 
-/* #like {
-    margin-top: 80px;
-    margin-left: 480px;
-    height: 150px;
-    width: 140px;
-}
-
-#like:hover {
-    transform: scale(1.2);
-} */
-
 .title {
     font-size: 36px;
     font-family: 'Open Sans', sans-serif;
@@ -118,10 +111,9 @@
 }
 
 .text-description {
-    background-color: black;
+    background-color: gray;
     padding: 14px;
     border-radius: 12px;
-    min-height: 280px;
 }
 
 .showpagebuttons {
@@ -142,3 +134,34 @@
     transition: 0.3s;
     user-select: none;
 }
+
+
+/* Items */
+
+.item-container {
+    margin-top: 16px;
+    background-color: lightgray;
+    border-radius: 12px;
+    border: 1px solid;
+    color:#333333;
+}
+
+.item-individual-container {
+    background-color: lightgray;
+    margin: 10px 0;
+    /* border-radius: 12px; */
+    padding: 14px;
+}
+
+.item-individual-container:hover {
+    background-color: darkgray;
+    cursor: pointer;
+}
+
+.item-name {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px;
+}
+

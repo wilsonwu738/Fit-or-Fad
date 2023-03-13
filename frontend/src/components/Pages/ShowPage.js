@@ -61,7 +61,7 @@ function ShowPage() {
   const itemInfo =
     items ?
       items.map((item, i) => (
-        <div className="item-individual-container">
+        <div className="item-individual-container" key={i}>
           <div className="item-name" key={i} onClick={() => handleClick(item.url)} >{item.name}</div>
           {/* <div className="item-url" key={i} onClick={() => handleClick(item.url)}>{item.url}</div> */}
         </div>

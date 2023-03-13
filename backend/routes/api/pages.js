@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
-const { requireUser } = require("../../config/passport");
-const validatePageInput = require("../../validations/pages");
-const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
-const User = mongoose.model("User");
-const Book = mongoose.model("Book");
-const Page = mongoose.model("Page");
+
+const mongoose = require('mongoose');
+const { requireUser, restoreUser } = require('../../config/passport');
+const validatePageInput = require('../../validations/pages');
+const { singleFileUpload, singleMulterUpload } = require('../../awsS3')
+const User = mongoose.model('User');
+const Book = mongoose.model('Book');
+const Page = mongoose.model('Page');
+const Comment = mongoose.model('Comment');
 
 /* GET pages listing. */
 router.get("/", async (req, res) => {
@@ -68,30 +70,25 @@ router.post(
   validatePageInput,
   async (req, res, next) => {
     try {
+      console.log(req.body);
       const imageUrl = await singleFileUpload({ file: req.file, public: true });
-      const itemGroups = JSON.parse(req.body.itemGroups);
-      const formattedItemGroups = itemGroups.map((itemGroup) => {
-        const newGroup = {
-          groupName: "",
-          items: itemGroup.items.map((item) => ({
-            name: item.name,
-            url: item.url,
-          })),
-        };
-        if (itemGroup.hasOwnProperty("groupName")) {
-          newGroup.groupName = itemGroup.groupName;
-        }
-        return newGroup;
-      });
+
+      const items = JSON.parse(req.body.items);
+      const formattedItems = items.map((item) => ({  
+        name: item.name,
+        url: item.url
+      }));
+      
 
       const newPage = new Page({
         author: req.user._id,
         title: req.body.title,
         description: req.body.description,
-        itemGroups: formattedItemGroups,
-        imageUrl: imageUrl,
-      });
 
+        items: formattedItems,
+        imageUrl: imageUrl
+      });
+      
       let page = await newPage.save();
       page = await page.populate("author", "_id username");
       return res.json(page);
@@ -100,6 +97,8 @@ router.post(
     }
   }
 );
+
+
 
 router.delete("/:id", requireUser, async (req, res, next) => {
   try {
@@ -127,6 +126,36 @@ router.patch("/:id", requireUser, async (req, res, next) => {
     return res.json(page);
   } catch (err) {
     return next(err);
+  }
+});
+
+
+router.post('/comment/:pageId', restoreUser, async (req, res, next) => {
+  try {
+    const { text } = req.body;
+    const pageId = req.params.pageId;
+    const userId = req.user._id;
+
+    // Create a new comment object with the given text, commenter, and page
+    const comment = new Comment({
+      text: text,
+      commenter: userId,
+      page: pageId
+    });
+
+    // Save the comment to the database
+    await comment.save();
+
+    // Add the comment to the page's comments array
+    const page = await Page.findByIdAndUpdate(
+      pageId,
+      { $push: { comments: comment._id } },
+      { new: true }
+    );
+
+    res.json({ comment, page });
+  } catch (err) {
+    next(err);
   }
 });
 

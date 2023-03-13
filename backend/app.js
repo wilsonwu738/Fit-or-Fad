@@ -13,10 +13,19 @@ require("./models/Book");
 require("./config/passport");
 const passport = require("passport");
 
-const usersRouter = require("./routes/api/users"); // update the import file path
-const pagesRouter = require("./routes/api/pages");
-const booksRouter = require("./routes/api/books");
-const csrfRouter = require("./routes/api/csrf");
+
+require('./models/User');
+require('./models/Page');
+require('./models/Book');
+require('./models/Comment');
+
+require('./config/passport');
+const passport = require('passport'); 
+
+const usersRouter = require('./routes/api/users'); // update the import file path
+const pagesRouter = require('./routes/api/pages');
+const booksRouter = require('./routes/api/books');
+const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
 

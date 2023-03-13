@@ -31,14 +31,14 @@ const MainPageItem = (props) => {
     // }
 
     return (
-        <Link className="main-page-item" to={`/show/${props.page._id}`}>
+        <Link className="main-page-item" to={`/show/${props.page?._id}`}>
         {/* <div className="main-page-item" onClick={toShowPage}> */}
             <div className="main-page-image-container">
-                <img src={props.page.imageUrl} alt="" className="main-page-image" />
+                <img src={props.page?.imageUrl} alt="" className="main-page-image" />
             </div>
             <br></br>
 
-            <div>{props.page.title}</div>
+            <div>{props.page?.title}</div>
             <br></br>
             <div>Likes: {props.page?.liker?.length}</div>
             {/* <button id="editPageButton" onClick={handleUpdateClick}>Edit</button> */}

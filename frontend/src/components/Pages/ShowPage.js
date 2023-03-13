@@ -27,7 +27,7 @@ function ShowPage() {
     return null;
   });
   // const items = useSelector(state => state && state.pages ? state.pages.itemGroups[0] : null);
-  const items = page?.itemGroups ? page.itemGroups[0].items : null;
+  const items = page?.items ? page.items : null;
 
   // debugger
 

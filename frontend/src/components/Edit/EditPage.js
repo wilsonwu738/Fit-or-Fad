@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editPage } from "../../store/pages";
+import { useRef } from 'react';
 
 const EditPage = (props) => {
   const history = useHistory();
@@ -11,12 +12,13 @@ const EditPage = (props) => {
   const page = useSelector((state) => state.pages);
   const [title, setTitle] = useState(page.title);
   const [imageUrl, setImageUrl] = useState(page.imageUrl);
-
-  
+  const [description, setDescription] = useState(page.description);
+  const fileRef = useRef(null);
 
   useEffect(() => {
     setTitle(page.title);
     setImageUrl(page.imageUrl);
+    setDescription(page.description);
   }, [page]);
 
   const handleTitleChange = (event) => {
@@ -27,10 +29,14 @@ const EditPage = (props) => {
     setImageUrl(event.target.value);
   };
 
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const updatedPage = { ...props.page, title, imageUrl };
+      const updatedPage = { ...props.page, title, imageUrl, description };
       await dispatch(editPage(updatedPage));
       props.setIsEditing(false);
       history.push(`/show/${props.page._id}`);
@@ -51,7 +57,11 @@ const EditPage = (props) => {
         </label>
         <label>
           Image URL:
-          <input type="text" name="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
+          <input type="text" name="imageUrl" onChange={handleImageUrlChange} />
+        </label>
+        <label>
+          Description:
+          <input type="text" name="description" value={description} onChange={handleDescriptionChange}></input>
         </label>
         <button type="submit">Edit</button>
         <button type="button" onClick={() => props.setIsEditing(false)}>Cancel</button>

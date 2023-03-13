@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const itemGroupSchema = new Schema({
-  groupName: {
-    type: String
-  },
-  items: [{
-    name: String,
-    url: String
-  }]
-});
+// const itemGroupSchema = new Schema({
+//   groupName: {
+//     type: String
+//   },
+//   items: [{
+//     name: String,
+//     url: String
+//   }]
+// });
 
 const pageSchema = new Schema({
   author: {
@@ -32,7 +32,10 @@ const pageSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   }],
-  itemGroups: [itemGroupSchema]
+  items: [{
+    name: String,
+    url: String
+  }]
 }, { 
   timestamps: true 
 });

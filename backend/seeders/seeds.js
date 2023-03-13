@@ -927,8 +927,7 @@ pages.push(
         url: "https://www.walmart.com/ip/Airlite-Invisible-Ring-Case-With-Thick-Clear-Tpu-Shockproof-Protection-For-Iphone-14-Pro-Max-6-7-Clear/1890291177?wmlspartner=wlpa&selectedSellerId=101016925&adid=222222222271890291177_101016925_144893864830_18291203882&wl0=&wl1=g&wl2=c&wl3=620762789706&wl4=aud-1651068664506:pla-1743906452118&wl5=9004405&wl6=&wl7=&wl8=&wl9=pla&wl10=169776200&wl11=online&wl12=1890291177_101016925&veh=sem&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6ylYbjvLaMDN9rEtU1qOA6IYS0S2rly4tcvBS2Q_0Wo5-J6mcI8IgaAlwDEALw_wcB&gclsrc=aw.ds",
       }
     ]
-  })
-);
+}));
 
 
 mongoose

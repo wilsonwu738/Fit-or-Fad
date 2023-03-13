@@ -126,7 +126,7 @@ router.patch("/:id", requireUser, async (req, res, next) => {
 });
 
 
-router.post('/comment/:pageId', restoreUser, async (req, res, next) => {
+router.post('/comment/:pageId', requireUser, async (req, res, next) => {
   try {
     const { text } = req.body;
     const pageId = req.params.pageId;
@@ -154,6 +154,51 @@ router.post('/comment/:pageId', restoreUser, async (req, res, next) => {
     next(err);
   }
 });
+
+router.delete('/comment/:pageId/:commentId', requireUser, async (req, res, next) => {
+  try {
+    let comment = await Comment.findById(req.params.commentId);
+    // if (page.author.toString() === req.user._id.toString()) 
+    // {
+    
+
+    const pageId = req.params.pageId;
+    const page = await Page.findByIdAndUpdate(
+      pageId,
+      { $pull: { comments: comment._id } },
+      { new: true }
+    );
+
+    comment = await Comment.deleteOne({ _id: comment._id });
+    res.json({comment, page});
+    // } 
+    // else {
+    //   const error = new Error("Page not found");
+    //   error.statusCode = 404;
+    //   error.errors = { message: "No user found for that page" };
+    //   throw error;
+    // }
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+router.patch("/comment/:commentId", requireUser, async (req, res, next) => {
+  try {
+    let comment = await Comment.findById(req.params.commentId);
+    comment = await Comment.updateOne({ _id: comment._id }, req.body);
+    return res.json(comment);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+
+
+
+
+
 
 // router.post('/:id/like', async (req, res) => {
 //   try {

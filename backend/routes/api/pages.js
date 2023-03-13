@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
-const { requireUser } = require('../../config/passport');
+const { requireUser, restoreUser } = require('../../config/passport');
 const validatePageInput = require('../../validations/pages');
 const { singleFileUpload, singleMulterUpload } = require('../../awsS3')
 const User = mongoose.model('User');
 const Book = mongoose.model('Book');
 const Page = mongoose.model('Page');
+const Comment = mongoose.model('Comment');
 
 /* GET pages listing. */
 router.get("/", async (req, res) => {
@@ -121,6 +122,36 @@ router.patch("/:id", requireUser, async (req, res, next) => {
     return res.json(page);
   } catch (err) {
     return next(err);
+  }
+});
+
+
+router.post('/comment/:pageId', restoreUser, async (req, res, next) => {
+  try {
+    const { text } = req.body;
+    const pageId = req.params.pageId;
+    const userId = req.user._id;
+
+    // Create a new comment object with the given text, commenter, and page
+    const comment = new Comment({
+      text: text,
+      commenter: userId,
+      page: pageId
+    });
+
+    // Save the comment to the database
+    await comment.save();
+
+    // Add the comment to the page's comments array
+    const page = await Page.findByIdAndUpdate(
+      pageId,
+      { $push: { comments: comment._id } },
+      { new: true }
+    );
+
+    res.json({ comment, page });
+  } catch (err) {
+    next(err);
   }
 });
 

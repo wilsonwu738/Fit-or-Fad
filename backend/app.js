@@ -11,6 +11,8 @@ const { isProduction } = require('./config/keys');
 require('./models/User');
 require('./models/Page');
 require('./models/Book');
+require('./models/Comment');
+
 require('./config/passport');
 const passport = require('passport'); 
 

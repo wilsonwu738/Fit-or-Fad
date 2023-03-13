@@ -28,6 +28,10 @@ const pageSchema = new Schema({
   imageUrl: {
     type: String,
   },
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment'
+  }],
   liker: [{
     type: Schema.Types.ObjectId,
     ref: 'User'

@@ -211,7 +211,7 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
 
 router.post("/follow/:userId", restoreUser, async function (req, res, next) {
   try {
-    debugger
+  
     const userToFollow = await User.findById(req.params.userId);
     const currentUser = req.user;
     debugger

@@ -64,29 +64,22 @@ router.get("/user/:userId", async (req, res, next) => {
 
   router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
     try {
+      console.log(req.body);
       const imageUrl = await singleFileUpload({ file: req.file, public: true });
-      const itemGroups = JSON.parse(req.body.itemGroups);
-      const formattedItemGroups = itemGroups.map(itemGroup => {
-        const newGroup = {
-          groupName: '',
-          items: itemGroup.items.map(item => ({
-            name: item.name,
-            url: item.url
-          }))
-        }
-        if (itemGroup.hasOwnProperty('groupName')) {
-          newGroup.groupName = itemGroup.groupName;
-        }
-        return newGroup;
-      });
-  
+      const items = JSON.parse(req.body.items);
+      const formattedItems = items.map((item) => ({  
+        name: item.name,
+        url: item.url
+      }));
+      
       const newPage = new Page({
         author: req.user._id,
         title: req.body.title,
         description: req.body.description,
-        itemGroups: formattedItemGroups,
+        items: formattedItems,
         imageUrl: imageUrl
       });
+      
   
       let page = await newPage.save();
       page = await page.populate("author", "_id username");
@@ -95,6 +88,8 @@ router.get("/user/:userId", async (req, res, next) => {
       next(err);
     }
   });
+
+
 
 router.delete("/:id", requireUser, async (req, res, next) => {
   try {

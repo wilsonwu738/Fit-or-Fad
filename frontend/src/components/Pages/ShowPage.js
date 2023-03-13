@@ -90,7 +90,9 @@ function ShowPage() {
         <div id="pics">
           <img src={page.imageUrl} alt={page.title} />
           <div className="buttons-container">
-            {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
+            {/* temporary fix: 
+            The bug is occuring where the like functionality returns a JSON object with the id is returned directly under author and not nested with the username, need some fixing on the backend */}
+            {page.author._id === currentUser._id || page.author === currentUser._id ? hasEditButton : hasNoEditButton}
           </div>
         </div>
 

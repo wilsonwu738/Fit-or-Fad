@@ -158,7 +158,7 @@ router.post("/like/:pageId", restoreUser, async (req, res, next) => {
       { new: true }
     );
 
-    res.json({ user, page });
+    res.json(page);
   } catch (err) {
     next(err);
   }
@@ -198,7 +198,7 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
       { new: true }
     );
 
-    res.json({ user, page });
+    res.json(page);
   } catch (err) {
     console.log(err);
     next(err);

@@ -172,24 +172,28 @@ export const composePage = (data, images) => async (dispatch) => {
   }
 };
 
-export const likePage = (pageId) => async (dispatch) => {
-  const res = await jwtFetch(`/api/users/like/${pageId}`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
-  const page = await res.json();
-  dispatch(receiveNewPage(page));
-};
 
-export const deleteLike = (pageId) => async (dispatch) => {
-  const res = await jwtFetch(`/api/users/like/${pageId}`, {
-    method: "DELETE",
-  });
-  const page = await res.json();
-  dispatch(receiveNewPage(page));
-};
+  export const likePage = (pageId) => async dispatch => { 
+    debugger
+    const res = await jwtFetch(`/api/users/like/${pageId}`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json",
+      }
+    })
+    const page = await res.json();
+    dispatch(receiveNewPage(page));
+  }
+
+  export const deleteLike = (pageId) => async dispatch => {
+    debugger
+    const res = await jwtFetch(`/api/users/like/${pageId}`, {
+      method: 'DELETE'
+    });
+    const page = await res.json();
+    dispatch(receiveNewPage(page))
+  }
+
 
 const nullErrors = null;
 

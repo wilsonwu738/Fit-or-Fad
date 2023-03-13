@@ -1,60 +1,58 @@
 .session-form-page {
-    display: flex;
-    justify-content: center;
-    color: black;
-
+  display: flex;
+  justify-content: center;
+  color: black;
 }
 
 .session-form-container {
-    height: fit-content;
-    border-radius: 5%;
+  height: fit-content;
+  border-radius: 5%;
 
-
-    margin-top: 10px;
-    height: 500px;
-    width: 400px;
-    border: 5px solid purple;
-    background-color: whitesmoke;
-    padding: 55px;
-    /* box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet; */
-    /* margin: 20px, 5px 5px rgb(0, 15, 128); */
+  margin-top: 10px;
+  height: 500px;
+  width: 400px;
+  border: 5px solid purple;
+  background-color: whitesmoke;
+  padding: 55px;
+  /* box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet; */
+  /* margin: 20px, 5px 5px rgb(0, 15, 128); */
 }
 
 .session-form h2 {
-    text-align: center;
+  text-align: center;
 }
 
 .input-field {
-    background-color: rgb(231, 189, 231);
-    border-radius: 12px;
-    width: 360px;
-    padding: 20px;
-    position: relative;
+  background-color: rgb(231, 189, 231);
+  border-radius: 12px;
+  width: 360px;
+  padding: 20px;
+  position: relative;
 }
 
 .input-content {
-    /* text-align: center; */
-    position: relative;
-    width: 100%;
-    height: 50%;
+  /* text-align: center; */
+  position: relative;
+  width: 100%;
+  height: 50%;
 }
 
 .input-title {
-    top: 0;
-    text-align: center;
+  top: 0;
+  text-align: center;
 }
 
 .input-credentials {
-    bottom: 0;
-    width: 340px;
-    padding: 10px;
-    border-radius: 12px;
-    border: none;
-    color: purple;
+  bottom: 0;
+  width: 340px;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  color: purple;
 }
 
 .input-credentials:focus {
-    outline: none;
+  outline: none;
 }
 
 /* .input-credentials {
@@ -66,39 +64,39 @@
 /* Demo User and Log In Buttons */
 
 .submit-buttons-container {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .submit-buttons {
-    font-size: 1.2em;
-    padding: 8px 15px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    background-color: violet;
-    color: rgb(124, 120, 120);
-    border: none;
-    width: 182px;
-    /* text-align: center; */
+  font-size: 1.2em;
+  padding: 8px 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-color: violet;
+  color: rgb(124, 120, 120);
+  border: none;
+  width: 182px;
+  /* text-align: center; */
 }
 
 .submit-buttons:hover {
-    background-color: rgb(233, 92, 233);
-    color: white;
-    cursor: pointer;
+  background-color: rgb(233, 92, 233);
+  color: white;
+  cursor: pointer;
 }
 
 .submit-buttons:disabled {
-    background-color: rgba(238, 130, 238, 0.452);
-    color: rgb(184, 169, 169);
+  background-color: rgba(238, 130, 238, 0.452);
+  color: rgb(184, 169, 169);
 }
 
 .errors-container {
-    width: 100%;
-    text-align: center;
-    font-size: 0.875em;
-    height: 15px;
-    color: red;
-    margin: 4px 0px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.875em;
+  height: 15px;
+  color: red;
+  margin: 4px 0px;
 }

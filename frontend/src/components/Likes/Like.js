@@ -36,7 +36,11 @@ const LikePage = ({ pageId }) => {
   if (liked) {
     return <button onClick={handleUnlike}>Unlike</button>;
   } else {
-    return <button className="showpagebuttons" onClick={handleLike}>Like</button>;
+    return (
+      <button className="showpagebuttons" onClick={handleLike}>
+        Like
+      </button>
+    );
   }
 };
 

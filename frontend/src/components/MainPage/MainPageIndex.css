@@ -1,19 +1,19 @@
 #plus {
-    position: fixed;
-    z-index: 10;
-    bottom: 40px;
-    right: 30px;
+  position: fixed;
+  z-index: 10;
+  bottom: 40px;
+  right: 30px;
 }
 
 #git {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .main-page-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 80px;
-    padding: 35px;
-    font-size: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 80px;
+  padding: 35px;
+  font-size: 16px;
 }

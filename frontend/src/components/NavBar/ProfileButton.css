@@ -1,121 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
 .profile-wrapper {
-    /* positioning */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* positioning */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-content {
-    /* positioning */
-    display: flex;
-    flex-direction: row;
-    font-size: large;
-    /* styling */
-        font-size: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  /* positioning */
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  /* styling */
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .profile-username {
-    /* positioning */
-    display: flex;
-    align-items: center;
-    margin-right: 5px;
-    /* styling */
-    font-size: 22px;
-    user-select: none;
+  /* positioning */
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  /* styling */
+  font-size: 22px;
+  user-select: none;
 }
 
 .profile-button {
-    /* positioning */
-    position: relative;
+  /* positioning */
+  position: relative;
 
-    /* styling */
-    height: 25px;
-    color: white;
-    font-size: 12px;
-    background-color: transparent;
-    border: none;
-    border-radius: 10px;
+  /* styling */
+  height: 25px;
+  color: white;
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
 }
 
 .profile-button:hover {
-    /* styling */
-    background-color: lightgray;
-    cursor: pointer;
+  /* styling */
+  background-color: lightgray;
+  cursor: pointer;
 }
 
 .profile-dropdown {
-    /* positioning */
-    position: absolute;
-    top: 65px;
-    height: 70px;
-    width: 150px;
-    padding: 6px 0px;
+  /* positioning */
+  position: absolute;
+  top: 65px;
+  height: 70px;
+  width: 150px;
+  padding: 6px 0px;
 
-    /* styling */
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    z-index: 1000;
-    /* add a higher z-index value */
+  /* styling */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  z-index: 1000;
+  /* add a higher z-index value */
 }
 
 .profile-dropdown-content {
-    /* positioning */
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
+  /* positioning */
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
 }
 
 .profile-dropdown-content a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .dropdown-element {
-    /* styling */
-    color: black;
-    padding: 7px 7px;
-    margin: 0px 5px;
-    font-size: 12px;
-    border-radius: 10px;
-    font-size: 15px;
-    text-decoration: none;
+  /* styling */
+  color: black;
+  padding: 7px 7px;
+  margin: 0px 5px;
+  font-size: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-decoration: none;
 }
 
 .dropdown-element:hover {
-    /* styling */
-    background-color: lightgray;
-    cursor: pointer;
-    width:100px;
+  /* styling */
+  background-color: lightgray;
+  cursor: pointer;
+  width: 100px;
 }
 
 .profile-button {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    position: relative;
-    margin-left: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 10px;
 }
 
 .profile-button img {
-    display: block;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .profile-button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .profile-button:hover img {
-    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.8));
 }

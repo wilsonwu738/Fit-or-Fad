@@ -6,7 +6,6 @@
 // const REMOVE_FOLLOW = "follows/REMOVE_FOLLOW";
 // const RECEIVE_ERRORS = "follows/RECEIVE_ERRORS";
 
-
 // const receiveFollow = user => ({
 //     type: RECEIVE_FOLLOW,
 //     user
@@ -26,7 +25,6 @@
 //     type: RECEIVE_ERRORS,
 //     errors
 // });
-
 
 // export const fetchFollow = (userId) => async dispatch => {
 //     try {
@@ -55,7 +53,7 @@
 // }
 // export const followUser = (userId) => async dispatch => {
 //         debugger
-//         const res = await jwtFetch(`/api/users/follow/${userId}`, {        
+//         const res = await jwtFetch(`/api/users/follow/${userId}`, {
 //         method: 'POST',
 //         headers: {
 //             "Content-Type": "application/json",

@@ -26,45 +26,41 @@ router.get("/", async function (req, res, next) {
   }
 });
 
+router.post(
+  "/register",
+  singleMulterUpload("image"),
+  validateRegisterInput,
+  async (req, res, next) => {
+    // Check to make sure no one has already registered with the proposed email or
+    // username.
+    const user = await User.findOne({
+      $or: [{ email: req.body.email }, { username: req.body.username }],
+    });
 
-
-
-
-
-
-router.post('/register', singleMulterUpload("image"), validateRegisterInput, async (req, res, next) => {
-
-  // Check to make sure no one has already registered with the proposed email or
-  // username.
-  const user = await User.findOne({
-    $or: [{ email: req.body.email }, { username: req.body.username }]
-  });
-
-  if (user) {
-    // Throw a 400 error if the email address and/or email already exists
-    const err = new Error("Validation Error");
-    err.statusCode = 400;
-    const errors = {};
-    if (user.email === req.body.email) {
-      errors.email = "A user has already registered with this email";
+    if (user) {
+      // Throw a 400 error if the email address and/or email already exists
+      const err = new Error("Validation Error");
+      err.statusCode = 400;
+      const errors = {};
+      if (user.email === req.body.email) {
+        errors.email = "A user has already registered with this email";
+      }
+      if (user.username === req.body.username) {
+        errors.username = "A user has already registered with this username";
+      }
+      err.errors = errors;
+      return next(err);
     }
-    if (user.username === req.body.username) {
-      errors.username = "A user has already registered with this username";
-    }
-    err.errors = errors;
-    return next(err);
-  }
 
-  // Otherwise create a new user
-  const profileImageUrl = req.file ?
-      await singleFileUpload({ file: req.file, public: true }) :
-      DEFAULT_PROFILE_IMAGE_URL;
-  const newUser = new User({
-    username: req.body.username,
-    profileImageUrl: profileImageUrl,
-    email: req.body.email
-  });
-
+    // Otherwise create a new user
+    const profileImageUrl = req.file
+      ? await singleFileUpload({ file: req.file, public: true })
+      : DEFAULT_PROFILE_IMAGE_URL;
+    const newUser = new User({
+      username: req.body.username,
+      profileImageUrl: profileImageUrl,
+      email: req.body.email,
+    });
 
     bcrypt.genSalt(10, (err, salt) => {
       if (err) throw err;
@@ -80,7 +76,8 @@ router.post('/register', singleMulterUpload("image"), validateRegisterInput, asy
         }
       });
     });
-  });
+  }
+);
 
 router.post(
   "/login",
@@ -117,15 +114,14 @@ router.get("/current", restoreUser, (req, res) => {
     email: req.user.email,
     followers: req.user.followers,
     following: req.user.following,
-    likedPage: req.user.likedPage
+    likedPage: req.user.likedPage,
   });
 });
 
-
 router.get("/:userId", async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.userId)
-  
+    const user = await User.findById(req.params.userId);
+
     res.json(user);
   } catch (err) {
     const error = new Error("User not found");
@@ -189,9 +185,9 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
     // user.likedPage = user.likedPage.filter(
     //   (page) => page.toString() !== pageId
     // );
-    const index = user.likedPage.indexOf(pageId)
+    const index = user.likedPage.indexOf(pageId);
     if (index > -1) {
-      user.likedPage.splice(index, 1)
+      user.likedPage.splice(index, 1);
     }
     await user.save();
 
@@ -204,17 +200,17 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
 
     res.json({ user, page });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     next(err);
   }
 });
 
 router.post("/follow/:userId", restoreUser, async function (req, res, next) {
   try {
-    debugger
+    debugger;
     const userToFollow = await User.findById(req.params.userId);
     const currentUser = req.user;
-    debugger
+    debugger;
     if (!currentUser.following.includes(userToFollow._id)) {
       // Add the user to the current user's following list
       currentUser.following.push(userToFollow._id);

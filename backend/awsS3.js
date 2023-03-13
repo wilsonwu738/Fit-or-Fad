@@ -1,21 +1,20 @@
 const AWS = require("aws-sdk");
 const multer = require("multer");
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
-const NAME_OF_BUCKET = "aa-aws-mern-fitorfad"; 
-
+const NAME_OF_BUCKET = "aa-aws-mern-fitorfad";
 
 const singleFileUpload = async ({ file, public = false }) => {
-    if (!file) {
-      throw new Error("No file provided");
-    }
-    const { originalname, buffer } = file;
+  if (!file) {
+    throw new Error("No file provided");
+  }
+  const { originalname, buffer } = file;
   const path = require("path");
   const Key = new Date().getTime().toString() + path.extname(originalname);
 
   const uploadParams = {
     Bucket: NAME_OF_BUCKET,
     Key: public ? `public/${Key}` : Key,
-    Body: buffer
+    Body: buffer,
   };
   const result = await s3.upload(uploadParams).promise();
 
@@ -29,7 +28,7 @@ const retrievePrivateFile = (key) => {
   if (key) {
     fileUrl = s3.getSignedUrl("getObject", {
       Bucket: NAME_OF_BUCKET,
-      Key: key
+      Key: key,
     });
   }
   return fileUrl || key;
@@ -43,11 +42,10 @@ const storage = multer.memoryStorage({
 
 const singleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).single(nameOfKey);
- 
-  
-  module.exports = {
-    s3,
-    singleFileUpload,
-    retrievePrivateFile,
-    singleMulterUpload
-  };
+
+module.exports = {
+  s3,
+  singleFileUpload,
+  retrievePrivateFile,
+  singleMulterUpload,
+};

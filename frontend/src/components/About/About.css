@@ -1,70 +1,70 @@
 .dev-box-container {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
 }
 
 .dev-individual {
-    position: relative;
-    margin: 10px;
-    padding: 20px;
-    height: 400px;
-    /* updated height */
-    width: 300px;
-    /* updated width */
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    background-color:rgba(128, 0, 128, 0.65);
-    transition: transform 0.3s ease-in-out;
+  position: relative;
+  margin: 10px;
+  padding: 20px;
+  height: 400px;
+  /* updated height */
+  width: 300px;
+  /* updated width */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  background-color: rgba(128, 0, 128, 0.65);
+  transition: transform 0.3s ease-in-out;
 }
 
 .dev-individual:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .dev-name {
-    margin-top: 20px;
-    font-size: 24px;
-    text-align: center;
-    color: white;
+  margin-top: 20px;
+  font-size: 24px;
+  text-align: center;
+  color: white;
 }
 
 .dev-title {
-    margin-top: 10px;
-    font-size: 18px;
-    text-align: center;
-    color: #8d99ae;
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+  color: #8d99ae;
 }
 
 .dev-image {
-    padding: 9px;
-    display: block;
-    width: 90%;
-    height: 60%;
-    border-radius: 50%;
-    object-fit: cover;
-    align-items: center;
+  padding: 9px;
+  display: block;
+  width: 90%;
+  height: 60%;
+  border-radius: 50%;
+  object-fit: cover;
+  align-items: center;
 }
 
 .links-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin:  20px 20px;
-    display: flex;
-    justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 20px 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .link-logo {
-    height: 40px;
-    width: 40px;
-    transition: transform 0.3s ease-in-out;
+  height: 40px;
+  width: 40px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .link-logo:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const mongoose = require('mongoose');
 const { requireUser, restoreUser } = require('../../config/passport');
 const validatePageInput = require('../../validations/pages');
@@ -25,7 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//this is not being used at the moment 
+//this is not being used at the moment
 router.get("/user/:userId", async (req, res, next) => {
   let user;
   try {
@@ -47,58 +48,66 @@ router.get("/user/:userId", async (req, res, next) => {
 });
 
 //we used this to fetch a particular page
-  router.get("/:id", async (req, res, next) => {
-    try {
-      const page = await Page.findById(req.params.id).populate(
-        "author",
-        "_id username"
-      );
-      return res.json(page);
-    } catch (err) {
-      const error = new Error("Page not found");
-      error.statusCode = 404;
-      error.errors = { message: "No page found with that id" };
-      return next(error);
-    }
-  });
+router.get("/:id", async (req, res, next) => {
+  try {
+    const page = await Page.findById(req.params.id).populate(
+      "author",
+      "_id username"
+    );
+    return res.json(page);
+  } catch (err) {
+    const error = new Error("Page not found");
+    error.statusCode = 404;
+    error.errors = { message: "No page found with that id" };
+    return next(error);
+  }
+});
 
-  router.post('/', singleMulterUpload("images"), requireUser, validatePageInput, async (req, res, next) => {
+router.post(
+  "/",
+  singleMulterUpload("images"),
+  requireUser,
+  validatePageInput,
+  async (req, res, next) => {
     try {
       console.log(req.body);
       const imageUrl = await singleFileUpload({ file: req.file, public: true });
+
       const items = JSON.parse(req.body.items);
       const formattedItems = items.map((item) => ({  
         name: item.name,
         url: item.url
       }));
       
+
       const newPage = new Page({
         author: req.user._id,
         title: req.body.title,
         description: req.body.description,
+
         items: formattedItems,
         imageUrl: imageUrl
       });
       
-  
       let page = await newPage.save();
       page = await page.populate("author", "_id username");
       return res.json(page);
     } catch (err) {
       next(err);
     }
-  });
+  }
+);
 
 
 
 router.delete("/:id", requireUser, async (req, res, next) => {
   try {
     let page = await Page.findById(req.params.id);
-    // if (page.author.toString() === req.user._id.toString()) 
+    // if (page.author.toString() === req.user._id.toString())
     {
       page = await Page.deleteOne({ _id: page._id });
       return res.json(page);
-    } 
+    }
     // else {
     //   const error = new Error("Page not found");
     //   error.statusCode = 404;
@@ -196,6 +205,5 @@ router.post('/comment/:pageId', restoreUser, async (req, res, next) => {
 //     res.status(500).json({ message: 'Internal server error' });
 //   }
 // });
-
 
 module.exports = router;

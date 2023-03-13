@@ -1,62 +1,63 @@
 .navbar-background {
-    /* positioning */
+  /* positioning */
 
-    margin: auto;
-    display: flex;
-    justify-content: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 
-    /* styling */
-    padding-top: 15px;
-    height: 80px;
-    width: 100%;
-    /* border-bottom: 1px solid; */
-    border-width: thick;
-    border-image: linear-gradient(to bottom right,#650782, #71CDE1);
-    border-image-slice: 1;
-    padding-bottom: 10px;
+  /* styling */
+  padding-top: 15px;
+  height: 80px;
+  width: 100%;
+  /* border-bottom: 1px solid; */
+  border-width: thick;
+  border-image: linear-gradient(to bottom right, #650782, #71cde1);
+  border-image-slice: 1;
+  padding-bottom: 10px;
 }
 
 .navbar {
-    /* positioning */
-    display: flex;
-    justify-content: space-between;
+  /* positioning */
+  display: flex;
+  justify-content: space-between;
 
-    /* styling */
-    height: 80px;
-    width: 1024px;
-    margin: auto;
+  /* styling */
+  height: 80px;
+  width: 1024px;
+  margin: auto;
 }
 
 .nav-elements {
-    /* styling */
-    height: 100%;
+  /* styling */
+  height: 100%;
 }
 
 .big-logo {
-    /* positioning */
-    height: 111%;
+  /* positioning */
+  height: 111%;
 }
 
 .login-button {
-    /* positioning */
-    margin-bottom: 5px;
-    float: right;
+  /* positioning */
+  margin-bottom: 5px;
+  float: right;
 }
 
-.login-button, .signup-button {
-    /* positioning */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    
-    /* styling */
-    height: 41.6%;
+.login-button,
+.signup-button {
+  /* positioning */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  /* styling */
+  height: 41.6%;
 }
 
 #createPage {
-    position: fixed;
-    top: 20px;
-    left: 100px;
-    color: black;
-    z-index: 10;
+  position: fixed;
+  top: 20px;
+  left: 100px;
+  color: black;
+  z-index: 10;
 }

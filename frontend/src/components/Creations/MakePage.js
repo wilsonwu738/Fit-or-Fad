@@ -1,23 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { clearPageErrors, composePage } from '../../store/pages';
-import { useRef } from 'react';
-import './MakePage.css'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { clearPageErrors, composePage } from "../../store/pages";
+import { useRef } from "react";
+import "./MakePage.css";
 
-
-
-function MakePage () {
+function MakePage() {
   const [data, setData] = useState({
-    author: '',
-    title: '',
-    description: '',
-    items: [{ name: '', url: '' }],
-    likes: ''
+    author: "",
+    title: "",
+    description: "",
+    items: [{ name: "", url: "" }],
+    likes: "",
   });
   const history = useHistory();
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user);
+  const currentUser = useSelector((state) => state.session.user);
   // const errors = useSelector(state => state.errors.pages);
   const [images, setImages] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
@@ -27,18 +25,20 @@ function MakePage () {
     return () => dispatch(clearPageErrors());
   }, [dispatch]);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
   
     const items = data.items.map(item => ({
       name: item.name,
       url: item.url
     }));
-  
+
     const finalData = {
       author: currentUser._id,
       title: data.title,
       description: data.description,
+
       items: JSON.stringify(items),
       likes: ""
     };
@@ -61,7 +61,7 @@ function MakePage () {
     fileRef.current.value = null;
   };
 
-  const updateFiles = async e => {
+  const updateFiles = async (e) => {
     const files = e.target.files;
     setImages(files);
     if (files.length !== 0) {
@@ -72,19 +72,19 @@ function MakePage () {
         fileReader.readAsDataURL(file);
         fileReader.onload = () => {
           urls[index] = fileReader.result;
-          if (++filesLoaded === files.length) 
-            setImageUrls(urls);
-        }
+          if (++filesLoaded === files.length) setImageUrls(urls);
+        };
       });
-    }
-    else setImageUrls([]);
-  }
+    } else setImageUrls([]);
+  };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setData(prevFormData => ({
+    setData((prevFormData) => ({
       ...prevFormData,
+
       [name]: name === "items" ? JSON.stringify(value) : value || '',
+
     }));
   };
 
@@ -104,24 +104,20 @@ function MakePage () {
   };
 
   const handleAddItem = () => {
-    setData(prevFormData => ({
+    setData((prevFormData) => ({
       ...prevFormData,
-      items: [
-        ...prevFormData.items,
-        { name: '', url: '' },
-      ],
+      items: [...prevFormData.items, { name: "", url: "" }],
     }));
   };
 
-  const handleRemoveItem = idx => {
-    setData(prevFormData => ({
+  const handleRemoveItem = (idx) => {
+    setData((prevFormData) => ({
       ...prevFormData,
       items: prevFormData.items.filter((item, i) => i !== idx),
     }));
   };
 
-  const update = e => setData(e.currentTarget.value);
-
+  const update = (e) => setData(e.currentTarget.value);
 
   return (
     <>
@@ -137,10 +133,10 @@ function MakePage () {
             onChange={handleChange}
           />
           <br />
-  
+
           <label htmlFor="description">Description</label>
           <input
-          className="input-text-and-file"
+            className="input-text-and-file"
             type="text"
             id="description"
             name="description"
@@ -148,12 +144,12 @@ function MakePage () {
             onChange={handleChange}
           />
           <br />
-  
+
           <label>
             Images to Upload
             <input
-            className="input-text-and-file"
-              id ="upload"
+              className="input-text-and-file"
+              id="upload"
               type="file"
               ref={fileRef}
               accept=".jpg, .jpeg, .png"
@@ -161,7 +157,7 @@ function MakePage () {
               onChange={updateFiles}
             />
           </label>
-  
+
           {imageUrls.length > 0 && (
             <div>
               {imageUrls.map((url, index) => (
@@ -174,47 +170,49 @@ function MakePage () {
               ))}
             </div>
           )}
-  
-        {data.items.map((item, idx) => (
-        <div key={idx}>
-          <label htmlFor={`itemName${idx}`}>Item Name</label>
-          <input
-          className="input-text-and-file"
-            type="text"
-            id={`itemName${idx}`}
-            name={`items[${idx}][name]`}
-            value={item.name}
-            onChange={(e) => handleItemChange(e, idx, "name")}
-          />
 
-          <label htmlFor={`itemUrl${idx}`}>Item URL</label>
-          <input
-          className="input-text-and-file"
-            type="text"
-            id={`itemUrl${idx}`}
-            name={`items[${idx}][url]`}
-            value={item.url}
-            onChange={(e) => handleItemChange(e, idx, "url")}
-          />
-          <br />
-          <br />
-          <div>
-            <button
-              id="makebutton"
-              type="button"
-              onClick={() => handleRemoveItem(idx)}
-            >
-              Remove Item
-            </button>
-          </div>
-        </div>
-      ))}
-      <button id="makebutton" type="button" onClick={handleAddItem}>
-        Add Item
-      </button>
-      <br></br>
-  
-          <button id="subz" type="submit">Submit</button>
+          {data.items.map((item, idx) => (
+            <div key={idx}>
+              <label htmlFor={`itemName${idx}`}>Item Name</label>
+              <input
+                className="input-text-and-file"
+                type="text"
+                id={`itemName${idx}`}
+                name={`items[${idx}][name]`}
+                value={item.name}
+                onChange={(e) => handleItemChange(e, idx, "name")}
+              />
+
+              <label htmlFor={`itemUrl${idx}`}>Item URL</label>
+              <input
+                className="input-text-and-file"
+                type="text"
+                id={`itemUrl${idx}`}
+                name={`items[${idx}][url]`}
+                value={item.url}
+                onChange={(e) => handleItemChange(e, idx, "url")}
+              />
+              <br />
+              <br />
+              <div>
+                <button
+                  id="makebutton"
+                  type="button"
+                  onClick={() => handleRemoveItem(idx)}
+                >
+                  Remove Item
+                </button>
+              </div>
+            </div>
+          ))}
+          <button id="makebutton" type="button" onClick={handleAddItem}>
+            Add Item
+          </button>
+          <br></br>
+
+          <button id="subz" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </>

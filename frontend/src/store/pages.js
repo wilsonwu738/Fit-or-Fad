@@ -1,4 +1,4 @@
-import jwtFetch from './jwt';
+import jwtFetch from "./jwt";
 
 const RECEIVE_PAGES = "pages/RECEIVE_PAGES";
 const RECEIVE_USER_PAGES = "pages/RECEIVE_USER_PAGES";
@@ -8,12 +8,12 @@ const CLEAR_PAGE_ERRORS = "pages/CLEAR_PAGE_ERRORS";
 const RECEIVE_UPDATED_PAGE = "pages/RECEIVE_UPDATED_PAGE";
 const RECEIVE_DELETED_PAGE = "pages/DELETE_PAGE";
 
-const RECEIVE_LIKE = "likes/RECEIVE_LIKE"
-const REMOVE_LIKE = "likes/REMOVE_LIKE"
+const RECEIVE_LIKE = "likes/RECEIVE_LIKE";
+const REMOVE_LIKE = "likes/REMOVE_LIKE";
 
-const receiveUpdatedPage = page => ({
+const receiveUpdatedPage = (page) => ({
   type: RECEIVE_UPDATED_PAGE,
-  page
+  page,
 });
 
 const receiveDeletedPage = (pageId) => ({
@@ -21,10 +21,9 @@ const receiveDeletedPage = (pageId) => ({
   pageId,
 });
 
-
-const receivePages = pages => ({
+const receivePages = (pages) => ({
   type: RECEIVE_PAGES,
-  pages
+  pages,
 });
 
 const receiveUserPages = (pages) => ({
@@ -33,11 +32,10 @@ const receiveUserPages = (pages) => ({
 });
 
 const receiveNewPage = (page) => {
-  
   return {
     type: RECEIVE_NEW_PAGE,
     page,
-  }
+  };
 };
 
 const receiveErrors = (errors) => ({
@@ -50,17 +48,15 @@ export const clearPageErrors = (errors) => ({
   errors,
 });
 
-
 export const fetchPage = (id) => async (dispatch) => {
-
   const res = await jwtFetch(`/api/pages/${id}`);
- 
-    const page = await res.json();
-    
-    dispatch(receiveNewPage(page));
+
+  const page = await res.json();
+
+  dispatch(receiveNewPage(page));
 
   // try {
-   
+
   //   const res = await jwtFetch(`/api/pages/${id}`);
   //   const page = await res.json();
   //   dispatch(receiveNewPage(page));
@@ -70,13 +66,11 @@ export const fetchPage = (id) => async (dispatch) => {
   //     return dispatch(receiveErrors(resBody.errors));
   //   }
   // }
-  
-
 };
 
-export const fetchPages = () => async dispatch => {
+export const fetchPages = () => async (dispatch) => {
   try {
-    const res = await jwtFetch('/api/pages');
+    const res = await jwtFetch("/api/pages");
     const pages = await res.json();
 
     dispatch(receivePages(pages));
@@ -86,9 +80,7 @@ export const fetchPages = () => async dispatch => {
       dispatch(receiveErrors(resBody.errors));
     }
   }
-}
-
-
+};
 
 export const fetchUserPages = (id) => async (dispatch) => {
   try {
@@ -132,11 +124,10 @@ export const editPage = (data) => async (dispatch) => {
   }
 };
 
-
 // export const deletePage = (id) => async (dispatch) => {
 //   try {
-//     const res = await jwtFetch(`/api/pages/${id}`, { 
-//         method: "DELETE" 
+//     const res = await jwtFetch(`/api/pages/${id}`, {
+//         method: "DELETE"
 //     });
 //     const page = await res.json();
 //     dispatch(receiveDeletedPage(page));
@@ -144,31 +135,29 @@ export const editPage = (data) => async (dispatch) => {
 //   }
 // };
 
-export const deletePage = (pageId) => async dispatch => {
+export const deletePage = (pageId) => async (dispatch) => {
   const res = await jwtFetch(`/api/pages/${pageId}`, {
-    method: 'DELETE'
-  })
+    method: "DELETE",
+  });
   if (res.ok) {
-    dispatch(receiveDeletedPage(pageId))
+    dispatch(receiveDeletedPage(pageId));
   }
-  return res
-}
+  return res;
+};
 
-
-
-export const composePage = (data, images) => async dispatch => {
+export const composePage = (data, images) => async (dispatch) => {
   const formData = new FormData();
-  Object.keys(data).forEach(key => {
+  Object.keys(data).forEach((key) => {
     if (key === "itemGroups") {
       formData.append(key, JSON.stringify(data[key])); // stringify the array before appending to form data
     } else {
       formData.append(key, data[key]);
     }
   });
-  Array.from(images).forEach(image => formData.append("images", image));
+  Array.from(images).forEach((image) => formData.append("images", image));
   try {
-    const res = await jwtFetch('/api/pages/', {
-      method: 'POST',
+    const res = await jwtFetch("/api/pages/", {
+      method: "POST",
       body: formData,
     });
     //hi
@@ -182,6 +171,7 @@ export const composePage = (data, images) => async dispatch => {
     }
   }
 };
+
 
   export const likePage = (pageId) => async dispatch => { 
     debugger
@@ -204,6 +194,7 @@ export const composePage = (data, images) => async dispatch => {
     dispatch(receiveNewPage(page))
   }
 
+
 const nullErrors = null;
 
 export const pageErrorsReducer = (state = nullErrors, action) => {
@@ -218,33 +209,31 @@ export const pageErrorsReducer = (state = nullErrors, action) => {
   }
 };
 
-
 const pagesReducer = (state = {}, action) => {
+  const newState = { ...state };
+  switch (action.type) {
+    case RECEIVE_PAGES:
+      return { ...action.pages };
+    case RECEIVE_USER_PAGES:
+      return { ...action.pages };
+    case RECEIVE_NEW_PAGE:
+      // return { ...state, new: action.page };
+      return { ...action.page };
+    case RECEIVE_UPDATED_PAGE:
+      return {
+        ...state,
+        [action.page.id]: {
+          ...state[action.page.id],
+          ...action.page,
+        },
+      };
+    case RECEIVE_DELETED_PAGE:
+      delete newState[action.pageId];
+      return newState;
 
-    const newState = { ...state };
-    switch (action.type) {
-        case RECEIVE_PAGES:
-            return { ...action.pages };
-        case RECEIVE_USER_PAGES:
-            return { ...action.pages };
-        case RECEIVE_NEW_PAGE:
-            // return { ...state, new: action.page };
-            return { ...action.page };
-        case RECEIVE_UPDATED_PAGE:
-            return {
-                ...state,
-                [action.page.id]: {
-                    ...state[action.page.id],
-                    ...action.page
-                }
-            };
-        case RECEIVE_DELETED_PAGE:
-            delete newState[action.pageId];
-            return newState;
-
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default pagesReducer;

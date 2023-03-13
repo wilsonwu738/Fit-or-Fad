@@ -1,0 +1,71 @@
+#edityour {
+  color: #fff;
+}
+
+#edit-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  overflow: scroll;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+}
+
+#form-label {
+  margin-top: 10px;
+}
+
+.form-input {
+  padding: 10px;
+  margin-top: 5px;
+  width: 98%;
+  height: auto;
+  overflow: scroll;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  vertical-align: top;
+}
+
+#description {
+  resize: vertical;
+  width: 85%;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+}
+
+#submit-button {
+  background-color: rgb(106, 153, 169);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#submit-button:hover {
+  background-color: rgb(1, 141, 141);
+}
+
+#form-cancel {
+  background-color: #bc4a42;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#form-cancel:hover {
+  background-color: #da190b;
+}

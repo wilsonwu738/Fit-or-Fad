@@ -6,24 +6,23 @@
 // const UNLIKE_PAGE_SUCCESS = "UNLIKE_PAGE_SUCCESS";
 // const RECEIVE_LIKE_ERRORS = "users/RECEIVE_LIKE_ERRORS";
 
-// const likePageRequest = () => ({ 
-//     type: LIKE_PAGE_REQUEST 
+// const likePageRequest = () => ({
+//     type: LIKE_PAGE_REQUEST
 // });
 
-// const likePageSuccess = (data) => ({ 
-//     type: LIKE_PAGE_SUCCESS, 
-//     payload: data 
+// const likePageSuccess = (data) => ({
+//     type: LIKE_PAGE_SUCCESS,
+//     payload: data
 // });
 
-// const unlikePageRequest = () => ({ 
-//     type: UNLIKE_PAGE_REQUEST 
+// const unlikePageRequest = () => ({
+//     type: UNLIKE_PAGE_REQUEST
 // });
 
 // const unlikePageSuccess = (data) => ({
-//     type: UNLIKE_PAGE_SUCCESS, 
-//     payload: data 
+//     type: UNLIKE_PAGE_SUCCESS,
+//     payload: data
 // });
-
 
 // const receiveErrors = (errors) => ({
 //     type: RECEIVE_LIKE_ERRORS,
@@ -74,7 +73,7 @@
 //     loading: false,
 //     error: null,
 //   };
-  
+
 //   export const likeReducer = (state = initialState, action) => {
 //     switch (action.type) {
 //       case LIKE_PAGE_REQUEST:

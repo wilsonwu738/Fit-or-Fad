@@ -12,94 +12,94 @@ const NUM_SEED_PAGES = 5;
 const users = [];
 
 users.push(
-  new User ({
-    username: 'demo-user',
-    email: 'demo-user@appacademy.io',
-    hashedPassword: bcrypt.hashSync('123456', 10),
+  new User({
+    username: "demo-user",
+    email: "demo-user@appacademy.io",
+    hashedPassword: bcrypt.hashSync("123456", 10),
     profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
-    bio: "Meet Demo User, a fictional user designed to showcase the features and capabilities of a software product. Demo User represents an ideal user of the product, with a range of interests and needs that the product is designed to meet."
+    bio: "Meet Demo User, a fictional user designed to showcase the features and capabilities of a software product. Demo User represents an ideal user of the product, with a range of interests and needs that the product is designed to meet.",
   })
-)
-
+);
 
 users.push(
-
-  new User ({
-    username: 'zaddydan',
-    email: 'dan@gmail.com',
-    hashedPassword: bcrypt.hashSync('123456', 10),
-    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
-    bio: "Feeble minded with infinite potential. Not your average coder, always go above and beyond. Formerly a dedicated fitness enthusiast, this individual has traded in their protein shakes for coding snacks and their weightlifting routines for keyboard tapping marathons. With a lifelong commitment to learning and growth, he is poised to make a significant impact in the world of software development."
+  new User({
+    username: "zaddydan",
+    email: "dan@gmail.com",
+    hashedPassword: bcrypt.hashSync("123456", 10),
+    profileImageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/danimg.jpg",
+    bio: "Feeble minded with infinite potential. Not your average coder, always go above and beyond. Formerly a dedicated fitness enthusiast, this individual has traded in their protein shakes for coding snacks and their weightlifting routines for keyboard tapping marathons. With a lifelong commitment to learning and growth, he is poised to make a significant impact in the world of software development.",
   })
-)
-
-users.push(
-  new User ({
-    username: 'wilsonwonder',
-    email: 'willy@gmail.com',
-    hashedPassword: bcrypt.hashSync('123456', 10),
-    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilsonimg.png",
-    bio: "This guy always asks so many questions. Once immersed in the world of finance, this individual has shifted his focus to the exciting and dynamic field of software development. Outside of work, he enjoys exploring the world of fashion, keeping up with the latest trends and experimenting with their own personal style. They believe that fashion is a form of self-expression and use their love of fashion to inspire their work in software development."
-  })
-)
+);
 
 users.push(
-  new User ({
-    username: 'JQmodel',
-    email: 'jiong@gmail.com',
-    hashedPassword: bcrypt.hashSync('123456', 10),
-    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img26.jpeg",
-    bio: "Xiong Chi in the building, a medical assistant turned tech enthusiast with a passion for fashion. In his free time, he is an avid photographer. He loves exploring new places and capturing the beauty of the world through their lens. He believe that photography is a powerful medium for storytelling and self-expression, and he uses his love of photography to inspire his work in software development."
+  new User({
+    username: "wilsonwonder",
+    email: "willy@gmail.com",
+    hashedPassword: bcrypt.hashSync("123456", 10),
+    profileImageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilsonimg.png",
+    bio: "This guy always asks so many questions. Once immersed in the world of finance, this individual has shifted his focus to the exciting and dynamic field of software development. Outside of work, he enjoys exploring the world of fashion, keeping up with the latest trends and experimenting with their own personal style. They believe that fashion is a form of self-expression and use their love of fashion to inspire their work in software development.",
   })
-)
+);
 
 users.push(
-  new User ({
-    username: 'chakybara',
-    email: 'chak@gmail.com',
-    hashedPassword: bcrypt.hashSync('123456', 10),
-    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
-    bio: "Yao cheel, it's all g!! Always the favorite among the crowd. A former sales professional turned software developer with an amazing eye for CSS. He understands the importance of aesthetics and user experience, and he uses his skills in CSS to create visually stunning websites and applications that are both functional and beautiful. He enjoys exploring the outdoors and staying active. He believes that a healthy work-life balance is key to success in both his personal and professional life."
+  new User({
+    username: "JQmodel",
+    email: "jiong@gmail.com",
+    hashedPassword: bcrypt.hashSync("123456", 10),
+    profileImageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/img26.jpeg",
+    bio: "Xiong Chi in the building, a medical assistant turned tech enthusiast with a passion for fashion. In his free time, he is an avid photographer. He loves exploring new places and capturing the beauty of the world through their lens. He believe that photography is a powerful medium for storytelling and self-expression, and he uses his love of photography to inspire his work in software development.",
   })
-)
+);
 
 users.push(
-  new User ({
-    username: 'timmyturner',
-    email: 'tim@gmail.com',
-    hashedPassword: bcrypt.hashSync('123456', 10),
-    profileImageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/TIMOTHYCHANGGGG.jpeg",
-    bio: "Revelations 21:3-4. Tim, a former health science professional turned software development team lead. As a team lead, he is a natural leader, always willing to mentor and inspire his colleagues. he understands the importance of collaboration and believes that the best solutions come from a diverse and inclusive team. With his ability to communicate effectively and foster a positive team dynamic, Tim has led his team to many successful projects."
+  new User({
+    username: "chakybara",
+    email: "chak@gmail.com",
+    hashedPassword: bcrypt.hashSync("123456", 10),
+    profileImageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/daddy_chak.jpeg",
+    bio: "Yao cheel, it's all g!! Always the favorite among the crowd. A former sales professional turned software developer with an amazing eye for CSS. He understands the importance of aesthetics and user experience, and he uses his skills in CSS to create visually stunning websites and applications that are both functional and beautiful. He enjoys exploring the outdoors and staying active. He believes that a healthy work-life balance is key to success in both his personal and professional life.",
   })
-)
+);
+
+users.push(
+  new User({
+    username: "timmyturner",
+    email: "tim@gmail.com",
+    hashedPassword: bcrypt.hashSync("123456", 10),
+    profileImageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/TIMOTHYCHANGGGG.jpeg",
+    bio: "Revelations 21:3-4. Tim, a former health science professional turned software development team lead. As a team lead, he is a natural leader, always willing to mentor and inspire his colleagues. he understands the importance of collaboration and believes that the best solutions come from a diverse and inclusive team. With his ability to communicate effectively and foster a positive team dynamic, Tim has led his team to many successful projects.",
+  })
+);
 
 const ourImages = [
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p1.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p2.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p3.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p1.png',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p2.png',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p3.png',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p4.png',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p5.png',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p2.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p3.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p4.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p5.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p1.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg',
-  'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p5.jpg',
-
-
-  
-]
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p1.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p2.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p3.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p1.png",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p2.png",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p3.png",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p4.png",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/tim_p5.png",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p2.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p3.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p4.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p5.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p1.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg",
+  "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p5.jpg",
+];
 
 const pages = [];
 const images = [
@@ -466,14 +466,14 @@ pages.push(
   })
 );
 
-
 pages.push(
   new Page({
     author: users[3]._id,
     title: "My favorite fit to wear on a vacation!",
     description:
       "Looking sharp and feeling confident in my classic black t-shirt and khaki shorts at this amazing vacation spot! The simplicity of this outfit really allows the beauty of the surroundings to shine. Not only does this outfit look great, but it's also incredibly comfortable. The soft and breathable fabric of my black t-shirt keeps me cool even in the hot sun, while my khaki shorts allow for easy movement as I explore this gorgeous vacation spot. I love how versatile this outfit is, whether I'm lounging by the beach or hiking through the lush landscape. It's perfect for any adventure that comes my way. If you're in need of a comfortable yet stylish outfit for your next vacation, then be sure to add a classic black t-shirt and khaki shorts to your wardrobe. Trust me, it's a timeless look that never goes out of style.",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p1.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p1.jpg",
     items: [
       {
         name: "Black Top",
@@ -497,7 +497,8 @@ pages.push(
     title: "Fashionable on a date night!",
     description:
       "Feeling sleek and stylish in my black jacket, slim fit grey pants, and Aldo shoes! This outfit is the perfect combination of sophistication and comfort. The black jacket adds an element of refinement to the look, while the slim fit grey pants provide a sleek and modern edge. And let's not forget about the Aldo shoes, which not only look great but also provide incredible comfort and support throughout the day. Whether I'm heading to a date or meeting up with friends for a night out, this outfit never fails to impress. It's versatile enough to dress up or down depending on the occasion, and the comfortable fit allows me to feel confident and relaxed. If you're looking to up your style game with a sophisticated yet comfortable outfit, then be sure to add a black jacket, slim fit grey pants, and Aldo shoes to your wardrobe. Trust me, you won't regret it!",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p2.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p2.jpg",
     items: [
       {
         name: "Black Jacket",
@@ -521,7 +522,8 @@ pages.push(
     title: "The best fit to take a walk in the park",
     description:
       "Enjoying a beautiful day at the park near the lake in my comfortable and stylish Uniqlo light grey shirt and blue shorts! This outfit is perfect for a casual day out in nature, providing both comfort and style. The light grey shirt is incredibly soft and lightweight, making it the perfect choice for a warm day. And the blue shorts not only add a pop of color but also provide a relaxed fit that allows for easy movement as I take a walk around the park. The surroundings are truly breathtaking, and I feel grateful to be able to enjoy it all in comfort and style. Whether I'm taking a stroll or sitting by the lake, this outfit provides the perfect balance of casual comfort and effortless style. If you're looking for a comfortable and stylish outfit for your next walk in the park, then be sure to add a Uniqlo light grey shirt and blue shorts to your wardrobe. Trust me, you won't regret it!",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p3.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/jiong_p3.jpg",
     items: [
       {
         name: "Grey Uniqlo Shirt",
@@ -545,7 +547,8 @@ pages.push(
     title: "The type of clothing to wear at a raccoon cafe!",
     description:
       "Feeling sophisticated and stylish in my black shirt, black pants, and my timeless Rolex watch as I enjoy a cup of coffee at the raccoon cafe! The black shirt provides a sleek and refined look, while the black pants add a touch of elegance and class. And of course, the Rolex watch is the perfect finishing touch, adding a sense of luxury and sophistication to the entire outfit. The atmosphere of the raccoon cafe is cozy and inviting, and I feel grateful to be able to enjoy it all while looking my best. Whether I'm admiring the adorable raccoons or simply sipping my coffee, this outfit allows me to feel confident and at ease. If you're looking for a stylish and sophisticated outfit for your next coffee date, then be sure to add a black shirt, black pants, and a classic Rolex watch to your wardrobe. Trust me, it's a timeless look that never goes out of style!",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p1.jpg",
     items: [
       {
         name: "Black Shirt",
@@ -569,7 +572,8 @@ pages.push(
     title: "Lotto World FIT!",
     description:
       "Feeling cozy and comfortable in my black sweater and green sweatpants as I go out to Lotto World in Korea! This outfit is perfect both for a lazy day in and a day to go out and have fun, providing both warmth and style. The black sweater is soft and comfortable, providing the perfect amount of warmth on a chilly day. And the green sweatpants add a touch of color and personality to the outfit, making it fun and stylish. Whether I'm reading a book, watching TV, or simply lounging around, this outfit allows me to feel relaxed and at ease. It's the perfect choice for anyone who loves to prioritize comfort while still looking good. If you're in need of a comfortable and stylish outfit for your next lazy day at home, then be sure to add a black sweater and green sweatpants to your wardrobe.",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p2.jpg",
     items: [
       {
         name: "Black Sweater",
@@ -593,7 +597,8 @@ pages.push(
     title: "Love my raccoon cafes!!",
     description:
       "Looking sharp and stylish in my black cap, white shirt, and black pants as I enjoy the company of some adorable raccoons at the cafe! The black cap adds a touch of coolness and edge to the outfit, while the white shirt keeps things clean and classic. And the black pants create a sleek and sophisticated look that is perfect for any occasion. The atmosphere around me is cozy and inviting, with the playful antics of the raccoons keeping me entertained. I feel grateful to be able to enjoy it all in style, while feeling comfortable and at ease in my outfit. If you're looking for a fashionable and practical outfit for your next visit to a raccoon cafe, then be sure to add a black cap, white shirt, and black pants to your wardrobe. It's a winning combination that will keep you looking great no matter what the raccoons throw your way!",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p3.jpg",
     items: [
       {
         name: "Black Cap",
@@ -613,7 +618,8 @@ pages.push(
     title: "The outfit to wear to boost your confidence up",
     description:
       "Feeling cool and confident in my black Adidas top and blue ripped jeans as I sit on my sleek Model S Tesla! This outfit is the perfect combination of sporty and stylish, making me feel ready for anything. The black Adidas top is not only comfortable but also adds an athletic edge to the outfit. And the blue ripped jeans provide a touch of rebellion and individuality, making it stand out. Sitting on my Model S Tesla only adds to the cool factor of this outfit. The car is a symbol of luxury and innovation, and I feel lucky to be able to enjoy it all while looking my best. Whether I'm driving around town or simply admiring the car, this outfit allows me to feel confident and stylish. It's the perfect choice for anyone who wants to combine comfort with a sense of adventure and luxury. If you're looking for a sporty and stylish outfit for your next drive around town, then be sure to add a black Adidas top and blue ripped jeans to your wardrobe. Trust me, it's a winning combination!",
-    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/chak_p4.jpg",
     items: [
       {
         name: "Black Adidas Top",
@@ -746,28 +752,46 @@ pages.push(
 //     )
 //   }
 
-//wilson 
-
-pages.push(
-  new Page ({
-    author: users[2]._id,
-    title: 'Outfit for Hawaii',
-    description: "Hey, everyone! I wanted to share with you guys my new summer outfit that I'm really excited about. I'm wearing a short sleeve button-down and shorts set with a white and blue floral pattern that really pops! The colors are perfect for the season and the pattern is just the right amount of boldness. To keep my hands free, I'm carrying a white and black crossbody bag that's both stylish and functional. And last but not least, my feet are sporting the Nike Low Court Vision shoes that are so comfortable and versatile. Whether I'm running errands or meeting up with friends, this look is perfect for any occasion. I hope you like it as much as I do!",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg',
-    items: [{name: "Top", url: "https://us.shein.com/Men-Hawaiian-Print-Button-Up-Shirt-p-2211088-cat-1979.html?src_identifier=on%3DIMAGE_COMPONENT%60cn%3DCOMMON_IMAGE_COMPONENT_2_us_en%60hz%3DhotZone_1%60ps%3D6_1%60jc%3Dreal_1970&src_module=Men&src_tab_page_id=page_home1678229575630&mallCode=1"},
-      {name: "Bottom", url: 'https://us.shein.com/SHEIN-Men-Coconut-Tree-Print-Drawstring-Waist-Shorts-p-13057552-cat-1976.html?src_identifier=fc%3DMen%60sc%3DBOTTOMS%60tc%3D0%60oc%3D0%60ps%3Dtab05navbar06%60jc%3Dreal_2045&src_module=topcat&src_tab_page_id=page_real_class1678229848253&mallCode=1'},
-      {name: "Crossbody Bag", url: 'https://www.etsy.com/listing/1255231825/black-white-checkered-saddle-bag-purse?gpla=1&gao=1&'},
-      {name: "Nike Shoes", url: 'https://www.amazon.com/Nike-Vision-Sneaker-Blackwhite-Regular/dp/B07RKYBTC8?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ARCVLFICTD63C'}
-    ]
-  })
-)
+//wilson
 
 pages.push(
   new Page({
     author: users[2]._id,
-    title: "Urban Explorer: Mapping Out Style with a Black Sweatshirt and Cargo Pants",
-    description: "In this fashion post, we explore how to add an adventurous and urban edge to your style. Our model is wearing a black sweatshirt with a map design, paired with comfortable cargo pants and sleek Nike Air Force 1 sneakers. The map design on the sweatshirt adds a bold and unique touch to the outfit, while the black color keeps it understated and versatile. The cargo pants provide a functional and utilitarian vibe that's perfect for exploring the city or running errands. The Nike Air Force 1 sneakers add a modern and athletic touch to the outfit, while also providing comfort and support for all-day wear. This ensemble is perfect for the adventurous and stylish man who's always on the go, with a comfortable and practical style that's still fashion-forward. Whether you're exploring a new city or just going for a walk around town, this outfit is the perfect choice for a bold and stylish look.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p2.jpg',
+    title: "Outfit for Hawaii",
+    description:
+      "Hey, everyone! I wanted to share with you guys my new summer outfit that I'm really excited about. I'm wearing a short sleeve button-down and shorts set with a white and blue floral pattern that really pops! The colors are perfect for the season and the pattern is just the right amount of boldness. To keep my hands free, I'm carrying a white and black crossbody bag that's both stylish and functional. And last but not least, my feet are sporting the Nike Low Court Vision shoes that are so comfortable and versatile. Whether I'm running errands or meeting up with friends, this look is perfect for any occasion. I hope you like it as much as I do!",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p1.jpg",
+    items: [
+      {
+        name: "Top",
+        url: "https://us.shein.com/Men-Hawaiian-Print-Button-Up-Shirt-p-2211088-cat-1979.html?src_identifier=on%3DIMAGE_COMPONENT%60cn%3DCOMMON_IMAGE_COMPONENT_2_us_en%60hz%3DhotZone_1%60ps%3D6_1%60jc%3Dreal_1970&src_module=Men&src_tab_page_id=page_home1678229575630&mallCode=1",
+      },
+      {
+        name: "Bottom",
+        url: "https://us.shein.com/SHEIN-Men-Coconut-Tree-Print-Drawstring-Waist-Shorts-p-13057552-cat-1976.html?src_identifier=fc%3DMen%60sc%3DBOTTOMS%60tc%3D0%60oc%3D0%60ps%3Dtab05navbar06%60jc%3Dreal_2045&src_module=topcat&src_tab_page_id=page_real_class1678229848253&mallCode=1",
+      },
+      {
+        name: "Crossbody Bag",
+        url: "https://www.etsy.com/listing/1255231825/black-white-checkered-saddle-bag-purse?gpla=1&gao=1&",
+      },
+      {
+        name: "Nike Shoes",
+        url: "https://www.amazon.com/Nike-Vision-Sneaker-Blackwhite-Regular/dp/B07RKYBTC8?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ARCVLFICTD63C",
+      },
+    ],
+  })
+);
+
+pages.push(
+  new Page({
+    author: users[2]._id,
+    title:
+      "Urban Explorer: Mapping Out Style with a Black Sweatshirt and Cargo Pants",
+    description:
+      "In this fashion post, we explore how to add an adventurous and urban edge to your style. Our model is wearing a black sweatshirt with a map design, paired with comfortable cargo pants and sleek Nike Air Force 1 sneakers. The map design on the sweatshirt adds a bold and unique touch to the outfit, while the black color keeps it understated and versatile. The cargo pants provide a functional and utilitarian vibe that's perfect for exploring the city or running errands. The Nike Air Force 1 sneakers add a modern and athletic touch to the outfit, while also providing comfort and support for all-day wear. This ensemble is perfect for the adventurous and stylish man who's always on the go, with a comfortable and practical style that's still fashion-forward. Whether you're exploring a new city or just going for a walk around town, this outfit is the perfect choice for a bold and stylish look.",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p2.jpg",
     items: [
       {
         name: "Black Sweatshirt with Map Pattern",
@@ -780,8 +804,8 @@ pages.push(
       {
         name: "Nike Air Force 1",
         url: "https://www.nike.com/t/air-force-1-07-mens-shoes-5QFp5Z/CW2288-111?nikemt=true&cp=38647199687_search_%7CPRODUCT_GROUP%7CGOOGLE%7C71700000101429394%7CGG_Evergreen_Shopping_Shoes_AllShoes%7C%7Cc&exp=2011&gclsrc=aw.ds&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5uLQl0FgR-1JL9eGVCfm3ck4zgvHv4Z4gL5y_LG5JINGjER3BA9HgaAh6xEALw_wcB&gclsrc=aw.ds",
-      }
-    ]
+      },
+    ],
   })
 );
 
@@ -789,8 +813,10 @@ pages.push(
   new Page({
     author: users[2]._id,
     title: "Smart Casual: Elevating a Classic Look with Blue and Grey",
-    description: "In this fashion post, we showcase how to add a modern twist to a classic and timeless look. Our model is wearing a blue shirt, paired with grey pants and brown dress shoes. The blue shirt adds a pop of color to the outfit, while still keeping it professional and polished. The grey pants provide a neutral and versatile base, with a slim and tapered fit that's perfect for a modern and stylish look. The brown dress shoes add a touch of sophistication and elegance to the outfit, with a classic and timeless style that's perfect for any formal occasion. This ensemble is perfect for the stylish and modern man who wants to look his best without sacrificing comfort or practicality. The smart casual style strikes the perfect balance between formality and comfort, making it a great choice for both work and play. Whether you're heading to the office or going out for a night on the town, this outfit is the perfect choice for a stylish and classic look that's sure to impress.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p3.jpg',
+    description:
+      "In this fashion post, we showcase how to add a modern twist to a classic and timeless look. Our model is wearing a blue shirt, paired with grey pants and brown dress shoes. The blue shirt adds a pop of color to the outfit, while still keeping it professional and polished. The grey pants provide a neutral and versatile base, with a slim and tapered fit that's perfect for a modern and stylish look. The brown dress shoes add a touch of sophistication and elegance to the outfit, with a classic and timeless style that's perfect for any formal occasion. This ensemble is perfect for the stylish and modern man who wants to look his best without sacrificing comfort or practicality. The smart casual style strikes the perfect balance between formality and comfort, making it a great choice for both work and play. Whether you're heading to the office or going out for a night on the town, this outfit is the perfect choice for a stylish and classic look that's sure to impress.",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p3.jpg",
     items: [
       {
         name: "Blue Button Down",
@@ -803,8 +829,8 @@ pages.push(
       {
         name: "Brown Dress Shoes",
         url: "https://www.toms.com/us/men/shoes/water-resistant-topaz-brown-navi-dress-shoe/10016920.html",
-      }
-    ]
+      },
+    ],
   })
 );
 
@@ -812,8 +838,10 @@ pages.push(
   new Page({
     author: users[2]._id,
     title: "Nautical Vibes: Sailing into Style with Blue and Brown",
-    description: "In this fashion post, we showcase a fresh and modern take on the classic nautical look. Our model is wearing a blue t-shirt with an anchor design pattern, paired with brown shorts and Nike white shoes. The anchor design adds a playful and nautical touch to the outfit, while the blue and brown color combination creates a relaxed and summery vibe. The brown shorts are a great choice for warm weather, with a casual and comfortable fit that's perfect for a day at the beach or a picnic in the park. The Nike white shoes provide a crisp and clean touch to the outfit, while also providing comfort and support for all-day wear. This ensemble is perfect for the stylish and fun-loving man who wants to look his best while enjoying the summer sun. Whether you're sailing the high seas or just enjoying a day out with friends, this outfit is the perfect choice for a stylish and comfortable look that's sure to turn heads.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p5.jpg',
+    description:
+      "In this fashion post, we showcase a fresh and modern take on the classic nautical look. Our model is wearing a blue t-shirt with an anchor design pattern, paired with brown shorts and Nike white shoes. The anchor design adds a playful and nautical touch to the outfit, while the blue and brown color combination creates a relaxed and summery vibe. The brown shorts are a great choice for warm weather, with a casual and comfortable fit that's perfect for a day at the beach or a picnic in the park. The Nike white shoes provide a crisp and clean touch to the outfit, while also providing comfort and support for all-day wear. This ensemble is perfect for the stylish and fun-loving man who wants to look his best while enjoying the summer sun. Whether you're sailing the high seas or just enjoying a day out with friends, this outfit is the perfect choice for a stylish and comfortable look that's sure to turn heads.",
+    imageUrl:
+      "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/wilson_p5.jpg",
     items: [
       {
         name: "Blue T-shirt",
@@ -826,19 +854,19 @@ pages.push(
       {
         name: "Nike Air Force 1",
         url: "https://www.nike.com/t/air-force-1-07-mens-shoes-5QFp5Z/CW2288-111?nikemt=true&cp=38647199687_search_%7CPRODUCT_GROUP%7CGOOGLE%7C71700000101429394%7CGG_Evergreen_Shopping_Shoes_AllShoes%7C%7Cc&exp=2011&gclsrc=aw.ds&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc5uLQl0FgR-1JL9eGVCfm3ck4zgvHv4Z4gL5y_LG5JINGjER3BA9HgaAh6xEALw_wcB&gclsrc=aw.ds",
-      }
-    ]
+      },
+    ],
   })
 );
-
 
 //dan
 pages.push(
   new Page({
     author: users[1]._id,
     title: "Casual Cool: Styling a Blue Hoodie and Sweatpants",
-    description: "In this fashion post, we explore how to elevate a comfortable and casual look with a few key styling choices. I am rocking a blue hoodie and sweatpants, paired with sleek black Nike running shoes and black headphones. The blue hue of the hoodie adds a pop of color to the otherwise muted outfit, while the sweatpants provide both comfort and a relaxed vibe. The black Nike shoes give the look a touch of athleticism and the headphones add an element of tech-savvy style. Overall, this outfit strikes the perfect balance between comfort and fashion-forwardness, making it a great choice for running errands, working from home, or just hanging out with friends.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p1.jpg',
+    description:
+      "In this fashion post, we explore how to elevate a comfortable and casual look with a few key styling choices. I am rocking a blue hoodie and sweatpants, paired with sleek black Nike running shoes and black headphones. The blue hue of the hoodie adds a pop of color to the otherwise muted outfit, while the sweatpants provide both comfort and a relaxed vibe. The black Nike shoes give the look a touch of athleticism and the headphones add an element of tech-savvy style. Overall, this outfit strikes the perfect balance between comfort and fashion-forwardness, making it a great choice for running errands, working from home, or just hanging out with friends.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p1.jpg",
     items: [
       {
         name: "Blue Hoodie",
@@ -856,17 +884,17 @@ pages.push(
         name: "Black Headphones",
         url: "https://www.bestbuy.com/site/beats-by-dr-dre-solo-the-beats-icon-collection-wireless-on-ear-headphones-matte-black/6383124.p?skuId=6383124&ref=212&loc=1&extStoreId=1535&ref=212&loc=1&&&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc51Ip2UquJe7VXK22vwHH_L5jVYpkitcMPHDR86-MLav3r5XC347tAaApDiEALw_wcB&gclsrc=aw.ds",
       },
-    ]
+    ],
   })
 );
-
 
 pages.push(
   new Page({
     author: users[1]._id,
     title: "Grey on Grey: Elevating a Casual Look",
-    description: "In this fashion post, we explore how to make a casual outfit look effortlessly stylish. Our model is wearing a greyish shirt with small white dots, paired with comfortable grey sweatpants and sleek black running shoes from Adidas. The grey-on-grey color palette creates a cohesive and sophisticated look, while the small white dots on the shirt add a playful touch. The black Adidas running shoes provide both comfort and a modern edge, while also grounding the outfit with a bold pop of black. This ensemble is perfect for a day of running errands or meeting up with friends, as it strikes a balance between style and comfort. Whether you're hitting the gym or simply going for a walk, this outfit will keep you looking and feeling your best.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg',
+    description:
+      "In this fashion post, we explore how to make a casual outfit look effortlessly stylish. Our model is wearing a greyish shirt with small white dots, paired with comfortable grey sweatpants and sleek black running shoes from Adidas. The grey-on-grey color palette creates a cohesive and sophisticated look, while the small white dots on the shirt add a playful touch. The black Adidas running shoes provide both comfort and a modern edge, while also grounding the outfit with a bold pop of black. This ensemble is perfect for a day of running errands or meeting up with friends, as it strikes a balance between style and comfort. Whether you're hitting the gym or simply going for a walk, this outfit will keep you looking and feeling your best.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p2.jpg",
     items: [
       {
         name: "Grey Button Down",
@@ -879,8 +907,8 @@ pages.push(
       {
         name: "Adidas Running Shoes",
         url: "https://www.adidas.com/us/ultraboost-5.0-dna-shoes/GV8746.html?af_channel=Search&af_click_lookback=30d&af_reengagement_window=30d&c=PLA&cm_mmc=AdieSEM_Feeds-_-GoogleProductAds-_-NA-_-GV8746&cm_mmca1=US&cm_mmca2=NA&dfw_tracker=24819-GV8746-0014&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc4uPGzwoVYtcTUxHLgObDwJlvp4yYCnzStEEaOwmyCK_trOKyCn1LkaAhC9EALw_wcB&gclsrc=aw.ds&is_retargeting=true&kpid=GV8746&pid=googleadwords_temp&sourceid=543457011GV8746",
-      }
-    ]
+      },
+    ],
   })
 );
 
@@ -888,8 +916,9 @@ pages.push(
   new Page({
     author: users[1]._id,
     title: "Cartoon Cool: Adding Playfulness to a Denim Look",
-    description: "In this fashion post, we showcase a playful and stylish look that's perfect for adding some fun to your wardrobe. Our model is wearing a grey cartoon cap, paired with a denim top that's perfect for the warmer months. The cap adds a playful touch to the outfit, while the denim top provides a classic and versatile base. The light wash of the denim creates a laid-back and relaxed vibe that's perfect for a casual day out. The outfit is completed with a pair of simple black jeans and white sneakers, which provide a clean and minimalistic feel that lets the cap and denim top stand out. This ensemble is perfect for a day out with friends or a weekend brunch, and it's sure to turn heads with its unique and playful style. Whether you're a fan of cartoons or just looking to add some fun to your wardrobe, this look is the perfect choice.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg',
+    description:
+      "In this fashion post, we showcase a playful and stylish look that's perfect for adding some fun to your wardrobe. Our model is wearing a grey cartoon cap, paired with a denim top that's perfect for the warmer months. The cap adds a playful touch to the outfit, while the denim top provides a classic and versatile base. The light wash of the denim creates a laid-back and relaxed vibe that's perfect for a casual day out. The outfit is completed with a pair of simple black jeans and white sneakers, which provide a clean and minimalistic feel that lets the cap and denim top stand out. This ensemble is perfect for a day out with friends or a weekend brunch, and it's sure to turn heads with its unique and playful style. Whether you're a fan of cartoons or just looking to add some fun to your wardrobe, this look is the perfect choice.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p3.jpg",
     items: [
       {
         name: "Grey Cartoon Cap",
@@ -902,8 +931,8 @@ pages.push(
       {
         name: "Transparent Phone Case",
         url: "https://www.walmart.com/ip/Airlite-Invisible-Ring-Case-With-Thick-Clear-Tpu-Shockproof-Protection-For-Iphone-14-Pro-Max-6-7-Clear/1890291177?wmlspartner=wlpa&selectedSellerId=101016925&adid=222222222271890291177_101016925_144893864830_18291203882&wl0=&wl1=g&wl2=c&wl3=620762789706&wl4=aud-1651068664506:pla-1743906452118&wl5=9004405&wl6=&wl7=&wl8=&wl9=pla&wl10=169776200&wl11=online&wl12=1890291177_101016925&veh=sem&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6ylYbjvLaMDN9rEtU1qOA6IYS0S2rly4tcvBS2Q_0Wo5-J6mcI8IgaAlwDEALw_wcB&gclsrc=aw.ds",
-      }
-    ]
+      },
+    ],
   })
 );
 
@@ -911,8 +940,9 @@ pages.push(
   new Page({
     author: users[1]._id,
     title: "Circle of Style: Elevating a Simple Look with a Bold Design",
-    description: "In this fashion post, we showcase how to add a bold touch to a simple and comfortable outfit. Our model is wearing a black tank top with a large circle design pattern, paired with light grey shorts. The circle design adds an eye-catching and playful element to the outfit, while the black and grey color combination keeps it simple and understated. The tank top is perfect for showing off toned arms, making it a great choice for a day at the gym or a run in the park. The light grey shorts provide both comfort and style, with a relaxed fit that's perfect for any casual occasion. The outfit is completed with a pair of white sneakers, which add a crisp and clean touch to the look. Overall, this ensemble strikes the perfect balance between comfort and style, with a bold and playful design that's sure to turn heads. Whether you're running errands or meeting up with friends, this outfit is the perfect choice for a stylish and comfortable look.",
-    imageUrl: 'https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg',
+    description:
+      "In this fashion post, we showcase how to add a bold touch to a simple and comfortable outfit. Our model is wearing a black tank top with a large circle design pattern, paired with light grey shorts. The circle design adds an eye-catching and playful element to the outfit, while the black and grey color combination keeps it simple and understated. The tank top is perfect for showing off toned arms, making it a great choice for a day at the gym or a run in the park. The light grey shorts provide both comfort and style, with a relaxed fit that's perfect for any casual occasion. The outfit is completed with a pair of white sneakers, which add a crisp and clean touch to the look. Overall, this ensemble strikes the perfect balance between comfort and style, with a bold and playful design that's sure to turn heads. Whether you're running errands or meeting up with friends, this outfit is the perfect choice for a stylish and comfortable look.",
+    imageUrl: "https://aa-aws-mern-fitorfad.s3.amazonaws.com/public/dan_p4.jpg",
     items: [
       {
         name: "Black Tank Top",
@@ -925,10 +955,10 @@ pages.push(
       {
         name: "Transparent Phone Case",
         url: "https://www.walmart.com/ip/Airlite-Invisible-Ring-Case-With-Thick-Clear-Tpu-Shockproof-Protection-For-Iphone-14-Pro-Max-6-7-Clear/1890291177?wmlspartner=wlpa&selectedSellerId=101016925&adid=222222222271890291177_101016925_144893864830_18291203882&wl0=&wl1=g&wl2=c&wl3=620762789706&wl4=aud-1651068664506:pla-1743906452118&wl5=9004405&wl6=&wl7=&wl8=&wl9=pla&wl10=169776200&wl11=online&wl12=1890291177_101016925&veh=sem&gclid=Cj0KCQiApKagBhC1ARIsAFc7Mc6ylYbjvLaMDN9rEtU1qOA6IYS0S2rly4tcvBS2Q_0Wo5-J6mcI8IgaAlwDEALw_wcB&gclsrc=aw.ds",
-      }
-    ]
-}));
-
+      },
+    ],
+  })
+);
 
 mongoose
   .connect(db, { useNewUrlParser: true })

@@ -29,40 +29,35 @@ function MakePage () {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+  
     const items = data.items.map(item => ({
-      itemName: item.name,
-      itemUrl: item.url
+      name: item.name,
+      url: item.url
     }));
-    
-    const itemGroups = [
-      {
-        groupName: '',
-        items: data.items
-      }
-    ];
-    
+  
     const finalData = {
       author: currentUser._id,
       title: data.title,
       description: data.description,
-      itemGroups: itemGroups,
+      items: JSON.stringify(items),
       likes: ""
     };
-    
+  
     dispatch(composePage(finalData, images))
-    .then(() => {
-      history.push('/');
-    })
-    setImages([]);                       
-    setImageUrls([]);  
+      .then(() => {
+        history.push('/');
+      })
+      .catch((err) => console.log(err));
+  
+    setImages([]);
+    setImageUrls([]);
     setData({
       author: '',
       title: '',
       description: '',
       items: [{ name: '', url: '' }],
       likes: ''
-    });                  
+    });
     fileRef.current.value = null;
   };
 
@@ -89,7 +84,7 @@ function MakePage () {
     const { name, value } = e.target;
     setData(prevFormData => ({
       ...prevFormData,
-      [name]: name === "itemGroups" ? JSON.parse(value) : value || '',
+      [name]: name === "items" ? JSON.stringify(value) : value || '',
     }));
   };
 

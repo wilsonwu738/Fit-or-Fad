@@ -144,7 +144,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.846);
 }
 
 .item-description {
@@ -154,10 +154,11 @@
 }
 
 .item-individual-container {
-  background-color: transparent;
-  margin: 10px 0;
-  /* border-radius: 12px; */
-  padding: 14px;
+  background-color: rgb(57, 57, 57);
+  margin: 10px;
+  border-radius: 12px;
+  padding: 10px;
+
 }
 
 .item-individual-container:hover {

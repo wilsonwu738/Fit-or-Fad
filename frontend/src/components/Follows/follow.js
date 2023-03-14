@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { followUser, deleteFollow } from "../../store/users";
+import "./Follow.css"
 
 function FollowButton({ userId }) {
   const dispatch = useDispatch();
@@ -23,9 +24,9 @@ function FollowButton({ userId }) {
   };
 
   if (isFollowing) {
-    return <button onClick={handleUnfollow}>Following</button>;
+    return < button className="followButton" onClick={handleUnfollow}>Following</button>;
   } else if (currentUser && currentUser.id !== userId) {
-    return <button onClick={handleFollow}>Follow</button>;
+    return < button className="followButton" onClick={handleFollow}>Follow</button>;
   }
 }
 

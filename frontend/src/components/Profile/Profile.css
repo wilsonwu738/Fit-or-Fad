@@ -7,18 +7,27 @@
   flex: 1;
   height: 100%;
   max-width: 40%;
-}
-
-#name {
-  margin-top: -5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 #profile img {
   max-width: 90%;
+  box-sizing: border-box;
   height: auto;
   display: flex;
   justify-content: center;
-  border: 3px dashed white;
+  border: 16px solid #333333;
+  border-radius: 12px;
+}
+
+#name {
+  margin-top: 2rem;
+}
+
+#followers {
+  margin-bottom: 1rem;
 }
 
 #bio {

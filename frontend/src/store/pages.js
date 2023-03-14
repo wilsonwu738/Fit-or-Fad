@@ -209,6 +209,15 @@ export const composePage = (data, images) => async (dispatch) => {
     dispatch(receiveNewPage(page))
   }
 
+  export const editComment = (data) => async dispatch => {
+    const res = await jwtFetch(`/api/pages/${data._id}`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    });
+    const page = await res.json();
+    dispatch(receiveUpdatedPage(page));
+  }
+
 
 const nullErrors = null;
 

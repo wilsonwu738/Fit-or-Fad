@@ -9,9 +9,6 @@ const RECEIVE_UPDATED_PAGE = "pages/RECEIVE_UPDATED_PAGE";
 const RECEIVE_DELETED_PAGE = "pages/DELETE_PAGE";
 
 
-// const RECEIVE_COMMENT = "comments/RECEIVE_COMMENT"
-// const REMOVE_COMMENT = "comments/REMOVE_COMMENT"
-
 const receiveUpdatedPage = (page) => ({
   type: RECEIVE_UPDATED_PAGE,
   page,
@@ -119,12 +116,8 @@ export const deletePage = (pageId) => async (dispatch) => {
 export const composePage = (data, images) => async (dispatch) => {
   const formData = new FormData();
   Object.keys(data).forEach((key) => {
-    if (key === "itemGroups") {
-      formData.append(key, JSON.stringify(data[key])); // stringify the array before appending to form data
-    } else {
       formData.append(key, data[key]);
-    }
-  });
+    });
   Array.from(images).forEach((image) => formData.append("images", image));
   try {
     const res = await jwtFetch("/api/pages/", {
@@ -163,34 +156,6 @@ export const composePage = (data, images) => async (dispatch) => {
     });
     const page = await res.json();
     dispatch(receiveNewPage(page))
-  }
-
-  export const commentPage = (pageId) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/comment/${pageId}`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    const page = await res.json();
-    dispatch(receiveNewPage(page))
-  }
-
-  export const deleteComment = (pageId) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/comment/${pageId}`, {
-      method: 'DELETE'
-    });
-    const page = await res.json();
-    dispatch(receiveNewPage(page))
-  }
-
-  export const editComment = (data) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/${data._id}`, {
-      method: "PATCH",
-      body: JSON.stringify(data),
-    });
-    const page = await res.json();
-    dispatch(receiveUpdatedPage(page));
   }
 
 

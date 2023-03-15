@@ -36,7 +36,6 @@ function LoginForm() {
       <div className="session-form-page">
         <div className="session-form-container">
           <form className="session-form" onSubmit={handleSubmit}>
-            {/* <h2>Log In Here 👇 </h2> */}
             <h2>Welcome to Fit or Fad</h2>
             <hr></hr>
 

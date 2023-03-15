@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "../../store/pages";
+import { fetchComments } from "../../store/comments";
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import './ShowPage.css'
@@ -11,6 +12,7 @@ import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
 import LikePage from "../Likes/Like";
 import like from "../../images/like.png"
+import MakeComment from "../Creations/MakeComment"
 function ShowPage() {
   const handleUpdateClick = () => {
     setIsEditing(true);
@@ -32,21 +34,30 @@ function ShowPage() {
   useEffect(() => {
     dispatch(fetchPage(pageId))
   }, [pageId, dispatch, isEditing])
+
+  useEffect(() => {
+    dispatch(fetchComments())
+  }, [])
+
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
+
   const profileLink = () => {
     return "/profile/" + page.author._id;
   }
+
   const toProfilePage = (e) => {
     if (typeof window !== 'undefined') {
       window.location.href = `/profile/${page.author._id}`;
     }
   }
+
   const handleClick = (url) => {
     const protocol = /^https?:\/\//i.test(url) ? "" : "http://";
     window.open(protocol + url, "_blank");
   };
+
   const itemInfo =
     items ?
       items.map((item, i) => (
@@ -55,6 +66,7 @@ function ShowPage() {
           {/* <div className="item-url" key={i} onClick={() => handleClick(item.url)}>{item.url}</div> */}
         </div>
       )) : null;
+
   const hasEditButton = (
     <div className="buttons">
       <DeleteButton pageId={page?.id} className="pic-buttons" />
@@ -62,11 +74,13 @@ function ShowPage() {
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
+
   const hasNoEditButton = (
     <div className="buttons">
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
+  
   if (page === undefined) return <div>No Page</div>
   return page?.author && (
     <div className="page-container">
@@ -75,6 +89,7 @@ function ShowPage() {
           <img src={page.imageUrl} alt={page.title} />
           <div className="buttons-container">
             {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
+            <MakeComment />
           </div>
         </div>
         <div id="textz">

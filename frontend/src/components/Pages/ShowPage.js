@@ -81,7 +81,7 @@ function ShowPage() {
           <div className="text-content">
             <div className="title">{page.title}</div>
             <div className="profile-link" onClick={toProfilePage}>
-            👤 <span className="profile-link-text"> {page.author.username}</span>
+            👤 <span className="profile-link-text"> {page?.author?.username}</span>
             </div>
             <div className="item-container">
               {itemInfo}

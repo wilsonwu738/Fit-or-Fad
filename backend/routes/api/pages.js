@@ -51,7 +51,9 @@ router.get("/user/:userId", async (req, res, next) => {
 router.get("/comments", async function (req, res, next) {
   try {
     console.log(req)
-    const comments = await Comment.find({});
+    const comments = await Comment.find({}).populate(
+      "commenter"
+    );
     console.log(comments)
     res.json(comments);
   } catch (err) {

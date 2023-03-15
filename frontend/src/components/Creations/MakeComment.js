@@ -3,10 +3,12 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createComment, editComment, deleteComment, fetchComments } from "../../store/comments";
 import { useState } from "react";
+import { fetchUsers } from "../../store/users";
 
 function MakeComment () {
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.session.user);
+    const users = useSelector((state) => state.users?.users)
     const allComments = useSelector((state) => state.comments)
     const pageId = useSelector((state) => state.pages?._id)
     const comments = allComments ? Object.values(allComments).filter((comment) => comment.page === pageId) : [];
@@ -16,6 +18,7 @@ function MakeComment () {
 
     useEffect(() => {
         dispatch(fetchComments())
+        dispatch(fetchUsers())
     }, [])
 
     const handleChange = (e) => {
@@ -37,7 +40,10 @@ function MakeComment () {
     const commentsList = 
         comments ?
             comments.map((commentItem, i) => (
-            <div key={i}>{commentItem.text}</div>
+            <div key={i}>
+                <div>{commentItem.commenter?.username}</div>
+                <div>{commentItem.text}</div>
+            </div>
         )) : null;
       
 

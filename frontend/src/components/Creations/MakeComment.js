@@ -37,14 +37,26 @@ function MakeComment () {
         dispatch(createComment(finalData, pageId))
     }
 
-    const commentsList = 
-        comments ?
-            comments.map((commentItem, i) => (
-            <div key={i}>
-                <div>{commentItem.commenter?.username}</div>
-                <div>{commentItem.text}</div>
-            </div>
-        )) : null;
+    const handleDelete = (commentId) => {
+    dispatch(deleteComment(commentId));
+  };
+
+    const commentsList =
+    comments?.length > 0 ? (
+      comments.map((commentItem, i) => (
+        <div key={i}>
+          <div>{commentItem?.commenter?.username}</div>
+          <div>{commentItem?.text}</div>
+          {currentUser?._id === commentItem?.commenter?._id && (
+            <button onClick={() => handleDelete(commentItem._id)}>
+              Delete
+            </button>
+          )}
+        </div>
+      ))
+    ) : (
+      <p>Be the first to comment on this post!</p>
+    );
       
 
     if (comments[0]) {

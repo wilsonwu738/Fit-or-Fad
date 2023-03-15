@@ -173,14 +173,14 @@ router.post('/comments/:pageId', requireUser, async (req, res, next) => {
   }
 });
 
-router.delete('/comments/:pageId/:commentId', requireUser, async (req, res, next) => {
+router.delete('/comments/:commentId', requireUser, async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.commentId);
     // if (page.author.toString() === req.user._id.toString()) 
     // {
     
 
-    const pageId = req.params.pageId;
+    const pageId = comment.page
     const page = await Page.findByIdAndUpdate(
       pageId,
       { $pull: { comments: comment._id } },
@@ -188,7 +188,7 @@ router.delete('/comments/:pageId/:commentId', requireUser, async (req, res, next
     );
 
     comment = await Comment.deleteOne({ _id: comment._id });
-    res.json({comment, page});
+    res.json("Deleted!");
     // } 
     // else {
     //   const error = new Error("Page not found");

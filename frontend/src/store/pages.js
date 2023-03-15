@@ -8,8 +8,6 @@ const CLEAR_PAGE_ERRORS = "pages/CLEAR_PAGE_ERRORS";
 const RECEIVE_UPDATED_PAGE = "pages/RECEIVE_UPDATED_PAGE";
 const RECEIVE_DELETED_PAGE = "pages/DELETE_PAGE";
 
-// const RECEIVE_LIKE = "likes/RECEIVE_LIKE";
-// const REMOVE_LIKE = "likes/REMOVE_LIKE";
 
 // const RECEIVE_COMMENT = "comments/RECEIVE_COMMENT"
 // const REMOVE_COMMENT = "comments/REMOVE_COMMENT"
@@ -60,18 +58,6 @@ export const fetchPage = (id) => async (dispatch) => {
   const page = await res.json();
 
   dispatch(receiveNewPage(page));
-
-  // try {
-
-  //   const res = await jwtFetch(`/api/pages/${id}`);
-  //   const page = await res.json();
-  //   dispatch(receiveNewPage(page));
-  // } catch (err) {
-  //   const resBody = await err.json();
-  //   if (resBody.statusCode === 400) {
-  //     return dispatch(receiveErrors(resBody.errors));
-  //   }
-  // }
 };
 
 export const fetchPages = () => async (dispatch) => {
@@ -101,18 +87,7 @@ export const fetchUserPages = (id) => async (dispatch) => {
   }
 };
 
-// export const fetchUserPages = id => async dispatch => {
-//     try {
-//         const res = await jwtFetch(`/api/pages/user/${id}`);
-//         const pages = await res.json();
-//         dispatch(receiveUserPages(pages));
-//     } catch (err) {
-//         const resBody = await err.json();
-//         if (resBody.statusCode === 400) {
-//             return dispatch(receiveErrors(resBody.errors));
-//         }
-//     }
-// };
+
 
 export const editPage = (data) => async (dispatch) => {
   try {
@@ -242,7 +217,7 @@ const pagesReducer = (state = {}, action) => {
       return { ...action.pages };
     case RECEIVE_NEW_PAGE:
       // return { ...state, new: action.page };
-      return { ...action.page };
+      return { ...state, ...action.page };
     case RECEIVE_UPDATED_PAGE:
       return {
         ...state,

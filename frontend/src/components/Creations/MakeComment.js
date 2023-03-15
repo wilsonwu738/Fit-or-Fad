@@ -7,11 +7,16 @@ import { useState } from "react";
 function MakeComment () {
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.session.user);
-    const comments = useSelector((state) => state.comments)
+    const allComments = useSelector((state) => state.comments)
     const pageId = useSelector((state) => state.pages?._id)
+    const comments = allComments ? Object.values(allComments).filter((comment) => comment.page === pageId) : [];
     const [data, setData] = useState({
         text: ""
     });
+
+    useEffect(() => {
+        dispatch(fetchComments())
+    }, [])
 
     const handleChange = (e) => {
         setData({ ...data, text: e.target.value });
@@ -31,7 +36,7 @@ function MakeComment () {
 
     const commentsList = 
         comments ?
-            Object.values(comments).map((commentItem, i) => (
+            comments.map((commentItem, i) => (
             <div key={i}>{commentItem.text}</div>
         )) : null;
       

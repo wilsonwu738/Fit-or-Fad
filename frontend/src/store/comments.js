@@ -22,9 +22,7 @@ const removeComment = (commentId) => ({
 
 
 export const fetchComments = () => async (dispatch) => {
-    debugger
     const res = await jwtFetch(`/api/pages/comments`);
-    debugger
     if (res.ok) {
       const comments = await res.json();
       dispatch(receiveComments(comments));

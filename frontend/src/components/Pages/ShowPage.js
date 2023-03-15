@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "../../store/pages";
-import { fetchComments } from "../../store/comments";
+// import { fetchComments } from "../../store/comments";
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import './ShowPage.css'
@@ -35,9 +35,7 @@ function ShowPage() {
     dispatch(fetchPage(pageId))
   }, [pageId, dispatch, isEditing])
 
-  useEffect(() => {
-    dispatch(fetchComments())
-  }, [])
+  
 
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;

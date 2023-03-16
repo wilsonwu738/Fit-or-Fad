@@ -5,17 +5,15 @@
 }
 
 .session-form-container {
-  height: fit-content;
+  height: max-content;
   border-radius: 5%;
-
   margin-top: 10px;
-  height: 500px;
   width: 400px;
   border: 5px solid purple;
   background-color: whitesmoke;
   padding: 55px;
-  /* box-shadow: 5px 5px purple, 10px 10px cyan, 15px 15px violet; */
-  /* margin: 20px, 5px 5px rgb(0, 15, 128); */
+  margin-bottom: 100px;
+
 }
 
 .session-form h2 {
@@ -55,14 +53,6 @@
   outline: none;
 }
 
-/* .input-credentials {
-    width: 360px;
-    box-sizing: border-box;
-    padding: 12px 20px;
-} */
-
-/* Demo User and Log In Buttons */
-
 .submit-buttons-container {
   display: flex;
   justify-content: space-between;
@@ -78,7 +68,6 @@
   color: rgb(124, 120, 120);
   border: none;
   width: 182px;
-  /* text-align: center; */
 }
 
 .submit-buttons:hover {

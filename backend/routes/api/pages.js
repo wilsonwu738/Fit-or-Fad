@@ -47,6 +47,20 @@ router.get("/user/:userId", async (req, res, next) => {
   }
 });
 
+
+router.get("/comments", async function (req, res, next) {
+  try {
+    console.log(req)
+    const comments = await Comment.find({}).populate(
+      "commenter"
+    );
+    console.log(comments)
+    res.json(comments);
+  } catch (err) {
+    next(err);
+  }
+});
+
 //we used this to fetch a particular page
 router.get("/:id", async (req, res, next) => {
   try {
@@ -129,7 +143,7 @@ router.patch("/:id", requireUser, async (req, res, next) => {
 });
 
 
-router.post('/comment/:pageId', requireUser, async (req, res, next) => {
+router.post('/comments/:pageId', requireUser, async (req, res, next) => {
   try {
     const { text } = req.body;
     const pageId = req.params.pageId;
@@ -152,20 +166,20 @@ router.post('/comment/:pageId', requireUser, async (req, res, next) => {
       { new: true }
     );
 
-    res.json({ comment, page });
+    res.json({ comment });
   } catch (err) {
     next(err);
   }
 });
 
-router.delete('/comment/:pageId/:commentId', requireUser, async (req, res, next) => {
+router.delete('/comments/:commentId', requireUser, async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.commentId);
     // if (page.author.toString() === req.user._id.toString()) 
     // {
     
 
-    const pageId = req.params.pageId;
+    const pageId = comment.page
     const page = await Page.findByIdAndUpdate(
       pageId,
       { $pull: { comments: comment._id } },
@@ -173,7 +187,7 @@ router.delete('/comment/:pageId/:commentId', requireUser, async (req, res, next)
     );
 
     comment = await Comment.deleteOne({ _id: comment._id });
-    res.json({comment, page});
+    res.json("Deleted!");
     // } 
     // else {
     //   const error = new Error("Page not found");
@@ -187,7 +201,7 @@ router.delete('/comment/:pageId/:commentId', requireUser, async (req, res, next)
 });
 
 
-router.patch("/comment/:commentId", requireUser, async (req, res, next) => {
+router.patch("/comments/:commentId", requireUser, async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.commentId);
     comment = await Comment.updateOne({ _id: comment._id }, req.body);

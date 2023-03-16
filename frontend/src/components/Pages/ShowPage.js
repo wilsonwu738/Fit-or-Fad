@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPage } from "../../store/pages";
+// import { fetchComments } from "../../store/comments";
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import './ShowPage.css'
@@ -11,6 +12,7 @@ import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
 import LikePage from "../Likes/Like";
 import like from "../../images/like.png"
+import MakeComment from "../Creations/MakeComment"
 function ShowPage() {
   const handleUpdateClick = () => {
     setIsEditing(true);
@@ -32,8 +34,7 @@ function ShowPage() {
   useEffect(() => {
     dispatch(fetchPage(pageId))
   }, [pageId, dispatch, isEditing])
-  console.log("showpage")
-  debugger
+
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
@@ -41,15 +42,18 @@ function ShowPage() {
   const profileLink = () => {
     return "/profile/" + page.author._id;
   }
+
   const toProfilePage = (e) => {
     if (typeof window !== 'undefined') {
       window.location.href = `/profile/${page.author._id}`;
     }
   }
+
   const handleClick = (url) => {
     const protocol = /^https?:\/\//i.test(url) ? "" : "http://";
     window.open(protocol + url, "_blank");
   };
+
   const itemInfo =
     items ?
       items.map((item, i) => (
@@ -81,13 +85,14 @@ function ShowPage() {
           <img src={page.imageUrl} alt={page.title} />
           <div className="buttons-container">
             {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
+            <MakeComment />
           </div>
         </div>
         <div id="textz">
           <div className="text-content">
             <div className="title">{page.title}</div>
             <div className="profile-link" onClick={toProfilePage}>
-            👤 <span className="profile-link-text"> {page.author.username}</span>
+            👤 <span className="profile-link-text"> {page?.author?.username}</span>
             </div>
             <div className="item-container">
               {itemInfo}

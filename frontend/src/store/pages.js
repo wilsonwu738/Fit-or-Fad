@@ -59,6 +59,9 @@ export const fetchPage = (id) => async (dispatch) => {
 
   const page = await res.json();
 
+  console.log("fetchPage");
+  debugger;
+  
   dispatch(receiveNewPage(page));
 
   // try {
@@ -170,6 +173,7 @@ export const composePage = (data, images) => async (dispatch) => {
 
 
   export const likePage = (pageId) => async dispatch => { 
+    console.log("likePage action")
     debugger
     const res = await jwtFetch(`/api/users/like/${pageId}`, {
       method: 'POST',
@@ -182,6 +186,7 @@ export const composePage = (data, images) => async (dispatch) => {
   }
 
   export const deleteLike = (pageId) => async dispatch => {
+    console.log("unLike action")
     debugger
     const res = await jwtFetch(`/api/users/like/${pageId}`, {
       method: 'DELETE'
@@ -233,7 +238,10 @@ const pagesReducer = (state = {}, action) => {
       return { ...action.pages };
     case RECEIVE_NEW_PAGE:
       // return { ...state, new: action.page };
-      return { ...action.page };
+      console.log("page reducer")
+      debugger
+      return {...state, ...action.page }      
+      // return { ...action.page };
     case RECEIVE_UPDATED_PAGE:
       return {
         ...state,

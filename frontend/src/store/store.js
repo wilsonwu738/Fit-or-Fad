@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   errors,
   pages,
   users,
-  likes,
+  likes
 });
 
 let enhancer;

@@ -27,14 +27,14 @@ function CurrentUserProfile() {
                     <div>{currentUser.followers.length} followers</div>
                 </div>
                 <div id="bio">
-                    <label id="bioo">BIO</label>
+                    <label id="bioo">{currentUser.username}</label>
                     <br></br>
                     <br></br>
                     {userInfo && <div>{userInfo.bio}</div>}
                 </div>
             </div>
             <hr></hr>
-            <h2>All of {currentUser.username}'s Pages</h2>
+            <h2 className="user-pages-title">All of {currentUser.username}'s Pages</h2>
             <div id="pages">
                 <ProfileIndexPage userId={currentUser._id} />
             </div>

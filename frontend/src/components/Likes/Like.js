@@ -11,7 +11,7 @@ const LikePage = ({ pageId }) => {
 
   useEffect(() => {
     dispatch(fetchUser(currentUser._id));
-  }, [currentUser._id]);
+  }, [currentUser._id, dispatch]);
 
   useEffect(() => {
     if (user?.likedPage?.includes(pageId)) {
@@ -22,12 +22,16 @@ const LikePage = ({ pageId }) => {
   }, [user, pageId]);
 
   const handleLike = (e) => {
+    console.log("handleLike");
+    debugger;
     e.preventDefault();
     dispatch(likePage(pageId));
     setLiked(true);
   };
 
   const handleUnlike = (e) => {
+    console.log("handleUnlike");
+    debugger;
     e.preventDefault();
     dispatch(deleteLike(pageId));
     setLiked(false);

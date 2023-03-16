@@ -11,9 +11,10 @@ const ProfileIndexItem = ({ page, userId }) => {
     <>
       <div id="item">
         <img src={imageUrl} />
-        <div>{title}</div>
+        <div id="page-title">{title}</div>
+        <hr></hr>
         <br></br>
-        <div>"{description}"</div>
+        <div id="page-description">"{description}"</div>
       </div>
     </>
   );

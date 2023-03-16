@@ -132,6 +132,7 @@ router.get("/:userId", async (req, res, next) => {
 });
 
 router.post("/like/:pageId", restoreUser, async (req, res, next) => {
+  debugger
   try {
     const user = req.user;
     if (!user) {
@@ -165,6 +166,7 @@ router.post("/like/:pageId", restoreUser, async (req, res, next) => {
 });
 
 router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
+  debugger
   try {
     const user = req.user;
     if (!user) {
@@ -245,8 +247,8 @@ router.delete(
       res.json(userToUnfollow);
     } catch (err) {
       next(err);
-    }
+    }np
   }
-);
+)
 
 module.exports = router;

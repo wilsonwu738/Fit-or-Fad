@@ -32,9 +32,12 @@ function ShowPage() {
   useEffect(() => {
     dispatch(fetchPage(pageId))
   }, [pageId, dispatch, isEditing])
+  console.log("showpage")
+  debugger
   if (isEditing) {
     return <EditPage page={page} isUpdating={true} setIsEditing={setIsEditing} />;
   }
+
   const profileLink = () => {
     return "/profile/" + page.author._id;
   }
@@ -50,11 +53,12 @@ function ShowPage() {
   const itemInfo =
     items ?
       items.map((item, i) => (
-        <div className="item-individual-container">
+        <div className="item-individual-container" key={i}>
           <div className="item-name" key={i} onClick={() => handleClick(item.url)} >{item.name}</div>
           {/* <div className="item-url" key={i} onClick={() => handleClick(item.url)}>{item.url}</div> */}
         </div>
       )) : null;
+
   const hasEditButton = (
     <div className="buttons">
       <DeleteButton pageId={page?.id} className="pic-buttons" />
@@ -62,11 +66,13 @@ function ShowPage() {
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
+
   const hasNoEditButton = (
     <div className="buttons">
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
+  
   if (page === undefined) return <div>No Page</div>
   return page?.author && (
     <div className="page-container">

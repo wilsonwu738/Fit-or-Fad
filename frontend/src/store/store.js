@@ -5,13 +5,15 @@ import errors from "./errors";
 import pages from "./pages";
 import users from "./users";
 import likes from "./likes";
+import comments from "./comments"
 
 const rootReducer = combineReducers({
   session,
   errors,
   pages,
   users,
-  likes
+  likes,
+  comments
 });
 
 let enhancer;

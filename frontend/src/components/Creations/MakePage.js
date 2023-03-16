@@ -38,7 +38,6 @@ function MakePage() {
       author: currentUser._id,
       title: data.title,
       description: data.description,
-
       items: JSON.stringify(items),
       likes: ""
     };

@@ -8,11 +8,6 @@ const CLEAR_PAGE_ERRORS = "pages/CLEAR_PAGE_ERRORS";
 const RECEIVE_UPDATED_PAGE = "pages/RECEIVE_UPDATED_PAGE";
 const RECEIVE_DELETED_PAGE = "pages/DELETE_PAGE";
 
-// const RECEIVE_LIKE = "likes/RECEIVE_LIKE";
-// const REMOVE_LIKE = "likes/REMOVE_LIKE";
-
-// const RECEIVE_COMMENT = "comments/RECEIVE_COMMENT"
-// const REMOVE_COMMENT = "comments/REMOVE_COMMENT"
 
 const receiveUpdatedPage = (page) => ({
   type: RECEIVE_UPDATED_PAGE,
@@ -63,18 +58,6 @@ export const fetchPage = (id) => async (dispatch) => {
   debugger;
   
   dispatch(receiveNewPage(page));
-
-  // try {
-
-  //   const res = await jwtFetch(`/api/pages/${id}`);
-  //   const page = await res.json();
-  //   dispatch(receiveNewPage(page));
-  // } catch (err) {
-  //   const resBody = await err.json();
-  //   if (resBody.statusCode === 400) {
-  //     return dispatch(receiveErrors(resBody.errors));
-  //   }
-  // }
 };
 
 export const fetchPages = () => async (dispatch) => {
@@ -104,18 +87,7 @@ export const fetchUserPages = (id) => async (dispatch) => {
   }
 };
 
-// export const fetchUserPages = id => async dispatch => {
-//     try {
-//         const res = await jwtFetch(`/api/pages/user/${id}`);
-//         const pages = await res.json();
-//         dispatch(receiveUserPages(pages));
-//     } catch (err) {
-//         const resBody = await err.json();
-//         if (resBody.statusCode === 400) {
-//             return dispatch(receiveErrors(resBody.errors));
-//         }
-//     }
-// };
+
 
 export const editPage = (data) => async (dispatch) => {
   try {
@@ -147,12 +119,8 @@ export const deletePage = (pageId) => async (dispatch) => {
 export const composePage = (data, images) => async (dispatch) => {
   const formData = new FormData();
   Object.keys(data).forEach((key) => {
-    if (key === "itemGroups") {
-      formData.append(key, JSON.stringify(data[key])); // stringify the array before appending to form data
-    } else {
       formData.append(key, data[key]);
-    }
-  });
+    });
   Array.from(images).forEach((image) => formData.append("images", image));
   try {
     const res = await jwtFetch("/api/pages/", {
@@ -195,25 +163,6 @@ export const composePage = (data, images) => async (dispatch) => {
     dispatch(receiveNewPage(page))
   }
 
-  export const commentPage = (pageId) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/comment/${pageId}`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    const page = await res.json();
-    dispatch(receiveNewPage(page))
-  }
-
-  export const deleteComment = (pageId) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/comment/${pageId}`, {
-      method: 'DELETE'
-    });
-    const page = await res.json();
-    dispatch(receiveNewPage(page))
-  }
-
 
 const nullErrors = null;
 
@@ -238,10 +187,7 @@ const pagesReducer = (state = {}, action) => {
       return { ...action.pages };
     case RECEIVE_NEW_PAGE:
       // return { ...state, new: action.page };
-      console.log("page reducer")
-      debugger
-      return {...state, ...action.page }      
-      // return { ...action.page };
+      return { ...state, ...action.page };
     case RECEIVE_UPDATED_PAGE:
       return {
         ...state,

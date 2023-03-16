@@ -14,7 +14,7 @@ const ProfileIndexItem = ({ page, userId }) => {
         <div id="page-title">{title}</div>
         <hr></hr>
         <br></br>
-        <div id="page-description">"{description}"</div>
+        <div id="page-description">{description}</div>
       </div>
     </>
   );

@@ -34,7 +34,7 @@ function UserProfile() {
                         <label id="bioo">{user.username}</label>
                         <br></br>
                         <br></br>
-                        <label id="bioo">{user.bio}</label>
+                        <label>{user.bio}</label>
                     </div>
                 </div>
                 <hr></hr>

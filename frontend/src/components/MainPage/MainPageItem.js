@@ -9,7 +9,7 @@ const MainPageItem = (props) => {
         <img src={props.page?.imageUrl} alt="" className="main-page-image" />
       </div>
       <br></br>
-      <div className="main-page-item-title">
+      <div className="marker main-page-item-title ">
         <div>{props.page?.title}</div>
         <br></br>
         <div>Likes: {props.page?.liker?.length}</div>

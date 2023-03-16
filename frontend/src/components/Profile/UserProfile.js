@@ -31,15 +31,15 @@ function UserProfile() {
                         </div>
                     </div>
                     <div id="bio">
-                        <label id="bioo">BIO</label>
+                        <label id="bioo">{user.username}</label>
                         <br></br>
                         <br></br>
-                        <label id="bioo">{user.bio}</label>
+                        <label>{user.bio}</label>
                     </div>
                 </div>
                 <hr></hr>
 
-                <h2>All of {user.username}'s Pages</h2>
+                <h2 className="user-pages-title">All of {user.username}'s Pages</h2>
                 <div id="pages">
                     <ProfileIndexPage userId={userId} />
                 </div>

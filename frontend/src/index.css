@@ -8,9 +8,9 @@ form > .errors {
   align-items: center;
 }
 
-* {
+/* * {
   font-family: sans-serif;
-}
+} */
 
 body {
   font-family: sans-serif;
@@ -19,4 +19,15 @@ body {
 
 html {
   zoom: 90%;
+}
+
+@font-face {
+  font-family: markerFont;
+  src: url('./fonts/PermanentMarker-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.marker{
+  font-family: markerFont !important;
 }

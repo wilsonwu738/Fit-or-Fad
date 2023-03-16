@@ -116,8 +116,8 @@ export const deletePage = (pageId) => async (dispatch) => {
 export const composePage = (data, images) => async (dispatch) => {
   const formData = new FormData();
   Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
-    });
+    formData.append(key, data[key]);
+  });
   Array.from(images).forEach((image) => formData.append("images", image));
   try {
     const res = await jwtFetch("/api/pages/", {
@@ -137,26 +137,24 @@ export const composePage = (data, images) => async (dispatch) => {
 };
 
 
-  export const likePage = (pageId) => async dispatch => { 
-    debugger
-    const res = await jwtFetch(`/api/users/like/${pageId}`, {
-      method: 'POST',
-      headers: {
-        "Content-type": "application/json",
-      }
-    })
-    const page = await res.json();
-    dispatch(receiveNewPage(page));
-  }
+export const likePage = (pageId) => async dispatch => {
+  const res = await jwtFetch(`/api/users/like/${pageId}`, {
+    method: 'POST',
+    headers: {
+      "Content-type": "application/json",
+    }
+  })
+  const page = await res.json();
+  dispatch(receiveNewPage(page));
+}
 
-  export const deleteLike = (pageId) => async dispatch => {
-    debugger
-    const res = await jwtFetch(`/api/users/like/${pageId}`, {
-      method: 'DELETE'
-    });
-    const page = await res.json();
-    dispatch(receiveNewPage(page))
-  }
+export const deleteLike = (pageId) => async dispatch => {
+  const res = await jwtFetch(`/api/users/like/${pageId}`, {
+    method: 'DELETE'
+  });
+  const page = await res.json();
+  dispatch(receiveNewPage(page))
+}
 
 
 const nullErrors = null;

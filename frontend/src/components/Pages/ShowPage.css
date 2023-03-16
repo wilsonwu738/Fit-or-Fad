@@ -15,7 +15,7 @@
 
 #pics {
   flex: 1;
-  width: 100%;
+  max-width: 512px;
   padding: 30px;
   position: relative;
 }
@@ -30,7 +30,6 @@
 
 #textz {
   flex: 1;
-  max-width: 50%;
   padding: 30px;
 }
 
@@ -136,7 +135,7 @@
 /* Items */
 
 .item-container {
-  margin-top: 16px;
+  margin: 16px;
   border-radius: 12px;
   border: 1px solid #e0e0e0;
   color: whitesmoke;
@@ -147,10 +146,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.846);
 }
 
-.item-description {
-  margin-top: 20px;
-  font-size: 18px;
-  line-height: 1.5;
+.item-list-container {
+  margin-bottom: 16px;
 }
 
 .item-individual-container {
@@ -158,8 +155,14 @@
   margin: 10px;
   border-radius: 12px;
   padding: 10px;
-
 }
+
+.item-description {
+  margin-top: 36px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 
 .item-individual-container:hover {
   background-color: darkgray;

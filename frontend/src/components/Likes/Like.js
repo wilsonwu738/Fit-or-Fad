@@ -11,7 +11,7 @@ const LikePage = ({ pageId }) => {
 
   useEffect(() => {
     dispatch(fetchUser(currentUser._id));
-  }, [currentUser._id]);
+  }, [currentUser._id, dispatch]);
 
   useEffect(() => {
     if (user?.likedPage?.includes(pageId)) {

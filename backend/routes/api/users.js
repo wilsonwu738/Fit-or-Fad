@@ -157,6 +157,9 @@ router.post("/like/:pageId", restoreUser, async (req, res, next) => {
       pageId,
       { $addToSet: { liker: user._id } },
       { new: true }
+    ).populate(
+      "author",
+      "_id username"
     );
 
     res.json(page);
@@ -198,6 +201,9 @@ router.delete("/like/:pageId", restoreUser, async (req, res, next) => {
       pageId,
       { $pull: { liker: user._id } },
       { new: true }
+    ).populate(
+      "author",
+      "_id username"
     );
 
     res.json(page);

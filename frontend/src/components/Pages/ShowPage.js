@@ -76,7 +76,7 @@ function ShowPage() {
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )
-  
+
   if (page === undefined) return <div>No Page</div>
   return page?.author && (
     <div className="page-container">
@@ -85,18 +85,22 @@ function ShowPage() {
           <img src={page.imageUrl} alt={page.title} />
           <div className="buttons-container">
             {page.author._id === currentUser._id ? hasEditButton : hasNoEditButton}
-            <MakeComment />
           </div>
+
+          <MakeComment />
+
         </div>
         <div id="textz">
           <div className="text-content">
             <div className="title">{page.title}</div>
             <div className="profile-link" onClick={toProfilePage}>
-            👤 <span className="profile-link-text"> {page?.author?.username}</span>
+              👤 <span className="profile-link-text"> {page?.author?.username}</span>
             </div>
             <div className="item-container">
-              {itemInfo}
-            <div className="text-description">{page.description}</div>
+              <div className="item-list-container">
+                {itemInfo}
+              </div>
+              <div className="text-description">{page.description}</div>
             </div>
           </div>
         </div>
@@ -104,5 +108,4 @@ function ShowPage() {
     </div>
   );
 }
-// }
 export default ShowPage;

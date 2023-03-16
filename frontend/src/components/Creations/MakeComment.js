@@ -61,7 +61,7 @@ function MakeComment () {
 
     if (comments[0]) {
         return (
-            <>
+            <div className="comments-container">
                 <form onSubmit={handleSubmit}>
                     <input 
                     type="text" 
@@ -74,11 +74,11 @@ function MakeComment () {
                 <div>
                 {commentsList}
                 </div>
-            </>
+            </div>
         )
     } else {
         return (
-            <>
+            <div className="comments-container">
                 <form onSubmit={handleSubmit}>
                     <input 
                     type="text" 
@@ -89,7 +89,7 @@ function MakeComment () {
                     <button type="submit">Submit</button>
                 </form>
                 <p>Be the first to comment on this post!</p>
-            </>
+            </div>
         )
     }
 }

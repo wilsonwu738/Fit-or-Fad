@@ -22,16 +22,12 @@ const LikePage = ({ pageId }) => {
   }, [user, pageId]);
 
   const handleLike = (e) => {
-    console.log("handleLike");
-    debugger;
     e.preventDefault();
     dispatch(likePage(pageId));
     setLiked(true);
   };
 
   const handleUnlike = (e) => {
-    console.log("handleUnlike");
-    debugger;
     e.preventDefault();
     dispatch(deleteLike(pageId));
     setLiked(false);

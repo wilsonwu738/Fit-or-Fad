@@ -20,16 +20,12 @@ const { singleMulterUpload, singleFileUpload } = require("../../awsS3.js");
 router.get("/", async function (req, res, next) {
   try {
     const users = await User.find({});
-    const updatedUsers = users.map((user) => {
-      return {
-        _id: user._id,
-        username: user.username,
-        profileImageUrl: user.profileImageUrl,
-        email: user.email,
-        followers: user.followers,
-        following: user.following,
-        likedPage: user.likedPage
-      }
+
+    const updatedUsers = {}
+    users.forEach((user) => {
+      const userObj = user.toObject()
+      delete userObj.hashedPassword
+      updatedUsers[user._id] = userObj
     })
     
     res.json(updatedUsers);
@@ -127,6 +123,7 @@ router.get("/current", restoreUser, (req, res) => {
     followers: req.user.followers,
     following: req.user.following,
     likedPage: req.user.likedPage,
+    bio: req.user.bio
   });
 });
 
@@ -142,7 +139,8 @@ router.get("/:userId", async (req, res, next) => {
       email: user.email,
       followers: user.followers,
       following: user.following,
-      likedPage: user.likedPage
+      likedPage: user.likedPage,
+      bio: user.bio
     });
    
   } catch (err) {

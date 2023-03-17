@@ -180,7 +180,7 @@ const pagesReducer = (state = {}, action) => {
       return { ...action.pages };
     case RECEIVE_NEW_PAGE:
       // return { ...state, new: action.page };
-      return { ...state, ...action.page };
+      return { ...action.page };
     case RECEIVE_UPDATED_PAGE:
       return {
         ...state,

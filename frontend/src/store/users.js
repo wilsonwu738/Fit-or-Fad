@@ -94,7 +94,6 @@ const initalState = {};
 const userReducer = (state = initalState, action) => {
   switch (action.type) {
     case RECEIVE_USER:
-      // debugger
       return { ...state, user: action.user };
     case RECEIVE_USERS:
       return { ...state, users: action.users };

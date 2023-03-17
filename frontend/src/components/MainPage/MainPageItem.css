@@ -6,11 +6,11 @@
   margin: 10px;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #f7ead1;
+  background-color: white;
   color: black;
   border-radius: 3px;
   border: 1px solid rgba(128, 128, 128, 0.419);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.155);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.155);
 }
 
 .main-page-item::before {
@@ -32,7 +32,7 @@
   max-height: 600px; /*change this to adject pic height*/
   object-fit: cover;
   box-sizing:border-box;
-  border: 8px solid white;
+  /* border: 8px solid white; */
   border-radius: 3px;
 }
 

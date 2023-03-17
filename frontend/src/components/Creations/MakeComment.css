@@ -20,6 +20,7 @@ input[type="text"] {
     padding: 0 12px;
 
     color: #999999;
+    overflow: scroll;
 }
 
 input[type="text"]:focus {
@@ -65,16 +66,41 @@ input[type="text"]:focus {
     color: violet;
 }
 
+.comment-content {
+    display: relative;
+}
+
 .comment-text {
     margin-top: 2px;
 }
 
-.comment-item button {
+.comment-edit-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.comment-edit-delete button {
+    background-color: transparent;
+    color: #222222;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.comment-edit-delete button:hover {
+    color: #666666;
+}
+
+/* .comment-item button {
     position: absolute;
     right: 60px;
     bottom: 74px;
     border-radius: 6px;
     border: none;
-}
+} */
 
 /* End comment box */

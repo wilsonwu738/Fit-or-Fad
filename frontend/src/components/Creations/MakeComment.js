@@ -60,27 +60,33 @@ function MakeComment () {
 
   const handleEdit = (comment) => {
     setData({ ...data, text: comment.text});
+    // setData({ text: "" })
     setEditingCommentId(comment._id);
   }
 
   const commentsList =
   comments?.length > 0 ? (
     comments.map((commentItem, i) => (
-      <div key={i}>
-        <div>{commentItem?.commenter?.username}</div>
+      <div className="comment-item" key={i}>
+        <div className="commenter">{commentItem?.commenter?.username}</div>
         {editingCommentId === commentItem._id ? (
+
+          // Edit comment form
           <form onSubmit={(e) => handleEditSubmit(e, commentItem._id)}>
             <input type="text" 
               value={data.text}
+              placeholder="Update Comment"
               onChange={handleChange}
             />
             <button type="submit">Update</button>
           </form>
         ) : (
-          <div>
-            <div>{commentItem?.text}</div>
+          <div className="comment-content">
+            <div className="comment-text">{commentItem?.text}</div>
+
+            {/* Edit Delete buttons */}
             {currentUser?._id === commentItem?.commenter?._id && (
-              <div>
+              <div className="comment-edit-delete">
                 <button onClick={() => handleEdit(commentItem)}>
                   Edit
                 </button>
@@ -99,16 +105,16 @@ function MakeComment () {
 
   return (
     <div className="comments-container">
-      <form onSubmit={handleSubmit}>
+      <form className="input-comment" onSubmit={handleSubmit}>
         <input 
           type="text" 
           value={data.text} 
           placeholder="Write a comment"
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">➤</button>
       </form>
-      <div>
+      <div className="comments-list">
         {commentsList}
       </div>
     </div>

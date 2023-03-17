@@ -20,7 +20,19 @@ const { singleMulterUpload, singleFileUpload } = require("../../awsS3.js");
 router.get("/", async function (req, res, next) {
   try {
     const users = await User.find({});
-    res.json(users);
+    const updatedUsers = users.map((user) => {
+      return {
+        _id: user._id,
+        username: user.username,
+        profileImageUrl: user.profileImageUrl,
+        email: user.email,
+        followers: user.followers,
+        following: user.following,
+        likedPage: user.likedPage
+      }
+    })
+    
+    res.json(updatedUsers);
   } catch (err) {
     next(err);
   }
@@ -121,8 +133,18 @@ router.get("/current", restoreUser, (req, res) => {
 router.get("/:userId", async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId);
-
-    res.json(user);
+    // delete user.hashedPassword; 
+    // Remove hashedPassword property from the user object
+    res.json({
+      _id: user._id,
+      username: user.username,
+      profileImageUrl: user.profileImageUrl,
+      email: user.email,
+      followers: user.followers,
+      following: user.following,
+      likedPage: user.likedPage
+    });
+   
   } catch (err) {
     const error = new Error("User not found");
     error.statusCode = 404;
@@ -253,7 +275,7 @@ router.delete(
       res.json(userToUnfollow);
     } catch (err) {
       next(err);
-    }np
+    }
   }
 )
 

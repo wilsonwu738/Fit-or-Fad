@@ -44,7 +44,7 @@ const receiveNewPage = (user) => {
 
 export const fetchUser = (userId) => async (dispatch) => {
   const res = await jwtFetch(`/api/users/${userId}`);
-
+  
   if (res.ok) {
     const user = await res.json();
     dispatch(receiveUser(user));

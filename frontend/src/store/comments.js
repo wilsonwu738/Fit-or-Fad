@@ -50,8 +50,9 @@ export const createComment = (data, pageId) => async dispatch => {
     dispatch(removeComment(comment))
   }
 
-  export const editComment = (data) => async dispatch => {
-    const res = await jwtFetch(`/api/pages/comments/${data._id}`, {
+  export const editComment = (commentId, data) => async dispatch => {
+    
+    const res = await jwtFetch(`/api/pages/comments/${commentId}`, {
       method: "PATCH",
       body: JSON.stringify(data),
     });

@@ -55,23 +55,25 @@ label {
   margin-top: 10px;
 }
 
-button[type="submit"],
-button[type="button"] {
-  background-color: rgba(238, 130, 238, 0.776);
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: outset;
-  border-color: rgba(238, 130, 238, 0.776);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+#makepageform 
+  button[type="submit"],
+  button[type="button"] {
+    background-color: rgba(238, 130, 238, 0.776);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: outset;
+    border-color: rgba(238, 130, 238, 0.776);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover,
-button[type="button"]:hover {
-  background-color: rgba(238, 130, 141, 0.498);
+#makepageform 
+  button[type="submit"]:hover,
+  button[type="button"]:hover {
+    background-color: rgba(238, 130, 141, 0.498);
 }
 
 #subz {

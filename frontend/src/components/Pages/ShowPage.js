@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,12 +5,13 @@ import { fetchPage } from "../../store/pages";
 // import { fetchComments } from "../../store/comments";
 import { NavLink } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import './ShowPage.css'
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditPage from "../Edit/EditPage";
 import LikePage from "../Likes/Like";
 import like from "../../images/like.png"
 import MakeComment from "../Creations/MakeComment"
+import './ShowPage.css';
+
 function ShowPage() {
   const handleUpdateClick = () => {
     setIsEditing(true);
@@ -66,7 +65,7 @@ function ShowPage() {
   const hasEditButton = (
     <div className="buttons">
       <DeleteButton pageId={page?.id} className="pic-buttons" />
-      <button onClick={handleUpdateClick}>Edit</button>
+      <button className="edit-button" onClick={handleUpdateClick}>Edit</button>
       <LikePage pageId={pageId} src={like} className="likeButton pic-buttons" />
     </div>
   )

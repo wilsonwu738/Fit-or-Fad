@@ -1,0 +1,80 @@
+.comments-container {
+    margin-top: 20px;
+    background-color: #999999;
+    border-radius: 12px;
+    padding: 12px 12px 12px 12px;
+}
+
+.input-comment {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Start Comment input form */
+
+input[type="text"] {
+    width: 100%;
+    height: 24px;
+    border: none;
+    border-radius: 12px;
+    padding: 0 12px;
+
+    color: #999999;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+/* End Comment input form */
+
+/* Start Send Comment button */
+
+.input-comment button {
+    border-radius: 50%;
+    border: none;
+    margin-left: 6px;
+}
+
+.input-comment button:hover {
+    cursor: pointer;
+    background-color: #777777;
+    color: white;
+}
+
+/* End Send Comment button */
+
+/* Start comment box */
+
+.comments-list {
+    /* border: 1px solid; */
+    margin: 10px 0;
+    /* margin-top: 12px; */
+    /* background: linear-gradient(to bottom, #444444 12px, transparent 36px); */
+}
+
+.comment-item {
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #444444;
+    border-radius: 12px;
+}
+
+.commenter {
+    font-weight: bold;
+    color: violet;
+}
+
+.comment-text {
+    margin-top: 2px;
+}
+
+.comment-item button {
+    position: absolute;
+    right: 60px;
+    bottom: 74px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* End comment box */

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { createComment, editComment, deleteComment, fetchComments } from "../../store/comments";
 import { useState } from "react";
 import { fetchUsers } from "../../store/users";
+import "./MakeComment.css"
 
 function MakeComment () {
     const dispatch = useDispatch();
@@ -44,9 +45,9 @@ function MakeComment () {
     const commentsList =
     comments?.length > 0 ? (
       comments.map((commentItem, i) => (
-        <div key={i}>
-          <div>{commentItem?.commenter?.username}</div>
-          <div>{commentItem?.text}</div>
+        <div className="comment-item" key={i}>
+          <div className="commenter">{commentItem?.commenter?.username}</div>
+          <div className="comment-text">{commentItem?.text}</div>
           {currentUser?._id === commentItem?.commenter?._id && (
             <button onClick={() => handleDelete(commentItem._id)}>
               Delete
@@ -62,16 +63,16 @@ function MakeComment () {
     if (comments[0]) {
         return (
             <div className="comments-container">
-                <form onSubmit={handleSubmit}>
+                <form className="input-comment" onSubmit={handleSubmit}>
                     <input 
                     type="text" 
                     value={data.text} 
                     placeholder="Write a comment"
                     onChange={handleChange}
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit">➤</button>
                 </form>
-                <div>
+                <div className="comments-list">
                 {commentsList}
                 </div>
             </div>
@@ -79,14 +80,14 @@ function MakeComment () {
     } else {
         return (
             <div className="comments-container">
-                <form onSubmit={handleSubmit}>
+                <form className="input-comment" onSubmit={handleSubmit}>
                     <input 
                     type="text" 
                     value={data.text} 
                     placeholder="Write a comment"
                     onChange={handleChange}
                     />
-                    <button type="submit">Submit</button>
+                    <button type="submit">➤</button>
                 </form>
                 <p>Be the first to comment on this post!</p>
             </div>

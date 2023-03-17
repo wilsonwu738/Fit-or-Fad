@@ -1,6 +1,6 @@
 import "./Video.css";
 import React, { useRef, useEffect } from "react";
-import background from "../../images/video/4k.mp4";
+import background from "../../images/video/nyc.mp4";
 
 function Video() {
   const videoRef = useRef();

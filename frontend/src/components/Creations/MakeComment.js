@@ -107,7 +107,7 @@ function MakeComment () {
     <div className="comments-container">
       <form className="input-comment" onSubmit={handleSubmit}>
         <input 
-          type="text" 
+          type="comment" 
           value={data.text} 
           placeholder="Write a comment"
           onChange={handleChange}

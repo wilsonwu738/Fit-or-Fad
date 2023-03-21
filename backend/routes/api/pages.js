@@ -50,10 +50,14 @@ router.get("/user/:userId", async (req, res, next) => {
 
 router.get("/comments", async function (req, res, next) {
   try {
-    const comments = await Comment.find({}).populate(
-      "commenter"
-    );
-    res.json(comments);
+    const comments = await Comment.find({}).populate({path: 'commenter',
+    select: "_id username"
+    });
+    const Obj = {};
+    comments.forEach((comment) => {
+      Obj[comment._id] = comment.toObject();
+    });
+    res.json(Obj);
   } catch (err) {
     next(err);
   }
@@ -82,7 +86,6 @@ router.post(
   validatePageInput,
   async (req, res, next) => {
     try {
-      console.log(req.body);
       const imageUrl = await singleFileUpload({ file: req.file, public: true });
 
       const items = JSON.parse(req.body.items);
@@ -156,6 +159,7 @@ router.post('/comments/:pageId', requireUser, async (req, res, next) => {
 
     // Save the comment to the database
     await comment.save();
+    comment.populate({path: 'commenter', select: '_id username'})
 
     // Add the comment to the page's comments array
     const page = await Page.findByIdAndUpdate(
@@ -164,7 +168,7 @@ router.post('/comments/:pageId', requireUser, async (req, res, next) => {
       { new: true }
     );
 
-    res.json({ comment });
+    res.json({[comment._id]: comment});
   } catch (err) {
     next(err);
   }
@@ -202,8 +206,12 @@ router.delete('/comments/:commentId', requireUser, async (req, res, next) => {
 router.patch("/comments/:commentId", requireUser, async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.commentId);
-    comment = await Comment.updateOne({ _id: comment._id }, req.body);
-    return res.json(comment);
+  
+    let status = await Comment.updateOne({ _id: comment._id }, req.body);
+
+    // to pull the updated comment and for res
+    comment = await Comment.findById(req.params.commentId).populate({path: 'commenter', select: '_id username'})
+    res.json({[comment._id]: comment});
   } catch (err) {
     return next(err);
   }

@@ -30,6 +30,7 @@ export const fetchComments = () => async (dispatch) => {
 };
 
 export const createComment = (data, pageId) => async dispatch => {
+  
     const res = await jwtFetch(`/api/pages/comments/${pageId}`, {
       method: 'POST',
       headers: {
@@ -37,8 +38,9 @@ export const createComment = (data, pageId) => async dispatch => {
       },
       body: JSON.stringify(data)
     })
-    debugger
+    
     const comments = await res.json();
+    debugger
     dispatch(receiveComments(comments))
   }
 
@@ -47,7 +49,7 @@ export const createComment = (data, pageId) => async dispatch => {
       method: 'DELETE'
     });
     const comment = await res.json();
-    dispatch(removeComment(comment))
+    dispatch(removeComment(commentId))
   }
 
   export const editComment = (commentId, data) => async dispatch => {
@@ -65,7 +67,9 @@ export const createComment = (data, pageId) => async dispatch => {
     switch (action.type) {
         case RECEIVE_COMMENTS:
             return { ...state, ...action.comments };
+            
         case REMOVE_COMMENT:
+            debugger
             delete newState[action.commentId]
             return newState;
 

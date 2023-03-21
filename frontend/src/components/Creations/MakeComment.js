@@ -17,6 +17,10 @@ function MakeComment () {
   const [data, setData] = useState({
     text: ""
   });
+
+  const [editData, setEditData] = useState({
+    text: ""
+  });
   const [editingCommentId, setEditingCommentId] = useState(null);
 
 
@@ -24,10 +28,14 @@ function MakeComment () {
   useEffect(() => {
     dispatch(fetchComments())
     dispatch(fetchUsers())
-  }, [])
+  }, [dispatch])
 
   const handleChange = (e) => {
     setData({ ...data, text: e.target.value });
+  };
+
+  const handleEditChange = (e) => {
+    setEditData({ ...editData, text: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -39,7 +47,9 @@ function MakeComment () {
       text: data.text
     };
     
-    dispatch(createComment(finalData, pageId))
+    dispatch(createComment(finalData, pageId));
+
+    setData({ text: "" });
   }
 
   const handleDelete = (commentId) => {
@@ -51,7 +61,7 @@ function MakeComment () {
     const updateData = {
       commenter: currentUser._id,
       page: pageId,
-      text: data.text
+      text: editData.text
       
     };
     dispatch(editComment(commentId, updateData));
@@ -59,7 +69,7 @@ function MakeComment () {
   }
 
   const handleEdit = (comment) => {
-    setData({ ...data, text: comment.text});
+    setEditData({ ...editData, text: comment.text});
     // setData({ text: "" })
     setEditingCommentId(comment._id);
   }
@@ -74,9 +84,9 @@ function MakeComment () {
           // Edit comment form
           <form onSubmit={(e) => handleEditSubmit(e, commentItem._id)}>
             <input type="text" 
-              value={data.text}
-              placeholder="Update Comment"
-              onChange={handleChange}
+              value={editData.text}
+              placeholder={data.text}
+              onChange={handleEditChange}
             />
             <button type="submit">Update</button>
           </form>
